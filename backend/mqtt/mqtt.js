@@ -45,19 +45,19 @@ client.on('connect', () => {
     //     fn.chk_status();
     // }, 10 * 60 * 1000);
 
-    client.publish('/operation/start/KSQ19880205', JSON.stringify({"stb_sn": "KSQ19880205", "auth": "cho", "stat":"start"}), {qos:0, retain:false}, (error)=> {
-        if(error){
-            console.error(error);
-        }
-    })
+    // client.publish('/operation/start/KSQ19880205', JSON.stringify({"stb_sn": "KSQ19880205", "auth": "cho", "stat":"start"}), {qos:0, retain:false}, (error)=> {
+    //     if(error){
+    //         console.error(error);
+    //     }
+    // })
     
-    setTimeout(()=> {
-        client.publish('/operation/end/KSQ19880205', JSON.stringify({"stb_sn": "KSQ19880205", "auth": "cho", "stat":"end"}), {qos:0, retain:false}, (error)=> {
-            if(error){
-                console.error(error);
-            }
-        })
-    }, 14651) 
+    // setTimeout(()=> {
+    //     client.publish('/operation/end/KSQ19880205', JSON.stringify({"stb_sn": "KSQ19880205", "auth": "cho", "stat":"end"}), {qos:0, retain:false}, (error)=> {
+    //         if(error){
+    //             console.error(error);
+    //         }
+    //     })
+    // }, 14651) 
 
     // client.publish('/qqq', JSON.stringify({"name":"조윤식"}), {qos:0, retain:false}, (error) => {
     //     if(error){
@@ -89,11 +89,11 @@ client.on('connect', () => {
     //     if(err) console.log(err);
     // })
 
-    // client.publish('/schedule/total/KSQ19880207', JSON.stringify({"stb_sn": "KSQ19880207"}), {qos: 0, retain: false}), (err)=> {
-    //     if(err) console.log(err);
-    // }
+    client.publish('/schedule/total/KSQ19880207', JSON.stringify({"stb_sn": "KSQ19880207"}), {qos: 0, retain: false}), (err)=> {
+        if(err) console.log(err);
+    }
 
-    // client.publish('/schedule/main/KSQ19880207', JSON.stringify({"stb_sn": "KSQ19880207"}), {qos: 0, retain: false}), (err)=> {
+    // client.publish('/schedule/main/KSQ19880208', JSON.stringify({"stb_sn": "KSQ19880208"}), {qos: 0, retain: false}), (err)=> {
     //     if(err) console.log(err);
     // }
 
@@ -101,7 +101,7 @@ client.on('connect', () => {
     //     if(err) console.log(err);
     // }
 
-    // client.publish('/schedule/home/KSQ19880207', JSON.stringify({"stb_sn": "KSQ19880207"}), {qos: 0, retain: false}), (err)=> {
+    // client.publish('/schedule/home/KSQ19880206', JSON.stringify({"stb_sn": "KSQ19880206", "name": "수술 이름"}), {qos: 0, retain: false}), (err)=> {
     //     if(err) console.log(err);
     // }
 
@@ -109,11 +109,11 @@ client.on('connect', () => {
     //     if(err) console.log(err);
     // }
 
-    client.publish('/schedule/checklist/KSQ19880207', JSON.stringify({"stb_sn": "KSQ19880207"}), {qos: 0, retain: false}), (err)=> {
-        if(err) console.log(err);
-    }
+    // client.publish('/schedule/checklist/KSQ19880206', JSON.stringify({"stb_sn": "KSQ19880206"}), {qos: 0, retain: false}), (err)=> {
+    //     if(err) console.log(err);
+    // }
 
-    // client.publish('/schedule/media/KSQ19880207', JSON.stringify({"stb_sn": "KSQ19880207"}), {qos: 0, retain: false}), (err)=> {
+    // client.publish('/schedule/media/KSQ19880205', JSON.stringify({"stb_sn": "KSQ19880205"}), {qos: 0, retain: false}), (err)=> {
     //     if(err) console.log(err);
     // }
 

@@ -55,6 +55,7 @@ CREATE TABLE `g_checklist` (
   `name` varchar(60) NOT NULL,
   `update_time` datetime DEFAULT NULL,
   `order` int(11) NOT NULL,
+  `checklist_list_order` int(11) NOT NULL,
   `stb_sn` varchar(30) NOT NULL,
   PRIMARY KEY (`uid`,`order`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
@@ -66,7 +67,7 @@ CREATE TABLE `g_checklist` (
 
 LOCK TABLES `g_checklist` WRITE;
 /*!40000 ALTER TABLE `g_checklist` DISABLE KEYS */;
-INSERT INTO `g_checklist` VALUES (1,'first checklist','2020-11-08 10:10:10',1,'KSQ19880205'),(2,'second checklist','2020-11-11 11:11:11',2,'KSQ19880206'),(3,'third checklist','2020-11-11 11:11:11',3,'KSQ19880207');
+INSERT INTO `g_checklist` VALUES (1,'first checklist','2020-11-08 10:10:10',1,1,'KSQ19880205'),(2,'second checklist','2020-11-11 11:11:11',2,2,'KSQ19880206'),(3,'third checklist','2020-11-11 11:11:11',3,3,'KSQ19880207');
 /*!40000 ALTER TABLE `g_checklist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -82,8 +83,6 @@ CREATE TABLE `g_checklist_list` (
   `name` varchar(60) NOT NULL,
   `update_time` datetime DEFAULT NULL,
   `order` int(11) NOT NULL,
-  `checklist_uid` int(11) DEFAULT NULL,
-  `value` varchar(60) DEFAULT NULL,
   PRIMARY KEY (`uid`,`order`),
   KEY `sch_che` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
@@ -95,7 +94,7 @@ CREATE TABLE `g_checklist_list` (
 
 LOCK TABLES `g_checklist_list` WRITE;
 /*!40000 ALTER TABLE `g_checklist_list` DISABLE KEYS */;
-INSERT INTO `g_checklist_list` VALUES (1,'first checklist list','2020-11-09 10:10:10',1,1,''),(2,'second checklist list','2020-11-11 11:11:11',2,1,''),(3,'third checklist list','2020-11-11 11:11:11',3,2,'');
+INSERT INTO `g_checklist_list` VALUES (1,'first checklist list','2020-11-09 10:10:10',1),(2,'second checklist list','2020-11-11 11:11:11',2),(3,'third checklist list','2020-11-11 11:11:11',3);
 /*!40000 ALTER TABLE `g_checklist_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -161,6 +160,7 @@ CREATE TABLE `g_home` (
   `name` varchar(60) NOT NULL,
   `update_time` datetime DEFAULT NULL,
   `order` int(11) NOT NULL,
+  `home_list_order` int(11) NOT NULL,
   `stb_sn` varchar(30) NOT NULL,
   PRIMARY KEY (`uid`,`order`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
@@ -172,7 +172,7 @@ CREATE TABLE `g_home` (
 
 LOCK TABLES `g_home` WRITE;
 /*!40000 ALTER TABLE `g_home` DISABLE KEYS */;
-INSERT INTO `g_home` VALUES (1,'수술 이름','2020-11-08 10:10:10',1,'KSQ19880205'),(2,'second home','2020-11-11 11:11:11',2,'KSQ19880206'),(3,'third home','2020-11-11 11:11:11',2,'KSQ19880207');
+INSERT INTO `g_home` VALUES (1,'first home','2020-11-08 10:10:10',1,1,'KSQ19880205'),(2,'second home','2020-11-11 11:11:11',2,2,'KSQ19880206'),(3,'third home','2020-11-11 11:11:11',2,3,'KSQ19880207');
 /*!40000 ALTER TABLE `g_home` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -190,7 +190,6 @@ CREATE TABLE `g_home_list` (
   `order` int(11) NOT NULL,
   `start` varchar(30) NOT NULL,
   `end` varchar(30) NOT NULL,
-  `g_home_order` int(11) DEFAULT NULL,
   PRIMARY KEY (`uid`,`order`),
   KEY `sch_hom` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
@@ -202,7 +201,7 @@ CREATE TABLE `g_home_list` (
 
 LOCK TABLES `g_home_list` WRITE;
 /*!40000 ALTER TABLE `g_home_list` DISABLE KEYS */;
-INSERT INTO `g_home_list` VALUES (1,'수술 이름','2020-11-09 10:10:10',1,'08:00','10:00',1),(2,'second home list','2020-11-11 11:11:11',2,'09:00','11:00',2),(3,'third home list','2020-11-11 11:11:11',3,'10:00','12:00',NULL);
+INSERT INTO `g_home_list` VALUES (1,'first home list','2020-11-09 10:10:10',1,'08:00','10:00'),(2,'second home list','2020-11-11 11:11:11',2,'09:00','11:00'),(3,'third home list','2020-11-11 11:11:11',3,'10:00','12:00');
 /*!40000 ALTER TABLE `g_home_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -276,7 +275,6 @@ CREATE TABLE `g_layout_list_layout` (
   `update_time` datetime DEFAULT NULL,
   `imageurl` varchar(255) NOT NULL,
   `order` int(11) NOT NULL,
-  `g_layout_order` int(11) DEFAULT NULL,
   PRIMARY KEY (`uid`,`order`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -287,7 +285,7 @@ CREATE TABLE `g_layout_list_layout` (
 
 LOCK TABLES `g_layout_list_layout` WRITE;
 /*!40000 ALTER TABLE `g_layout_list_layout` DISABLE KEYS */;
-INSERT INTO `g_layout_list_layout` VALUES (1,'layout1','2020-11-09 10:10:10','http://172.16.41.233:3000/layout/layout.png',1,1),(2,'layout2','2020-11-11 11:11:11','http://172.16.41.233:3000/movie/sample.mp4',2,2),(3,'layout3','2020-11-11 11:11:11','http://172.16.41.233:3000/music/music.mp3',3,3);
+INSERT INTO `g_layout_list_layout` VALUES (1,'layout1','2020-11-09 10:10:10','http://172.16.41.233:3000/layout/layout.png',1),(2,'layout2','2020-11-11 11:11:11','http://172.16.41.233:3000/movie/sample.mp4',2),(3,'layout3','2020-11-11 11:11:11','http://172.16.41.233:3000/music/music.mp3',3);
 /*!40000 ALTER TABLE `g_layout_list_layout` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -303,6 +301,7 @@ CREATE TABLE `g_main` (
   `name` varchar(60) NOT NULL,
   `update_time` datetime DEFAULT NULL,
   `order` int(11) NOT NULL,
+  `main_list_order` int(11) NOT NULL,
   `stb_sn` varchar(30) NOT NULL,
   PRIMARY KEY (`uid`,`order`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
@@ -314,7 +313,7 @@ CREATE TABLE `g_main` (
 
 LOCK TABLES `g_main` WRITE;
 /*!40000 ALTER TABLE `g_main` DISABLE KEYS */;
-INSERT INTO `g_main` VALUES (1,'first main','2020-11-08 10:10:10',1,'KSQ19880205'),(2,'second main','2020-11-11 11:11:11',2,'KSQ19880206'),(3,'third main','2020-11-11 11:11:11',3,'KSQ19880207');
+INSERT INTO `g_main` VALUES (1,'first main','2020-11-08 10:10:10',1,1,'KSQ19880205'),(2,'second main','2020-11-11 11:11:11',2,2,'KSQ19880206'),(3,'third main','2020-11-11 11:11:11',3,3,'KSQ19880207');
 /*!40000 ALTER TABLE `g_main` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -332,7 +331,6 @@ CREATE TABLE `g_main_list` (
   `order` int(11) NOT NULL,
   `start` varchar(30) NOT NULL,
   `end` varchar(30) NOT NULL,
-  `g_main_order` int(11) DEFAULT NULL,
   PRIMARY KEY (`uid`,`order`),
   KEY `sch_mai` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
@@ -344,7 +342,7 @@ CREATE TABLE `g_main_list` (
 
 LOCK TABLES `g_main_list` WRITE;
 /*!40000 ALTER TABLE `g_main_list` DISABLE KEYS */;
-INSERT INTO `g_main_list` VALUES (1,'first main list','2020-11-09 10:10:10',1,'08:00','10:00',1),(2,'second main list','2020-11-08 10:10:10',2,'09:00','11:00',2),(3,'third main list','2020-11-08 10:10:10',3,'10:00','12:00',3),(4,'4th main list','2020-11-08 10:10:10',4,'11:00','13:00',4);
+INSERT INTO `g_main_list` VALUES (1,'first main list','2020-11-09 10:10:10',1,'08:00','10:00'),(2,'second main list','2020-11-08 10:10:10',2,'09:00','11:00'),(3,'third main list','2020-11-08 10:10:10',3,'10:00','12:00'),(4,'4th main list','2020-11-08 10:10:10',4,'11:00','13:00');
 /*!40000 ALTER TABLE `g_main_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -360,6 +358,7 @@ CREATE TABLE `g_media` (
   `name` varchar(60) NOT NULL,
   `update_time` datetime DEFAULT NULL,
   `order` int(11) NOT NULL,
+  `media_list_order` int(11) NOT NULL,
   `stb_sn` varchar(30) NOT NULL,
   PRIMARY KEY (`uid`,`order`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
@@ -371,7 +370,7 @@ CREATE TABLE `g_media` (
 
 LOCK TABLES `g_media` WRITE;
 /*!40000 ALTER TABLE `g_media` DISABLE KEYS */;
-INSERT INTO `g_media` VALUES (1,'first media','2020-11-08 10:10:10',1,'KSQ19880205'),(2,'second media','2020-11-11 11:11:11',2,'KSQ19880206'),(3,'third media','2020-11-11 11:11:11',3,'KSQ19880207');
+INSERT INTO `g_media` VALUES (1,'first media','2020-11-08 10:10:10',1,1,'KSQ19880205'),(2,'second media','2020-11-11 11:11:11',2,2,'KSQ19880206'),(3,'third media','2020-11-11 11:11:11',3,3,'KSQ19880207');
 /*!40000 ALTER TABLE `g_media` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -387,7 +386,6 @@ CREATE TABLE `g_media_list` (
   `name` varchar(60) NOT NULL,
   `update_time` datetime DEFAULT NULL,
   `order` int(11) NOT NULL,
-  `g_media_order` int(11) DEFAULT NULL,
   PRIMARY KEY (`uid`,`order`),
   KEY `sch_med` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
@@ -399,90 +397,8 @@ CREATE TABLE `g_media_list` (
 
 LOCK TABLES `g_media_list` WRITE;
 /*!40000 ALTER TABLE `g_media_list` DISABLE KEYS */;
-INSERT INTO `g_media_list` VALUES (1,'first media list','2020-11-09 10:10:10',1,1),(2,'second media list','2020-11-11 11:11:11',2,2),(3,'third media list','2020-11-11 11:11:11',3,3);
+INSERT INTO `g_media_list` VALUES (1,'first media list','2020-11-09 10:10:10',1),(2,'second media list','2020-11-11 11:11:11',2),(3,'third media list','2020-11-11 11:11:11',3);
 /*!40000 ALTER TABLE `g_media_list` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `g_patient`
---
-
-DROP TABLE IF EXISTS `g_patient`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `g_patient` (
-  `uid` int(11) NOT NULL AUTO_INCREMENT,
-  `order` int(11) NOT NULL,
-  `id` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL,
-  `gender` varchar(30) NOT NULL,
-  `age` int(11) NOT NULL,
-  `dob` varchar(30) NOT NULL,
-  `surgicalsite` varchar(100) NOT NULL,
-  `g_home_list_order` int(11) DEFAULT NULL,
-  PRIMARY KEY (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `g_patient`
---
-
-LOCK TABLES `g_patient` WRITE;
-/*!40000 ALTER TABLE `g_patient` DISABLE KEYS */;
-INSERT INTO `g_patient` VALUES (1,1,1,'아무개','남성',20,'2002-01-01','폐',1),(2,2,2,'김웅식','남성',18,'2004-01-01','심장',NULL),(3,3,3,'김돌복','여성',23,'1999-03-12','어깨, 팔',NULL);
-/*!40000 ALTER TABLE `g_patient` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `g_process`
---
-
-DROP TABLE IF EXISTS `g_process`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `g_process` (
-  `uid` int(11) NOT NULL AUTO_INCREMENT,
-  `order` int(11) NOT NULL,
-  `g_home_list_order` int(11) DEFAULT NULL,
-  PRIMARY KEY (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `g_process`
---
-
-LOCK TABLES `g_process` WRITE;
-/*!40000 ALTER TABLE `g_process` DISABLE KEYS */;
-INSERT INTO `g_process` VALUES (1,1,1),(2,2,NULL),(3,3,NULL);
-/*!40000 ALTER TABLE `g_process` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `g_process_list`
---
-
-DROP TABLE IF EXISTS `g_process_list`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `g_process_list` (
-  `uid` int(11) NOT NULL AUTO_INCREMENT,
-  `order` int(11) NOT NULL,
-  `value` varchar(100) NOT NULL,
-  `process_uid` int(11) DEFAULT NULL,
-  PRIMARY KEY (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `g_process_list`
---
-
-LOCK TABLES `g_process_list` WRITE;
-/*!40000 ALTER TABLE `g_process_list` DISABLE KEYS */;
-INSERT INTO `g_process_list` VALUES (1,1,'T/O brfore ANES',1),(2,2,'Anesthesia',1),(3,3,'T/O before IND',1),(4,4,'Incision',1),(5,5,'Surgery',1),(6,6,'Suture',1),(7,7,'Wake up ANES',1),(8,8,'End of sergery',1);
-/*!40000 ALTER TABLE `g_process_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -516,36 +432,8 @@ CREATE TABLE `g_schedule` (
 
 LOCK TABLES `g_schedule` WRITE;
 /*!40000 ALTER TABLE `g_schedule` DISABLE KEYS */;
-INSERT INTO `g_schedule` VALUES (1,'KSQ19880205','first schedule','2020-11-08 10:10:10',1,'08:00','10:00','수술 이름','first home','first checklist','first layout','first media'),(2,'KSQ19880207','second schedule','2020-11-08 10:10:10',2,'09:00','11:00','second main','second home','second checklist','second layout','second media'),(3,'KSQ19880207','thrid schedule','2020-11-08 10:10:10',3,'10:00','12:00','third main','third home','third checklist','third layout','third media'),(4,'KSQ19880207','4th schedule','2020-11-08 10:10:10',4,'11:00','13:00','4th main','4th home','4th checklist','4th layout','4th media');
+INSERT INTO `g_schedule` VALUES (1,'KSQ19880205','first schedule','2020-11-08 10:10:10',1,'08:00','10:00','first main','first home','first checklist','first layout','first media'),(2,'KSQ19880207','second schedule','2020-11-08 10:10:10',2,'09:00','11:00','second main','second home','second checklist','second layout','second media'),(3,'KSQ19880207','thrid schedule','2020-11-08 10:10:10',3,'10:00','12:00','third main','third home','third checklist','third layout','third media'),(4,'KSQ19880207','4th schedule','2020-11-08 10:10:10',4,'11:00','13:00','4th main','4th home','4th checklist','4th layout','4th media');
 /*!40000 ALTER TABLE `g_schedule` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `g_staff`
---
-
-DROP TABLE IF EXISTS `g_staff`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `g_staff` (
-  `uid` int(11) NOT NULL AUTO_INCREMENT,
-  `order` int(11) NOT NULL,
-  `id` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL,
-  `position` varchar(30) NOT NULL,
-  `g_home_list_order` int(11) DEFAULT NULL,
-  PRIMARY KEY (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `g_staff`
---
-
-LOCK TABLES `g_staff` WRITE;
-/*!40000 ALTER TABLE `g_staff` DISABLE KEYS */;
-INSERT INTO `g_staff` VALUES (1,1,1,'김개단','operator',1),(2,2,2,'김용손','surgical assistant',1),(3,3,3,'김순양','scrub nurse',1),(4,4,4,'김용식','circulating nurse',1),(5,5,5,'김달','anesthesiologist',1),(6,6,6,'김무혁','operator',2);
-/*!40000 ALTER TABLE `g_staff` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -571,7 +459,7 @@ CREATE TABLE `g_stb` (
 
 LOCK TABLES `g_stb` WRITE;
 /*!40000 ALTER TABLE `g_stb` DISABLE KEYS */;
-INSERT INTO `g_stb` VALUES (1,'KSQ19880205','KSQ19880204','2021-11-25 10:57:34','Y');
+INSERT INTO `g_stb` VALUES (1,'KSQ19880205','KSQ19880204','2021-11-18 17:43:22','Y');
 /*!40000 ALTER TABLE `g_stb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -614,4 +502,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-25  4:28:55
+-- Dump completed on 2021-11-19  0:56:18
