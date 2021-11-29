@@ -452,7 +452,7 @@ module.exports = {
             function third_query(home_list_patient){
                 return new Promise((resolve, reject)=> {
                     db.query('select g_process.order as id, g_process_list.order as contents_seq, g_process_list.value as contents_value '+
-                    'from g_process inner join g_process_list on g_process.uid = g_process_list.process_uid inner join g_home_list on '+
+                    'from g_process inner join g_process_list on g_process.order = g_process_list.process_order inner join g_home_list on '+
                     'g_home_list.order = g_process.g_home_list_order where g_process.g_home_list_order = ?', 
                     home_list_patient.list_order, (err, stb)=> {
                         console.log(stb);
@@ -586,7 +586,7 @@ module.exports = {
             db.query('select g_checklist.stb_sn, g_checklist.name as checklist_name, g_checklist.order as checklist_order, '+
             'g_checklist.update_time as checklist_update_time, g_checklist_list.name as list_name, g_checklist_list.update_time as list_update_time, '+
             'g_checklist_list.value as list_value, g_checklist_list.order as list_order from g_checklist '+
-            'inner join g_checklist_list on g_checklist.uid = g_checklist_list.checklist_uid where g_checklist.stb_sn = ?', stb_sn, (err, stb)=> {
+            'inner join g_checklist_list on g_checklist.order = g_checklist_list.checklist_order where g_checklist.stb_sn = ?', stb_sn, (err, stb)=> {
                 // console.log(stb);
                 if(err) console.log(err);
                 if(stb.length != 0){
