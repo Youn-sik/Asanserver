@@ -243,7 +243,7 @@ module.exports = {
                         }
                     }
                 }
-                console.log(JSON.stringify(result))
+                // console.log(JSON.stringify(result))
                 client.publish('/schedule/total/result/' + stb_sn, JSON.stringify(result), {qos:0, retain:false}, (err)=> {
                     if(err) console.log(err);
                 })   
@@ -259,9 +259,9 @@ module.exports = {
             let time = moment().format('YYYY-MM-DD HH:mm:ss');
             let result;
             
-            db.query('select g_main.stb_sn, g_main.name as main_name, g_main.update_time as main_update_time, g_main_list.name as list_name, '+
-            'g_main_list.update_time as list_update_time, g_main_list.order as list_order, g_main_list.start as list_start, g_main_list.end as list_end '+
-            'from g_main inner join g_main_list on g_main.order = g_main_list.g_main_order where g_main.stb_sn = ?', stb_sn, (err, stb)=> {
+            db.query('select g_main.stb_sn, g_main.name as main_name, g_main.update_time as main_update_time, g_surgery.name as list_name, '+
+            'g_surgery.update_time as list_update_time, g_surgery.order as list_order, g_surgery.start as list_start, g_surgery.end as list_end '+
+            'from g_main inner join g_surgery on g_main.order = g_surgery.g_main_home_order where g_main.stb_sn = ?', stb_sn, (err, stb)=> {
                 // console.log(stb);
                 if(err) console.log(err);
                 if(stb.length != 0){
@@ -361,44 +361,46 @@ module.exports = {
             
             function first_query() {
                 return new Promise((reslove, reject)=> {
-                    db.query('select g_home.stb_sn, g_home.name, g_home.update_time, g_home_list.name as list_name,g_home_list.order as list_order, '+
+                    db.query('select g_home.stb_sn, g_home.name, g_home.update_time, g_surgery.name as surgery_name,g_surgery.order as surgery_order, '+
                     'g_patient.id as patient_id, g_patient.name as patient_name, g_patient.gender as patient_gender, g_patient.age as patient_age, '+
-                    'g_patient.dob as patient_dob, g_patient.surgicalsite as patient_surgicalsite from g_home inner join g_home_list '+
-                    'on g_home.order = g_home_list.g_home_order inner join g_patient on g_home_list.order = g_patient.g_home_list_order '+
+                    'g_patient.dob as patient_dob, g_patient.surgicalsite as patient_surgicalsite from g_home inner join g_surgery '+
+                    'on g_home.order = g_surgery.g_main_home_order inner join g_patient on g_surgery.order = g_patient.g_surgery_order '+
                     'where g_home.stb_sn = ? and g_home.name = ?', [stb_sn, home_name], (err, stb)=> {
                         // console.log(stb);
                         if(err) console.log(err);
                         if(stb.length != 0){
                         
-                            let home_list_patient = new Object();
-                            home_list_patient.stb_sn = stb[0].stb_sn; 
-                            home_list_patient.name = stb[0].name; 
-                            home_list_patient.update_time = stb[0].update_time; 
-                            home_list_patient.lise_name = stb[0].list_name;
-                            home_list_patient.list_order = stb[0].list_order;  
-                            home_list_patient.patient_id = stb[0].patient_id; 
-                            home_list_patient.patient_name = stb[0].patient_name; 
-                            home_list_patient.patient_gender = stb[0].patient_gender; 
-                            home_list_patient.patient_age = stb[0].patient_age; 
-                            home_list_patient.patient_dob = stb[0].patient_dob; 
-                            home_list_patient.patient_surgicalsite = stb[0].patient_surgicalsite; 
+                            let surgery_patient = new Object();
+                            surgery_patient.stb_sn = stb[0].stb_sn; 
+                            surgery_patient.name = stb[0].name; //홈 화면 이름
+                            surgery_patient.update_time = stb[0].update_time; 
+                            surgery_patient.surgery_name = stb[0].surgery_name; //수술 이름
+                            surgery_patient.surgery_order = stb[0].surgery_order;  
+                            surgery_patient.patient_id = stb[0].patient_id; 
+                            surgery_patient.patient_name = stb[0].patient_name; 
+                            surgery_patient.patient_gender = stb[0].patient_gender; 
+                            surgery_patient.patient_age = stb[0].patient_age; 
+                            surgery_patient.patient_dob = stb[0].patient_dob; 
+                            surgery_patient.patient_surgicalsite = stb[0].patient_surgicalsite; 
+                            surgery_patient.surgicalname = 
 
                             result = {
-                                "stb_sn": home_list_patient.stb_sn,
-                                "name": home_list_patient.name,
-                                "update_time": home_list_patient.update_time,
+                                "stb_sn": surgery_patient.stb_sn,
+                                "name": surgery_patient.name,
+                                "update_time": surgery_patient.update_time,
                                 "result": "ok",
                                 "value": [{
                                     "staff": [{
 
                                     }],
                                     "patient": {
-                                        "id": home_list_patient.patient_id,
-                                        "name": home_list_patient.patient_name,
-                                        "gender": home_list_patient.patient_gender,
-                                        "age": home_list_patient.patient_age,
-                                        "dob": home_list_patient.patient_dob,
-                                        "surgicalsite": home_list_patient.patient_surgicalsite
+                                        "id": surgery_patient.patient_id,
+                                        "name": surgery_patient.patient_name,
+                                        "gender": surgery_patient.patient_gender,
+                                        "age": surgery_patient.patient_age,
+                                        "dob": surgery_patient.patient_dob,
+                                        "surgicalsite": surgery_patient.patient_surgicalsite,
+                                        "surgicalname": surgery_patient.surgery_name
                                     },
                                     "process": {
                                         
@@ -406,7 +408,7 @@ module.exports = {
                                 }]
                             }
         
-                            reslove(home_list_patient);
+                            reslove(surgery_patient);
                         } else {
                             result = {
                                 "stb_sn": stb_sn,
@@ -423,17 +425,17 @@ module.exports = {
                 });
             }
 
-            function second_query(home_list_patient){
+            function second_query(surgery_patient){
                 return new Promise((reslove, reject)=>{
                     db.query('select g_staff.id as id, g_staff.name as name, g_staff.position as position  from g_home '+
-                    'inner join g_home_list on g_home.order = g_home_list.g_home_order inner join g_staff on '+
-                    'g_staff.g_home_list_order = g_home_list.order where g_staff.g_home_list_order = ?', 
-                    home_list_patient.list_order, (err, stb)=> {
+                    'inner join g_surgery on g_home.order = g_surgery.g_main_home_order inner join g_staff on '+
+                    'g_staff.g_surgery_order = g_surgery.order where g_staff.g_surgery_order = ?', 
+                    surgery_patient.surgery_order, (err, stb)=> {
                         // console.log(stb);
                         if(err) console.log(err);
                         if(stb.length != 0){
                             result.value[0].staff = stb;
-                            reslove(home_list_patient);
+                            reslove(surgery_patient);
                         } else {
                             result = {
                                 "stb_sn": stb_sn,
@@ -449,13 +451,13 @@ module.exports = {
                 });
             }
 
-            function third_query(home_list_patient){
+            function third_query(surgery_patient){
                 return new Promise((resolve, reject)=> {
                     db.query('select g_process.order as id, g_process_list.order as contents_seq, g_process_list.value as contents_value '+
-                    'from g_process inner join g_process_list on g_process.order = g_process_list.process_order inner join g_home_list on '+
-                    'g_home_list.order = g_process.g_home_list_order where g_process.g_home_list_order = ?', 
-                    home_list_patient.list_order, (err, stb)=> {
-                        console.log(stb);
+                    'from g_process inner join g_process_list on g_process.order = g_process_list.process_order inner join g_surgery on '+
+                    'g_surgery.order = g_process.g_surgery_order where g_process.g_surgery_order = ?', 
+                    surgery_patient.surgery_order, (err, stb)=> {
+                        // console.log(stb);
                         if(err) console.log(err);
                         if(stb.length != 0){
                             let process = [];
@@ -486,17 +488,17 @@ module.exports = {
             }
 
             first_query()
-            .then((home_list_patient)=> {
+            .then((surgery_patient)=> {
                 // console.log('-----first query end-----')
                 // console.log(JSON.stringify(result))
-                return second_query(home_list_patient);
-            }).then((home_list_patient)=> {
+                return second_query(surgery_patient);
+            }).then((surgery_patient)=> {
                 // console.log('-----second query end-----')
                 // console.log(JSON.stringify(result))
-                return third_query(home_list_patient);
+                return third_query(surgery_patient);
             }).then(()=> {
                 // console.log('-----third query end-----')
-                console.log(JSON.stringify(result))
+                // console.log(JSON.stringify(result))
 
                 client.publish('/schedule/home/result/' + stb_sn, JSON.stringify(result), {qos:0, retain:false}, (err)=> {
                     if(err) console.log(err);
@@ -618,7 +620,7 @@ module.exports = {
                         }]
                     }
                 }
-                console.log(JSON.stringify(result))
+                // console.log(JSON.stringify(result))
                 client.publish('/schedule/checklist/result/' + stb_sn, JSON.stringify(result), {qos:0, retain:false}, (err)=> {
                     if(err) console.log(err);
                 })   
@@ -637,7 +639,7 @@ module.exports = {
             db.query('select g_media.stb_sn, g_media.name as media_name, g_media.update_time as media_update_time, g_media_list.name as list_name, '+
             'g_media_list.update_time as list_update_time, g_media_list.order as list_order '+
             'from g_media inner join g_media_list on g_media.order = g_media_list.g_media_order where g_media.stb_sn = ?', stb_sn, (err, stb)=> {
-                console.log(stb);
+                // console.log(stb);
                 if(err) console.log(err);
                 if(stb.length != 0){
 

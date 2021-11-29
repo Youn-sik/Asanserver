@@ -89,11 +89,11 @@ client.on('connect', () => {
     //     if(err) console.log(err);
     // })
 
-    // client.publish('/schedule/total/KSQ19880207', JSON.stringify({"stb_sn": "KSQ19880207"}), {qos: 0, retain: false}), (err)=> {
+    // client.publish('/schedule/total/KSQ19880205', JSON.stringify({"stb_sn": "KSQ19880205"}), {qos: 0, retain: false}), (err)=> {
     //     if(err) console.log(err);
     // }
 
-    // client.publish('/schedule/main/KSQ19880208', JSON.stringify({"stb_sn": "KSQ19880208"}), {qos: 0, retain: false}), (err)=> {
+    // client.publish('/schedule/main/KSQ19880206', JSON.stringify({"stb_sn": "KSQ19880206"}), {qos: 0, retain: false}), (err)=> {
     //     if(err) console.log(err);
     // }
 
@@ -101,9 +101,9 @@ client.on('connect', () => {
     //     if(err) console.log(err);
     // }
 
-    client.publish('/schedule/home/KSQ19880205', JSON.stringify({"stb_sn": "KSQ19880205", "name": "수술 이름"}), {qos: 0, retain: false}), (err)=> {
-        if(err) console.log(err);
-    }
+    // client.publish('/schedule/home/KSQ19880205', JSON.stringify({"stb_sn": "KSQ19880205", "name": "first home"}), {qos: 0, retain: false}), (err)=> {
+    //     if(err) console.log(err);
+    // }
 
     // client.publish('/schedule/layout/KSQ19880207', JSON.stringify({"stb_sn": "KSQ19880207"}), {qos: 0, retain: false}), (err)=> {
     //     if(err) console.log(err);
