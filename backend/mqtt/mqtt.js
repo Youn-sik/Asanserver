@@ -10,7 +10,6 @@ moment.tz.setDefault("Asia/Seoul");
 client.on('connect', () => {
     console.log('Connected')
     client.subscribe([
-        // '/qqq',
         '/operation/start/+',
         '/operation/start/result/+',
         '/operation/end/+',
@@ -97,9 +96,9 @@ client.on('connect', () => {
     //     if(err) console.log(err);
     // }
 
-    // client.publish('/schedule/face/KSQ19880205', JSON.stringify({"stb_sn": "KSQ19880205"}), {qos: 0, retain: false}), (err)=> {
-    //     if(err) console.log(err);
-    // }
+    client.publish('/schedule/face/KSQ19880205', JSON.stringify({"stb_sn": "KSQ19880205"}), {qos: 0, retain: false}), (err)=> {
+        if(err) console.log(err);
+    }
 
     // client.publish('/schedule/home/KSQ19880205', JSON.stringify({"stb_sn": "KSQ19880205", "name": "first home"}), {qos: 0, retain: false}), (err)=> {
     //     if(err) console.log(err);
@@ -126,11 +125,6 @@ client.on('message', async (topic, payload) => {
         let context = payload.toString();
         let json = JSON.parse(context);
         console.log(json);
-
-        //사용자 정보
-        // if(topic == '/qqq'){
-        //     fn.user_name_find(json);
-        // }
 
         //수술 시작
         if(topic == '/operation/start/' + json.stb_sn){

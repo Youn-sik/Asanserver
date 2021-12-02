@@ -84,6 +84,7 @@ def on_message(client, userdata, msg):
         black = 0
         stranger = 0
         for value in access_json['values'] :
+
             current_time = time.strftime('%Y%m%d%H%M%S', time.localtime(time.time()))
             current_time_db = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
             current_date = time.strftime('%Y%m%d', time.localtime(time.time()))
@@ -105,7 +106,7 @@ def on_message(client, userdata, msg):
 
             with open(file_path+file_name, 'wb') as f:
                 f.write(imgdata)
-
+         
             result = detect_face(file_path+file_name)
             if result is None :
                 name = 'unknown'
@@ -117,7 +118,7 @@ def on_message(client, userdata, msg):
                     cursor = group_collection.find({"_id":ObjectId(max_group_id)})
                     for group in cursor :
                         group_name = group['name']
-
+          
             if(max_sim >= 0.625) :
                 name = max_name
                 avatar_type = max_type
@@ -129,13 +130,13 @@ def on_message(client, userdata, msg):
             else :
                 stranger += 1
 
-
+           
             os.remove(file_path+file_name)
             file_name = access_json['stb_sn']+"_"+name+"_"+str(avatar_type)+"_"+value['avatar_temperature']+"_"+time.strftime('%Y%m%d%H%M%S', time.localtime(time.time()))+".png"
-
+        
             with open(file_path+file_name, 'wb') as f:
                 f.write(imgdata)
-
+       
             upload_url = "http://" + server_ip + ":3000" + "/uploads/accesss/temp/" + time.strftime('%Y%m%d', time.localtime(time.time())) + "/" + access_json['stb_sn'] + "/" + file_name
 
             insert_data = {
@@ -158,7 +159,7 @@ def on_message(client, userdata, msg):
                 "group_name" : group_name,
                 "position" : max_position
             }
-
+          
             insert_array.append(insert_data)
 
             todayStatistics = stat_collection.find_one(
@@ -173,7 +174,7 @@ def on_message(client, userdata, msg):
                     ]
                 }
             )
-
+     
             if(todayStatistics) :
                 stat_collection.update_one({"serial_number":access_json['stb_sn'],"access_date":current_date_stat},{
                     "$inc":{
@@ -227,6 +228,7 @@ def on_message(client, userdata, msg):
             'stb_sn': access_json['stb_sn'],
             'values': insert_array
         }
+        client.publish('/schedule/face/result/'+access_json['stb_sn'], json.dumps(send_data), 1)
         client.publish('/access/realtime/result/'+access_json['stb_sn'], json.dumps(send_data), 1)
 
 
