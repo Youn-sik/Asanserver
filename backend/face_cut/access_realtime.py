@@ -74,7 +74,6 @@ def on_message(client, userdata, msg):
         folder_date_path = "/uploads/accesss/temp/" + time.strftime('%Y%m%d', time.localtime(time.time()))
         file_path = json_data['base_server_document'] + folder_date_path + "/" + access_json['stb_sn'] + "/"
 
-        print(file_path)
 
         pathlib.Path(file_path).mkdir(parents=True, exist_ok=True)
 
@@ -86,7 +85,7 @@ def on_message(client, userdata, msg):
         black = 0
         stranger = 0
         for value in access_json['values'] :
-
+            print(value)
             current_time = time.strftime('%Y%m%d%H%M%S', time.localtime(time.time()))
             current_time_db = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
             current_date = time.strftime('%Y%m%d', time.localtime(time.time()))
@@ -134,7 +133,7 @@ def on_message(client, userdata, msg):
 
            
             os.remove(file_path+file_name)
-            file_name = access_json['stb_sn']+"_"+name+"_"+str(avatar_type)+"_"+value['avatar_temperature']+"_"+time.strftime('%Y%m%d%H%M%S', time.localtime(time.time()))+".png"
+            file_name = access_json['stb_sn']+"_"+name+"_"+str(avatar_type)+"_"+time.strftime('%Y%m%d%H%M%S', time.localtime(time.time()))+".png"
         
             with open(file_path+file_name, 'wb') as f:
                 f.write(imgdata)
@@ -143,18 +142,18 @@ def on_message(client, userdata, msg):
 
             insert_data = {
                 "avatar_file" : 'avatar_file',
-                "avatar_file_checksum" : "element.avatar_file_checksum",
-                "avatar_type" : avatar_type,
-                'avatar_distance' : value['avatar_distance'],
-                'avatar_contraction_data' : 'element.avatar_contraction_data',
-                'avatar_file_url' : upload_url,
-                'avatar_temperature' : value['avatar_temperature'],
-                'access_time' : current_time_db,
-                'stb_sn' : access_json['stb_sn'],
-                'stb_obid' : str(camera['_id']),
-                'stb_name' : camera['name'],
-                'stb_location' : camera['location'],
-                'authority': camera['authority'],
+                # "avatar_file_checksum" : "element.avatar_file_checksum",
+                # "avatar_type" : avatar_type,
+                # 'avatar_distance' : value['avatar_distance'],
+                # 'avatar_contraction_data' : 'element.avatar_contraction_data',
+                # 'avatar_file_url' : upload_url,
+                # 'avatar_temperature' : value['avatar_temperature'],
+                # 'access_time' : current_time_db,
+                # 'stb_sn' : access_json['stb_sn'],
+                # 'stb_obid' : str(camera['_id']),
+                # 'stb_name' : camera['name'],
+                # 'stb_location' : camera['location'],
+                # 'authority': camera['authority'],
                 'name' : name,
                 "gender" : max_gender,
                 "employee_id" : max_employee_id,
