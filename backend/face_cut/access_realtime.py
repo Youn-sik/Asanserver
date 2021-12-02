@@ -39,10 +39,10 @@ random.shuffle(users)
 original_emb = None
 original_emb_label = None
 
-with open('/var/www/backend/face_cut/cloud40.json') as json_file:
+with open('/home/asan/asan/backend/face_cut/cloud40.json') as json_file:
     json_data = json.load(json_file)
 
-with open('/var/www/backend/face_cut/visit.json') as json_file:
+with open('/home/asan/asan/backend/face_cut/visit.json') as json_file:
     visitor_data = json.load(json_file)
 
 def on_connect(client, userdata, flags, rc):
@@ -73,6 +73,8 @@ def on_message(client, userdata, msg):
 
         folder_date_path = "/uploads/accesss/temp/" + time.strftime('%Y%m%d', time.localtime(time.time()))
         file_path = json_data['base_server_document'] + folder_date_path + "/" + access_json['stb_sn'] + "/"
+
+        print(file_path)
 
         pathlib.Path(file_path).mkdir(parents=True, exist_ok=True)
 
