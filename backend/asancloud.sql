@@ -66,7 +66,7 @@ CREATE TABLE `g_checklist` (
 
 LOCK TABLES `g_checklist` WRITE;
 /*!40000 ALTER TABLE `g_checklist` DISABLE KEYS */;
-INSERT INTO `g_checklist` VALUES (1,'first checklist','2020-11-08 10:10:10',1,'KSQ19880205'),(2,'second checklist','2020-11-11 11:11:11',2,'KSQ19880206'),(3,'third checklist','2020-11-11 11:11:11',3,'KSQ19880207');
+INSERT INTO `g_checklist` VALUES (1,'first checklist','2020-11-08 10:10:10',1,'KSQ19880205'),(2,'second checklist','2020-11-11 11:11:11',2,'KSQ19880201'),(3,'third checklist','2020-11-11 11:11:11',3,'KSQ19880207');
 /*!40000 ALTER TABLE `g_checklist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -82,7 +82,7 @@ CREATE TABLE `g_checklist_list` (
   `name` varchar(60) NOT NULL,
   `update_time` datetime DEFAULT NULL,
   `order` int(11) NOT NULL,
-  `checklist_uid` int(11) DEFAULT NULL,
+  `checklist_order` int(11) DEFAULT NULL,
   `value` varchar(60) DEFAULT NULL,
   PRIMARY KEY (`uid`,`order`),
   KEY `sch_che` (`name`)
@@ -145,7 +145,7 @@ CREATE TABLE `g_distribution` (
 
 LOCK TABLES `g_distribution` WRITE;
 /*!40000 ALTER TABLE `g_distribution` DISABLE KEYS */;
-INSERT INTO `g_distribution` VALUES (1,'KSQ19880205','first distribution','2020-11-08 10:10:10'),(2,'KSQ19880206','second distribution','2020-11-08 10:10:10'),(3,'KSQ19880207','third distribution','2020-11-08 10:10:10');
+INSERT INTO `g_distribution` VALUES (1,'KSQ19880205','first distribution','2020-11-08 10:10:10'),(2,'KSQ19880201','second distribution','2020-11-08 10:10:10'),(3,'KSQ19880207','third distribution','2020-11-08 10:10:10');
 /*!40000 ALTER TABLE `g_distribution` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -172,7 +172,7 @@ CREATE TABLE `g_home` (
 
 LOCK TABLES `g_home` WRITE;
 /*!40000 ALTER TABLE `g_home` DISABLE KEYS */;
-INSERT INTO `g_home` VALUES (1,'수술 이름','2020-11-08 10:10:10',1,'KSQ19880205'),(2,'second home','2020-11-11 11:11:11',2,'KSQ19880206'),(3,'third home','2020-11-11 11:11:11',2,'KSQ19880207');
+INSERT INTO `g_home` VALUES (1,'first home','2020-11-08 10:10:10',1,'KSQ19880205'),(2,'second home','2020-11-11 11:11:11',2,'KSQ19880201'),(3,'third home','2020-11-11 11:11:11',2,'KSQ19880207');
 /*!40000 ALTER TABLE `g_home` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -229,7 +229,7 @@ CREATE TABLE `g_layout` (
 
 LOCK TABLES `g_layout` WRITE;
 /*!40000 ALTER TABLE `g_layout` DISABLE KEYS */;
-INSERT INTO `g_layout` VALUES (1,'first layout','2020-11-08 10:10:10',1,'KSQ19880205'),(2,'second layout','2020-11-11 11:11:11',2,'KSQ19880206'),(3,'third layout','2020-11-11 11:11:11',3,'KSQ19880207');
+INSERT INTO `g_layout` VALUES (1,'first layout','2020-11-08 10:10:10',1,'KSQ19880205'),(2,'second layout','2020-11-11 11:11:11',2,'KSQ19880201'),(3,'third layout','2020-11-11 11:11:11',3,'KSQ19880207');
 /*!40000 ALTER TABLE `g_layout` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -278,7 +278,7 @@ CREATE TABLE `g_layout_list_layout` (
   `order` int(11) NOT NULL,
   `g_layout_order` int(11) DEFAULT NULL,
   PRIMARY KEY (`uid`,`order`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -287,7 +287,7 @@ CREATE TABLE `g_layout_list_layout` (
 
 LOCK TABLES `g_layout_list_layout` WRITE;
 /*!40000 ALTER TABLE `g_layout_list_layout` DISABLE KEYS */;
-INSERT INTO `g_layout_list_layout` VALUES (1,'layout1','2020-11-09 10:10:10','http://172.16.41.233:3000/layout/layout.png',1,1),(2,'layout2','2020-11-11 11:11:11','http://172.16.41.233:3000/movie/sample.mp4',2,2),(3,'layout3','2020-11-11 11:11:11','http://172.16.41.233:3000/music/music.mp3',3,3);
+INSERT INTO `g_layout_list_layout` VALUES (1,'layout1','2020-11-09 10:10:10','http://172.16.41.233:3000/layout/layout1.png',1,1),(2,'layout2','2020-11-11 11:11:11','http://172.16.41.233:3000/layout/layout2.png',2,2),(3,'layout3','2020-11-11 11:11:11','http://172.16.41.233:3000/layout/layout3.png',3,3),(4,'layout4','2020-11-11 11:11:11','http://172.16.41.233:3000/layout/layout4.png',4,4),(5,'layout5','2020-11-11 11:11:11','http://172.16.41.233:3000/layout/layout5.png',5,5),(6,'layout6','2020-11-11 11:11:11','http://172.16.41.233:3000/layout/layout6.png',6,6);
 /*!40000 ALTER TABLE `g_layout_list_layout` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -314,7 +314,7 @@ CREATE TABLE `g_main` (
 
 LOCK TABLES `g_main` WRITE;
 /*!40000 ALTER TABLE `g_main` DISABLE KEYS */;
-INSERT INTO `g_main` VALUES (1,'first main','2020-11-08 10:10:10',1,'KSQ19880205'),(2,'second main','2020-11-11 11:11:11',2,'KSQ19880206'),(3,'third main','2020-11-11 11:11:11',3,'KSQ19880207');
+INSERT INTO `g_main` VALUES (1,'first main','2020-11-08 10:10:10',1,'KSQ19880205'),(2,'second main','2020-11-11 11:11:11',2,'KSQ19880201'),(3,'third main','2020-11-11 11:11:11',3,'KSQ19880207');
 /*!40000 ALTER TABLE `g_main` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -371,7 +371,7 @@ CREATE TABLE `g_media` (
 
 LOCK TABLES `g_media` WRITE;
 /*!40000 ALTER TABLE `g_media` DISABLE KEYS */;
-INSERT INTO `g_media` VALUES (1,'first media','2020-11-08 10:10:10',1,'KSQ19880205'),(2,'second media','2020-11-11 11:11:11',2,'KSQ19880206'),(3,'third media','2020-11-11 11:11:11',3,'KSQ19880207');
+INSERT INTO `g_media` VALUES (1,'first media','2020-11-08 10:10:10',1,'KSQ19880205'),(2,'second media','2020-11-11 11:11:11',2,'KSQ19880201'),(3,'third media','2020-11-11 11:11:11',3,'KSQ19880207');
 /*!40000 ALTER TABLE `g_media` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -419,7 +419,7 @@ CREATE TABLE `g_patient` (
   `age` int(11) NOT NULL,
   `dob` varchar(30) NOT NULL,
   `surgicalsite` varchar(100) NOT NULL,
-  `g_home_list_order` int(11) DEFAULT NULL,
+  `g_surgery_order` int(11) DEFAULT NULL,
   PRIMARY KEY (`uid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -444,7 +444,7 @@ DROP TABLE IF EXISTS `g_process`;
 CREATE TABLE `g_process` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
   `order` int(11) NOT NULL,
-  `g_home_list_order` int(11) DEFAULT NULL,
+  `g_surgery_order` int(11) DEFAULT NULL,
   PRIMARY KEY (`uid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -470,7 +470,7 @@ CREATE TABLE `g_process_list` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
   `order` int(11) NOT NULL,
   `value` varchar(100) NOT NULL,
-  `process_uid` int(11) DEFAULT NULL,
+  `process_order` int(11) DEFAULT NULL,
   PRIMARY KEY (`uid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -516,7 +516,7 @@ CREATE TABLE `g_schedule` (
 
 LOCK TABLES `g_schedule` WRITE;
 /*!40000 ALTER TABLE `g_schedule` DISABLE KEYS */;
-INSERT INTO `g_schedule` VALUES (1,'KSQ19880205','first schedule','2020-11-08 10:10:10',1,'08:00','10:00','수술 이름','first home','first checklist','first layout','first media'),(2,'KSQ19880207','second schedule','2020-11-08 10:10:10',2,'09:00','11:00','second main','second home','second checklist','second layout','second media'),(3,'KSQ19880207','thrid schedule','2020-11-08 10:10:10',3,'10:00','12:00','third main','third home','third checklist','third layout','third media'),(4,'KSQ19880207','4th schedule','2020-11-08 10:10:10',4,'11:00','13:00','4th main','4th home','4th checklist','4th layout','4th media');
+INSERT INTO `g_schedule` VALUES (1,'KSQ19880205','first schedule','2020-11-08 10:10:10',1,'08:00','10:00','first main','first home','first checklist','first layout','first media'),(2,'KSQ19880205','second schedule','2020-11-08 10:10:10',2,'09:00','11:00','second main','second home','second checklist','second layout','second media'),(3,'KSQ19880201','thrid schedule','2020-11-08 10:10:10',3,'10:00','12:00','third main','third home','third checklist','third layout','third media'),(4,'KSQ19880201','4th schedule','2020-11-08 10:10:10',4,'11:00','13:00','4th main','4th home','4th checklist','4th layout','4th media');
 /*!40000 ALTER TABLE `g_schedule` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -533,7 +533,7 @@ CREATE TABLE `g_staff` (
   `id` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
   `position` varchar(30) NOT NULL,
-  `g_home_list_order` int(11) DEFAULT NULL,
+  `g_surgery_order` int(11) DEFAULT NULL,
   PRIMARY KEY (`uid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -571,8 +571,37 @@ CREATE TABLE `g_stb` (
 
 LOCK TABLES `g_stb` WRITE;
 /*!40000 ALTER TABLE `g_stb` DISABLE KEYS */;
-INSERT INTO `g_stb` VALUES (1,'KSQ19880205','KSQ19880204','2021-11-25 10:57:34','Y');
+INSERT INTO `g_stb` VALUES (1,'KSQ19880205','KSQ19880204','2021-12-02 17:05:13','N'),(2,'KSQ19880201','KSQ19880202','2021-12-02 15:15:15','N');
 /*!40000 ALTER TABLE `g_stb` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `g_surgery`
+--
+
+DROP TABLE IF EXISTS `g_surgery`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `g_surgery` (
+  `uid` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(60) NOT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `order` int(11) NOT NULL,
+  `start` varchar(30) NOT NULL,
+  `end` varchar(30) NOT NULL,
+  `g_main_home_order` int(11) DEFAULT NULL,
+  PRIMARY KEY (`uid`,`order`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `g_surgery`
+--
+
+LOCK TABLES `g_surgery` WRITE;
+/*!40000 ALTER TABLE `g_surgery` DISABLE KEYS */;
+INSERT INTO `g_surgery` VALUES (1,'lung surgery','2020-11-29 12:34:56',1,'08:00','10:00',1),(2,'heart surgery','2020-11-29 09:14:00',2,'09:00','11:00',2),(3,'back surgery','2020-11-29 13:00:00',3,'10:00','12:00',3),(4,'brain surgery','2020-11-29 13:21:00',4,'11:00','13:00',4);
+/*!40000 ALTER TABLE `g_surgery` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -604,6 +633,30 @@ LOCK TABLES `g_user` WRITE;
 INSERT INTO `g_user` VALUES (2,'cho','Bc0dqmyw7BLeRZiUv1rDkT4i2GBIDxvyAtMx6787KRnhxq6Qrk4KyjLNC+Yr3VBQADNLteIUWo6JFnjnFLK/Lw==','9exMaVA2elTJjxmjwzAT2CO5DQZ+jFnOHCYofhgwZkFQCbs4FeINzOPocDvXaVBArsHvUa46FFwCCnQvaqW4XA==','조윤식','교수','외과','2021-11-15 11:55:42'),(3,'cho','IN3S/3dI3W7QgLopsQUyTQcyOF3Vb0Klii10VhvwM8GkB8KVrrrEl5cJUPXnzf5IM+sKUlbMKLVjjSM1j5FzSA==','eebACgIuzKknGHbixqnd0AZwv6gdU6Ra/20DPufSuO7+Gr2x7lUqjmB0DmMj9VUK0nbG4RW+6g36Y01R1Ogtlw==','조제현','인턴','외과','2021-11-15 11:56:21'),(4,'cho','+HsBiOAyf+cgD0Oefpnwkmno6fEW/iCmBY7tU0ErcpJI0YQmLrwkqZDdP19ZoOw8T4R/Z2EqyeZXlqJI3jMBOg==','el2gNVmrUbj7GtsOk8F+MjIT79P/8gmZZvq2yx7Sjm7XCyvl56ozuNH2FALiQgm9732c4JV7X4ISUKTivRxYig==','최현주','교수','내과','2021-11-15 11:56:37'),(5,'cho','oHPwcCeigDmz7nJOiv6olrQozOy3fmRVH1eoUoqBegu9nWhTaH4O0Jl1DlYt2bStBhNQKX8wYbxVYA3WAwSfqQ==','02kz6kPWGSMw/TwYLeL31uzML7IGk56zKN3wWjZsEuQfnI7+gP6bkpE+TvrFa/21pJLYwL9EQxxBH9AMHHuNdQ==','최무안','인턴','내과','2021-11-15 11:56:57');
 /*!40000 ALTER TABLE `g_user` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `test`
+--
+
+DROP TABLE IF EXISTS `test`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `test` (
+  `uid` int(11) DEFAULT NULL,
+  `name` varchar(60) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `test`
+--
+
+LOCK TABLES `test` WRITE;
+/*!40000 ALTER TABLE `test` DISABLE KEYS */;
+INSERT INTO `test` VALUES (1,' 아무개',23),(2,'홍길동',24),(3,'김복선',31),(4,'김분선',21),(5,'김상소',21),(6,'김신고',52),(7,'김복상',41),(8,'김대성',23),(9,'김대수',52),(10,'김대신',12),(11,'김두연',42),(12,'김두안',32),(13,'김두희',35),(14,'김서희',26),(15,'김세희',12),(16,'김세은',10),(17,'김세흔',42),(18,'최대연',12),(19,'최태현',32),(20,'최윤정',12),(21,'최은정',21),(22,'최은서',30),(23,'조안지',20),(24,'조안서',21),(25,'조연서',15),(26,'조랑말',16),(27,'얼룩말',4),(28,'호랑이',6),(29,'고양이',8),(30,'강아지',9),(31,'아무개',23),(32,'홍길동',24),(33,'김복선',31),(34,'김분선',21),(35,'김상소',21),(36,'김신고',52),(37,'김복상',41),(38,'김대성',23),(39,'김대수',52),(40,'김대신',12),(41,'김두연',42),(42,'김두안',32),(43,'김두희',35),(44,'김서희',26),(45,'김세희',12),(46,'김세은',10),(47,'김세흔',42),(48,'최대연',12),(49,'최태현',32),(50,'최윤정',12),(51,'최은정',21),(52,'최은서',30),(53,'조안지',20),(54,'조안서',21),(55,'조연서',15),(56,'조랑말',16),(57,'얼룩말',4),(58,'호랑이',6),(59,'고양이',8),(60,'강아지',9);
+/*!40000 ALTER TABLE `test` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -614,4 +667,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-25  4:28:55
+-- Dump completed on 2021-12-02  8:07:58

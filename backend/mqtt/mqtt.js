@@ -31,6 +31,8 @@ client.on('connect', () => {
         '/schedule/home/result/+',
         '/schedule/layout/+',
         '/schedule/layout/result/+',
+        '/schedule/layout/save/+',
+        '/schedule/layout/save/result/+',
         '/schedule/checklist/+',
         '/schedule/checklist/result/+',
         '/schedule/media/+',
@@ -84,31 +86,46 @@ client.on('connect', () => {
     //     if(err) console.log(err);
     // }
 
-    client.publish('/sync/stb/KSQ19880204', JSON.stringify({"stb_sn": "KSQ19880204"}),{qos: 0, retain: false}, (err)=> {
-        if(err) console.log(err);
-    })
+    // client.publish('/sync/stb/KSQ19880204', JSON.stringify({"stb_sn": "KSQ19880204"}),{qos: 0, retain: false}, (err)=> {
+    //     if(err) console.log(err);
+    // })
 
-    // client.publish('/schedule/total/KSQ19880205', JSON.stringify({"stb_sn": "KSQ19880205"}), {qos: 0, retain: false}), (err)=> {
+    // client.publish('/schedule/total/KSQ19880204', JSON.stringify({"stb_sn": "KSQ19880204"}), {qos: 0, retain: false}), (err)=> {
     //     if(err) console.log(err);
     // }
 
-    // client.publish('/schedule/main/KSQ19880206', JSON.stringify({"stb_sn": "KSQ19880206"}), {qos: 0, retain: false}), (err)=> {
+    // client.publish('/schedule/main/KSQ19880204', JSON.stringify({"stb_sn": "KSQ19880204"}), {qos: 0, retain: false}), (err)=> {
     //     if(err) console.log(err);
     // }
 
-    client.publish('/schedule/face/KSQ19880205', JSON.stringify({"stb_sn": "KSQ19880205"}), {qos: 0, retain: false}), (err)=> {
+    // client.publish('/schedule/face/KSQ19880205', JSON.stringify({"stb_sn": "KSQ19880205"}), {qos: 0, retain: false}), (err)=> {
+    //     if(err) console.log(err);
+    // }
+
+    // client.publish('/schedule/home/KSQ19880204', JSON.stringify({"stb_sn": "KSQ19880204", "name": "first home"}), {qos: 0, retain: false}), (err)=> {
+    //     if(err) console.log(err);
+    // }
+
+    // // client.publish('/schedule/layout/KSQ19880205', JSON.stringify({"stb_sn": "KSQ19880205"}), {qos: 0, retain: false}), (err)=> {
+    // //     if(err) console.log(err);
+    // // }
+
+    client.publish('/schedule/layout/save/KSQ19880205', JSON.stringify({
+        "stb_sn": "KSQ19880205", 
+        "name": "first home",
+        "schedule_order": 1,
+        "value": [{
+            "index": 1,
+            "staffid": 1,
+            "time": "2021-12-06 11:11:11",
+            "layoutname": "first layout",
+            "image": "base64"
+        }]
+    }), {qos: 0, retain: false}), (err)=> {
         if(err) console.log(err);
     }
 
-    // client.publish('/schedule/home/KSQ19880205', JSON.stringify({"stb_sn": "KSQ19880205", "name": "first home"}), {qos: 0, retain: false}), (err)=> {
-    //     if(err) console.log(err);
-    // }
-
-    // client.publish('/schedule/layout/KSQ19880207', JSON.stringify({"stb_sn": "KSQ19880207"}), {qos: 0, retain: false}), (err)=> {
-    //     if(err) console.log(err);
-    // }
-
-    // client.publish('/schedule/checklist/KSQ19880206', JSON.stringify({"stb_sn": "KSQ19880206"}), {qos: 0, retain: false}), (err)=> {
+    // client.publish('/schedule/checklist/KSQ19880205', JSON.stringify({"stb_sn": "KSQ19880205"}), {qos: 0, retain: false}), (err)=> {
     //     if(err) console.log(err);
     // }
 
@@ -197,10 +214,16 @@ client.on('message', async (topic, payload) => {
             }
         }
 
-        //레이아웃
-        if(topic == '/schedule/layout/' + json.stb_sn){
+        // //레이아웃
+        // if(topic == '/schedule/layout/' + json.stb_sn){
+        //     if(json.stb_sn != undefined){
+        //         fn.schedule_layout(json)
+        //     }
+        // }
+
+        if(topic == '/schedule/layout/save/' + json.stb_sn){
             if(json.stb_sn != undefined){
-                fn.schedule_layout(json)
+                fn.schedule_layout_save(json)
             }
         }
 

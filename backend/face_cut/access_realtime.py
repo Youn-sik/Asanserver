@@ -58,180 +58,191 @@ server_ip = s.getsockname()[0]
 def on_message(client, userdata, msg):
     global users
     if(msg.topic.find("/access/realtime/") != -1):
-        print("/access/realtime/")
-        access_json = json.loads(msg.payload)
-        camera = camera_collection.find_one({"serial_number":access_json['stb_sn']})
-        auth = camera["authority"]
-        if(camera["authority"] == "admin") :
-            auth = ''
+        try:
+            print("/access/realtime/")
+            access_json = json.loads(msg.payload)
+            camera = camera_collection.find_one({"serial_number":access_json['stb_sn']})
+            auth = camera["authority"]
+            if(camera["authority"] == "admin") :
+                auth = ''
 
-        start = time.time()
-        print("time :", time.time() - start)
+            start = time.time()
+            print("time :", time.time() - start)
 
-        # origin_emb = np.array(literal_eval(users[0]['face_detection']))
-        # origin_emb = origin_emb.flatten()
+            # origin_emb = np.array(literal_eval(users[0]['face_detection']))
+            # origin_emb = origin_emb.flatten()
 
-        folder_date_path = "/uploads/accesss/temp/" + time.strftime('%Y%m%d', time.localtime(time.time()))
-        file_path = json_data['base_server_document'] + folder_date_path + "/" + access_json['stb_sn'] + "/"
+            folder_date_path = "/uploads/accesss/temp/" + time.strftime('%Y%m%d', time.localtime(time.time()))
+            file_path = json_data['base_server_document'] + folder_date_path + "/" + access_json['stb_sn'] + "/"
 
 
-        pathlib.Path(file_path).mkdir(parents=True, exist_ok=True)
+            pathlib.Path(file_path).mkdir(parents=True, exist_ok=True)
 
-        time_cnt = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+            time_cnt = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
-        insert_array = []
+            insert_array = []
 
-        employee = 0
-        black = 0
-        stranger = 0
-        for value in access_json['values'] :
-            print(value)
-            current_time = time.strftime('%Y%m%d%H%M%S', time.localtime(time.time()))
-            current_time_db = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
-            current_date = time.strftime('%Y%m%d', time.localtime(time.time()))
-            current_date_stat = time.strftime('%Y-%m-%d', time.localtime(time.time()))
-            current_hour = time.strftime('%H', time.localtime(time.time()))
-            imgdata = base64.b64decode(value['avatar_file'])
-            time_cnt[int(current_hour)] += 1
-            file_name = access_json['stb_sn']+"_temp_file_"+current_time+".png"
-            name = 'unknown'
-            avatar_type = 3
-            max_sim = 0
-            max_name = 'unknown'
-            max_type = 3
-            max_gender = ''
-            max_employee_id = ''
-            max_group_id = ''
-            max_position = ''
-            group_name = ''
-
-            with open(file_path+file_name, 'wb') as f:
-                f.write(imgdata)
-         
-            result = detect_face(file_path+file_name)
-            if result is None :
+            employee = 0
+            black = 0
+            stranger = 0
+            for value in access_json['values'] :
+                print(value)
+                current_time = time.strftime('%Y%m%d%H%M%S', time.localtime(time.time()))
+                current_time_db = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
+                current_date = time.strftime('%Y%m%d', time.localtime(time.time()))
+                current_date_stat = time.strftime('%Y-%m-%d', time.localtime(time.time()))
+                current_hour = time.strftime('%H', time.localtime(time.time()))
+                imgdata = base64.b64decode(value['avatar_file'])
+                time_cnt[int(current_hour)] += 1
+                file_name = access_json['stb_sn']+"_temp_file_"+current_time+".png"
                 name = 'unknown'
                 avatar_type = 3
-            else :
-                recog_result,max_sim,max_name,max_type,max_gender,max_employee_id,max_group_id,max_position = recog_face(users,auth)
+                max_sim = 0
+                max_name = 'unknown'
+                max_type = 3
+                max_gender = ''
+                max_employee_id = ''
+                max_group_id = ''
+                max_position = ''
+                group_name = ''
 
-                if(max_group_id != '') :
-                    cursor = group_collection.find({"_id":ObjectId(max_group_id)})
-                    for group in cursor :
-                        group_name = group['name']
-          
-            if(max_sim >= 0.625) :
-                name = max_name
-                avatar_type = max_type
-                if(avatar_type == 5):
-                    avatar_type = 4
-                    black += 1
-                elif(avatar_type == 1):
-                    employee += 1
-            else :
-                stranger += 1
+                with open(file_path+file_name, 'wb') as f:
+                    f.write(imgdata)
+            
+                result = detect_face(file_path+file_name)
+                if result is None :
+                    name = 'unknown'
+                    avatar_type = 3
+                else :
+                    recog_result,max_sim,max_name,max_type,max_gender,max_employee_id,max_group_id,max_position = recog_face(users,auth)
 
-           
-            os.remove(file_path+file_name)
-            file_name = access_json['stb_sn']+"_"+name+"_"+str(avatar_type)+"_"+time.strftime('%Y%m%d%H%M%S', time.localtime(time.time()))+".png"
+                    if(max_group_id != '') :
+                        cursor = group_collection.find({"_id":ObjectId(max_group_id)})
+                        for group in cursor :
+                            group_name = group['name']
+            
+                if(max_sim >= 0.625) :
+                    name = max_name
+                    avatar_type = max_type
+                    if(avatar_type == 5):
+                        avatar_type = 4
+                        black += 1
+                    elif(avatar_type == 1):
+                        employee += 1
+                else :
+                    stranger += 1
+
+            
+                os.remove(file_path+file_name)
+                file_name = access_json['stb_sn']+"_"+name+"_"+str(avatar_type)+"_"+time.strftime('%Y%m%d%H%M%S', time.localtime(time.time()))+".png"
+            
+                with open(file_path+file_name, 'wb') as f:
+                    f.write(imgdata)
         
-            with open(file_path+file_name, 'wb') as f:
-                f.write(imgdata)
-       
-            upload_url = "http://" + server_ip + ":3000" + "/uploads/accesss/temp/" + time.strftime('%Y%m%d', time.localtime(time.time())) + "/" + access_json['stb_sn'] + "/" + file_name
+                upload_url = "http://" + server_ip + ":3000" + "/uploads/accesss/temp/" + time.strftime('%Y%m%d', time.localtime(time.time())) + "/" + access_json['stb_sn'] + "/" + file_name
 
-            insert_data = {
-                "avatar_file" : 'avatar_file',
-                # "avatar_file_checksum" : "element.avatar_file_checksum",
-                # "avatar_type" : avatar_type,
-                # 'avatar_distance' : value['avatar_distance'],
-                # 'avatar_contraction_data' : 'element.avatar_contraction_data',
-                # 'avatar_file_url' : upload_url,
-                # 'avatar_temperature' : value['avatar_temperature'],
-                # 'access_time' : current_time_db,
-                # 'stb_sn' : access_json['stb_sn'],
-                # 'stb_obid' : str(camera['_id']),
-                # 'stb_name' : camera['name'],
-                # 'stb_location' : camera['location'],
-                # 'authority': camera['authority'],
-                'name' : name,
-                "gender" : max_gender,
-                "employee_id" : max_employee_id,
-                "group_name" : group_name,
-                "position" : max_position
-            }
-          
-            insert_array.append(insert_data)
-
-            todayStatistics = stat_collection.find_one(
-                {
-                    "$and":[
-                        {
-                            "serial_number":access_json['stb_sn']
-                        },
-                        {
-                            "access_date":current_date_stat
-                        }
-                    ]
+                insert_data = {
+                    "avatar_file" : 'avatar_file',
+                    # "avatar_file_checksum" : "element.avatar_file_checksum",
+                    # "avatar_type" : avatar_type,
+                    # 'avatar_distance' : value['avatar_distance'],
+                    # 'avatar_contraction_data' : 'element.avatar_contraction_data',
+                    'avatar_file_url' : upload_url,
+                    # 'avatar_temperature' : value['avatar_temperature'],
+                    # 'access_time' : current_time_db,
+                    # 'stb_sn' : access_json['stb_sn'],
+                    # 'stb_obid' : str(camera['_id']),
+                    # 'stb_name' : camera['name'],
+                    # 'stb_location' : camera['location'],
+                    # 'authority': camera['authority'],
+                    'name' : name,
+                    "gender" : max_gender,
+                    "employee_id" : max_employee_id,
+                    "group_name" : group_name,
+                    "position" : max_position
                 }
-            )
-     
-            if(todayStatistics) :
-                stat_collection.update_one({"serial_number":access_json['stb_sn'],"access_date":current_date_stat},{
-                    "$inc":{
-                        "all_count":1,
-                        'employee':employee,
-                        'black' : black,
-                        'stranger' : stranger,
-                        str(current_hour) : 1
+            
+                insert_array.append(insert_data)
+
+                todayStatistics = stat_collection.find_one(
+                    {
+                        "$and":[
+                            {
+                                "serial_number":access_json['stb_sn']
+                            },
+                            {
+                                "access_date":current_date_stat
+                            }
+                        ]
                     }
-                })
-            else :
-                stat_collection.insert_one({
-                    'camera_obid' : camera['_id'],
-                    'authority' : camera['authority'],
-                    'serial_number' : access_json['stb_sn'],
-                    'access_date': current_date_stat,
-                    'all_count' : 1,
-                    '0' : time_cnt[0],
-                    '1' : time_cnt[1],
-                    '2' : time_cnt[2],
-                    '3' : time_cnt[3],
-                    '4' : time_cnt[4],
-                    '5' : time_cnt[5],
-                    '6' : time_cnt[6],
-                    '7' : time_cnt[7],
-                    '8' : time_cnt[8],
-                    '9' : time_cnt[9],
-                    '10' : time_cnt[10],
-                    '11' : time_cnt[11],
-                    '12' : time_cnt[12],
-                    '13' : time_cnt[13],
-                    '14' : time_cnt[14],
-                    '15' : time_cnt[15],
-                    '16' : time_cnt[16],
-                    '17' : time_cnt[17],
-                    '18' : time_cnt[18],
-                    '19' : time_cnt[19],
-                    '20' : time_cnt[20],
-                    '21' : time_cnt[21],
-                    '22' : time_cnt[22],
-                    '23' : time_cnt[23],
-                    'employee' : employee,
-                    'black' : black,
-                    'stranger' : stranger
-                })
+                )
+        
+                if(todayStatistics) :
+                    stat_collection.update_one({"serial_number":access_json['stb_sn'],"access_date":current_date_stat},{
+                        "$inc":{
+                            "all_count":1,
+                            'employee':employee,
+                            'black' : black,
+                            'stranger' : stranger,
+                            str(current_hour) : 1
+                        }
+                    })
+                else :
+                    stat_collection.insert_one({
+                        'camera_obid' : camera['_id'],
+                        'authority' : camera['authority'],
+                        'serial_number' : access_json['stb_sn'],
+                        'access_date': current_date_stat,
+                        'all_count' : 1,
+                        '0' : time_cnt[0],
+                        '1' : time_cnt[1],
+                        '2' : time_cnt[2],
+                        '3' : time_cnt[3],
+                        '4' : time_cnt[4],
+                        '5' : time_cnt[5],
+                        '6' : time_cnt[6],
+                        '7' : time_cnt[7],
+                        '8' : time_cnt[8],
+                        '9' : time_cnt[9],
+                        '10' : time_cnt[10],
+                        '11' : time_cnt[11],
+                        '12' : time_cnt[12],
+                        '13' : time_cnt[13],
+                        '14' : time_cnt[14],
+                        '15' : time_cnt[15],
+                        '16' : time_cnt[16],
+                        '17' : time_cnt[17],
+                        '18' : time_cnt[18],
+                        '19' : time_cnt[19],
+                        '20' : time_cnt[20],
+                        '21' : time_cnt[21],
+                        '22' : time_cnt[22],
+                        '23' : time_cnt[23],
+                        'employee' : employee,
+                        'black' : black,
+                        'stranger' : stranger
+                    })
 
 
-        acc_collection.insert_many(insert_array)
-        del insert_array[0]['_id']
-        send_data = {
-            'stb_sn': access_json['stb_sn'],
-            'values': insert_array
-        }
-        client.publish('/schedule/face/result/'+access_json['stb_sn'], json.dumps(send_data), 1)
+            acc_collection.insert_many(insert_array)
+            del insert_array[0]['_id']
+            send_data = {
+                'stb_sn': access_json['stb_sn'],
+                'values': insert_array
+            }
+            print("== To asanserver pub ==")
+            client.publish('/schedule/face/result/'+access_json['stb_sn'], json.dumps(send_data), 1)
+            client.publish('/access/realtime/result/'+access_json['stb_sn'], json.dumps(send_data), 1)
+        except:
+            send_data = {
+                'stb_sn': access_json['stb_sn'],
+                'result': 'fail',
+                'values': {}
+            }
+            print("== To asanserver pub ==")
+            client.publish('/schedule/face/result/'+access_json['stb_sn'], json.dumps(send_data), 1)
+
         client.publish('/access/realtime/result/'+access_json['stb_sn'], json.dumps(send_data), 1)
-
 
     elif(msg.topic.find("/user/add/") != -1) :
         print("/user/add/")
