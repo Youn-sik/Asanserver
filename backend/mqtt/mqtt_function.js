@@ -562,11 +562,21 @@ module.exports = {
             function layout_used_query(main_sub_stb_sn){ //이전에 사용했던 레이아웃 목록
                 return new Promise((resolve, reject)=> {
                     db.query('select g_layout.uid, g_layout.staff_id as staffid, g_layout.name as layoutname, '+
-                    'g_layout.update_time as time, g_layout_list_layout.imageurl as image from g_layout inner join '+
-                    'g_layout_list_layout on g_layout.layout_list_order = g_layout_list_layout.order '+
+                    'g_layout.update_time as time, g_layout.imageurl as image from g_layout '+
                     'where g_layout.stb_sn = ? or g_layout.stb_sn = ?', main_sub_stb_sn, (err,stb)=> {
-                        // console.log(stb);
-                        if(err) console.log(err);
+                        console.log(stb);
+                        if(err) {
+                            console.log(err);
+                            result = {
+                                "stb_sn": stb_sn,
+                                "name": home_name,
+                                "result": "fail",
+                                "value": [{
+                                    
+                                }]
+                            }
+                            reject(result)
+                        } 
                         if(stb.length != 0){
         
                             let list_layout = [];
@@ -580,7 +590,7 @@ module.exports = {
                                 list_layout.push(layout_list);
                             }
         
-                            result = { 
+                            result = { //이전에 사용 한 레이아웃이 있을 때
                                 "stb_sn": stb_sn,
                                 "name": "",
                                 "update_time": "",
@@ -595,7 +605,7 @@ module.exports = {
                                     "process": {
                                         
                                     },
-                                    "insturment": [{
+                                    "instrument": [{
 
                                     }],
                                     "layout": list_layout
@@ -603,6 +613,41 @@ module.exports = {
                             }
                             resolve(main_sub_stb_sn)
                         } else {
+                            result = { //이전에 사용 한 레이아웃이 없을 때
+                                "stb_sn": stb_sn,
+                                "name": "",
+                                "update_time": "",
+                                "result": "ok",
+                                "value": [{
+                                    "staff": [{
+
+                                    }],
+                                    "patient": {
+                        
+                                    },
+                                    "process": {
+                                        
+                                    },
+                                    "instrument": [{
+
+                                    }],
+                                    "layout": [{
+
+                                    }]
+                                }]
+                            }
+                            resolve(main_sub_stb_sn)                            
+                        }
+                    })
+                })
+            }
+
+            function layout_new_query(main_sub_stb_sn){ //새로 생성하기 위한 레이아웃 목록 쿼리
+                return new Promise((resolve, reject)=> {
+                    db.query('select * from g_layout_list_layout', (err,stb)=> {
+                        // console.log(stb);
+                        if(err) {
+                            console.log(err);
                             result = {
                                 "stb_sn": stb_sn,
                                 "name": home_name,
@@ -613,15 +658,6 @@ module.exports = {
                             }
                             reject(result)
                         }
-                    })
-                })
-            }
-
-            function layout_new_query(main_sub_stb_sn){ //새로 생성하기 위한 레이아웃 목록 쿼리
-                return new Promise((resolve, reject)=> {
-                    db.query('select * from g_layout_list_layout', (err,stb)=> {
-                        // console.log(stb);
-                        if(err) console.log(err);
                         if(stb.length != 0){
         
                             let list_layout = [];
@@ -649,7 +685,7 @@ module.exports = {
                                     "process": {
                                         
                                     },
-                                    "insturment": [{
+                                    "instrument": [{
 
                                     }],
                                     "layout": list_layout
@@ -657,15 +693,31 @@ module.exports = {
                             }
                             resolve(main_sub_stb_sn)
                         } else {
-                            result = {
+                            result = { 
                                 "stb_sn": stb_sn,
-                                "name": home_name,
-                                "result": "fail",
+                                "name": "",
+                                "update_time": "",
+                                "result": "ok",
                                 "value": [{
-                                    
+                                    "staff": [{
+
+                                    }],
+                                    "patient": {
+                        
+                                    },
+                                    "process": {
+                                        
+                                    },
+                                    "instrument": [{
+
+                                    }],
+                                    "layout": [{
+                                        
+                                    }]
                                 }]
                             }
-                            reject(result)
+                            resolve(main_sub_stb_sn)
+                            
                         }
                     })
                 })
@@ -680,7 +732,18 @@ module.exports = {
                     'on g_home.order = g_surgery.g_main_home_order inner join g_patient on g_surgery.order = g_patient.g_surgery_order '+
                     'where g_home.stb_sn = ? or g_home.stb_sn = ? and g_home.name = ?', [...main_sub_stb_sn, home_name], (err, stb)=> {
                         // console.log(stb);
-                        if(err) console.log(err);
+                        if(err) {
+                            console.log(err);
+                            result = {
+                                "stb_sn": stb_sn,
+                                "name": home_name,
+                                "result": "fail",
+                                "value": [{
+                                    
+                                }]
+                            }
+                            reject(result);   
+                        }
                         if(stb.length != 0){
                         
                             let surgery_patient = new Object();
@@ -707,42 +770,11 @@ module.exports = {
                             result.value[0].patient.dob = surgery_patient.patient_dob
                             result.value[0].patient.surgicalsite = surgery_patient.patient_surgicalsite
                             result.value[0].patient.surgicalname = surgery_patient.surgery_name
-
-                            // result = {
-                            //     "stb_sn": stb_sn,
-                            //     "name": surgery_patient.name,
-                            //     "update_time": surgery_patient.update_time,
-                            //     "result": "ok",
-                            //     "value": [{
-                            //         "staff": [{
-
-                            //         }],
-                            //         "patient": {
-                            //             "id": surgery_patient.patient_id,
-                            //             "name": surgery_patient.patient_name,
-                            //             "gender": surgery_patient.patient_gender,
-                            //             "age": surgery_patient.patient_age,
-                            //             "dob": surgery_patient.patient_dob,
-                            //             "surgicalsite": surgery_patient.patient_surgicalsite,
-                            //             "surgicalname": surgery_patient.surgery_name
-                            //         },
-                            //         "process": {
-                                        
-                            //         },
-                            //     }]
-                            // }
         
                             reslove(surgery_patient);
                         } else {
-                            result = {
-                                "stb_sn": stb_sn,
-                                "name": home_name,
-                                "result": "fail",
-                                "value": [{
-                                    
-                                }]
-                            }
-                            reject(result);                      
+                            
+                            reslove(surgery_patient);                   
                         }
                         
                     })
@@ -756,11 +788,8 @@ module.exports = {
                     'g_staff.g_surgery_order = g_surgery.order where g_staff.g_surgery_order = ?', 
                     surgery_patient.surgery_order, (err, stb)=> {
                         // console.log(stb);
-                        if(err) console.log(err);
-                        if(stb.length != 0){
-                            result.value[0].staff = stb;
-                            reslove(surgery_patient);
-                        } else {
+                        if(err) {
+                            console.log(err);
                             result = {
                                 "stb_sn": stb_sn,
                                 "name": home_name,
@@ -770,6 +799,12 @@ module.exports = {
                                 }]
                             }
                             reject(result)
+                        }
+                        if(stb.length != 0){
+                            result.value[0].staff = stb;
+                            reslove(surgery_patient);
+                        } else {
+                            reslove(surgery_patient);
                         }
                     })
                 });
@@ -782,7 +817,18 @@ module.exports = {
                     'g_surgery.order = g_process.g_surgery_order where g_process.g_surgery_order = ?', 
                     surgery_patient.surgery_order, (err, stb)=> {
                         // console.log(stb);
-                        if(err) console.log(err);
+                        if(err) {
+                            console.log(err);
+                            result = {
+                                "stb_sn": stb_sn,
+                                "name": home_name,
+                                "result": "fail",
+                                "value": [{
+                                    
+                                }]
+                            }
+                            reject(result)
+                        }
                         if(stb.length != 0){
                             let process = [];
                             let process_id = stb[0].id;
@@ -797,6 +843,18 @@ module.exports = {
                             
                             resolve();
                         } else {
+                            resolve();
+                        }
+                    })
+                })
+            }
+
+            function instrument_query(){
+                return new Promise((resolve, reject)=> {
+                    db.query('select * from g_instrument', (err, stb)=> {
+                        // console.log(stb);
+                        if(err) {
+                            console.log(err);
                             result = {
                                 "stb_sn": stb_sn,
                                 "name": home_name,
@@ -807,15 +865,6 @@ module.exports = {
                             }
                             reject(result)
                         }
-                    })
-                })
-            }
-
-            function instrument_query(){
-                return new Promise((resolve, reject)=> {
-                    db.query('select * from g_instrument', (err, stb)=> {
-                        // console.log(stb);
-                        if(err) console.log(err);
                         if(stb.length != 0){
                             let instrument = [];
                             for(let i = 0; i<stb.length; i++){
@@ -829,15 +878,7 @@ module.exports = {
                             result.value[0].instrument = instrument
                             resolve();
                         } else {
-                            result = {
-                                "stb_sn": stb_sn,
-                                "name": home_name,
-                                "result": "fail",
-                                "value": [{
-                                    
-                                }]
-                            }
-                            reject(result)
+                            resolve();
                         }
                     })
                 })
@@ -858,9 +899,9 @@ module.exports = {
             }).then(()=> {
                 console.log(JSON.stringify(result))
 
-                client.publish('/schedule/home/result/' + stb_sn, JSON.stringify(result), {qos:0, retain:false}, (err)=> {
-                    if(err) console.log(err);
-                })   
+            client.publish('/schedule/home/result/' + stb_sn, JSON.stringify(result), {qos:0, retain:false}, (err)=> {
+                if(err) console.log(err);
+            })   
 
             }).catch((reject)=> {
                 console.log(reject);
@@ -871,7 +912,7 @@ module.exports = {
         }
     },
 
-    // async schedule_layout(json){
+    // async schedule_layout(json){ //프로미스 필요
     //     try {
     //         let stb_sn = json.stb_sn;
     //         let time = moment().format('YYYY-MM-DD HH:mm:ss');
@@ -921,71 +962,73 @@ module.exports = {
     //     }
     // },
 
-    async schedule_layout_save(json){ //수술 끝난 레이아웃 저장
+    async schedule_layout_save(json){ // 수술 끝난 레이아웃 저장
         try {
-            let stb_sn = json.stb_sn;
-            let home_name = json.name;
-            let schedule_order = json.schedule_order;
-            let layout_index = json.value[0].index;
-            let staff_id = json.value[0].staffid;
-            let time = json.value[0].time;
-            let layout_name = json.value[0].layoutname;
-            let layout_image = json.value[0].image
-            // let time = moment().format('YYYY-MM-DD HH:mm:ss');
-            let file_name = 'layout_'+layout_name+'_'+layout_index+'.jpg'; //이름 지정하고 파일 저장하고 파일 업로드 경로 따서 디비에 저장하면 끝
-            let file_path = ''
+            let stb_sn = json.stb_sn; // 시리얼
+            let home_name = json.name; // 홈 이름
+            let schedule_order = json.schedule_order; // 현재 스케줄
+            let layout_index = json.value[0].index; // 레이아웃 인덱스
+            let staff_id = json.value[0].staffid; // 의료진 ID
+            let time = json.value[0].time; // 단말에서 전송 된 시간
+            let layout_image = json.value[0].image // 이미지 파일 base64
+            let decode = Buffer.from(layout_image, 'base64'); // 이미지 파일 decoded
+            let layout_name_tmp = json.value[0].layoutname; // 단말에서 전송 된 이름
+            let layout_name = layout_name_tmp.split(" ").join("_"); // 저장 될 이름(띄어쓰기 -> '_')
+            let day_time = moment().format('YYYY-MM-DD_HH:mm:ss'); // 서버 시간(파일 저장)
+            let file_name = day_time+'_'+layout_name+'_'+layout_index+'.jpg'; // 파일 명(시간_레이아웃 이름_레이아웃 인덱스)
+            let file_path = '../upload/layout_used/' //파일 경로
+            let imageurl = site.base_server_backend_loacal_url+'/layout_used/'+file_name;
             let result = {};
+
+            // 이름 지정하고 파일 저장하고 파일 업로드 경로 따서 디비에 저장하면 끝
+
+            // console.log(file_path+file_name)
+            // console.log(imageurl);
+            fs.writeFile(file_path+file_name, decode, (err)=>{
+                console.log(err);
+            })
+
+            function save_used_layout(){
+                return new Promise((resolve, reject)=> {
+                    db.query('insert into g_layout(name, update_time, stb_sn, layout_list_order, staff_id, imageurl) '+
+                    'values(?,?,?,?,?,?)',[layout_name, time, stb_sn, layout_index, staff_id, imageurl], (err,stb)=> {
+                        console.log(stb);
+                        if(err) {
+                            console.log(err);
+                            result = {
+                                "stb_sn": stb_sn,
+                                "result": "fail",
+                                "value": [{
             
-            function decodeBase64Image(imgStr){
-                let match = imgStr.match()(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
-                let response = {};
-
-                if(match.length !== 3) {
-                    return "Invalid input base64 String";
-                }
-
-                response.type = match[1];
-                response.data = new Buffer.from(match[2], 'base64');
-
-                return response
+                                }],
+                            }
+                            reject(result);
+                        } 
+    
+                        result = {
+                            "stb_sn": stb_sn,
+                            "result": "ok",
+                            "value": [{
+    
+                            }],
+                        }
+                        resolve();
+                    })
+                })
             }
+                
+            save_used_layout()
+            .then(()=> {
+                // console.log(JSON.stringify(result))
 
-            let imageBuffer = decodeBase64Image(layout_image);
-
-            fs.writeFile()
-
-            db.query('insert into g_layout(name, update_time, stb_sn, layout_list_order, staff_id '+
-            'values(?,?,?,?,?,?)',[layout_name, time, stb_sn, layout_index, staff_id], (err,stb)=> {
-                // console.log(stb);
-                if(err) console.log(err);
-                if(stb.length != 0){
-
-                    let list_layout = [];
-                    for(let i=0; i<stb.length; i++){
-                        let layout_list = new Object();
-                    }
-
-                    result = { 
-                        "stb_sn": stb_sn,
-                        "result": 'ok',
-                        "value": [{
-                            
-                        }]
-                    }
-                } else {
-                    result = {
-                        "stb_sn": stb_sn,
-                        "result": "fail",
-                        "value": [{
-                            
-                        }]
-                    }
-                }
-                console.log(JSON.stringify(result))
                 client.publish('/schedule/layout/result/' + stb_sn, JSON.stringify(result), {qos:0, retain:false}, (err)=> {
                     if(err) console.log(err);
-                })   
+                })     
+
+            }).catch((reject)=> {
+                console.log(reject);
             })
+
         }catch(err) {
             console.log(err)
         }

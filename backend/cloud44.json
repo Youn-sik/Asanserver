@@ -3,6 +3,7 @@
     "base_server_document": "/home/asan/asan/backend",
     "base_local_url": "http://172.16.41.233",
     "local_url": "127.0.0.1",
+    "base_server_backend_loacal_url": "http://172.16.41.233:3000",
 
     "mongodb_host": "127.0.0.1",
     "mongodb_user": "kool",
