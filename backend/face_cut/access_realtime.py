@@ -86,7 +86,6 @@ def on_message(client, userdata, msg):
             black = 0
             stranger = 0
             for value in access_json['values'] :
-                print(value)
                 current_time = time.strftime('%Y%m%d%H%M%S', time.localtime(time.time()))
                 current_time_db = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
                 current_date = time.strftime('%Y%m%d', time.localtime(time.time()))
