@@ -98,13 +98,13 @@ client.on('connect', () => {
     //     if(err) console.log(err);
     // }
 
-    client.publish('/schedule/face/KSQ19880205', JSON.stringify({"stb_sn": "KSQ19880205"}), {qos: 0, retain: false}), (err)=> {
-        if(err) console.log(err);
-    }
+    // client.publish('/schedule/face/KSQ19880205', JSON.stringify({"stb_sn": "KSQ19880205"}), {qos: 0, retain: false}), (err)=> {
+    //     if(err) console.log(err);
+    // }
 
-    client.publish('/schedule/home/KSQ19880204', JSON.stringify({"stb_sn": "KSQ19880204", "name": "first home"}), {qos: 0, retain: false}), (err)=> {
-        if(err) console.log(err);
-    }
+    // client.publish('/schedule/home/KSQ19880204', JSON.stringify({"stb_sn": "KSQ19880204", "name": "first home"}), {qos: 0, retain: false}), (err)=> {
+    //     if(err) console.log(err);
+    // }
 
     // // client.publish('/schedule/layout/KSQ19880205', JSON.stringify({"stb_sn": "KSQ19880205"}), {qos: 0, retain: false}), (err)=> {
     // //     if(err) console.log(err);
@@ -158,21 +158,21 @@ client.on('message', async (topic, payload) => {
             }
         }
 
-        // //로그인
+        //로그인
         if(topic == '/login/' + json.stb_sn){
             if(json.stb_sn != undefined){
                 fn.login(json)
             }
         }
 
-        // //로그아웃
+        //로그아웃
         if(topic == '/logout/' + json.stb_sn){
             if(json.stb_sn != undefined){
                 fn.logout(json)
             }
         }
 
-        // //서버 접속종료
+        //서버 접속종료
         if(topic == '/disconnect/result/' + json.stb_sn){
             if(json.stb_sn != undefined){
                 fn.disconnet(json)

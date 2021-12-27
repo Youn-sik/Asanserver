@@ -897,7 +897,7 @@ module.exports = {
             }).then(()=> {
                 return instrument_query();
             }).then(()=> {
-                console.log(JSON.stringify(result))
+                // console.log(JSON.stringify(result))
 
             client.publish('/schedule/home/result/' + stb_sn, JSON.stringify(result), {qos:0, retain:false}, (err)=> {
                 if(err) console.log(err);
