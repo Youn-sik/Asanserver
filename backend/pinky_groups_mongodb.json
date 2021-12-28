@@ -1,2 +1,0 @@
-{"_id":{"$oid":"615272b47071f710f34a839a"},"children":[],"user_obids":[],"device_obids":[],"create_at":"2021-09-28 10:32:19","create_ut":"1632792739325","name":"test","type":1,"authority":"admin","__v":0}
-{"_id":{"$oid":"618a2776e569230c58255268"},"children":[],"user_obids":[],"device_obids":[],"create_at":"2021-10-27 17:30:54","create_ut":"1635323454617","name":"test","type":1,"authority":"manager-11e","__v":0}

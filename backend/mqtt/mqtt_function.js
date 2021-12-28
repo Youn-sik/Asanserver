@@ -433,7 +433,7 @@ module.exports = {
             .then((main_sub_stb_sn)=> {
                 return main_query(main_sub_stb_sn);
             }).then(()=> {
-                console.log(JSON.stringify(result))
+                // console.log(JSON.stringify(result))
                 client.publish('/schedule/main/result/' + stb_sn, JSON.stringify(result), {qos:0, retain:false}, (err)=> {
                     if(err) console.log(err);
                 })
@@ -564,7 +564,7 @@ module.exports = {
                     db.query('select g_layout.uid, g_layout.staff_id as staffid, g_layout.name as layoutname, '+
                     'g_layout.update_time as time, g_layout.imageurl as image from g_layout '+
                     'where g_layout.stb_sn = ? or g_layout.stb_sn = ?', main_sub_stb_sn, (err,stb)=> {
-                        console.log(stb);
+                        // console.log(stb);
                         if(err) {
                             console.log(err);
                             result = {
@@ -972,10 +972,10 @@ module.exports = {
             let time = json.value[0].time; // 단말에서 전송 된 시간
             let layout_image = json.value[0].image // 이미지 파일 base64
             let decode = Buffer.from(layout_image, 'base64'); // 이미지 파일 decoded
-            let layout_name_tmp = json.value[0].layoutname; // 단말에서 전송 된 이름
-            let layout_name = layout_name_tmp.split(" ").join("_"); // 저장 될 이름(띄어쓰기 -> '_')
+            let layout_name = json.value[0].layoutname; // 단말에서 전송 된 이름
+            let layout_name_file = layout_name.split(" ").join("_"); // 저장 될 이름(띄어쓰기 -> '_')
             let day_time = moment().format('YYYY-MM-DD_HH:mm:ss'); // 서버 시간(파일 저장)
-            let file_name = day_time+'_'+layout_name+'_'+layout_index+'.jpg'; // 파일 명(시간_레이아웃 이름_레이아웃 인덱스)
+            let file_name = day_time+'_'+layout_name_file+'_'+layout_index+'.jpg'; // 파일 명(시간_레이아웃 이름_레이아웃 인덱스)
             let file_path = '../upload/layout_used/' //파일 경로
             let imageurl = site.base_server_backend_loacal_url+'/layout_used/'+file_name;
             let result = {};
@@ -1067,12 +1067,11 @@ module.exports = {
                 return new Promise((resolve, reject)=>{
                     db.query('select g_checklist.stb_sn, g_checklist.name as checklist_name, g_checklist.order as checklist_order, '+
                     'g_checklist.update_time as checklist_update_time, g_checklist_list.name as list_name, g_checklist_list.update_time as list_update_time, '+
-                    'g_checklist_list.value as list_value, g_checklist_list.order as list_order from g_checklist '+
-                    'inner join g_checklist_list on g_checklist.order = g_checklist_list.checklist_order where g_checklist.stb_sn = ?', stb_sn, (err, stb)=> {
+                    'g_checklist_list.value as list_value, g_checklist_list.order as list_order from g_checklist inner join g_checklist_list '+
+                    'on g_checklist.order = g_checklist_list.checklist_order where g_checklist.stb_sn = ? or g_checklist.stb_sn = ?', main_sub_stb_sn, (err, stb)=> {
                         // console.log(stb);
                         if(err) console.log(err);
                         if(stb.length != 0){
-        
                             let contents = [];
                             for(let i=0; i<stb.length; i++){
                                 let contents_list = new Object();
@@ -1110,7 +1109,7 @@ module.exports = {
             .then((main_sub_stb_sn)=> {
                 return checklist_query(main_sub_stb_sn)
             }).then(()=> {
-                console.log(JSON.stringify(result))
+                // console.log(JSON.stringify(result))
                 client.publish('/schedule/checklist/result/' + stb_sn, JSON.stringify(result), {qos:0, retain:false}, (err)=> {
                     if(err) console.log(err);
                 })    
@@ -1156,8 +1155,8 @@ module.exports = {
             function media_query(main_sub_stb_sn){
                 return new Promise((resolve, reject)=>{
                     db.query('select g_media.stb_sn, g_media.name as media_name, g_media.update_time as media_update_time, g_media_list.name as list_name, '+
-                    'g_media_list.update_time as list_update_time, g_media_list.order as list_order '+
-                    'from g_media inner join g_media_list on g_media.order = g_media_list.g_media_order where g_media.stb_sn = ?', stb_sn, (err, stb)=> {
+                    'g_media_list.update_time as list_update_time, g_media_list.order as list_order from g_media inner join g_media_list '+
+                    'on g_media.order = g_media_list.g_media_order where g_media.stb_sn = ? or g_media.stb_sn = ?', main_sub_stb_sn, (err, stb)=> {
                         // console.log(stb);
                         if(err) console.log(err);
                         if(stb.length != 0){
