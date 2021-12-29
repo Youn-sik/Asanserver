@@ -102,9 +102,9 @@ client.on('connect', () => {
     //     if(err) console.log(err);
     // }
 
-    // client.publish('/schedule/home/KSQ19880204', JSON.stringify({"stb_sn": "KSQ19880204", "name": "first home"}), {qos: 0, retain: false}), (err)=> {
-    //     if(err) console.log(err);
-    // }
+    client.publish('/schedule/home/KSQ19880202', JSON.stringify({"stb_sn": "KSQ19880202", "name": "second home"}), {qos: 0, retain: false}), (err)=> {
+        if(err) console.log(err);
+    }
 
     // // client.publish('/schedule/layout/KSQ19880205', JSON.stringify({"stb_sn": "KSQ19880205"}), {qos: 0, retain: false}), (err)=> {
     // //     if(err) console.log(err);
@@ -125,9 +125,9 @@ client.on('connect', () => {
     //     if(err) console.log(err);
     // }
 
-    client.publish('/schedule/checklist/KSQ19880204', JSON.stringify({"stb_sn": "KSQ19880204", name: 'first checklist'}), {qos: 0, retain: false}), (err)=> {
-        if(err) console.log(err);
-    }
+    // client.publish('/schedule/checklist/KSQ19880204', JSON.stringify({"stb_sn": "KSQ19880204", name: 'first checklist'}), {qos: 0, retain: false}), (err)=> {
+    //     if(err) console.log(err);
+    // }
 
     // client.publish('/schedule/media/KSQ19880205', JSON.stringify({"stb_sn": "KSQ19880205"}), {qos: 0, retain: false}), (err)=> {
     //     if(err) console.log(err);

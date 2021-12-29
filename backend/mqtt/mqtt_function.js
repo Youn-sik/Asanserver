@@ -613,30 +613,15 @@ module.exports = {
                             }
                             resolve(main_sub_stb_sn)
                         } else {
-                            result = { //이전에 사용 한 레이아웃이 없을 때
+                            result = {
                                 "stb_sn": stb_sn,
-                                "name": "",
-                                "update_time": "",
-                                "result": "ok",
+                                "name": home_name,
+                                "result": "fail",
                                 "value": [{
-                                    "staff": [{
-
-                                    }],
-                                    "patient": {
-                        
-                                    },
-                                    "process": {
-                                        
-                                    },
-                                    "instrument": [{
-
-                                    }],
-                                    "layout": [{
-
-                                    }]
+                                    
                                 }]
                             }
-                            resolve(main_sub_stb_sn)                            
+                            reject(result)                          
                         }
                     })
                 })
@@ -693,30 +678,15 @@ module.exports = {
                             }
                             resolve(main_sub_stb_sn)
                         } else {
-                            result = { 
+                            result = {
                                 "stb_sn": stb_sn,
-                                "name": "",
-                                "update_time": "",
-                                "result": "ok",
+                                "name": home_name,
+                                "result": "fail",
                                 "value": [{
-                                    "staff": [{
-
-                                    }],
-                                    "patient": {
-                        
-                                    },
-                                    "process": {
-                                        
-                                    },
-                                    "instrument": [{
-
-                                    }],
-                                    "layout": [{
-                                        
-                                    }]
+                                    
                                 }]
                             }
-                            resolve(main_sub_stb_sn)
+                            reject(result)
                             
                         }
                     })
@@ -770,11 +740,18 @@ module.exports = {
                             result.value[0].patient.dob = surgery_patient.patient_dob
                             result.value[0].patient.surgicalsite = surgery_patient.patient_surgicalsite
                             result.value[0].patient.surgicalname = surgery_patient.surgery_name
-        
+                            
                             reslove(surgery_patient);
                         } else {
-                            
-                            reslove(surgery_patient);                   
+                            result = {
+                                "stb_sn": stb_sn,
+                                "name": home_name,
+                                "result": "fail",
+                                "value": [{
+                                    
+                                }]
+                            }
+                            reject(result)                 
                         }
                         
                     })
@@ -804,7 +781,15 @@ module.exports = {
                             result.value[0].staff = stb;
                             reslove(surgery_patient);
                         } else {
-                            reslove(surgery_patient);
+                            result = {
+                                "stb_sn": stb_sn,
+                                "name": home_name,
+                                "result": "fail",
+                                "value": [{
+                                    
+                                }]
+                            }
+                            reject(result)
                         }
                     })
                 });
@@ -834,7 +819,7 @@ module.exports = {
                             let process_id = stb[0].id;
                             for(let i = 0; i<stb.length; i++){
                                 let process_list = new Object();
-                                process_list.seq = stb[i].contents_seq;
+                                process_
                                 process_list.value = stb[i].contents_value;
                                 process.push(process_list);
                             }
@@ -843,7 +828,15 @@ module.exports = {
                             
                             resolve();
                         } else {
-                            resolve();
+                            result = {
+                                "stb_sn": stb_sn,
+                                "name": home_name,
+                                "result": "fail",
+                                "value": [{
+                                    
+                                }]
+                            }
+                            reject(result)
                         }
                     })
                 })
@@ -878,7 +871,15 @@ module.exports = {
                             result.value[0].instrument = instrument
                             resolve();
                         } else {
-                            resolve();
+                            result = {
+                                "stb_sn": stb_sn,
+                                "name": home_name,
+                                "result": "fail",
+                                "value": [{
+                                    
+                                }]
+                            }
+                            reject(result)
                         }
                     })
                 })
