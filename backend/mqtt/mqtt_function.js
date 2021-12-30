@@ -338,8 +338,29 @@ module.exports = {
                 });
             }
 
+            function distribution_update_time_query(main_sub_stb_sn){
+                return new Promise((resolve, reject)=> {
+                    db.query('update g_distribution set update_time = ? where stb_sn = ? or stb_sn = ?', [time, ...main_sub_stb_sn], (err, stb)=> {
+                        // console.log(stb);
+                        if(err) {
+                            console.log(err);
+                            result = {
+                                "stb_sn": stb_sn,
+                                "result": "fail",
+                                "value": [{}]
+                            }
+                            reject(result)
+                        }
+                        resolve(main_sub_stb_sn);
+                    })
+                })
+            }
+
             
             stb_query()
+            .then((main_sub_stb_sn)=> {
+                return distribution_update_time_query(main_sub_stb_sn)
+            })
             .then((main_sub_stb_sn)=> {
                 return distribution_schedule_query(main_sub_stb_sn);
             }).then(()=> {
@@ -395,15 +416,15 @@ module.exports = {
                         if(err) console.log(err);
                         if(stb.length != 0){
         
-                            let main = [];
+                            let surgery = [];
                             for(let i=0; i<stb.length; i++){
-                                let main_list = new Object();
-                                main_list.name = stb[i].list_name;
-                                main_list.update_time = stb[i].list_update_time;
-                                main_list.order = stb[i].list_order;
-                                main_list.start = stb[i].list_start;
-                                main_list.end = stb[i].list_end;
-                                main.push(main_list);
+                                let surgery_list = new Object();
+                                surgery_list.name = stb[i].list_name;
+                                surgery_list.update_time = stb[i].list_update_time;
+                                surgery_list.order = stb[i].list_order;
+                                surgery_list.start = stb[i].list_start;
+                                surgery_list.end = stb[i].list_end;
+                                surgery.push(surgery_list);
                             }
         
                             result = { 
@@ -411,9 +432,9 @@ module.exports = {
                                 "name": stb[0].main_name,
                                 "update_time": stb[0].main_update_time,
                                 "result": 'ok',
-                                "value": main
+                                "value": surgery
                             }
-                            resolve()
+                            resolve(main_sub_stb_sn)
                         } else {
                             result = {
                                 "stb_sn": stb_sn,
@@ -429,7 +450,71 @@ module.exports = {
                 })
             }
 
+            function main_get_name_query(main_sub_stb_sn){
+                return new Promise((resolve, reject)=>{
+                    db.query('select * from g_main where stb_sn = ? or stb_sn = ?', main_sub_stb_sn, (err, stb)=> {
+                        // console.log(stb);
+                        if(err) {
+                            console.log(err);
+                            result = {
+                                "stb_sn": stb_sn,
+                                "result": "fail",
+                                "value": [{}]
+                            }
+                            reject(result)
+                        }
+                        resolve([...main_sub_stb_sn, stb[0].name]);
+                    })
+                })
+            }
+            
+            function schedule_update_time_query(main_sub_stb_sn_and_main_name){
+                return new Promise((resolve, reject)=>{
+                    db.query('update g_schedule set update_time = ? where main_name = ?',[time, main_sub_stb_sn_and_main_name[2]], (err, stb)=> {
+                        // console.log(stb);
+                        if(err) {
+                            console.log(err);
+                            result = {
+                                "stb_sn": stb_sn,
+                                "result": "fail",
+                                "value": [{}]
+                            }
+                            reject(result)
+                        }
+                        let main_sub_stb_sn = [main_sub_stb_sn_and_main_name[0], main_sub_stb_sn_and_main_name[1]];
+                        resolve(main_sub_stb_sn);
+                    })
+                })
+            }
+
+            function main_update_time_query(main_sub_stb_sn){
+                return new Promise((resolve, reject)=>{
+                    db.query('update g_main set update_time = ? where stb_sn = ? or stb_sn = ?',[time, ...main_sub_stb_sn], (err, stb)=> {
+                        // console.log(stb);
+                        if(err) {
+                            console.log(err);
+                            result = {
+                                "stb_sn": stb_sn,
+                                "result": "fail",
+                                "value": [{}]
+                            }
+                            reject(result)
+                        }
+                        resolve(main_sub_stb_sn);
+                    })
+                })
+            }
+
             stb_query()
+            .then((main_sub_stb_sn)=> {
+                return main_get_name_query(main_sub_stb_sn);
+            })
+            .then((main_sub_stb_sn_and_main_name)=> {
+                return schedule_update_time_query(main_sub_stb_sn_and_main_name);
+            })
+            .then((main_sub_stb_sn)=> {
+                return main_update_time_query(main_sub_stb_sn);
+            })
             .then((main_sub_stb_sn)=> {
                 return main_query(main_sub_stb_sn);
             }).then(()=> {
@@ -819,7 +904,6 @@ module.exports = {
                             let process_id = stb[0].id;
                             for(let i = 0; i<stb.length; i++){
                                 let process_list = new Object();
-                                process_
                                 process_list.value = stb[i].contents_value;
                                 process.push(process_list);
                             }
@@ -885,11 +969,71 @@ module.exports = {
                 })
             }
 
+            function home_get_name_query(main_sub_stb_sn){
+                return new Promise((resolve, reject)=>{
+                    db.query('select * from g_home where stb_sn = ? or stb_sn = ?', main_sub_stb_sn, (err, stb)=> {
+                        // console.log(stb);
+                        if(err) {
+                            console.log(err);
+                            result = {
+                                "stb_sn": stb_sn,
+                                "result": "fail",
+                                "value": [{}]
+                            }
+                            reject(result)
+                        }
+                        resolve([...main_sub_stb_sn, stb[0].name]);
+                    })
+                })
+            }
+            
+            function schedule_update_time_query(main_sub_stb_sn_and_main_name){
+                return new Promise((resolve, reject)=>{
+                    db.query('update g_schedule set update_time = ? where home_name = ?',[time, main_sub_stb_sn_and_main_name[2]], (err, stb)=> {
+                        // console.log(stb);
+                        if(err) {
+                            console.log(err);
+                            result = {
+                                "stb_sn": stb_sn,
+                                "result": "fail",
+                                "value": [{}]
+                            }
+                            reject(result)
+                        }
+                        let main_sub_stb_sn = [main_sub_stb_sn_and_main_name[0], main_sub_stb_sn_and_main_name[1]];
+                        resolve(main_sub_stb_sn);
+                    })
+                })
+            }
+
+            function home_update_time_query(main_sub_stb_sn){
+                return new Promise((resolve, reject)=>{
+                    db.query('update g_home set update_time = ? where stb_sn = ? or stb_sn = ?',[time, ...main_sub_stb_sn], (err, stb)=> {
+                        // console.log(stb);
+                        if(err) {
+                            console.log(err);
+                            result = {
+                                "stb_sn": stb_sn,
+                                "result": "fail",
+                                "value": [{}]
+                            }
+                            reject(result)
+                        }
+                        resolve(main_sub_stb_sn);
+                    })
+                })
+            }
+
             stb_query()
             .then((main_sub_stb_sn)=> {
+                return home_get_name_query(main_sub_stb_sn)
+            }).then((main_sub_stb_sn_and_main_name)=> {
+                return schedule_update_time_query(main_sub_stb_sn_and_main_name)
+            }).then((main_sub_stb_sn)=> {
+                return home_update_time_query(main_sub_stb_sn)
+            }).then((main_sub_stb_sn)=> {
                 return layout_used_query(main_sub_stb_sn)
-            })
-            .then((main_sub_stb_sn)=> {
+            }).then((main_sub_stb_sn)=> {
                 return home_surgery_patient_query(main_sub_stb_sn);
             }).then((surgery_patient)=> {
                 return staff_query(surgery_patient);
@@ -1106,8 +1250,71 @@ module.exports = {
                     })
                 })
             }
+
+            function checklist_name_get_name_query(main_sub_stb_sn){
+                return new Promise((resolve, reject)=>{
+                    db.query('select * from g_checklist where stb_sn = ? or stb_sn = ?', main_sub_stb_sn, (err, stb)=> {
+                        // console.log(stb);
+                        if(err) {
+                            console.log(err);
+                            result = {
+                                "stb_sn": stb_sn,
+                                "result": "fail",
+                                "value": [{}]
+                            }
+                            reject(result)
+                        }
+                        resolve([...main_sub_stb_sn, stb[0].name]);
+                    })
+                })
+            }
+            
+            function schedule_update_time_query(main_sub_stb_sn_and_main_name){
+                return new Promise((resolve, reject)=>{
+                    db.query('update g_schedule set update_time = ? where checklist_name = ?',[time, main_sub_stb_sn_and_main_name[2]], (err, stb)=> {
+                        // console.log(stb);
+                        if(err) {
+                            console.log(err);
+                            result = {
+                                "stb_sn": stb_sn,
+                                "result": "fail",
+                                "value": [{}]
+                            }
+                            reject(result)
+                        }
+                        let main_sub_stb_sn = [main_sub_stb_sn_and_main_name[0], main_sub_stb_sn_and_main_name[1]];
+                        resolve(main_sub_stb_sn);
+                    })
+                })
+            }
+
+            function checklist_name_update_time_query(main_sub_stb_sn){
+                return new Promise((resolve, reject)=>{
+                    db.query('update g_checklist set update_time = ? where stb_sn = ? or stb_sn = ?',[time, ...main_sub_stb_sn], (err, stb)=> {
+                        // console.log(stb);
+                        if(err) {
+                            console.log(err);
+                            result = {
+                                "stb_sn": stb_sn,
+                                "result": "fail",
+                                "value": [{}]
+                            }
+                            reject(result)
+                        }
+                        resolve(main_sub_stb_sn);
+                    })
+                })
+            }
+
+
             stb_query()
             .then((main_sub_stb_sn)=> {
+                return checklist_name_get_name_query(main_sub_stb_sn)
+            }).then((main_sub_stb_sn_and_main_name)=> {
+                return schedule_update_time_query(main_sub_stb_sn_and_main_name)
+            }).then((main_sub_stb_sn)=> {
+                return checklist_name_update_time_query(main_sub_stb_sn)
+            }).then((main_sub_stb_sn)=> {
                 return checklist_query(main_sub_stb_sn)
             }).then(()=> {
                 // console.log(JSON.stringify(result))
