@@ -192,7 +192,8 @@ router.post('/distribution', async(req, res)=> {
                         let type_tmp = main_list[0].file_ext;
                         if(type_tmp == '.mp4' || type_tmp == '.mov') type.push("video");
                         else if(type_tmp == '.jpg' || type_tmp == '.jpeg' || type_tmp == '.jfif' || type_tmp == '.png' || type_tmp == '.gif') type.push("image");
-            
+                        else if(type_tmp == '.mp3') type.push("bgm")
+
                         values.push({
                             "stb_sn": stb_sn[0],
                             "name": name[0],

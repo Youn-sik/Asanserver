@@ -1,7 +1,9 @@
 import React from 'react';
 
 const Dash = () =>{
-    return <div>test</div>
+    return (
+        <div>this is dash</div>
+    );
 }
 
 export default Dash;

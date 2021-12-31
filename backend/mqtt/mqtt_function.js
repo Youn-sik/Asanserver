@@ -904,6 +904,7 @@ module.exports = {
                             let process_id = stb[0].id;
                             for(let i = 0; i<stb.length; i++){
                                 let process_list = new Object();
+                                process_list.seq = i+1;
                                 process_list.value = stb[i].contents_value;
                                 process.push(process_list);
                             }
