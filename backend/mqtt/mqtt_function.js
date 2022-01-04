@@ -777,8 +777,75 @@ module.exports = {
                     })
                 })
             }
-        
-            
+
+        // 환자에 surgical name 붙힌거 -> process 와 staff 에 sugical order -> patient order 로 변경하면 그대로 적용 가능
+        // UI 기능 보고 결정 + DB 에 staff 와 process 에 order column 하나 추가 해 줘야 함
+        // function home_surgery_patient_query(main_sub_stb_sn) {
+        //     return new Promise((reslove, reject)=> {
+        //         db.query('select g_home.stb_sn, g_home.name, g_home.update_time, g_patient.id as patient_id, g_patient.name as patient_name, '+
+        //         'g_patient.gender as patient_gender, g_patient.age as patient_age, g_patient.dob as patient_dob, g_patient.surgicalsite as patient_surgicalsite, '+
+        //         'g_patient.surgicalname as patient_surgicalname from g_home inner join g_patient on g_home.order = g_patient.g_main_home_order '+
+        //         'where g_home.stb_sn = ? or g_home.stb_sn = ? and g_home.name = ?', [...main_sub_stb_sn, home_name], (err, stb)=> {
+        //             console.log(stb);
+        //             if(err) {
+        //                 console.log(err);
+        //                 result = {
+        //                     "stb_sn": stb_sn,
+        //                     "name": home_name,
+        //                     "result": "fail",
+        //                     "value": [{
+                                
+        //                     }]
+        //                 }
+        //                 reject(result);   
+        //             }
+        //             if(stb.length != 0){
+                    
+        //                 let surgery_patient = new Object();
+        //                 surgery_patient.stb_sn = stb[0].stb_sn; 
+        //                 surgery_patient.name = stb[0].name; //홈 화면 이름
+        //                 surgery_patient.update_time = stb[0].update_time; 
+        //                 surgery_patient.surgery_name = stb[0].surgery_name; //수술 이름
+        //                 surgery_patient.surgery_order = stb[0].surgery_order;  
+        //                 surgery_patient.patient_id = stb[0].patient_id; 
+        //                 surgery_patient.patient_name = stb[0].patient_name; 
+        //                 surgery_patient.patient_gender = stb[0].patient_gender; 
+        //                 surgery_patient.patient_age = stb[0].patient_age; 
+        //                 surgery_patient.patient_dob = stb[0].patient_dob; 
+        //                 surgery_patient.patient_surgicalsite = stb[0].patient_surgicalsite; 
+        //                 surgery_patient.patient_surgicalname = stb[0].patient_surgicalname; 
+
+
+        //                 result.name = surgery_patient.name;
+        //                 result.update_time = surgery_patient.update_time;
+        //                 result.result = "ok";
+        //                 result.value[0].patient.id = surgery_patient.patient_id;
+        //                 result.value[0].patient.name = surgery_patient.patient_name;
+        //                 result.value[0].patient.gender = surgery_patient.patient_gender;
+        //                 result.value[0].patient.age = surgery_patient.patient_age
+        //                 result.value[0].patient.dob = surgery_patient.patient_dob
+        //                 result.value[0].patient.surgicalsite = surgery_patient.patient_surgicalsite
+        //                 result.value[0].patient.surgicalname = surgery_patient.patient_surgicalname
+
+        //                 console.log(JSON.stringify(result));
+                        
+        //                 reslove(surgery_patient);
+        //             } else {
+        //                 result = {
+        //                     "stb_sn": stb_sn,
+        //                     "name": home_name,
+        //                     "result": "fail",
+        //                     "value": [{
+                                
+        //                     }]
+        //                 }
+        //                 reject(result)                 
+        //             }
+                    
+        //         })
+        //     });
+        // }
+
             function home_surgery_patient_query(main_sub_stb_sn) {
                 return new Promise((reslove, reject)=> {
                     db.query('select g_home.stb_sn, g_home.name, g_home.update_time, g_surgery.name as surgery_name,g_surgery.order as surgery_order, '+
@@ -841,7 +908,8 @@ module.exports = {
                         
                     })
                 });
-            }
+            } 
+
 
             function staff_query(surgery_patient){
                 return new Promise((reslove, reject)=>{

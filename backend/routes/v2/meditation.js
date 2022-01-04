@@ -3,12 +3,15 @@ const router = express.Router();
 const db = require('../../db');
 const fs = require('fs');
 const path = require('path');
+const multer = require('multer');
+const ffmpeg = require('fluent-ffmpeg');
 const site_info_json = fs.readFileSync(path.join(__dirname, "../../cloud44.json"));
 const site = JSON.parse(site_info_json);
 
 let moment = require('moment');
 require('moment-timezone');
 moment.tz.setDefault("Asia/Seoul");
+let time = moment().format('YYYY-MM-DD HH:mm:ss');
 
 router.get('/', async(req, res) =>{
     try{
@@ -44,12 +47,12 @@ router.get('/', async(req, res) =>{
         res.status(400).send({err:"잘못된 형식 입니다."})
     }
 })
-
+//영상 저장 부분은 router 따로 해서 등록하고, 밑의 / 에서 파일 네임과 경로를 fs를 통해 가져와서 DB 에 저장하자.
 router.post('/', async(req, res) =>{ //명상 영상 등록
     try{
         let result = {};
         let name = req.body.name;
-        let update_time = req.body.update_time;
+        let update_time = time;
         let stb_sn = req.body.stb_sn
         let start = req.body.start;
         let end = req.body.end;
@@ -57,24 +60,13 @@ router.post('/', async(req, res) =>{ //명상 영상 등록
         let file_name = req.body.file_name;
         let file_name_save = update_time.replace(" ", "_")+"_"+file_name;
         let file_ext = path.extname(req.body.file_name);
-        let file_path = "/home/asan/asan/backend/uploads/contents/meditation/"+file_name_save;
+        let file_path = req.body.file_path;
         let file_url = site.base_server_backend_loacal_url+"/contents/meditation/"+file_name_save;
 
-        // console.log(user);
-        // console.log(update_time);
-        // console.log(name);
-        // console.log(file_path);
-        // console.log(file_name);
+        // console.log(file_name_save);
         // console.log(file_ext);
-
-        // 파일 업로드 부분 작업
-        function file_upload(){
-            return new Promise((resolve, reject)=>{
-
-                resolve(main_sub_stb_sn)
-                reject(result)
-            });
-        }
+        // console.log(file_path);
+        // console.log(file_url);
 
         function stb_query(){
             return new Promise((resolve, reject)=>{
@@ -157,49 +149,110 @@ router.post('/', async(req, res) =>{ //명상 영상 등록
     }
 })
 
-//명상 영상 배포 (세탑 지정)
+//영상 저장
+router.post('/upload', async(req, res)=> {
+    try {
+        console.log("video upload")
+        var storage = multer.diskStorage({
+            destination: (req, file, cb) => {
+                cb(null, site.base_server_document+"/uploads/contents/meditation/")
+            },
+            filename: (req, file, cb) => {
+                cb(null, `${time.replace(" ", "_")}_${file.originalname}`)
+            },
+            fileFilter: (req, file, cb) => {
+                const ext = path.extname(file.originalname)
+                if (ext !== '.mp4') {
+                    return cb(res.status(400).end('only jpg, png, mp4 is allowed'), false);
+                }
+                cb(null, true)
+            }
+        })
+
+        var upload = multer({ storage: storage }).single("file")
+
+        upload(req, res, err => {
+            if (err) {
+                return res.json({ success: false, err })
+            }
+            return res.json({ success: true, filePath: res.req.file.path, fileName: res.req.file.filename })
+        })
+
+    } catch(err){
+        res.status(400).send({err:"잘못된 형식 입니다."})
+    }
+})
+
+//썸네일 제작
+router.post('/thumbnail', async(req, res)=> {
+    try {
+        console.log("thumbnail here");
+        console.log(req.body);
+        let thumbsFilePath = "";
+        let fileDuration = "";
+
+        ffmpeg.ffprobe(req.body.filePath, function(err, metadata){
+            console.dir(metadata);
+            console.log(metadata.format.duration);
+
+            fileDuration = metadata.format.duration;
+        })
+
+
+        ffmpeg(req.body.filePath)
+            .on('filenames', function (filenames) {
+                console.log('Will generate ' + filenames.join(', '))
+                thumbsFilePath = site.base_server_document+"/uploads/contents/meditation/thumbnails/" + filenames[0];
+            })
+            .on('end', function () {
+                console.log('Screenshots taken');
+                return res.json({ success: true, thumbsFilePath: thumbsFilePath, fileDuration: fileDuration})
+            })
+            .screenshots({
+                // Will take screens at 20%, 40%, 60% and 80% of the video
+                count: 3,
+                folder: site.base_server_document+"/uploads/contents/meditation/thumbnails/",
+                size:'320x240',
+                // %b input basename ( filename w/o extension )
+                filename:'thumbnail-%b.png'
+            });
+
+    } catch(err){
+        res.status(400).send({err:"잘못된 형식 입니다."})
+    }
+})
+
+//명상 영상 배포 (세탑 지정) 우선 영상으로만 한개의 데이터 전송으로
 router.post('/distribution', async(req, res)=> {
     try {
         // console.log(req.body);
         let result = {};
         let values = [];
-        let stb_sn = [];
-        let name = [];
-        let update_time = [];
-        let type = [];
-        let file_url = [];
-
-        let value_I = req.body.values.length;
+        let stb_sn =req.body.values[0].stb_sn;
+        let name = req.body.values[0].name;
+        let update_time = req.body.values[0].update_time;
+        let type;
+        let file_url;
 
         function meditation_dis(){
             return new Promise((resolve, reject)=>{
-                let i;
-                for(i=0; i<value_I; i++){
-                    stb_sn.push(req.body.values[i].stb_sn);
-                    name.push(req.body.values[i].name);
-                    update_time.push(req.body.values[i].update_time);
-                
-
-                    let query_str = "select * from g_main_list where update_time = ? and name = ?;";
-                    let data = [update_time[i], name[i]];
-                }
-                db.query('select * from g_main_list where update_time = ? and name = ?', [update_time[0], name[0]], (err, main_list)=> {
+                db.query('select * from g_main_list where update_time = ? and name = ?', [update_time, name], (err, main_list)=> {
                     if(err) console.log(err);
                     // console.log(main_list);
 
                     if(main_list.length != 0){
-                        file_url.push(main_list[0].file_url);
+                        file_url = (main_list[0].file_url);
                         let type_tmp = main_list[0].file_ext;
-                        if(type_tmp == '.mp4' || type_tmp == '.mov') type.push("video");
-                        else if(type_tmp == '.jpg' || type_tmp == '.jpeg' || type_tmp == '.jfif' || type_tmp == '.png' || type_tmp == '.gif') type.push("image");
-                        else if(type_tmp == '.mp3') type.push("bgm")
+                        if(type_tmp == '.mp4' || type_tmp == '.mov') type = ("video");
+                        else if(type_tmp == '.jpg' || type_tmp == '.jpeg' || type_tmp == '.jfif' || type_tmp == '.png' || type_tmp == '.gif') type = ("image");
+                        else if(type_tmp == '.mp3') type = ("bgm")
 
                         values.push({
-                            "stb_sn": stb_sn[0],
-                            "name": name[0],
-                            "update_time": update_time[0],
-                            "type": type[0],
-                            "url": file_url[0]
+                            "stb_sn": stb_sn,
+                            "name": name,
+                            "update_time": update_time,
+                            "type": type,
+                            "url": file_url
                         })
                         console.log(values);
                     } else {
