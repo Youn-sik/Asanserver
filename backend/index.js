@@ -6,6 +6,7 @@ const db = require('./db.js'); // db 불러오기
 const route = require('./route.js');
 const meditation = require('./routes/v2/meditation');
 const stb = require('./routes/v3/stb');
+const schedule = require('./routes/v3/schedule');
 const port = 3000;
 
 db.connect(); // 실행
@@ -27,6 +28,7 @@ app.use('/uploads', express.static('uploads/'))
 
 app.use('/meditation', meditation);
 app.use('/stb', stb);
+app.use('/schedule', schedule);
 
 app.use('/', route);
 
