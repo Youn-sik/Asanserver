@@ -116,7 +116,7 @@ function Schedule(){
                 <StbList stb_select={stb_select} setSTBInfo={setSTBInfo} />
                 <h3>스케줄 목록</h3>
                 <ScheduleList stb_sn={state.stb} setSCHEDULEInfo={setSCHEDULEInfo} />
-                <Button type="primary">배포</Button>
+                <Button type="primary" style={{display:"none"}}>등록</Button>
                 <div>이 밑으로는 depth2 이상</div>
                 <hr/>
                 <h3>스케줄 이름</h3><Input id="schedule" placeholder="스케줄 이름" onChange={handleChange} style = {{width:'200px'}}></Input><br/><hr/>
