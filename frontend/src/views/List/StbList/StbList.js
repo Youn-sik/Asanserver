@@ -27,7 +27,6 @@ const StbList = (props)=> {
         if(e.target.checked){
             checkedItems = rowData;
             setCheckedItems(checkedItems);
-            props.stb_select(rowData.main_stb_sn);
             props.setSTBInfo({
                 uid: rowData.uid,
                 main_stb_sn: rowData.main_stb_sn,
@@ -36,7 +35,7 @@ const StbList = (props)=> {
                 network_status: rowData.network_status
             });
         }
-        console.log(checkedItems);
+        // console.log(checkedItems);
     }
 
     useEffect(async()=> {
@@ -64,6 +63,7 @@ const StbList = (props)=> {
     if (loading) return (<div>Loading ...</div>);
     return (
         <div>
+        <h2>세탑 목록</h2>
             {Array.isArray(state.state) && state.state.length !== 0 ? 
                 state.state.map(rowData=> (
                     <div key={rowData.uid} style={{textAlign:'center'}}>

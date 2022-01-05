@@ -152,7 +152,6 @@ router.post('/', async(req, res) =>{ //명상 영상 등록
 //영상 저장
 router.post('/upload', async(req, res)=> {
     try {
-        console.log("video upload")
         var storage = multer.diskStorage({
             destination: (req, file, cb) => {
                 cb(null, site.base_server_document+"/uploads/contents/meditation/")
@@ -165,7 +164,8 @@ router.post('/upload', async(req, res)=> {
                 if (ext !== '.mp4') {
                     return cb(res.status(400).end('only jpg, png, mp4 is allowed'), false);
                 }
-                cb(null, true)
+                cb(null, true);
+                console.log("video uploaded")
             }
         })
 
@@ -186,14 +186,13 @@ router.post('/upload', async(req, res)=> {
 //썸네일 제작
 router.post('/thumbnail', async(req, res)=> {
     try {
-        console.log("thumbnail here");
-        console.log(req.body);
+        // console.log(req.body);
         let thumbsFilePath = "";
         let fileDuration = "";
 
         ffmpeg.ffprobe(req.body.filePath, function(err, metadata){
-            console.dir(metadata);
-            console.log(metadata.format.duration);
+            // console.dir(metadata);
+            // console.log(metadata.format.duration);
 
             fileDuration = metadata.format.duration;
         })
@@ -201,18 +200,18 @@ router.post('/thumbnail', async(req, res)=> {
 
         ffmpeg(req.body.filePath)
             .on('filenames', function (filenames) {
-                console.log('Will generate ' + filenames.join(', '))
-                thumbsFilePath = site.base_server_document+"/uploads/contents/meditation/thumbnails/" + filenames[0];
+                // console.log('Will generate ' + filenames.join(', '))
+                thumbsFilePath = "/uploads/contents/meditation/thumbnails/" + filenames[0];
             })
             .on('end', function () {
-                console.log('Screenshots taken');
+                console.log('Screenshots created');
                 return res.json({ success: true, thumbsFilePath: thumbsFilePath, fileDuration: fileDuration})
             })
             .screenshots({
                 // Will take screens at 20%, 40%, 60% and 80% of the video
                 count: 3,
                 folder: site.base_server_document+"/uploads/contents/meditation/thumbnails/",
-                size:'320x240',
+                size:'200x240',
                 // %b input basename ( filename w/o extension )
                 filename:'thumbnail-%b.png'
             });

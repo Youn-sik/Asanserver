@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Typography, Button, Form, message, Input } from 'antd'; 
+import "antd/dist/antd.css";
 import server_jso from '../../../server.json'
 
 const backend_url = server_jso.base_url;
@@ -34,34 +36,39 @@ const ScheduleList = (props)=> {
                 layout_name: rowData.layout_name,
                 media_name: rowData.media_name
             });
+            props.setButtonDisplay(true);
         }
-        console.log(checkedItems);
+        // console.log(checkedItems);
     }
 
     useEffect(async()=> {
         try{
-            const res = await axios.get(backend_url+"/schedule/"+props.stb_sn);
-            if(res.data.result == "ok"){
-                const _state = await res.data.values.map((rowData)=> (
-                    {
-                        uid: rowData.uid,
-                        stb_sn: rowData.stb_sn,
-                        name: rowData.name,
-                        update_time: rowData.update_time,
-                        order: rowData.order,
-                        start: rowData.start,
-                        end: rowData.end,
-                        main_name: rowData.main_name,
-                        home_name: rowData.home_name,
-                        checklist_name: rowData.checklist_name,
-                        layout_name: rowData.layout_name,
-                        media_name: rowData.media_name
-                    })
-                )
-                setState({state : _state});
-                setLoading(false);
+            if(props.stb_sn !== ""){ //해당 조건문이 없으면 랜더링 마다 요청을 보내서 서버에 과부하
+                const res = await axios.get(backend_url+"/schedule/"+props.stb_sn);
+                if(res.data.result == "ok"){
+                    const _state = await res.data.values.map((rowData)=> (
+                        {
+                            uid: rowData.uid,
+                            stb_sn: rowData.stb_sn,
+                            name: rowData.name,
+                            update_time: rowData.update_time,
+                            order: rowData.order,
+                            start: rowData.start,
+                            end: rowData.end,
+                            main_name: rowData.main_name,
+                            home_name: rowData.home_name,
+                            checklist_name: rowData.checklist_name,
+                            layout_name: rowData.layout_name,
+                            media_name: rowData.media_name
+                        })
+                    )
+                    setState({state : _state});
+                    setLoading(false);
+                } else {
+                    console.error("schedule 목록을 가져오는 과정에서 문제가 발생하였습니다.");
+                }
             } else {
-                console.error("schedule 목록을 가져오는 과정에서 문제가 발생하였습니다.");
+                
             }
         }catch(err){
             console.error(err);
@@ -74,6 +81,7 @@ const ScheduleList = (props)=> {
         if (loading) return (<div>Loading ...</div>);
         return (
             <div>
+            <h3>스케줄 목록</h3>
                 {Array.isArray(state.state) && state.state.length !== 0 ? 
                     state.state.map(rowData=> (
                         <div key={rowData.uid} style={{textAlign:'center'}}>

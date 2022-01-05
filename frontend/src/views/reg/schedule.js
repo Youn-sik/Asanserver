@@ -9,14 +9,13 @@ import server_jso from '../../server.json'
 import "antd/dist/antd.css";
 
 const backend_url = server_jso.base_url;
-
 const { Title } = Typography;
 
 function Schedule(){
+    const [ButtonDisplay, setButtonDisplay] = useState(false);
     const [VideoTitle, setVideoTitle] = useState("");
-    const [FilePath, setFilePath] = useState("");
     const [Thumbnail, setThumbnail] = useState("");
-    const [Duration, setDuration] = useState("");
+    const [FileName, setFileName] = useState("");
     const [STBInfo, setSTBInfo] = useState({
         uid: "",
         main_stb_sn: "",
@@ -39,8 +38,12 @@ function Schedule(){
         media_name: ""
     });
     const [state, setState] = useState({
-        stb: ""
-    });
+        distribution_name: "",
+        schedule: "",
+        schedule_date: "",
+        schedule_start: "",
+        schedule_end: "",
+    })
 
     function onTitleChange(e){
         setVideoTitle(e.currentTarget.value);
@@ -48,22 +51,38 @@ function Schedule(){
 
     function handleChange(e){
         const {id, value} = e.target;
-        setState((prevState) => ({
-            ...prevState,
-            [id]: value,
-        }));
+        setState({
+            ...state,
+            [id] : value
+        });
     }
 
-    function stb_select(stb_sn_func){
-        setState({
-            stb: stb_sn_func
-        })
-        // console.log(stb_sn_func);
+    async function distribution(){ // backend 로 폼 전송(axios)
+        let body = {
+            "distribution": {
+                "stb_sn": STBInfo.main_stb_sn,
+                "name": state.distribution_name,
+                "update_time": ""
+            },
+            "schedule": SCHEDULEInfo
+        }
+        const res = await axios.post(backend_url+"/distribution_schedule/register", body);
+        if(res.body.result == "ok"){
+
+            return "스케줄 등록을 완료하였습니다.";
+        } else {
+
+            return "스케줄 등록을 실패하였습니다.";
+        }
     }
 
     function checkDataValue(){
+        console.log("=====");
+        console.log(state);
         console.log(STBInfo);
         console.log(SCHEDULEInfo);
+        distribution();
+        console.log("=====");
     }
 
     function onDrop(files){
@@ -73,26 +92,28 @@ function Schedule(){
         }
         formData.append("file", files[0]);
 
-        console.log(files);
+        // console.log(files);
 
         axios.post(backend_url+"/meditation/upload", formData, {config})
             .then((response) => {
                 if(response.data.success){
+                    // console.log(response.data) 
                     let variable = {
                         filePath: response.data.filePath,
                         fileName: response.data.fileName
                     }
                     
                     // setFileName 추가 필요
-                    setFilePath(response.data.filePath);
+                    setFileName(response.data.fileName);
+
+
                     alert("서버에 저장 완료")
-                    console.log(response.data) // filePath, fileName 정보 가지고 있다가 submit 하면 같이 보내기(폼은 file_path, file_name 으로)
+                    // response.data의 filePath, fileName 정보 가지고 있다가 submit 하면 같이 보내기(폼은 file_path, file_name 으로)
                     
                     axios.post(backend_url+'/meditation/thumbnail', variable)
                         .then(response => {
                             if (response.data.success) {
-                                console.log(response.data); 
-                                setDuration(response.data.fileDuration)
+                                // console.log(response.data); 
                                 setThumbnail(response.data.thumbsFilePath)
                             } else {
                                 alert('Failed to make the thumbnails');
@@ -105,18 +126,13 @@ function Schedule(){
             })
     }
     return (
-        <div style = {{maxWidth:'300px', margin:'2erm auto'}}>
+        <div style = {{maxWidth:'450px', margin:'2erm auto'}}>
             <div style = {{textAlign:'center', marginBottom:'2rem'}}>
-                <Button type="primary" onClick={checkDataValue}>데이터 값 확인</Button>
                 <Title level={2}>스케줄 작성</Title><hr/>
-                <h3>배포 이름</h3><Input id="distribution" placeholder="배포 이름" onChange={handleChange} style = {{width:'200px'}}></Input><br/><hr/>
-                {/* 세탑 목록 -> 고른 세탑 시리얼 props 로 하위 선택지에 저장(하나 택 하면 연관성 있는 정보들만 보이게) 
-                -> 하위 데이터들은 visible x 로 */}
-                <h2>세탑 목록</h2>
-                <StbList stb_select={stb_select} setSTBInfo={setSTBInfo} />
-                <h3>스케줄 목록</h3>
-                <ScheduleList stb_sn={state.stb} setSCHEDULEInfo={setSCHEDULEInfo} />
-                <Button type="primary" style={{display:"none"}}>등록</Button>
+                <h3>배포 이름</h3><Input id="distribution_name" placeholder="배포 이름" onChange={handleChange} style = {{width:'200px'}} /><br/><hr/>
+                <StbList setSTBInfo={setSTBInfo} />
+                <ScheduleList stb_sn={STBInfo.main_stb_sn} setSCHEDULEInfo={setSCHEDULEInfo} setButtonDisplay={setButtonDisplay} />
+                { ButtonDisplay == true && state.distribution_name !== "" ? <Button type="primary" onClick={checkDataValue}>등록</Button> : null }
                 <div>이 밑으로는 depth2 이상</div>
                 <hr/>
                 <h3>스케줄 이름</h3><Input id="schedule" placeholder="스케줄 이름" onChange={handleChange} style = {{width:'200px'}}></Input><br/><hr/>
@@ -139,14 +155,16 @@ function Schedule(){
                                 </div>
                             )}
                         </Dropzone>
-                         <div>
-                             <img src alt />
-                         </div>
+                        {Thumbnail && 
+                            <div style = {{width:'200px'}}>
+                                <img src= {`${backend_url}${Thumbnail}`} alt= "thumbnail" />
+                            </div>
+                        }
                     </div>
                     <br/>
                     <br/>
                     <h3>대기화면 이름</h3>
-                    <label>제목: </label>
+                    <label>제목: {FileName}</label>
                     <Input
                         onChange = {onTitleChange}
                         value = {VideoTitle}
