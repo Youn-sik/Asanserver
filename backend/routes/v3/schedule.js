@@ -14,11 +14,11 @@ router.get('/:stb_sn', async(req, res) =>{
     try{
         let result = {};
         let stb_sn = req.params.stb_sn;
-        console.log(stb_sn)
+        // console.log(stb_sn)
 
         db.query('select * from g_schedule where stb_sn = ?', stb_sn, (err,schedule)=> {
             if(err) console.log(err);
-            console.log(schedule);
+            // console.log(schedule);
             if(schedule.length != 0){
                 let schedule_arr = [];
 

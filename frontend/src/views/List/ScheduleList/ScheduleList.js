@@ -13,6 +13,30 @@ const ScheduleList = (props)=> {
         update_time: '',
         network_status: ''
     }]);
+    let [checkedItems, setCheckedItems] = useState(new Object());
+
+    function checkItemHandler(e, rowData){
+        if(e.target.checked){
+            checkedItems = rowData;
+            setCheckedItems(checkedItems);
+
+            props.setSCHEDULEInfo({
+                uid: rowData.uid,
+                stb_sn: rowData.stb_sn,
+                name: rowData.name,
+                update_time: rowData.update_time,
+                order: rowData.order,
+                start: rowData.start,
+                end: rowData.end,
+                main_name: rowData.main_name,
+                home_name: rowData.home_name,
+                checklist_name: rowData.checklist_name,
+                layout_name: rowData.layout_name,
+                media_name: rowData.media_name
+            });
+        }
+        console.log(checkedItems);
+    }
 
     useEffect(async()=> {
         try{
@@ -53,19 +77,22 @@ const ScheduleList = (props)=> {
                 {Array.isArray(state.state) && state.state.length !== 0 ? 
                     state.state.map(rowData=> (
                         <div key={rowData.uid} style={{textAlign:'center'}}>
-                            <div>uid: {rowData.uid}</div>
-                            <div>stb_sn: {rowData.stb_sn}</div>
-                            <div>name: {rowData.name}</div>
-                            <div>update_time: {rowData.update_time}</div>
-                            <div>order: {rowData.order}</div>
-                            <div>start: {rowData.start}</div>
-                            <div>end: {rowData.end}</div>
-                            <div>main_name: {rowData.main_name}</div>
-                            <div>home_name: {rowData.home_name}</div>
-                            <div>checklist_name: {rowData.checklist_name}</div>
-                            <div>layout_name: {rowData.layout_name}</div>
-                            <div>media_name: {rowData.media_name}</div>
-                            <hr/>
+                            <label>
+                                <input name="schedule" type="radio" onChange={(e)=> {checkItemHandler(e, rowData)}} />
+                                <div>uid: {rowData.uid}</div>
+                                <div>stb_sn: {rowData.stb_sn}</div>
+                                <div>name: {rowData.name}</div>
+                                <div>update_time: {rowData.update_time}</div>
+                                {/* <div>order: {rowData.order}</div> */}
+                                <div>start: {rowData.start}</div>
+                                <div>end: {rowData.end}</div>
+                                <div>main_name: {rowData.main_name}</div>
+                                <div>home_name: {rowData.home_name}</div>
+                                <div>checklist_name: {rowData.checklist_name}</div>
+                                <div>layout_name: {rowData.layout_name}</div>
+                                <div>media_name: {rowData.media_name}</div>
+                                <hr/>
+                            </label>
                         </div>
                     )):
                     <div>저장 된 세탑이 없습니다.</div>

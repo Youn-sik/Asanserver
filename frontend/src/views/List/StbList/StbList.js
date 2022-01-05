@@ -27,10 +27,16 @@ const StbList = (props)=> {
         if(e.target.checked){
             checkedItems = rowData;
             setCheckedItems(checkedItems);
-            
-            props.stb_select(rowData.main_stb_sn)
+            props.stb_select(rowData.main_stb_sn);
+            props.setSTBInfo({
+                uid: rowData.uid,
+                main_stb_sn: rowData.main_stb_sn,
+                sub_stb_sn: rowData.sub_stb_sn,
+                update_time: rowData.update_time,
+                network_status: rowData.network_status
+            });
         }
-        // console.log(checkedItems);
+        console.log(checkedItems);
     }
 
     useEffect(async()=> {
@@ -62,7 +68,7 @@ const StbList = (props)=> {
                 state.state.map(rowData=> (
                     <div key={rowData.uid} style={{textAlign:'center'}}>
                         <label>
-                            <input name="stb_cb" type="radio" onChange={(e)=> {checkItemHandler(e, rowData)}} />
+                            <input name="stb" type="radio" onChange={(e)=> {checkItemHandler(e, rowData)}} />
                             <div>uid: {rowData.uid}</div>
                             <div>main_stb_sn: {rowData.main_stb_sn}</div>
                             <div>sub_stb_sn: {rowData.sub_stb_sn}</div>

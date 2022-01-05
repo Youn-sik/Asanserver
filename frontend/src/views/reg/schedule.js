@@ -6,6 +6,7 @@ import plus from '../../plus.png';
 import StbList from '../List/StbList/StbList';
 import ScheduleList from '../List/ScheduleList/ScheduleList';
 import server_jso from '../../server.json'
+import "antd/dist/antd.css";
 
 const backend_url = server_jso.base_url;
 
@@ -16,10 +17,27 @@ function Schedule(){
     const [FilePath, setFilePath] = useState("");
     const [Thumbnail, setThumbnail] = useState("");
     const [Duration, setDuration] = useState("");
-    const [TotalInfo, setTotalInfo] = useState({
+    const [STBInfo, setSTBInfo] = useState({
+        uid: "",
+        main_stb_sn: "",
+        sub_stb_sn: "",
+        update_time: "",
+        network_status: ""
+    });
+    const [SCHEDULEInfo, setSCHEDULEInfo] = useState({
+        uid: "",
         stb_sn: "",
-        // ... 등 전체 데이터 저장하고 필요할 때 빼가기
-    })
+        name: "",
+        update_time: "",
+        order: "",
+        start: "",
+        end: "",
+        main_name: "",
+        home_name: "",
+        checklist_name: "",
+        layout_name: "",
+        media_name: ""
+    });
     const [state, setState] = useState({
         stb: ""
     });
@@ -41,6 +59,11 @@ function Schedule(){
             stb: stb_sn_func
         })
         // console.log(stb_sn_func);
+    }
+
+    function checkDataValue(){
+        console.log(STBInfo);
+        console.log(SCHEDULEInfo);
     }
 
     function onDrop(files){
@@ -84,20 +107,22 @@ function Schedule(){
     return (
         <div style = {{maxWidth:'300px', margin:'2erm auto'}}>
             <div style = {{textAlign:'center', marginBottom:'2rem'}}>
+                <Button type="primary" onClick={checkDataValue}>데이터 값 확인</Button>
                 <Title level={2}>스케줄 작성</Title><hr/>
                 <h3>배포 이름</h3><Input id="distribution" placeholder="배포 이름" onChange={handleChange} style = {{width:'200px'}}></Input><br/><hr/>
                 {/* 세탑 목록 -> 고른 세탑 시리얼 props 로 하위 선택지에 저장(하나 택 하면 연관성 있는 정보들만 보이게) 
                 -> 하위 데이터들은 visible x 로 */}
                 <h2>세탑 목록</h2>
-                <StbList stb_select={stb_select} />
+                <StbList stb_select={stb_select} setSTBInfo={setSTBInfo} />
                 <h3>스케줄 목록</h3>
-                <ScheduleList stb_sn={state.stb} />
-                <div>또는 스케줄 등록하기 = 주석</div>
+                <ScheduleList stb_sn={state.stb} setSCHEDULEInfo={setSCHEDULEInfo} />
+                <Button type="primary">배포</Button>
+                <div>이 밑으로는 depth2 이상</div>
                 <hr/>
-                {/* <h3>스케줄 이름</h3><Input id="schedule" placeholder="스케줄 이름" onChange={handleChange} style = {{width:'200px'}}></Input><br/><hr/> */}
-                {/* <h3>스케줄 날짜</h3><Input id="schedule_date" placeholder="스케줄 날짜" onChange={handleChange} style = {{width:'200px'}}></Input><br/><br/> */}
-                {/* <h3>스케줄 시작 시간</h3><Input id="schedule_start" placeholder="스케줄 시작 시간" onChange={handleChange} style = {{width:'200px'}}></Input><br/><hr/> */}
-                {/* <h3>스케줄 종료 시간</h3><Input id="schedule_end" placeholder="스케줄 종료 시간" onChange={handleChange} style = {{width:'200px'}}></Input><br/><hr/> */}
+                <h3>스케줄 이름</h3><Input id="schedule" placeholder="스케줄 이름" onChange={handleChange} style = {{width:'200px'}}></Input><br/><hr/>
+                <h3>스케줄 날짜</h3><Input id="schedule_date" placeholder="스케줄 날짜" onChange={handleChange} style = {{width:'200px'}}></Input><br/><br/>
+                <h3>스케줄 시작 시간</h3><Input id="schedule_start" placeholder="스케줄 시작 시간" onChange={handleChange} style = {{width:'200px'}}></Input><br/><hr/>
+                <h3>스케줄 종료 시간</h3><Input id="schedule_end" placeholder="스케줄 종료 시간" onChange={handleChange} style = {{width:'200px'}}></Input><br/><hr/>
                 
                 <h3>대기화면 파일</h3>
                 <Form onSubmit>
