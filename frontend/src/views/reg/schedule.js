@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import Dropzone from 'react-dropzone';
 import { Typography, Button, Form, message, Input } from 'antd'; 
-import plus from '../../plus.png';
 import StbList from '../List/StbList/StbList';
 import ScheduleList from '../List/ScheduleList/ScheduleList';
 import server_jso from '../../server.json'
@@ -67,8 +65,7 @@ function Schedule(){
             "schedule": SCHEDULEInfo
         }
         const res = await axios.post(backend_url+"/distribution_schedule/register", body);
-        if(res.body.result == "ok"){
-
+        if(res.data.result == "ok"){
             return "스케줄 등록을 완료하였습니다.";
         } else {
 
@@ -81,50 +78,10 @@ function Schedule(){
         console.log(state);
         console.log(STBInfo);
         console.log(SCHEDULEInfo);
-        distribution();
+        // distribution();
         console.log("=====");
     }
 
-    function onDrop(files){
-        let formData = new FormData();
-        const config = {
-            header: {'content-type' : 'multipart/form-data'}
-        }
-        formData.append("file", files[0]);
-
-        // console.log(files);
-
-        axios.post(backend_url+"/meditation/upload", formData, {config})
-            .then((response) => {
-                if(response.data.success){
-                    // console.log(response.data) 
-                    let variable = {
-                        filePath: response.data.filePath,
-                        fileName: response.data.fileName
-                    }
-                    
-                    // setFileName 추가 필요
-                    setFileName(response.data.fileName);
-
-
-                    alert("서버에 저장 완료")
-                    // response.data의 filePath, fileName 정보 가지고 있다가 submit 하면 같이 보내기(폼은 file_path, file_name 으로)
-                    
-                    axios.post(backend_url+'/meditation/thumbnail', variable)
-                        .then(response => {
-                            if (response.data.success) {
-                                // console.log(response.data); 
-                                setThumbnail(response.data.thumbsFilePath)
-                            } else {
-                                alert('Failed to make the thumbnails');
-                            }
-                        });
-
-                } else {
-                    alert("Failed to save the video in server");
-                }
-            })
-    }
     return (
         <div style = {{maxWidth:'450px', margin:'2erm auto'}}>
             <div style = {{textAlign:'center', marginBottom:'2rem'}}>
@@ -140,41 +97,7 @@ function Schedule(){
                 <h3>스케줄 시작 시간</h3><Input id="schedule_start" placeholder="스케줄 시작 시간" onChange={handleChange} style = {{width:'200px'}}></Input><br/><hr/>
                 <h3>스케줄 종료 시간</h3><Input id="schedule_end" placeholder="스케줄 종료 시간" onChange={handleChange} style = {{width:'200px'}}></Input><br/><hr/>
                 
-                <h3>대기화면 파일</h3>
-                <Form onSubmit>
-                    <div style = {{display:'flex', justifyContent:'space-between'}}>
-                        <Dropzone
-                            onDrop={onDrop}
-                            multiple={false}
-                            maxSize={800000000}>
-                                {({ getRootProps, getInputProps}) => (
-                                <div style = {{width:'200px', height:'240px', border:'1px solid lightgray', display:'flex', alignItems:'center', 
-                                justifyContent:'center'}} {...getRootProps()}>
-                                    <input {...getInputProps()} />
-                                    <img style={{width:"50px"}} src={plus} />
-                                </div>
-                            )}
-                        </Dropzone>
-                        {Thumbnail && 
-                            <div style = {{width:'200px'}}>
-                                <img src= {`${backend_url}${Thumbnail}`} alt= "thumbnail" />
-                            </div>
-                        }
-                    </div>
-                    <br/>
-                    <br/>
-                    <h3>대기화면 이름</h3>
-                    <label>제목: {FileName}</label>
-                    <Input
-                        onChange = {onTitleChange}
-                        value = {VideoTitle}
-                    /><br/><br/>
-                    <Input id="main" placeholder="대기화면 이름" onChange={handleChange} style = {{width:'200px'}}></Input><br/><br/>
-                    <Button type="primary" size="large" onClick >
-                        등록
-                    </Button>
-                    {/* 선택 or 생성 */}
-                </Form><br/>
+                
                 <h3>홈 화면 선택</h3><Input id="home" placeholder="홈 화면 선택" onChange={handleChange} style = {{width:'200px'}}></Input><br/><br/>
                 <h3>홈 화면 이름</h3><Input id="" placeholder="홈 화면 이름" onChange={handleChange} style = {{width:'200px'}}></Input><br/><br/>
                 <h3>의료진 선택</h3><Input id="staff" placeholder="의료진 선택" onChange={handleChange} style = {{width:'200px'}}></Input>

@@ -11,7 +11,6 @@ const site = JSON.parse(site_info_json);
 let moment = require('moment');
 require('moment-timezone');
 moment.tz.setDefault("Asia/Seoul");
-let time = moment().format('YYYY-MM-DD HH:mm:ss');
 
 router.get('/', async(req, res) =>{
     try{
@@ -50,23 +49,18 @@ router.get('/', async(req, res) =>{
 //영상 저장 부분은 router 따로 해서 등록하고, 밑의 / 에서 파일 네임과 경로를 fs를 통해 가져와서 DB 에 저장하자.
 router.post('/', async(req, res) =>{ //명상 영상 등록
     try{
+        console.log("meditation register");
         let result = {};
         let name = req.body.name;
-        let update_time = time;
+        let update_time = moment().format('YYYY-MM-DD HH:mm:ss');
         let stb_sn = req.body.stb_sn
         let start = req.body.start;
         let end = req.body.end;
         let user = "admin"; //req.body.user;
         let file_name = req.body.file_name;
-        let file_name_save = update_time.replace(" ", "_")+"_"+file_name;
         let file_ext = path.extname(req.body.file_name);
         let file_path = req.body.file_path;
-        let file_url = site.base_server_backend_loacal_url+"/contents/meditation/"+file_name_save;
-
-        // console.log(file_name_save);
-        // console.log(file_ext);
-        // console.log(file_path);
-        // console.log(file_url);
+        let file_url = site.base_server_backend_loacal_url+"/uploads/contents/meditation/"+file_name;
 
         function stb_query(){
             return new Promise((resolve, reject)=>{
@@ -152,6 +146,7 @@ router.post('/', async(req, res) =>{ //명상 영상 등록
 //영상 저장
 router.post('/upload', async(req, res)=> {
     try {
+        let time = moment().format('YYYY-MM-DD HH:mm:ss');
         var storage = multer.diskStorage({
             destination: (req, file, cb) => {
                 cb(null, site.base_server_document+"/uploads/contents/meditation/")
@@ -187,6 +182,11 @@ router.post('/upload', async(req, res)=> {
 router.post('/thumbnail', async(req, res)=> {
     try {
         // console.log(req.body);
+        let fileExt = path.extname(req.body.fileName);
+        if(fileExt !== ".mp4") {
+            res.json({success: false});
+            return 0;
+        }
         let thumbsFilePath = "";
         let fileDuration = "";
 
@@ -208,10 +208,9 @@ router.post('/thumbnail', async(req, res)=> {
                 return res.json({ success: true, thumbsFilePath: thumbsFilePath, fileDuration: fileDuration})
             })
             .screenshots({
-                // Will take screens at 20%, 40%, 60% and 80% of the video
-                count: 3,
+                count: 1,
                 folder: site.base_server_document+"/uploads/contents/meditation/thumbnails/",
-                size:'200x240',
+                size:'450x240',
                 // %b input basename ( filename w/o extension )
                 filename:'thumbnail-%b.png'
             });
