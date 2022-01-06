@@ -5,7 +5,7 @@ import StbList from '../List/StbList/StbList';
 import MainList from '../List/MainList/MainList';
 import server_jso from '../../server.json'
 import { Typography, Button, Form, message, Input } from 'antd'; 
-import "antd/dist/antd.css";
+import "antd/dist/antd.min.css";
 
 const backend_url = server_jso.base_url;
 const { Title } = Typography;

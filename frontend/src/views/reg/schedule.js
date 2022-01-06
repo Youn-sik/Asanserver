@@ -4,7 +4,7 @@ import { Typography, Button, Form, message, Input } from 'antd';
 import StbList from '../List/StbList/StbList';
 import ScheduleList from '../List/ScheduleList/ScheduleList';
 import server_jso from '../../server.json'
-import "antd/dist/antd.css";
+import "antd/dist/antd.min.css";
 
 const backend_url = server_jso.base_url;
 const { Title } = Typography;

@@ -6,7 +6,7 @@ import { Typography, Button, Form, message, Input } from 'antd';
 import {UploadOutlined} from '@ant-design/icons';
 import StbList from '../List/StbList/StbList';
 import server_json from '../../server.json'
-import "antd/dist/antd.css";
+import "antd/dist/antd.min.css";
 
 const backend_url = server_json.base_url;
 const { Title } = Typography;
