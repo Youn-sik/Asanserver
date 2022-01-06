@@ -145,7 +145,7 @@ CREATE TABLE `g_distribution` (
 
 LOCK TABLES `g_distribution` WRITE;
 /*!40000 ALTER TABLE `g_distribution` DISABLE KEYS */;
-INSERT INTO `g_distribution` VALUES (1,'KSQ19880205','first distribution','2022-01-03 13:07:00'),(2,'KSQ19880201','second distribution','2022-01-04 12:55:33'),(3,'KSQ19880207','third distribution','2020-11-08 10:10:10');
+INSERT INTO `g_distribution` VALUES (1,'KSQ19880205','first distribution','2022-01-05 13:25:52'),(2,'KSQ19880201','second distribution','2022-01-04 12:55:33'),(3,'KSQ19880207','third distribution','2020-11-08 10:10:10');
 /*!40000 ALTER TABLE `g_distribution` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -342,7 +342,7 @@ CREATE TABLE `g_main` (
 
 LOCK TABLES `g_main` WRITE;
 /*!40000 ALTER TABLE `g_main` DISABLE KEYS */;
-INSERT INTO `g_main` VALUES (1,'first main','2022-01-03 13:07:00',1,'KSQ19880205'),(2,'second main','2022-01-03 17:50:27',2,'KSQ19880201'),(3,'third main','2020-11-11 11:11:11',3,'KSQ19880207');
+INSERT INTO `g_main` VALUES (1,'first main','2022-01-06 14:25:36',1,'KSQ19880205'),(2,'second main','2022-01-03 17:50:27',2,'KSQ19880201'),(3,'third main','2022-01-06 14:25:55',3,'test');
 /*!40000 ALTER TABLE `g_main` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -361,14 +361,13 @@ CREATE TABLE `g_main_list` (
   `end` varchar(30) NOT NULL,
   `g_main_order` int(11) DEFAULT NULL,
   `user` varchar(30) NOT NULL,
-  `file_path` varchar(90) NOT NULL,
-  `file_name` varchar(60) NOT NULL,
+  `file_path` varchar(200) NOT NULL,
+  `file_name` varchar(100) NOT NULL,
   `file_ext` varchar(30) NOT NULL,
-  `file_url` varchar(90) NOT NULL,
-  `register_time` datetime DEFAULT NULL,
+  `file_url` varchar(200) NOT NULL,
   PRIMARY KEY (`uid`),
   KEY `sch_mai` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -377,7 +376,7 @@ CREATE TABLE `g_main_list` (
 
 LOCK TABLES `g_main_list` WRITE;
 /*!40000 ALTER TABLE `g_main_list` DISABLE KEYS */;
-INSERT INTO `g_main_list` VALUES (1,'first main list','2020-11-09 10:10:10','08:00','10:00',1,'admin','/home/asan/asan/backend/uploads/contents/meditation/2021-12-29_15:02:10_movie.mp4','movie.mp4','.mp4','http://172.16.41.233:3000/uploads/contents/meditaion/2021-12-29_15:02:10_movie.mp4','2021-12-31 09:00:00'),(2,'second main list','2020-11-08 10:10:10','09:00','11:00',2,'admin','/home/asan/asan/backend/uploads/contents/meditation/2021-12-29_15:02:10_movie.mp4','movie.mp4','.mp4','http://172.16.41.233:3000/uploads/contents/meditaion/2021-12-29_15:02:10_movie.mp4','2021-12-31 09:00:00');
+INSERT INTO `g_main_list` VALUES (17,'토끼 영상','2022-01-05 17:21:43','08:00','09:00',1,'admin','/home/asan/asan/backend/uploads/contents/meditation/2022-01-05_17:21:37_movie.mp4','2022-01-05_17:21:37_movie.mp4','.mp4','http://172.16.41.233:3000/uploads/contents/meditation/2022-01-05_17:21:37_movie.mp4'),(20,'토끼 영상','2022-01-05 17:30:53','08:00','09:00',2,'admin','/home/asan/asan/backend/uploads/contents/meditation/2022-01-05_17:30:44_movie.mp4','2022-01-05_17:30:44_movie.mp4','.mp4','http://172.16.41.233:3000/uploads/contents/meditation/2022-01-05_17:30:44_movie.mp4'),(21,'토끼 영상','2022-01-05 17:31:50','09:00','10:00',1,'admin','/home/asan/asan/backend/uploads/contents/meditation/2022-01-05_17:31:44_movie.mp4','2022-01-05_17:31:44_movie.mp4','.mp4','http://172.16.41.233:3000/uploads/contents/meditation/2022-01-05_17:31:44_movie.mp4'),(22,'토끼 영상','2022-01-05 17:34:35','09:00','10:00',2,'admin','/home/asan/asan/backend/uploads/contents/meditation/2022-01-05_17:34:27_movie.mp4','2022-01-05_17:34:27_movie.mp4','.mp4','http://172.16.41.233:3000/uploads/contents/meditation/2022-01-05_17:34:27_movie.mp4'),(24,'토끼 영상','2022-01-06 14:17:23','08:00','10:00',3,'admin','/home/asan/asan/backend/uploads/contents/meditation/2022-01-06_14:17:06_movie.mp4','2022-01-06_14:17:06_movie.mp4','.mp4','http://172.16.41.233:3000/uploads/contents/meditation/2022-01-06_14:17:06_movie.mp4');
 /*!40000 ALTER TABLE `g_main_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -580,7 +579,7 @@ CREATE TABLE `g_schedule` (
 
 LOCK TABLES `g_schedule` WRITE;
 /*!40000 ALTER TABLE `g_schedule` DISABLE KEYS */;
-INSERT INTO `g_schedule` VALUES (1,'KSQ19880205','first schedule','2022-01-03 13:07:00',1,'08:00','10:00','first main','first home','first checklist','first layout','first media'),(2,'KSQ19880205','second schedule','2022-01-03 13:07:00',2,'10:00','11:00','first main','first home','first checklist','first layout','first media'),(3,'KSQ19880201','first schdule','2022-01-05 09:02:19',3,'10:00','12:00','second main','second home','second checklist','second layout','second media'),(4,'KSQ19880201','second schdule','2022-01-05 09:02:19',4,'12:00','13:00','second main','second home','second checklist','second layout','second media'),(5,'KSQ19880205','third schdule','2022-01-03 13:07:00',5,'11:00','12:00','first main','first home','first checklist','first layout','first media'),(6,'KSQ19880205','4th schedule','2022-01-03 13:07:00',6,'14:00','16:00','first main','first home','first checklist','first layout','first media'),(7,'KSQ19880201','third schedule','2022-01-05 09:02:19',7,'15:00','16:00','second main','second home','second checklist','second layout','second media'),(8,'KSQ19880201','4th schedule','2022-01-05 09:02:19',7,'17:00','18:00','second main','second home','second checklist','second layout','second media');
+INSERT INTO `g_schedule` VALUES (1,'KSQ19880205','first schedule','2022-01-06 14:25:36',1,'08:00','10:00','first main','first home','first checklist','first layout','first media'),(2,'KSQ19880205','second schedule','2022-01-06 14:25:36',2,'10:00','11:00','first main','first home','first checklist','first layout','first media'),(3,'KSQ19880201','first schdule','2022-01-05 09:02:19',3,'10:00','12:00','second main','second home','second checklist','second layout','second media'),(4,'KSQ19880201','second schdule','2022-01-05 09:02:19',4,'12:00','13:00','second main','second home','second checklist','second layout','second media'),(5,'KSQ19880205','third schdule','2022-01-06 14:25:36',5,'11:00','12:00','first main','first home','first checklist','first layout','first media'),(6,'KSQ19880205','4th schedule','2022-01-06 14:25:36',6,'14:00','16:00','first main','first home','first checklist','first layout','first media'),(7,'KSQ19880201','third schedule','2022-01-05 09:02:19',7,'15:00','16:00','second main','second home','second checklist','second layout','second media'),(8,'KSQ19880201','4th schedule','2022-01-05 09:02:19',8,'17:00','18:00','second main','second home','second checklist','second layout','second media');
 /*!40000 ALTER TABLE `g_schedule` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -626,7 +625,7 @@ CREATE TABLE `g_stb` (
   `update_time` datetime DEFAULT NULL,
   `network_status` enum('Y','N') DEFAULT 'N',
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -635,7 +634,7 @@ CREATE TABLE `g_stb` (
 
 LOCK TABLES `g_stb` WRITE;
 /*!40000 ALTER TABLE `g_stb` DISABLE KEYS */;
-INSERT INTO `g_stb` VALUES (1,'KSQ19880205','KSQ19880204','2022-01-03 18:20:43','N'),(2,'KSQ19880201','KSQ19880202','2022-01-03 16:43:33','N');
+INSERT INTO `g_stb` VALUES (1,'KSQ19880205','KSQ19880204','2022-01-03 18:20:43','N'),(2,'KSQ19880201','KSQ19880202','2022-01-03 16:43:33','N'),(3,'test','test','2021-01-03 18:18:18','Y');
 /*!40000 ALTER TABLE `g_stb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -697,30 +696,6 @@ LOCK TABLES `g_user` WRITE;
 INSERT INTO `g_user` VALUES (2,'cho','Bc0dqmyw7BLeRZiUv1rDkT4i2GBIDxvyAtMx6787KRnhxq6Qrk4KyjLNC+Yr3VBQADNLteIUWo6JFnjnFLK/Lw==','9exMaVA2elTJjxmjwzAT2CO5DQZ+jFnOHCYofhgwZkFQCbs4FeINzOPocDvXaVBArsHvUa46FFwCCnQvaqW4XA==','조윤식','교수','외과','2021-11-15 11:55:42'),(3,'cho','IN3S/3dI3W7QgLopsQUyTQcyOF3Vb0Klii10VhvwM8GkB8KVrrrEl5cJUPXnzf5IM+sKUlbMKLVjjSM1j5FzSA==','eebACgIuzKknGHbixqnd0AZwv6gdU6Ra/20DPufSuO7+Gr2x7lUqjmB0DmMj9VUK0nbG4RW+6g36Y01R1Ogtlw==','조제현','인턴','외과','2021-11-15 11:56:21'),(4,'cho','+HsBiOAyf+cgD0Oefpnwkmno6fEW/iCmBY7tU0ErcpJI0YQmLrwkqZDdP19ZoOw8T4R/Z2EqyeZXlqJI3jMBOg==','el2gNVmrUbj7GtsOk8F+MjIT79P/8gmZZvq2yx7Sjm7XCyvl56ozuNH2FALiQgm9732c4JV7X4ISUKTivRxYig==','최현주','교수','내과','2021-11-15 11:56:37'),(5,'cho','oHPwcCeigDmz7nJOiv6olrQozOy3fmRVH1eoUoqBegu9nWhTaH4O0Jl1DlYt2bStBhNQKX8wYbxVYA3WAwSfqQ==','02kz6kPWGSMw/TwYLeL31uzML7IGk56zKN3wWjZsEuQfnI7+gP6bkpE+TvrFa/21pJLYwL9EQxxBH9AMHHuNdQ==','최무안','인턴','내과','2021-11-15 11:56:57');
 /*!40000 ALTER TABLE `g_user` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `test`
---
-
-DROP TABLE IF EXISTS `test`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `test` (
-  `uid` int(11) DEFAULT NULL,
-  `name` varchar(60) DEFAULT NULL,
-  `age` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `test`
---
-
-LOCK TABLES `test` WRITE;
-/*!40000 ALTER TABLE `test` DISABLE KEYS */;
-INSERT INTO `test` VALUES (1,' 아무개',23),(2,'홍길동',24),(3,'김복선',31),(4,'김분선',21),(5,'김상소',21),(6,'김신고',52),(7,'김복상',41),(8,'김대성',23),(9,'김대수',52),(10,'김대신',12),(11,'김두연',42),(12,'김두안',32),(13,'김두희',35),(14,'김서희',26),(15,'김세희',12),(16,'김세은',10),(17,'김세흔',42),(18,'최대연',12),(19,'최태현',32),(20,'최윤정',12),(21,'최은정',21),(22,'최은서',30),(23,'조안지',20),(24,'조안서',21),(25,'조연서',15),(26,'조랑말',16),(27,'얼룩말',4),(28,'호랑이',6),(29,'고양이',8),(30,'강아지',9),(31,'아무개',23),(32,'홍길동',24),(33,'김복선',31),(34,'김분선',21),(35,'김상소',21),(36,'김신고',52),(37,'김복상',41),(38,'김대성',23),(39,'김대수',52),(40,'김대신',12),(41,'김두연',42),(42,'김두안',32),(43,'김두희',35),(44,'김서희',26),(45,'김세희',12),(46,'김세은',10),(47,'김세흔',42),(48,'최대연',12),(49,'최태현',32),(50,'최윤정',12),(51,'최은정',21),(52,'최은서',30),(53,'조안지',20),(54,'조안서',21),(55,'조연서',15),(56,'조랑말',16),(57,'얼룩말',4),(58,'호랑이',6),(59,'고양이',8),(60,'강아지',9);
-/*!40000 ALTER TABLE `test` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -731,4 +706,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-05  0:14:43
+-- Dump completed on 2022-01-06  5:51:55

@@ -37,7 +37,7 @@ router.get('/:stb_sn', async(req, res) =>{
                     schedule_obj.layout_name = schedule[i].layout_name;
                     schedule_obj.media_name = schedule[i].media_name;
                     schedule_arr.push(schedule_obj);
-                } 
+                }
                 
                 result = {
                     result: "ok",
@@ -57,4 +57,4 @@ router.get('/:stb_sn', async(req, res) =>{
     }
 })
 
-module.exports = router; 
+module.exports = router;

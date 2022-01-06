@@ -396,9 +396,7 @@ module.exports = {
                             result = {
                                 "stb_sn": stb_sn,
                                 "result": "fail",
-                                "value": {
-                                    "scheduler":[{}]
-                                }
+                                "value": [{}]
                             }
                             reject(result)
                         }
@@ -406,48 +404,76 @@ module.exports = {
                 })
             }
 
-            function main_query(main_sub_stb_sn){
-                return new Promise((resolve, reject)=>{
-                    db.query('select g_main.stb_sn, g_main.name as main_name, g_main.update_time as main_update_time, g_surgery.name as list_name, '+
-                    'g_surgery.update_time as list_update_time, g_surgery.order as list_order, g_surgery.start as list_start, g_surgery.end as list_end '+
-                    'from g_main inner join g_surgery on g_main.order = g_surgery.g_main_home_order where g_main.stb_sn = ? or g_main.stb_sn = ?',
-                    main_sub_stb_sn, (err, stb)=> {
-                        // console.log(stb);
-                        if(err) console.log(err);
-                        if(stb.length != 0){
+            // function main_query(main_sub_stb_sn){
+            //     return new Promise((resolve, reject)=>{
+            //         db.query('select g_main.stb_sn, g_main.name as main_name, g_main.update_time as main_update_time, g_surgery.name as list_name, '+
+            //         'g_surgery.update_time as list_update_time, g_surgery.order as list_order, g_surgery.start as list_start, g_surgery.end as list_end '+
+            //         'from g_main inner join g_surgery on g_main.order = g_surgery.g_main_home_order where g_main.stb_sn = ? or g_main.stb_sn = ?',
+            //         main_sub_stb_sn, (err, stb)=> {
+            //             // console.log(stb);
+            //             if(err) console.log(err);
+            //             if(stb.length != 0){
         
-                            let surgery = [];
-                            for(let i=0; i<stb.length; i++){
-                                let surgery_list = new Object();
-                                surgery_list.name = stb[i].list_name;
-                                surgery_list.update_time = stb[i].list_update_time;
-                                surgery_list.order = stb[i].list_order;
-                                surgery_list.start = stb[i].list_start;
-                                surgery_list.end = stb[i].list_end;
-                                surgery.push(surgery_list);
-                            }
+            //                 let surgery = [];
+            //                 for(let i=0; i<stb.length; i++){
+            //                     let surgery_list = new Object();
+            //                     surgery_list.name = stb[i].list_name;
+            //                     surgery_list.update_time = stb[i].list_update_time;
+            //                     surgery_list.order = stb[i].list_order;
+            //                     surgery_list.start = stb[i].list_start;
+            //                     surgery_list.end = stb[i].list_end;
+            //                     surgery.push(surgery_list);
+            //                 }
         
-                            result = { 
-                                "stb_sn": stb_sn,
-                                "name": stb[0].main_name,
-                                "update_time": stb[0].main_update_time,
-                                "result": 'ok',
-                                "value": surgery
-                            }
-                            resolve(main_sub_stb_sn)
-                        } else {
-                            result = {
-                                "stb_sn": stb_sn,
-                                "result": "fail",
-                                "value": [{
+            //                 result = { 
+            //                     "stb_sn": stb_sn,
+            //                     "name": stb[0].main_name,
+            //                     "update_time": stb[0].main_update_time,
+            //                     "result": 'ok',
+            //                     "value": surgery
+            //                 }
+            //                 resolve(main_sub_stb_sn)
+            //             } else {
+            //                 result = {
+            //                     "stb_sn": stb_sn,
+            //                     "result": "fail",
+            //                     "value": [{
                                     
-                                }]
-                            }
-                            reject(result)
-                        }
+            //                     }]
+            //                 }
+            //                 reject(result)
+            //             }
                         
+            //         })
+            //     })
+            // }
+
+            function main_query(main_sub_stb_sn){
+                return new Promise((resolve, reject)=> {
+                    db.query('select g_main.stb_sn, g_main.name, g_main.update_time, g_main_list.file_url from g_main_list inner join g_main '+
+                    'on g_main.order = g_main_list.g_main_order where g_main.stb_sn = ? or g_main.stb_sn = ?', main_sub_stb_sn, (err, main)=> {
+                        if(err) console.log(err);
+                        // console.log(main);
+                        if(main.length != 0){
+                            let main_list = [];
+                            for(let i=0; i<main.length; i++){
+                                let main_list_obj = new Object();
+                                main_list_obj.type = "video";
+                                main_list_obj.file_url = main[i].file_url
+                                main_list.push(main_list_obj);
+                            }
+
+                            result = {
+                                "stb": main[0].stb_sn,
+                                "name": main[0].name,
+                                "update_time": main[0].update_time,
+                                "result": "ok",
+                                "value": main_list
+                            }
+                            resolve(result);
+                        }
                     })
-                })
+                });
             }
 
             function main_get_name_query(main_sub_stb_sn){
@@ -503,7 +529,7 @@ module.exports = {
                         resolve(main_sub_stb_sn);
                     })
                 })
-            }
+            } 
 
             stb_query()
             .then((main_sub_stb_sn)=> {

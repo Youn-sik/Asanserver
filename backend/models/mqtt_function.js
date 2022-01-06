@@ -35,4 +35,9 @@ module.exports = {
         })
     }
 
-}
+}String();
+        let json = JSON.parse(context);
+        console.log('json: ', json)
+        fn.user_name_find(json);
+    }
+})

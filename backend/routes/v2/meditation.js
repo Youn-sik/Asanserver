@@ -7,6 +7,11 @@ const multer = require('multer');
 const ffmpeg = require('fluent-ffmpeg');
 const site_info_json = fs.readFileSync(path.join(__dirname, "../../cloud44.json"));
 const site = JSON.parse(site_info_json);
+const client = require('../../mqtt/mqtt_load');
+
+client.on('connect', () => {
+    console.log('MQTT Connected')
+})
 
 let moment = require('moment');
 require('moment-timezone');
@@ -46,6 +51,7 @@ router.get('/', async(req, res) =>{
         res.status(400).send({err:"잘못된 형식 입니다."})
     }
 })
+
 //영상 저장 부분은 router 따로 해서 등록하고, 밑의 / 에서 파일 네임과 경로를 fs를 통해 가져와서 DB 에 저장하자.
 router.post('/', async(req, res) =>{ //명상 영상 등록
     try{
@@ -54,8 +60,8 @@ router.post('/', async(req, res) =>{ //명상 영상 등록
         let name = req.body.name;
         let update_time = moment().format('YYYY-MM-DD HH:mm:ss');
         let stb_sn = req.body.stb_sn
-        let start = req.body.start;
-        let end = req.body.end;
+        let start = "08:00";
+        let end = "10:00";
         let user = "admin"; //req.body.user;
         let file_name = req.body.file_name;
         let file_ext = path.extname(req.body.file_name);
@@ -226,48 +232,140 @@ router.post('/distribution', async(req, res)=> {
         // console.log(req.body);
         let result = {};
         let values = [];
-        let stb_sn =req.body.values[0].stb_sn;
-        let name = req.body.values[0].name;
-        let update_time = req.body.values[0].update_time;
+        let stb_sn = req.body.values[0].stb_sn;
+        let file_name = req.body.values[0].file_name;
+        let time = moment().format('YYYY-MM-DD HH:mm:ss');
         let type;
         let file_url;
 
-        function meditation_dis(){
+        function stb_query(){
             return new Promise((resolve, reject)=>{
-                db.query('select * from g_main_list where update_time = ? and name = ?', [update_time, name], (err, main_list)=> {
+                db.query('select * from g_stb where main_stb_sn = ? or sub_stb_sn = ?', [stb_sn, stb_sn], (err, stb)=> {
+                    if(err) console.log(err);
+                    if(stb.length != 0){
+                        let main_sub_stb_sn = [];
+                        main_sub_stb_sn.push(stb[0].main_stb_sn);
+                        main_sub_stb_sn.push(stb[0].sub_stb_sn);
+                        resolve(main_sub_stb_sn)
+                    } else {
+                        result = {
+                            "stb_sn": stb_sn,
+                            "result": "fail",
+                            "value": [{}]
+                        }
+                        reject(result)
+                    }
+                })
+            })
+        }
+
+        function main_get_name_query(main_sub_stb_sn){
+            return new Promise((resolve, reject)=>{
+                db.query('select * from g_main where stb_sn = ? or stb_sn = ?', main_sub_stb_sn, (err, stb)=> {
+                    // console.log(stb);
+                    if(err) {
+                        console.log(err);
+                        result = {
+                            "stb_sn": stb_sn,
+                            "result": "fail",
+                            "value": [{}]
+                        }
+                        reject(result)
+                    }
+                    resolve([...main_sub_stb_sn, stb[0].name]);
+                })
+            })
+        }
+
+        function schedule_update_time_query(main_sub_stb_sn_and_main_name){
+            return new Promise((resolve, reject)=>{
+                db.query('update g_schedule set update_time = ? where main_name = ?',[time, main_sub_stb_sn_and_main_name[2]], (err, stb)=> {
+                    // console.log(stb);
+                    if(err) {
+                        console.log(err);
+                        result = {
+                            "stb_sn": stb_sn,
+                            "result": "fail",
+                            "value": [{}]
+                        }
+                        reject(result)
+                    }
+                    let main_sub_stb_sn = [main_sub_stb_sn_and_main_name[0], main_sub_stb_sn_and_main_name[1]];
+                    resolve(main_sub_stb_sn);
+                })
+            })
+        }
+
+        function main_update_time_query(main_sub_stb_sn){
+            return new Promise((resolve, reject)=>{
+                db.query('update g_main set update_time = ? where stb_sn = ? or stb_sn = ?',[time, ...main_sub_stb_sn], (err, stb)=> {
+                    // console.log(stb);
+                    if(err) {
+                        console.log(err);
+                        result = {
+                            "stb_sn": stb_sn,
+                            "result": "fail",
+                            "value": [{}]
+                        }
+                        reject(result)
+                    }
+                    resolve();
+                })
+            })
+        }
+
+        function main_list_distribution_query(file_name){
+            return new Promise((resolve, reject)=>{
+                db.query('select g_main.stb_sn, g_main.name, g_main.update_time, g_main_list.file_url from g_main_list inner join g_main '+
+                'on g_main.order = g_main_list.g_main_order where g_main_list.file_name = ?', file_name, (err, main_list)=> {
                     if(err) console.log(err);
                     // console.log(main_list);
-
                     if(main_list.length != 0){
-                        file_url = (main_list[0].file_url);
-                        let type_tmp = main_list[0].file_ext;
-                        if(type_tmp == '.mp4' || type_tmp == '.mov') type = ("video");
-                        else if(type_tmp == '.jpg' || type_tmp == '.jpeg' || type_tmp == '.jfif' || type_tmp == '.png' || type_tmp == '.gif') type = ("image");
-                        else if(type_tmp == '.mp3') type = ("bgm")
-
-                        values.push({
+                        result = {
                             "stb_sn": stb_sn,
-                            "name": name,
-                            "update_time": update_time,
-                            "type": type,
-                            "url": file_url
-                        })
-                        console.log(values);
+                            "name": main_list[0].name,
+                            "update_time": main_list[0].update_time,
+                            "result": "ok",
+                            "value": [{
+                                "type": "video",
+                                "file_url": main_list[0].file_url
+                            }]
+                        }
+                        resolve(result);
                     } else {
-                        
-                    }          
-                    
-                })
-            });
+                        result = {
+                            "stb_sn": stb_sn,
+                            "result": "fail",
+                            "value": [{}]
+                        }
+                        reject(result)
+                    }
+                });
+            })
         }
-        
-        meditation_dis()
-        .then(()=> {
-            result = {
-                "values": values
-            }
-            console.log(result);
+
+        stb_query()
+        .then((main_sub_stb_sn)=> {
+            return main_get_name_query(main_sub_stb_sn);
         })
+        .then((main_sub_stb_sn_and_main_name)=> {
+            return schedule_update_time_query(main_sub_stb_sn_and_main_name);
+        })
+        .then((main_sub_stb_sn)=> {
+            return main_update_time_query(main_sub_stb_sn);
+        })
+        .then(()=> {
+            return main_list_distribution_query(file_name);
+        })
+        .then(()=> {
+            // console.log((result)) 
+            res.send(result);
+            client.publish('/schedule/main/result/' + stb_sn, JSON.stringify(result), {qos:0, retain:false}, (err)=> {
+                if(err) console.log(err);
+            })
+        }).catch((reject)=> {
+            console.log(reject);
+        }) 
         
     } catch(err){
         res.status(400).send({err:"잘못된 형식 입니다."})
@@ -276,24 +374,24 @@ router.post('/distribution', async(req, res)=> {
 
 router.delete('/', async(req, res) =>{
     try{
+        // console.log(req.body);
         let result = {};
-        let update_time = req.body.update_time;
-        let name = req.body.name;
-
-        db.query('delete from g_main_list where update_time = ? and name = ?', [update_time, name], (err,main_list)=> {
+        let file_name = req.body.file_name;
+   
+        db.query('delete from g_main_list where file_name = ?', file_name, (err,main_list)=> {
             if(err) {
                 console.log(err);
                 result = {
                     result : "fail"
                 };
-                res.send(result)
-            }
-            // console.log(main_list);
-
-            result = {
-                result: "ok"
-            };
-            res.send(result);
+                res.send(result);
+            } else {
+                // console.log(main_list);
+                result = {
+                    result: "ok"
+                };
+                res.send(result);
+                }
         });
     } catch(err){
         res.status(400).send({err:"잘못된 형식 입니다."})

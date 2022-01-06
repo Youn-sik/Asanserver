@@ -34,6 +34,7 @@ const StbList = (props)=> {
                 update_time: rowData.update_time,
                 network_status: rowData.network_status
             });
+            props.setButtonDisplay(false); //세탑 지정-메인 지정-세탑 재 지정 시 버튼 안보이게(해당 세탑의 메인 지정 안된 상태) 
         }
         // console.log(checkedItems);
     }
@@ -44,7 +45,7 @@ const StbList = (props)=> {
             if(res.data.result == "ok"){
                 const _state = await res.data.values.map((rowData)=> (
                     {
-                        uid: rowData.uid,
+                        uid: rowData.uid, 
                         main_stb_sn: rowData.main_stb_sn,
                         sub_stb_sn: rowData.sub_stb_sn,
                         update_time: rowData.update_time,

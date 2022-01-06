@@ -33,7 +33,7 @@ router.get('/', async(req, res) =>{
                 result = {
                     result: "ok",
                     values: stb_arr
-                };
+                }; 
                 res.send(result);
             } else {
                 result = {
@@ -47,5 +47,5 @@ router.get('/', async(req, res) =>{
         res.status(400).send({err:"잘못된 형식 입니다."})
     }
 })
-
+ 
 module.exports = router;

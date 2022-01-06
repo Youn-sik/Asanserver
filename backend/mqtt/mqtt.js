@@ -1,4 +1,4 @@
-const client = require('./mqtt_load')
+const client = require('./mqtt_load');
 const fn = require('./mqtt_function');
 
 
@@ -8,7 +8,7 @@ moment.tz.setDefault("Asia/Seoul");
 // moment().format('YYYY-MM-DD HH:mm:ss');
 
 client.on('connect', () => {
-    console.log('Connected')
+    console.log('MQTT Connected')
     client.subscribe([
         '/operation/start/+',
         '/operation/start/result/+',
@@ -72,8 +72,7 @@ client.on('connect', () => {
     //     }
     // })
 
-    //==========================
-
+    //========================== 
     // client.publish('/login/KSQ19880205', JSON.stringify({"stb_sn": "KSQ19880205"}), {qos: 0, retain: false}), (err)=> {
     //     if(err) console.log(err);
     // }
@@ -90,9 +89,9 @@ client.on('connect', () => {
     //     if(err) console.log(err);
     // })
 
-    client.publish('/schedule/total/KSQ19880204', JSON.stringify({"stb_sn": "KSQ19880204"}), {qos: 0, retain: false}), (err)=> {
-        if(err) console.log(err);
-    }
+    // client.publish('/schedule/total/KSQ19880204', JSON.stringify({"stb_sn": "KSQ19880204"}), {qos: 0, retain: false}), (err)=> {
+    //     if(err) console.log(err);
+    // }
 
     // client.publish('/schedule/main/KSQ19880204', JSON.stringify({"stb_sn": "KSQ19880204"}), {qos: 0, retain: false}), (err)=> {
     //     if(err) console.log(err);
