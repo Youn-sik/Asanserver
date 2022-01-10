@@ -111,9 +111,9 @@ function Schedule(){
             })
     }
     return (
-        <div style = {{maxWidth:'450px', margin:'2erm auto'}}>
-            <div style = {{textAlign:'center', marginBottom:'2rem'}}>
-                <Title level={2}>대기화면 등록</Title>
+        <div style = {{maxWidth:'450px', margin:'auto'}}>
+            <div style = {{textAlign:'center', marginBottom:'2rem', border: '2px solid gold'}}><br/>
+                <Title level={2}>대기화면 등록</Title><br/>
                 <Form>
                     <Input
                         id="main_list_name" 
@@ -121,11 +121,11 @@ function Schedule(){
                         onChange={handleChange} 
                         style = {{width:'300px'}}
                     /><br/><br/>
-                    <StbList setSTBInfo={setSTBInfo} setButtonDisplay={setButtonDisplay} />
+                    <StbList setSTBInfo={setSTBInfo} setButtonDisplay={setButtonDisplay} /><br/>
                     <h3>동영상 파일 지정 후 사진이 로딩 될 때까지 기다려주세요.</h3>
                     {Loading && 
-                            <div style = {{width:'300px'}}>
-                                <div>파일 업로드 중 ...</div>
+                            <div style = {{color:'blue', fontSize:'30px', margin:'auto'}}>
+                                파일 업로드 중 ...
                             </div>
                     }
                     <div style = {{display:'flex', justifyContent:'space-between'}}>
@@ -142,7 +142,7 @@ function Schedule(){
                                 </div>
                             )}
                         </Dropzone>
-                    </div><br/><br/>
+                    </div><br/>
                         {Thumbnail && 
                             <div style = {{width:'300px'}}>
                                 <div>
@@ -168,7 +168,7 @@ function Schedule(){
                         }
                     </Link>
                 </Form><br/>
-            </div>
+            </div><br/>
         </div>
     );
 }

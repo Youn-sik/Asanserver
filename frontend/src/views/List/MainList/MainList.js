@@ -85,7 +85,7 @@ const MainList = (props)=> {
                         <div key={rowData.uid} style={{textAlign:'center'}}>
                             <label>
                                 <input name="main" type="checkbox" onChange={(e)=> {checkItemHandler(e, rowData)}} />
-                                <div>uid: {rowData.uid}</div>
+                                {/* <div>uid: {rowData.uid}</div> */}
                                 <div>stb_sn: {rowData.stb_sn}</div>
                                 <div>name: {rowData.name}</div>
                                 <div>update_time: {rowData.update_time}</div>

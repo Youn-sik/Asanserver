@@ -75,9 +75,9 @@ function Dash(){
     }
     
     return (
-        <div style = {{maxWidth:'450px', margin:'2erm auto'}}>
-            <div style = {{textAlign:'center', marginBottom:'2rem'}}>
-                <h1>대기화면 배포 페이지</h1>
+        <div style = {{maxWidth:'450px', margin:'auto'}}>
+            <div style = {{textAlign:'center', marginBottom:'2rem', border: '2px solid gold'}}><br/>
+                <Title level={2}>대기화면 배포 페이지</Title>
                 {/* <StbList setSTBInfo={setSTBInfo} setButtonDisplay={setButtonDisplay} /> */}
                 <StbList setSTBInfo={setSTBInfo} setButtonDisplay={setButtonDisplay} setMAINInfo={setMAINInfo} setCheckedItems={setCheckedItems} />
                 <MainList stb_sn={STBInfo.main_stb_sn} setMAINInfo={setMAINInfo} setButtonDisplay={setButtonDisplay} checkedItems={checkedItems} setCheckedItems={setCheckedItems} /><br/>
@@ -91,8 +91,8 @@ function Dash(){
                     { ButtonDisplay == true && MAINInfo.uid !== "" ? 
                         <Button type="danger" onClick={checkDataValueDelete}>삭제</Button> : 
                         <Button type="danger" onClick={checkDataValueDelete} disabled >삭제</Button> }
-                </div>
-            </div>
+                </div><br/>
+            </div><br/>
         </div>
     );
 }
