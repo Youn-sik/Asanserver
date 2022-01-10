@@ -13,6 +13,8 @@ const { Title } = Typography;
 
 function Schedule(){
     const [Thumbnail, setThumbnail] = useState("");
+    const [ButtonDisplay, setButtonDisplay] = useState(false);
+    const [Loading, setLoading] = useState(false);
     const [STBInfo, setSTBInfo] = useState({
         uid: "",
         main_stb_sn: "",
@@ -30,7 +32,6 @@ function Schedule(){
         // main_list_end: "",
     });
 
-    const [ButtonDisplay, setButtonDisplay] = useState(false);
 
     function handleChange(e){
         const {id, value} = e.target;
@@ -67,6 +68,7 @@ function Schedule(){
     }
 
     function onDrop(files){
+        setLoading(true);
         let formData = new FormData();
         const config = {
             header: {'content-type' : 'multipart/form-data'}
@@ -90,8 +92,7 @@ function Schedule(){
                     });
 
                     alert("서버에 저장이 완료 되었습니다. 썸네일 생성을 시작합니다.")
-                    // response.data의 filePath, fileName 정보 가지고 있다가 submit 하면 같이 보내기(폼은 file_path, file_name 으로)
-                    
+
                     axios.post(backend_url+'/meditation/thumbnail', variable)
                         .then(response => {
                             if (response.data.success) {
@@ -101,6 +102,7 @@ function Schedule(){
                                 alert('썸네일 저장에 실패하였습니다.');
                                 alert("확장자가 .mp4 파일인지 확인해 주세요.")
                             }
+                            setLoading(false);
                         });
 
                 } else {
@@ -114,7 +116,7 @@ function Schedule(){
         <div style = {{maxWidth:'450px', margin:'2erm auto'}}>
             <div style = {{textAlign:'center', marginBottom:'2rem'}}>
                 <Title level={2}>대기화면 등록</Title>
-                <Form onSubmit>
+                <Form>
                     <Input
                         id="main_list_name" 
                         placeholder = "컨텐츠 명을 입력해주세요"
@@ -135,6 +137,11 @@ function Schedule(){
                     /><br/><br/> */}
                     <StbList setSTBInfo={setSTBInfo} setButtonDisplay={setButtonDisplay} />
                     <h3>동영상 파일 지정 후 사진이 로딩 될 때까지 기다려주세요.</h3>
+                    {Loading && 
+                            <div style = {{width:'300px'}}>
+                                <div>파일 업로드 중 ...</div>
+                            </div>
+                    }
                     <div style = {{display:'flex', justifyContent:'space-between'}}>
                         <Dropzone
                             onDrop={onDrop}

@@ -17,12 +17,12 @@ const MainList = (props)=> {
         file_ext: "",
         file_url: ""
     }]);
-    let [checkedItems, setCheckedItems] = useState(new Object());
+    let [checkedItems, setCheckedItems] = useState(new Set());
     let [NothingInMain, setNothingInMain] = useState(false)
 
     function checkItemHandler(e, rowData){
         if(e.target.checked){
-            checkedItems = rowData;
+            checkedItems.add(rowData);
             setCheckedItems(checkedItems);
 
             props.setMAINInfo({
@@ -39,8 +39,11 @@ const MainList = (props)=> {
                 file_url: rowData.file_url
             });
             props.setButtonDisplay(true);
+        } else if(!e.target.checked && checkedItems.has(rowData)){
+            checkedItems.delete(rowData);
+            setCheckedItems(checkedItems);
         }
-        // console.log(checkedItems);
+        console.log(checkedItems);
     }
 
     useEffect(async()=> {
@@ -91,7 +94,7 @@ const MainList = (props)=> {
                     state.state.map(rowData=> (
                         <div key={rowData.uid} style={{textAlign:'center'}}>
                             <label>
-                                <input name="main" type="radio" onChange={(e)=> {checkItemHandler(e, rowData)}} />
+                                <input name="main" type="checkbox" onChange={(e)=> {checkItemHandler(e, rowData)}} />
                                 <div>uid: {rowData.uid}</div>
                                 <div>stb_sn: {rowData.stb_sn}</div>
                                 <div>name: {rowData.name}</div>

@@ -20,6 +20,10 @@ db.on('error', err=> {
   } else throw err;
 });
 
+setInterval(function () {
+  db.query('SELECT 1');
+}, 5000);
+
 app.use(
   cors({
     origin: "*"

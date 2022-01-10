@@ -70,7 +70,7 @@ const StbList = (props)=> {
                     <div key={rowData.uid} style={{textAlign:'center'}}>
                         <label>
                             <input name="stb" type="radio" onChange={(e)=> {checkItemHandler(e, rowData)}} />
-                            <div>uid: {rowData.uid}</div>
+                            {/* <div>uid: {rowData.uid}</div> */}
                             <div>main_stb_sn: {rowData.main_stb_sn}</div>
                             <div>sub_stb_sn: {rowData.sub_stb_sn}</div>
                             <div>update_time: {rowData.update_time}</div>
