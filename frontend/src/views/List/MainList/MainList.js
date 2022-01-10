@@ -17,33 +17,23 @@ const MainList = (props)=> {
         file_ext: "",
         file_url: ""
     }]);
-    let [checkedItems, setCheckedItems] = useState(new Set());
-    let [NothingInMain, setNothingInMain] = useState(false)
+    const [NothingInMain, setNothingInMain] = useState(false)
 
     function checkItemHandler(e, rowData){
         if(e.target.checked){
-            checkedItems.add(rowData);
-            setCheckedItems(checkedItems);
-
-            props.setMAINInfo({
-                uid: rowData.uid,
-                stb_sn: rowData.stb_sn,
-                name: rowData.name,
-                update_time: rowData.update_time,
-                // start: rowData.start,
-                // end: rowData.end,
-                user: rowData.user,
-                file_path: rowData.file_path,
-                file_name: rowData.file_name,
-                file_ext: rowData.file_ext,
-                file_url: rowData.file_url
-            });
+            props.checkedItems.add(rowData.uid);
+            props.setCheckedItems(props.checkedItems);
+            props.setMAINInfo(props.checkedItems);
             props.setButtonDisplay(true);
-        } else if(!e.target.checked && checkedItems.has(rowData)){
-            checkedItems.delete(rowData);
-            setCheckedItems(checkedItems);
+        } else if(!e.target.checked && props.checkedItems.has(rowData.uid)){
+            props.checkedItems.delete(rowData.uid);
+            props.setCheckedItems(props.checkedItems);
+            props.setMAINInfo(props.checkedItems);
+            if(props.checkedItems.size == 0){
+                props.setButtonDisplay(false);
+            }
         }
-        console.log(checkedItems);
+        // console.log(checkedItems);
     }
 
     useEffect(async()=> {
@@ -60,7 +50,7 @@ const MainList = (props)=> {
                             update_time: rowData.update_time,
                             // start: rowData.start,
                             // end: rowData.end,
-                            user: rowData.user,
+                            user: rowData.user, 
                             file_path: rowData.file_path,
                             file_name: rowData.file_name,
                             file_ext: rowData.file_ext,
@@ -76,7 +66,7 @@ const MainList = (props)=> {
                     setNothingInMain(true);
                 }
             } else {
-                
+
             }
         }catch(err){
             console.error(err);

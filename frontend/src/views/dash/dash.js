@@ -19,26 +19,18 @@ function Dash(){
         update_time: "",
         network_status: ""
     });
-    const [MAINInfo, setMAINInfo] = useState({
-        uid: "",
-        stb_sn: "",
-        name: "",
-        update_time: "",
-        // start: "",
-        // end: "",
-        user: "",
-        file_path: "",
-        file_name: "",
-        file_ext: "",
-        file_url: ""
-    });
+    const [MAINInfo, setMAINInfo] = useState(new Set());
+    const [checkedItems, setCheckedItems] = useState(new Set());
 
     async function distribution(){ 
+        let uid = [];
+        for(let item of checkedItems){
+            uid.push(item)
+        }
+        
         let body = {
-            "values":[{
-                "stb_sn": STBInfo.main_stb_sn,
-                "file_name": MAINInfo.file_name
-            }]
+            "stb_sn": STBInfo.main_stb_sn,
+            "values": uid
         }
         const res = await axios.post(backend_url+"/meditation/distribution", body);
         if(res.data.result == "ok"){
@@ -49,8 +41,13 @@ function Dash(){
     }
 
     async function distroy(){ 
+        let uid = [];
+        for(let item of checkedItems){
+            uid.push(item)
+        }
+
         let body = {
-            file_name: MAINInfo.file_name
+            "uid": uid
         }
         const res = await axios.delete(backend_url+"/meditation", {data: body});
         if(res.data.result == "ok"){
@@ -76,21 +73,22 @@ function Dash(){
         distroy();
         console.log("=====");
     }
-
+    
     return (
         <div style = {{maxWidth:'450px', margin:'2erm auto'}}>
             <div style = {{textAlign:'center', marginBottom:'2rem'}}>
                 <h1>대기화면 배포 페이지</h1>
-                <StbList setSTBInfo={setSTBInfo} setButtonDisplay={setButtonDisplay} />
-                <MainList stb_sn={STBInfo.main_stb_sn} setMAINInfo={setMAINInfo} setButtonDisplay={setButtonDisplay} /><br/>
+                {/* <StbList setSTBInfo={setSTBInfo} setButtonDisplay={setButtonDisplay} /> */}
+                <StbList setSTBInfo={setSTBInfo} setButtonDisplay={setButtonDisplay} setMAINInfo={setMAINInfo} setCheckedItems={setCheckedItems} />
+                <MainList stb_sn={STBInfo.main_stb_sn} setMAINInfo={setMAINInfo} setButtonDisplay={setButtonDisplay} checkedItems={checkedItems} setCheckedItems={setCheckedItems} /><br/>
                 <div display={{width: "400px", justifyContent:'space-between'}} >
                     <Link to="/main">
                         <Button>대기 화면 등록</Button>
                     </Link>
-                    { ButtonDisplay == true && MAINInfo.file_name !== "" ? 
+                    { ButtonDisplay == true && MAINInfo.uid !== "" ? 
                         <Button type="primary" onClick={checkDataValueDistribution}>배포</Button> : 
                         <Button type="primary" onClick={checkDataValueDistribution} disabled >배포</Button> }
-                    { ButtonDisplay == true && MAINInfo.file_name !== "" ? 
+                    { ButtonDisplay == true && MAINInfo.uid !== "" ? 
                         <Button type="danger" onClick={checkDataValueDelete}>삭제</Button> : 
                         <Button type="danger" onClick={checkDataValueDelete} disabled >삭제</Button> }
                 </div>

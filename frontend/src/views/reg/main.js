@@ -110,8 +110,6 @@ function Schedule(){
                 }
             })
     }
-    // console.log(state);
-    // console.log(STBInfo);
     return (
         <div style = {{maxWidth:'450px', margin:'2erm auto'}}>
             <div style = {{textAlign:'center', marginBottom:'2rem'}}>
@@ -123,18 +121,6 @@ function Schedule(){
                         onChange={handleChange} 
                         style = {{width:'300px'}}
                     /><br/><br/>
-                    {/* <Input
-                        id="main_list_start" 
-                        placeholder = "시작 시간을 입력해주세요(08:00)"
-                        onChange = {handleChange}
-                        style = {{width:'300px'}}
-                    /><br/><br/>
-                    <Input
-                        id="main_list_end" 
-                        placeholder = "종료 시간을 입력해주세요(09:00)"
-                        onChange = {handleChange}
-                        style = {{width:'300px'}}
-                    /><br/><br/> */}
                     <StbList setSTBInfo={setSTBInfo} setButtonDisplay={setButtonDisplay} />
                     <h3>동영상 파일 지정 후 사진이 로딩 될 때까지 기다려주세요.</h3>
                     {Loading && 

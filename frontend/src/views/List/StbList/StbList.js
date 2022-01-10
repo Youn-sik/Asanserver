@@ -6,8 +6,6 @@ const backend_url = server_jso.base_url;
 
 const StbList = (props)=> {
     const [loading, setLoading] = useState(true);
-    // const [checkedItems, setCheckedItems] = useState(new Set());
-    let [checkedItems, setCheckedItems] = useState(new Object());
     const [state, setState] = useState([{
         uid: '',
         main_stb_sn: '',
@@ -17,16 +15,7 @@ const StbList = (props)=> {
     }]);
 
     function checkItemHandler(e, rowData){
-        // if(e.target.checked){
-        //     checkedItems.add(rowData);
-        //     setCheckedItems(checkedItems);
-        // } else if(!e.target.checked && checkedItems.has(rowData)){
-        //     checkedItems.delete(rowData);
-        //     setCheckedItems(checkedItems);
-        // }
         if(e.target.checked){
-            checkedItems = rowData;
-            setCheckedItems(checkedItems);
             props.setSTBInfo({
                 uid: rowData.uid,
                 main_stb_sn: rowData.main_stb_sn,
@@ -35,6 +24,7 @@ const StbList = (props)=> {
                 network_status: rowData.network_status
             });
             props.setButtonDisplay(false); //세탑 지정-메인 지정-세탑 재 지정 시 버튼 안보이게(해당 세탑의 메인 지정 안된 상태) 
+            props.setCheckedItems(new Set());
         }
         // console.log(checkedItems);
     }
