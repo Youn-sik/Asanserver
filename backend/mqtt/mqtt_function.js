@@ -290,8 +290,8 @@ module.exports = {
             function distribution_schedule_query(main_sub_stb_sn){
                 return new Promise((resolve, reject)=>{
                     db.query('select g_distribution.stb_sn as distribution_stb_sn, g_distribution.update_time as distribution_update_time , g_distribution.name as distribution_name,' + 
-                    'g_schedule.name as schedule_name, g_schedule.update_time as schedule_update_time, g_schedule.order as schedule_order, g_schedule.start as schedule_start,' + 
-                    'g_schedule.order as schedule_order, g_schedule.start as schedule_start, g_schedule.end as schedule_end, g_schedule.main_name as schedule_main, g_schedule.end as schedule_end,' + 
+                    'g_schedule.name as schedule_name, g_schedule.update_time as schedule_update_time, g_schedule.uid as schedule_uid, g_schedule.start as schedule_start,' + 
+                    ' g_schedule.start as schedule_start, g_schedule.end as schedule_end, g_schedule.main_name as schedule_main, g_schedule.end as schedule_end,' + 
                     ' g_schedule.main_name as schedule_main, g_schedule.home_name as schedule_home, g_schedule.checklist_name as schedule_checklist, g_schedule.layout_name as schedule_layout,' +
                     ' g_schedule.media_name as schedule_media  from g_distribution inner join g_schedule on g_distribution.stb_sn = g_schedule.stb_sn where g_distribution.stb_sn = ? or g_distribution.stb_sn = ?',
                     main_sub_stb_sn, (err, stb)=> {
@@ -304,7 +304,7 @@ module.exports = {
                             let schedule = new Object();
                             schedule.name = stb[i].schedule_name;
                             schedule.update_time = stb[i].schedule_update_time;
-                            schedule.order = stb[i].schedule_order;
+                            schedule.order = stb[i].schedule_uid;
                             schedule.start = stb[i].schedule_start;
                             schedule.end = stb[i].schedule_end;
                             schedule.main = stb[i].schedule_main;
@@ -407,8 +407,8 @@ module.exports = {
             // function main_query(main_sub_stb_sn){
             //     return new Promise((resolve, reject)=>{
             //         db.query('select g_main.stb_sn, g_main.name as main_name, g_main.update_time as main_update_time, g_surgery.name as list_name, '+
-            //         'g_surgery.update_time as list_update_time, g_surgery.order as list_order, g_surgery.start as list_start, g_surgery.end as list_end '+
-            //         'from g_main inner join g_surgery on g_main.order = g_surgery.g_main_home_order where g_main.stb_sn = ? or g_main.stb_sn = ?',
+            //         'g_surgery.update_time as list_update_time, g_surgery.uid as list_uid, g_surgery.start as list_start, g_surgery.end as list_end '+
+            //         'from g_main inner join g_surgery on g_main.stb_sn = g_surgery.g_main_home_stb_sn where g_main.stb_sn = ? or g_main.stb_sn = ?',
             //         main_sub_stb_sn, (err, stb)=> {
             //             // console.log(stb);
             //             if(err) console.log(err);
@@ -419,7 +419,7 @@ module.exports = {
             //                     let surgery_list = new Object();
             //                     surgery_list.name = stb[i].list_name;
             //                     surgery_list.update_time = stb[i].list_update_time;
-            //                     surgery_list.order = stb[i].list_order;
+            //                     surgery_list.order = stb[i].list_uid;
             //                     surgery_list.start = stb[i].list_start;
             //                     surgery_list.end = stb[i].list_end;
             //                     surgery.push(surgery_list);
@@ -451,7 +451,7 @@ module.exports = {
             function main_query(main_sub_stb_sn){
                 return new Promise((resolve, reject)=> {
                     db.query('select g_main.stb_sn, g_main.name, g_main.update_time, g_main_list.file_url from g_main_list inner join g_main '+
-                    'on g_main.order = g_main_list.g_main_order where g_main.stb_sn = ? or g_main.stb_sn = ?', main_sub_stb_sn, (err, main)=> {
+                    'on g_main.stb_sn = g_main_list.g_main_stb_sn where g_main.stb_sn = ? or g_main.stb_sn = ?', main_sub_stb_sn, (err, main)=> {
                         if(err) console.log(err);
                         // console.log(main);
                         if(main.length != 0){
@@ -693,7 +693,7 @@ module.exports = {
                             let list_layout = [];
                             for(let i=0; i<stb.length; i++){
                                 let layout_list = new Object();
-                                layout_list.index = stb[i].order;
+                                layout_list.index = stb[i].uid;
                                 layout_list.staffid = stb[i].staffid;
                                 layout_list.layoutname = stb[i].layoutname
                                 layout_list.time = stb[i].time;
@@ -760,7 +760,7 @@ module.exports = {
                             let list_layout = [];
                             for(let i=0; i<stb.length; i++){
                                 let layout_list = new Object();
-                                layout_list.index = stb[i].order;
+                                layout_list.index = stb[i].uid;
                                 layout_list.layoutname = stb[i].name
                                 layout_list.time = stb[i].update_time;
                                 layout_list.image = stb[i].imageurl;
@@ -811,7 +811,7 @@ module.exports = {
         //     return new Promise((reslove, reject)=> {
         //         db.query('select g_home.stb_sn, g_home.name, g_home.update_time, g_patient.id as patient_id, g_patient.name as patient_name, '+
         //         'g_patient.gender as patient_gender, g_patient.age as patient_age, g_patient.dob as patient_dob, g_patient.surgicalsite as patient_surgicalsite, '+
-        //         'g_patient.surgicalname as patient_surgicalname from g_home inner join g_patient on g_home.order = g_patient.g_main_home_order '+
+        //         'g_patient.surgicalname as patient_surgicalname from g_home inner join g_patient on g_home.stb_sn = g_patient.g_main_home_stb_sn '+
         //         'where g_home.stb_sn = ? or g_home.stb_sn = ? and g_home.name = ?', [...main_sub_stb_sn, home_name], (err, stb)=> {
         //             console.log(stb);
         //             if(err) {
@@ -875,10 +875,10 @@ module.exports = {
 
             function home_surgery_patient_query(main_sub_stb_sn) {
                 return new Promise((reslove, reject)=> {
-                    db.query('select g_home.stb_sn, g_home.name, g_home.update_time, g_surgery.name as surgery_name,g_surgery.order as surgery_order, '+
+                    db.query('select g_home.stb_sn, g_home.name, g_home.update_time, g_surgery.name as surgery_name,g_surgery.uid as surgery_uid, '+
                     'g_patient.id as patient_id, g_patient.name as patient_name, g_patient.gender as patient_gender, g_patient.age as patient_age, '+
                     'g_patient.dob as patient_dob, g_patient.surgicalsite as patient_surgicalsite from g_home inner join g_surgery '+
-                    'on g_home.order = g_surgery.g_main_home_order inner join g_patient on g_surgery.order = g_patient.g_surgery_order '+
+                    'on g_home.stb_sn = g_surgery.g_main_home_stb_sn inner join g_patient on g_surgery.uid = g_patient.g_surgery_uid '+
                     'where g_home.stb_sn = ? or g_home.stb_sn = ? and g_home.name = ?', [...main_sub_stb_sn, home_name], (err, stb)=> {
                         // console.log(stb);
                         if(err) {
@@ -900,7 +900,7 @@ module.exports = {
                             surgery_patient.name = stb[0].name; //홈 화면 이름
                             surgery_patient.update_time = stb[0].update_time; 
                             surgery_patient.surgery_name = stb[0].surgery_name; //수술 이름
-                            surgery_patient.surgery_order = stb[0].surgery_order;  
+                            surgery_patient.surgery_order = stb[0].surgery_uid;  
                             surgery_patient.patient_id = stb[0].patient_id; 
                             surgery_patient.patient_name = stb[0].patient_name; 
                             surgery_patient.patient_gender = stb[0].patient_gender; 
@@ -941,8 +941,8 @@ module.exports = {
             function staff_query(surgery_patient){
                 return new Promise((reslove, reject)=>{
                     db.query('select g_staff.id as id, g_staff.name as name, g_staff.position as position  from g_home '+
-                    'inner join g_surgery on g_home.order = g_surgery.g_main_home_order inner join g_staff on '+
-                    'g_staff.g_surgery_order = g_surgery.order where g_staff.g_surgery_order = ?', 
+                    'inner join g_surgery on g_home.stb_sn = g_surgery.g_main_home_stb_sn inner join g_staff on '+
+                    'g_staff.g_surgery_uid = g_surgery.uid where g_staff.g_surgery_uid = ?', 
                     surgery_patient.surgery_order, (err, stb)=> {
                         // console.log(stb);
                         if(err) {
@@ -977,9 +977,9 @@ module.exports = {
 
             function process_query(surgery_patient){
                 return new Promise((resolve, reject)=> {
-                    db.query('select g_process.order as id, g_process_list.order as contents_seq, g_process_list.value as contents_value '+
-                    'from g_process inner join g_process_list on g_process.order = g_process_list.process_order inner join g_surgery on '+
-                    'g_surgery.order = g_process.g_surgery_order where g_process.g_surgery_order = ?', 
+                    db.query('select g_process.uid as id, g_process_list.uid as contents_seq, g_process_list.value as contents_value '+
+                    'from g_process inner join g_process_list on g_process.uid = g_process_list.g_process_uid inner join g_surgery on '+
+                    'g_surgery.uid = g_process.g_surgery_uid where g_process.g_surgery_uid = ?', 
                     surgery_patient.surgery_order, (err, stb)=> {
                         // console.log(stb);
                         if(err) {
@@ -1138,7 +1138,7 @@ module.exports = {
             }).then(()=> {
                 return instrument_query();
             }).then(()=> {
-                console.log(JSON.stringify(result))
+                // console.log(JSON.stringify(result))
 
             client.publish('/schedule/home/result/' + stb_sn, JSON.stringify(result), {qos:0, retain:false}, (err)=> {
                 if(err) console.log(err);
@@ -1206,8 +1206,6 @@ module.exports = {
     async schedule_layout_save(json){ // 수술 끝난 레이아웃 저장
         try {
             let stb_sn = json.stb_sn; // 시리얼
-            let home_name = json.name; // 홈 이름
-            let schedule_order = json.schedule_order; // 현재 스케줄
             let layout_index = json.value[0].index; // 레이아웃 인덱스
             let staff_id = json.value[0].staffid; // 의료진 ID
             let time = json.value[0].time; // 단말에서 전송 된 시간
@@ -1219,7 +1217,7 @@ module.exports = {
             let file_name = day_time+'_'+layout_name_file+'_'+layout_index+'.jpg'; // 파일 명(시간_레이아웃 이름_레이아웃 인덱스)
             let file_path = '../upload/layout_used/' //파일 경로
             let imageurl = site.base_server_backend_loacal_url+'/layout_used/'+file_name;
-            let info = json.info;
+            let info = json.value[0].info;
             let result = {};
 
             // 이름 지정하고 파일 저장하고 파일 업로드 경로 따서 디비에 저장하면 끝
@@ -1233,7 +1231,7 @@ module.exports = {
             function save_used_layout(){
                 return new Promise((resolve, reject)=> {
                     db.query('insert into g_layout(name, update_time, stb_sn, layout_list_order, staff_id, imageurl, info) '+
-                    'values(?,?,?,?,?,?)',[layout_name, time, stb_sn, layout_index, staff_id, imageurl, info], (err,stb)=> {
+                    'values(?,?,?,?,?,?,?)',[layout_name, time, stb_sn, layout_index, staff_id, imageurl, info], (err,stb)=> {
                         console.log(stb);
                         if(err) {
                             console.log(err);
@@ -1307,10 +1305,10 @@ module.exports = {
 
             function checklist_query(main_sub_stb_sn){
                 return new Promise((resolve, reject)=>{
-                    db.query('select g_checklist.stb_sn, g_checklist.name as checklist_name, g_checklist.order as checklist_order, '+
+                    db.query('select g_checklist.stb_sn, g_checklist.name as checklist_name, g_checklist.uid as checklist_uid, '+
                     'g_checklist.update_time as checklist_update_time, g_checklist_list.name as list_name, g_checklist_list.update_time as list_update_time, '+
-                    'g_checklist_list.value as list_value, g_checklist_list.order as list_order from g_checklist inner join g_checklist_list '+
-                    'on g_checklist.order = g_checklist_list.checklist_order where g_checklist.stb_sn = ? or g_checklist.stb_sn = ?', main_sub_stb_sn, (err, stb)=> {
+                    'g_checklist_list.value as list_value, g_checklist_list.uid as list_uid from g_checklist inner join g_checklist_list '+
+                    'on g_checklist.stb_sn = g_checklist_list.checklist_stb_sn where g_checklist.stb_sn = ? or g_checklist.stb_sn = ?', main_sub_stb_sn, (err, stb)=> {
                         // console.log(stb);
                         if(err) console.log(err);
                         if(stb.length != 0){
@@ -1328,7 +1326,7 @@ module.exports = {
                                 "update_time": stb[0].checklist_update_time,
                                 "result": 'ok',
                                 "value": {
-                                    "id": stb[0].checklist_order,
+                                    "id": stb[0].checklist_uid,
                                     contents
                                 }
                             }
@@ -1460,8 +1458,8 @@ module.exports = {
             function media_query(main_sub_stb_sn){
                 return new Promise((resolve, reject)=>{
                     db.query('select g_media.stb_sn, g_media.name as media_name, g_media.update_time as media_update_time, g_media_list.name as list_name, '+
-                    'g_media_list.update_time as list_update_time, g_media_list.order as list_order from g_media inner join g_media_list '+
-                    'on g_media.order = g_media_list.g_media_order where g_media.stb_sn = ? or g_media.stb_sn = ?', main_sub_stb_sn, (err, stb)=> {
+                    'g_media_list.update_time as list_update_time, g_media_list.uid as list_uid from g_media inner join g_media_list '+
+                    'on g_media.stb_sn = g_media_list.g_media_stb_sn where g_media.stb_sn = ? or g_media.stb_sn = ?', main_sub_stb_sn, (err, stb)=> {
                         // console.log(stb);
                         if(err) console.log(err);
                         if(stb.length != 0){
@@ -1471,7 +1469,7 @@ module.exports = {
                                 let media_list = new Object();
                                 media_list.name = stb[i].list_name;
                                 media_list.update_time = stb[i].list_update_time;
-                                media_list.order = stb[i].list_order;
+                                media_list.order = stb[i].list_uid;
                                 media_list.start = stb[i].list_start;
                                 media_list.end = stb[i].list_end;
                                 media.push(media_list);
@@ -1502,7 +1500,7 @@ module.exports = {
             .then((main_sub_stb_sn)=> {
                 return media_query(main_sub_stb_sn)
             }).then(()=> {
-                console.log(JSON.stringify(result))
+                // console.log(JSON.stringify(result))
                 client.publish('/schedule/media/result/' + stb_sn, JSON.stringify(result), {qos:0, retain:false}, (err)=> {
                     if(err) console.log(err);
                 })    

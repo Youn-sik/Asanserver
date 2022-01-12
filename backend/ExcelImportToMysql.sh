@@ -1,10 +1,12 @@
 #!/bin/bash
 
 iana_ports_url="https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.csv"
-file=""
+file="g_checklist_list.csv"
+file_name="g_checklist_list.csv"
+file_path="/home/asan/asan/backend/upload/csv/"
 wget=$(which wget)
-db_name="test"
-db_table="test"
+db_name="asancloud"
+db_table="g_checklist_list"
 db_user="asan"
 
 #download file
@@ -20,12 +22,14 @@ function download_files() {
 	mv temp.csv $file
 }
 
-function get_file() {
-	echo "getting file..."
-	cd /home/asan/asan/backend/upload/csv/
-	file=$(ls -1 g_checklist_list.csv)
-	#file=$(ls -1 *.csv)
-	echo $file
+function set_file() {
+	echo "setting file..."
+	cd $file_path
+	
+	#file=$(ls -1 $file_path | grep $file_name)
+	
+	cat $file_name | sed 1d > temp.csv
+	mv temp.csv $file
 }
 
 #create database and create table
@@ -34,9 +38,8 @@ function setup_database() {
 	echo -n "enter mysql password: "
 	read adminpass
 	mysql -u$db_user -p${adminpass} << MYSQL
-CREATE DATABASE $db_name;
 USE $db_name;
-CREATE TABLE $db_table (id int NOT NULL AUTO_INCREMENT, service char(50), number varchar(50), port char(10), description varchar(255), PRIMARY KEY (id));
+TRUNCATE $db_table;
 MYSQL
 }
 
@@ -44,9 +47,9 @@ MYSQL
 function import_data() {
 	echo "import into table..."
 	#IFS = ',' means "Internal Field Separator = shell split words(default ' ')
-	cat "${file}" | while IFS=$',' read col1 col2 col3 col4
+	cat "${file_path}${file_name}" | while IFS=$',' read col1 col2 col3 col4
 	do
-		echo "INSERT INTO $db_table (id, service, number, port, description) VALUES (DEFAULT, '$col1', '$col2', '$col3', '$col4');"
+		echo "INSERT INTO $db_table VALUES (DEFAULT, '$col1', '$col2', '$col3', '$col4');"
 	done | mysql -u$db_user -p${adminpass} $db_name
 }
 
@@ -54,6 +57,6 @@ function import_data() {
 #     MAIN      #
 #################
 
-get_file
-#setup_database
-#import_data
+set_file
+setup_database
+import_data

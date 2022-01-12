@@ -118,7 +118,8 @@ client.on('connect', () => {
     //         "staffid": 1,
     //         "time": "2021-12-06 11:11:11",
     //         "layoutname": "first layout",
-    //         "image": "base64"
+    //         "image": "base64",
+    //          "info": "1/ct,2/mri"
     //     }]
     // }), {qos: 0, retain: false}), (err)=> {
     //     if(err) console.log(err);
