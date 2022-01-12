@@ -83,8 +83,8 @@ function Schedule(){
     }
 
     return (
-        <div style = {{maxWidth:'450px', margin:'2erm auto'}}>
-            <div style = {{textAlign:'center', marginBottom:'2rem'}}>
+        <div style = {{maxWidth:'450px', margin:'auto'}}>
+            <div style = {{textAlign:'center', marginBottom:'2rem', border: '2px solid gold'}}>
                 <Title level={2}>스케줄 작성</Title><hr/>
                 <h3>배포 이름</h3><Input id="distribution_name" placeholder="배포 이름" onChange={handleChange} style = {{width:'200px'}} /><br/><hr/>
                 <StbList setSTBInfo={setSTBInfo} />

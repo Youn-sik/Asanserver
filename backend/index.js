@@ -35,12 +35,13 @@ app.use(function(req, res, next){
   next();
 });
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 //파일 접근
-app.use('/layout', express.static('upload/layout/')) 
-app.use('/layout_used', express.static('upload/layout_used/'))
-app.use('/uploads', express.static('uploads/'))
+app.use('/layout', express.static('upload/layout/')); 
+app.use('/layout_used', express.static('upload/layout_used/'));
+app.use('/csv', express.static('upload/csv/'));
+app.use('/uploads', express.static('uploads/'));
 
 //스케줄 등록 - 데이터 POST 라우터 + 대기화면 CRUD 용 라우터
 app.use('/distribution_schedule/register', distribution_schedule);

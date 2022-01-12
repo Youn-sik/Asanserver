@@ -464,7 +464,7 @@ module.exports = {
                             }
 
                             result = {
-                                "stb": main[0].stb_sn,
+                                "stb_sn": main[0].stb_sn,
                                 "name": main[0].name,
                                 "update_time": main[0].update_time,
                                 "result": "ok",
@@ -673,7 +673,7 @@ module.exports = {
             function layout_used_query(main_sub_stb_sn){ //이전에 사용했던 레이아웃 목록
                 return new Promise((resolve, reject)=> {
                     db.query('select g_layout.uid, g_layout.staff_id as staffid, g_layout.name as layoutname, '+
-                    'g_layout.update_time as time, g_layout.imageurl as image from g_layout '+
+                    'g_layout.update_time as time, g_layout.imageurl as image, g_layout.info from g_layout '+
                     'where g_layout.stb_sn = ? or g_layout.stb_sn = ?', main_sub_stb_sn, (err,stb)=> {
                         // console.log(stb);
                         if(err) {
@@ -698,6 +698,7 @@ module.exports = {
                                 layout_list.layoutname = stb[i].layoutname
                                 layout_list.time = stb[i].time;
                                 layout_list.image = stb[i].image;
+                                layout_list.info = stb[i].info;
                                 list_layout.push(layout_list);
                             }
         
@@ -1137,7 +1138,7 @@ module.exports = {
             }).then(()=> {
                 return instrument_query();
             }).then(()=> {
-                // console.log(JSON.stringify(result))
+                console.log(JSON.stringify(result))
 
             client.publish('/schedule/home/result/' + stb_sn, JSON.stringify(result), {qos:0, retain:false}, (err)=> {
                 if(err) console.log(err);
@@ -1218,6 +1219,7 @@ module.exports = {
             let file_name = day_time+'_'+layout_name_file+'_'+layout_index+'.jpg'; // 파일 명(시간_레이아웃 이름_레이아웃 인덱스)
             let file_path = '../upload/layout_used/' //파일 경로
             let imageurl = site.base_server_backend_loacal_url+'/layout_used/'+file_name;
+            let info = json.info;
             let result = {};
 
             // 이름 지정하고 파일 저장하고 파일 업로드 경로 따서 디비에 저장하면 끝
@@ -1230,8 +1232,8 @@ module.exports = {
 
             function save_used_layout(){
                 return new Promise((resolve, reject)=> {
-                    db.query('insert into g_layout(name, update_time, stb_sn, layout_list_order, staff_id, imageurl) '+
-                    'values(?,?,?,?,?,?)',[layout_name, time, stb_sn, layout_index, staff_id, imageurl], (err,stb)=> {
+                    db.query('insert into g_layout(name, update_time, stb_sn, layout_list_order, staff_id, imageurl, info) '+
+                    'values(?,?,?,?,?,?)',[layout_name, time, stb_sn, layout_index, staff_id, imageurl, info], (err,stb)=> {
                         console.log(stb);
                         if(err) {
                             console.log(err);
