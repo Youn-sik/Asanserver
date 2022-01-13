@@ -1359,7 +1359,16 @@ module.exports = {
                             }
                             reject(result)
                         }
-                        resolve([...main_sub_stb_sn, stb[0].name]);
+                        if(stb.length != 0){
+                            resolve([...main_sub_stb_sn, stb[0].name]);
+                        } else {
+                            result = {
+                                "stb_sn": stb_sn,
+                                "result": "fail",
+                                "value": [{}]
+                            }
+                            reject(result)
+                        }
                     })
                 })
             }

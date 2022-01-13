@@ -65,7 +65,7 @@ CREATE TABLE `g_checklist` (
 
 LOCK TABLES `g_checklist` WRITE;
 /*!40000 ALTER TABLE `g_checklist` DISABLE KEYS */;
-INSERT INTO `g_checklist` VALUES (1,'first checklist','2022-01-12 17:56:48','KSQ19880205'),(2,'second checklist','2022-01-12 09:24:03','KSQ19880201'),(3,'third checklist','2020-11-11 11:11:11','KSQ19880207');
+INSERT INTO `g_checklist` VALUES (1,'first checklist','2022-01-12 17:56:48','KSQ19880205'),(2,'second checklist','2022-01-12 20:38:13','KSQ19880201'),(3,'third checklist','2020-11-11 11:11:11','KSQ19880207');
 /*!40000 ALTER TABLE `g_checklist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,7 +84,7 @@ CREATE TABLE `g_checklist_list` (
   `value` varchar(60) DEFAULT NULL,
   PRIMARY KEY (`uid`),
   KEY `sch_che` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +93,7 @@ CREATE TABLE `g_checklist_list` (
 
 LOCK TABLES `g_checklist_list` WRITE;
 /*!40000 ALTER TABLE `g_checklist_list` DISABLE KEYS */;
-INSERT INTO `g_checklist_list` VALUES (1,'1번 체크리스트','2021-01-10 09:00:00','KSQ19880205','1번 체크리스트'),(2,'2번 체크리스트','2021-01-10 11:00:00','KSQ19880205','2번 체크리스트'),(3,'3번 체크리스트','2021-01-10 14:00:00','KSQ19880205','3번 체크리스트'),(4,'4번 체크리스트','2021-01-10 16:00:00','KSQ19880205','4번 체크리스트'),(5,'5번 체크리스트','2021-01-11 09:00:00','KSQ19880205','5번 체크리스트'),(6,'6번 체크리스트','2021-01-11 11:00:00','KSQ19880205','6번 체크리스트'),(7,'7번 체크리스트','2021-01-11 09:00:00','KSQ19880205','7번 체크리스트'),(8,'8번 체크리스트','2021-01-11 11:00:00','KSQ19880205','8번 체크리스트'),(9,'9번 체크리스트','2021-01-11 14:00:00','KSQ19880205','9번 체크리스트'),(10,'10번 체크리스트','2021-01-11 16:00:00','KSQ19880205','10번 체크리스트'),(11,'11번 체크리스트','2021-01-12 09:00:00','KSQ19880201','11번 체크리스트'),(12,'12번 체크리스트','2021-01-12 11:00:00','KSQ19880201','12번 체크리스트'),(13,'13번 체크리스트','2021-01-12 09:00:00','KSQ19880201','13번 체크리스트'),(14,'14번 체크리스트','2021-01-12 11:00:00','KSQ19880201','14번 체크리스트'),(15,'15번 체크리스트','2021-01-12 14:00:00','KSQ19880201','15번 체크리스트'),(16,'16번 체크리스트','2021-01-12 16:00:00','KSQ19880201','16번 체크리스트'),(17,'17번 체크리스트','2021-01-13 09:00:00','KSQ19880201','17번 체크리스트'),(18,'18번 체크리스트','2021-01-13 11:00:00','KSQ19880201','18번 체크리스트'),(19,'19번 체크리스트','2021-01-13 09:00:00','KSQ19880201','19번 체크리스트'),(20,'20번 체크리스트','2021-01-13 11:00:00','KSQ19880201','20번 체크리스트'),(21,'21번 체크리스트','2021-01-13 14:00:00','KSQ19880207','21번 체크리스트'),(22,'22번 체크리스트','2021-01-13 16:00:00','KSQ19880207','22번 체크리스트'),(23,'23번 체크리스트','2021-01-14 09:00:00','KSQ19880207','23번 체크리스트'),(24,'24번 체크리스트','2021-01-14 11:00:00','KSQ19880207','24번 체크리스트'),(25,'25번 체크리스트','2021-01-14 09:00:00','KSQ19880207','25번 체크리스트'),(26,'26번 체크리스트','2021-01-14 11:00:00','KSQ19880207','26번 체크리스트'),(27,'27번 체크리스트','2021-01-14 14:00:00','KSQ19880207','27번 체크리스트'),(28,'28번 체크리스트','2021-01-14 16:00:00','KSQ19880207','28번 체크리스트'),(29,'29번 체크리스트','2021-01-15 09:00:00','KSQ19880207','29번 체크리스트'),(30,'30번 체크리스트','2021-01-14 11:00:00','KSQ19880207','30번 체크리스트');
+INSERT INTO `g_checklist_list` VALUES (1,'2번 체크리스트','2021-01-10 11:00:00','KSQ19880205','2번 체크리스트'),(2,'3번 체크리스트','2021-01-10 14:00:00','KSQ19880205','3번 체크리스트'),(3,'4번 체크리스트','2021-01-10 16:00:00','KSQ19880205','4번 체크리스트'),(4,'5번 체크리스트','2021-01-11 09:00:00','KSQ19880205','5번 체크리스트'),(5,'6번 체크리스트','2021-01-11 11:00:00','KSQ19880205','6번 체크리스트'),(6,'7번 체크리스트','2021-01-11 09:00:00','KSQ19880205','7번 체크리스트'),(7,'8번 체크리스트','2021-01-11 11:00:00','KSQ19880205','8번 체크리스트'),(8,'9번 체크리스트','2021-01-11 14:00:00','KSQ19880205','9번 체크리스트'),(9,'10번 체크리스트','2021-01-11 16:00:00','KSQ19880205','10번 체크리스트'),(10,'11번 체크리스트','2021-01-12 09:00:00','KSQ19880201','11번 체크리스트'),(11,'12번 체크리스트','2021-01-12 11:00:00','KSQ19880201','12번 체크리스트'),(12,'13번 체크리스트','2021-01-12 09:00:00','KSQ19880201','13번 체크리스트'),(13,'14번 체크리스트','2021-01-12 11:00:00','KSQ19880201','14번 체크리스트'),(14,'15번 체크리스트','2021-01-12 14:00:00','KSQ19880201','15번 체크리스트'),(15,'16번 체크리스트','2021-01-12 16:00:00','KSQ19880201','16번 체크리스트'),(16,'17번 체크리스트','2021-01-13 09:00:00','KSQ19880201','17번 체크리스트'),(17,'18번 체크리스트','2021-01-13 11:00:00','KSQ19880201','18번 체크리스트'),(18,'19번 체크리스트','2021-01-13 09:00:00','KSQ19880201','19번 체크리스트'),(19,'20번 체크리스트','2021-01-13 11:00:00','KSQ19880201','20번 체크리스트'),(20,'21번 체크리스트','2021-01-13 14:00:00','KSQ19880207','21번 체크리스트'),(21,'22번 체크리스트','2021-01-13 16:00:00','KSQ19880207','22번 체크리스트'),(22,'23번 체크리스트','2021-01-14 09:00:00','KSQ19880207','23번 체크리스트'),(23,'24번 체크리스트','2021-01-14 11:00:00','KSQ19880207','24번 체크리스트'),(24,'25번 체크리스트','2021-01-14 09:00:00','KSQ19880207','25번 체크리스트'),(25,'26번 체크리스트','2021-01-14 11:00:00','KSQ19880207','26번 체크리스트'),(26,'27번 체크리스트','2021-01-14 14:00:00','KSQ19880207','27번 체크리스트'),(27,'28번 체크리스트','2021-01-14 16:00:00','KSQ19880207','28번 체크리스트'),(28,'29번 체크리스트','2021-01-15 09:00:00','KSQ19880207','29번 체크리스트'),(29,'30번 체크리스트','2021-01-14 11:00:00','KSQ19880207','30번 체크리스트');
 /*!40000 ALTER TABLE `g_checklist_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -143,7 +143,7 @@ CREATE TABLE `g_distribution` (
 
 LOCK TABLES `g_distribution` WRITE;
 /*!40000 ALTER TABLE `g_distribution` DISABLE KEYS */;
-INSERT INTO `g_distribution` VALUES (1,'KSQ19880205','first distribution','2022-01-12 17:58:41'),(2,'KSQ19880201','second distribution','2022-01-12 09:24:03'),(3,'KSQ19880207','third distribution','2020-11-08 10:10:10');
+INSERT INTO `g_distribution` VALUES (1,'KSQ19880205','first distribution','2022-01-12 17:58:41'),(2,'KSQ19880201','second distribution','2022-01-13 13:22:15'),(3,'KSQ19880207','third distribution','2020-11-08 10:10:10');
 /*!40000 ALTER TABLE `g_distribution` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,7 +169,7 @@ CREATE TABLE `g_home` (
 
 LOCK TABLES `g_home` WRITE;
 /*!40000 ALTER TABLE `g_home` DISABLE KEYS */;
-INSERT INTO `g_home` VALUES (1,'first home','2022-01-03 13:07:00','KSQ19880205'),(2,'second home','2022-01-12 17:58:34','KSQ19880201'),(3,'third home','2020-11-11 11:11:11','KSQ19880207');
+INSERT INTO `g_home` VALUES (1,'first home','2022-01-03 13:07:00','KSQ19880205'),(2,'second home','2022-01-12 20:38:13','KSQ19880201'),(3,'third home','2020-11-11 11:11:11','KSQ19880207');
 /*!40000 ALTER TABLE `g_home` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -335,7 +335,7 @@ CREATE TABLE `g_main` (
 
 LOCK TABLES `g_main` WRITE;
 /*!40000 ALTER TABLE `g_main` DISABLE KEYS */;
-INSERT INTO `g_main` VALUES (1,'first main','2022-01-12 17:58:41','KSQ19880205'),(2,'second main','2022-01-12 09:24:03','KSQ19880201'),(3,'third main','2022-01-10 15:34:55','test');
+INSERT INTO `g_main` VALUES (1,'first main','2022-01-12 17:58:41','KSQ19880205'),(2,'second main','2022-01-12 20:38:13','KSQ19880201'),(3,'third main','2022-01-10 15:34:55','test');
 /*!40000 ALTER TABLE `g_main` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -566,7 +566,7 @@ CREATE TABLE `g_schedule` (
 
 LOCK TABLES `g_schedule` WRITE;
 /*!40000 ALTER TABLE `g_schedule` DISABLE KEYS */;
-INSERT INTO `g_schedule` VALUES (1,'KSQ19880205','first schedule','2022-01-12 17:58:41','08:00','10:00','first main','first home','first checklist','first layout','first media'),(2,'KSQ19880205','second schedule','2022-01-12 17:58:41','10:00','11:00','first main','first home','first checklist','first layout','first media'),(3,'KSQ19880201','first schdule','2022-01-12 17:58:34','10:00','12:00','second main','second home','second checklist','second layout','second media'),(4,'KSQ19880201','second schdule','2022-01-12 17:58:34','12:00','13:00','second main','second home','second checklist','second layout','second media'),(5,'KSQ19880205','third schdule','2022-01-12 17:58:41','11:00','12:00','first main','first home','first checklist','first layout','first media'),(6,'KSQ19880205','4th schedule','2022-01-12 17:58:41','14:00','16:00','first main','first home','first checklist','first layout','first media'),(7,'KSQ19880201','third schedule','2022-01-12 17:58:34','15:00','16:00','second main','second home','second checklist','second layout','second media'),(8,'KSQ19880201','4th schedule','2022-01-12 17:58:34','17:00','18:00','second main','second home','second checklist','second layout','second media');
+INSERT INTO `g_schedule` VALUES (1,'KSQ19880205','first schedule','2022-01-12 17:58:41','08:00','10:00','first main','first home','first checklist','first layout','first media'),(2,'KSQ19880205','second schedule','2022-01-12 17:58:41','10:00','11:00','first main','first home','first checklist','first layout','first media'),(3,'KSQ19880201','first schdule','2022-01-12 20:38:13','10:00','12:00','second main','second home','second checklist','second layout','second media'),(4,'KSQ19880201','second schdule','2022-01-12 20:38:13','12:00','13:00','second main','second home','second checklist','second layout','second media'),(5,'KSQ19880205','third schdule','2022-01-12 17:58:41','11:00','12:00','first main','first home','first checklist','first layout','first media'),(6,'KSQ19880205','4th schedule','2022-01-12 17:58:41','14:00','16:00','first main','first home','first checklist','first layout','first media'),(7,'KSQ19880201','third schedule','2022-01-12 20:38:13','15:00','16:00','second main','second home','second checklist','second layout','second media'),(8,'KSQ19880201','4th schedule','2022-01-12 20:38:13','17:00','18:00','second main','second home','second checklist','second layout','second media');
 /*!40000 ALTER TABLE `g_schedule` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -620,7 +620,7 @@ CREATE TABLE `g_stb` (
 
 LOCK TABLES `g_stb` WRITE;
 /*!40000 ALTER TABLE `g_stb` DISABLE KEYS */;
-INSERT INTO `g_stb` VALUES (1,'KSQ19880205','KSQ19880204','2022-01-12 17:58:49','N'),(2,'KSQ19880201','KSQ19880202','2022-01-12 09:24:03','Y'),(3,'test','test','2021-01-03 18:18:18','Y');
+INSERT INTO `g_stb` VALUES (1,'KSQ19880205','KSQ19880204','2022-01-12 17:58:49','N'),(2,'KSQ19880201','KSQ19880202','2022-01-12 20:37:17','Y'),(3,'test','test','2021-01-03 18:18:18','Y');
 /*!40000 ALTER TABLE `g_stb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -691,4 +691,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-12  9:01:06
+-- Dump completed on 2022-01-13  4:22:46
