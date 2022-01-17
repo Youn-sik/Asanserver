@@ -18,7 +18,7 @@ router.get('/:stb_sn', async(req, res) =>{
 
         db.query('select g_main.stb_sn, g_main_list.uid, g_main_list.name, g_main_list.update_time, g_main_list.start, g_main_list.end, '+
         'g_main_list.user, g_main_list.file_path, g_main_list.file_name, g_main_list.file_ext, g_main_list.file_url from g_main_list '+
-        'inner join g_main on g_main.order = g_main_list.g_main_order where g_main.stb_sn = ?', stb_sn, (err,main_list)=> {
+        'inner join g_main on g_main.stb_sn = g_main_list.g_main_stb_sn where g_main.stb_sn = ?', stb_sn, (err,main_list)=> {
             if(err) console.log(err);
             // console.log(main_list);
             if(main_list.length != 0){

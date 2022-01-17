@@ -89,9 +89,9 @@ client.on('connect', () => {
     //     if(err) console.log(err);
     // })
 
-    // client.publish('/schedule/total/KSQ19880204', JSON.stringify({"stb_sn": "KSQ19880204"}), {qos: 0, retain: false}), (err)=> {
-    //     if(err) console.log(err);
-    // }
+    client.publish('/schedule/total/KSQ19880201', JSON.stringify({"stb_sn": "KSQ19880201"}), {qos: 0, retain: false}), (err)=> {
+        if(err) console.log(err);
+    }
 
     // client.publish('/schedule/main/KSQ19880204', JSON.stringify({"stb_sn": "KSQ19880204"}), {qos: 0, retain: false}), (err)=> {
     //     if(err) console.log(err);
@@ -142,6 +142,8 @@ client.on('message', async (topic, payload) => {
         let context = payload.toString();
         let json = JSON.parse(context);
         console.log(json);
+        console.log(JSON.stringify(json));
+        console.log("---- ----");
 
         //수술 시작
         if(topic == '/operation/start/' + json.stb_sn){

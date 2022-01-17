@@ -94,7 +94,7 @@ router.post('/', async(req, res) =>{ //명상 영상 등록
                     if(err) console.log(err);
                     if(stb.length != 0){
                         // console.log(stb);
-                        let g_main_order = stb[0].order;
+                        let g_main_order = stb[0].uid;
                         resolve(g_main_order)
                     } else {
                         result = {
@@ -111,9 +111,9 @@ router.post('/', async(req, res) =>{ //명상 영상 등록
         //g_main_order 부분 명상 등록 할 때 세탑 지정
         function meditation_reg(g_main_order){
             return new Promise((resolve, reject)=>{
-                db.query('insert into g_main_list (name, update_time, g_main_order, start, end, user, file_path, file_name, file_ext, file_url) '+
-                'values (?,?,?,?,?,?,?,?,?,?)',
-                [name, update_time, g_main_order, start, end, user, file_path, file_name, file_ext, file_url], (err,main_list)=> {
+                db.query('insert into g_main_list (name, update_time, start, end, user, file_path, file_name, file_ext, file_url) '+
+                'values (?,?,?,?,?,?,?,?,?)',
+                [name, update_time, start, end, user, file_path, file_name, file_ext, file_url], (err,main_list)=> {
                     if(err) {
                         console.log(err);
                         result = {
@@ -295,6 +295,24 @@ router.post('/distribution', async(req, res)=> {
             })
         }
 
+        function distribution_update_time_query(main_sub_stb_sn){
+            return new Promise((resolve, reject)=>{
+                db.query('update g_distribution set update_time = ? where stb_sn = ? or stb_sn = ?',[time, ...main_sub_stb_sn], (err, stb)=> {
+                    // console.log(stb);
+                    if(err) {
+                        console.log(err);
+                        result = {
+                            "stb_sn": stb_sn,
+                            "result": "fail",
+                            "value": [{}]
+                        }
+                        reject(result)
+                    }
+                    resolve(main_sub_stb_sn);
+                })
+            })
+        }
+
         function main_update_time_query(main_sub_stb_sn){
             return new Promise((resolve, reject)=>{
                 db.query('update g_main set update_time = ? where stb_sn = ? or stb_sn = ?',[time, ...main_sub_stb_sn], (err, stb)=> {
@@ -318,7 +336,7 @@ router.post('/distribution', async(req, res)=> {
                 let values = [];
                 for(let i=0; i<uid.length; i++){
                     db.query('select g_main.stb_sn, g_main.name, g_main.update_time, g_main_list.file_url from g_main_list inner join g_main '+
-                    'on g_main.order = g_main_list.g_main_order where g_main_list.uid = ?', uid[i], (err, main_list)=> {
+                    'on g_main.stb_sn = g_main_list.g_main_stb_sn where g_main_list.uid = ?', uid[i], (err, main_list)=> {
                         if(err) console.log(err);
                         // console.log(main_list);
                         if(main_list.length != 0){
@@ -358,6 +376,9 @@ router.post('/distribution', async(req, res)=> {
         })
         .then((main_sub_stb_sn_and_main_name)=> {
             return schedule_update_time_query(main_sub_stb_sn_and_main_name);
+        })
+        .then((main_sub_stb_sn)=> {
+            return distribution_update_time_query(main_sub_stb_sn);
         })
         .then((main_sub_stb_sn)=> {
             return main_update_time_query(main_sub_stb_sn);

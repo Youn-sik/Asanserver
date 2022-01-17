@@ -1,7 +1,7 @@
 {
     "base_url": "http://127.0.0.1/",
     "base_server_document": "/home/asan/asan/backend",
-    "base_document": "/var/www/docker/",
+    "base_document": "/home/asan/asan/backend",
     "base_local_url": "http://172.16.41.233",
     "local_url": "127.0.0.1",
 
