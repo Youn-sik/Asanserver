@@ -88,6 +88,7 @@ router.post('/', async(req, res) =>{ //명상 영상 등록
             })
         }
 
+        //프론트에서 메인 목록 보여주고 메인 이름 받아와서 밑의 조건에 메인 이름 넣어서 대기화면 추가하도록 하기
         function get_main_order(main_sub_stb_sn){
             return new Promise((resolve, reject)=>{
                 db.query('select * from g_main where stb_sn = ? or stb_sn = ?', main_sub_stb_sn, (err, stb)=> {
@@ -111,9 +112,9 @@ router.post('/', async(req, res) =>{ //명상 영상 등록
         //g_main_order 부분 명상 등록 할 때 세탑 지정
         function meditation_reg(g_main_order){
             return new Promise((resolve, reject)=>{
-                db.query('insert into g_main_list (name, update_time, start, end, user, file_path, file_name, file_ext, file_url) '+
-                'values (?,?,?,?,?,?,?,?,?)',
-                [name, update_time, start, end, user, file_path, file_name, file_ext, file_url], (err,main_list)=> {
+                db.query('insert into g_main_list values (name, update_time, start, end, g_main_uid, user, file_path, file_name, file_ext, file_url) '+
+                'values (?,?,?,?,?,?,?,?,?,?)',
+                [name, update_time, start, end, g_main_order, user, file_path, file_name, file_ext, file_url], (err,main_list)=> {
                     if(err) {
                         console.log(err);
                         result = {
@@ -336,7 +337,7 @@ router.post('/distribution', async(req, res)=> {
                 let values = [];
                 for(let i=0; i<uid.length; i++){
                     db.query('select g_main.stb_sn, g_main.name, g_main.update_time, g_main_list.file_url from g_main_list inner join g_main '+
-                    'on g_main.stb_sn = g_main_list.g_main_stb_sn where g_main_list.uid = ?', uid[i], (err, main_list)=> {
+                    'on g_main.uid = g_main_list.g_main_uid where g_main_list.uid = ?', uid[i], (err, main_list)=> {
                         if(err) console.log(err);
                         // console.log(main_list);
                         if(main_list.length != 0){

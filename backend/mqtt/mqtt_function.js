@@ -380,6 +380,7 @@ module.exports = {
     async schedule_main(json){
         try {
             let stb_sn = json.stb_sn;
+            let name = json.name;
             let time = moment().format('YYYY-MM-DD HH:mm:ss');
             let result = {};
 
@@ -447,11 +448,48 @@ module.exports = {
             //         })
             //     })
             // }
+            
+            function schedule_update_time_query(){
+                return new Promise((resolve, reject)=>{
+                    db.query('update g_schedule set update_time = ? where main_name = ?',[time, name], (err, stb)=> {
+                        // console.log(stb);
+                        if(err) {
+                            console.log(err);
+                            result = {
+                                "stb_sn": stb_sn,
+                                "result": "fail",
+                                "value": [{}]
+                            }
+                            reject(result)
+                        }
+                        resolve();
+                    })
+                })
+            }
+
+            function main_update_time_query(main_sub_stb_sn){
+                console.log(main_sub_stb_sn);
+                return new Promise((resolve, reject)=>{
+                    db.query('update g_main set update_time = ? where g_main.name = ? and stb_sn = ? or stb_sn = ?',[time, name, ...main_sub_stb_sn], (err, stb)=> {
+                        // console.log(stb);
+                        if(err) {
+                            console.log(err);
+                            result = {
+                                "stb_sn": stb_sn,
+                                "result": "fail",
+                                "value": [{}]
+                            }
+                            reject(result)
+                        }
+                        resolve(main_sub_stb_sn);
+                    })
+                })
+            } 
 
             function main_query(main_sub_stb_sn){
                 return new Promise((resolve, reject)=> {
                     db.query('select g_main.stb_sn, g_main.name, g_main.update_time, g_main_list.file_url from g_main_list inner join g_main '+
-                    'on g_main.stb_sn = g_main_list.g_main_stb_sn where g_main.stb_sn = ? or g_main.stb_sn = ?', main_sub_stb_sn, (err, main)=> {
+                    'on g_main.uid = g_main_list.g_main_uid where g_main.name = ? and g_main.stb_sn = ? or g_main.stb_sn = ?', [name, ...main_sub_stb_sn], (err, main)=> {
                         if(err) console.log(err);
                         // console.log(main);
                         if(main.length != 0){
@@ -476,67 +514,9 @@ module.exports = {
                 });
             }
 
-            function main_get_name_query(main_sub_stb_sn){
-                return new Promise((resolve, reject)=>{
-                    db.query('select * from g_main where stb_sn = ? or stb_sn = ?', main_sub_stb_sn, (err, stb)=> {
-                        // console.log(stb);
-                        if(err) {
-                            console.log(err);
-                            result = {
-                                "stb_sn": stb_sn,
-                                "result": "fail",
-                                "value": [{}]
-                            }
-                            reject(result)
-                        }
-                        resolve([...main_sub_stb_sn, stb[0].name]);
-                    })
-                })
-            }
-            
-            function schedule_update_time_query(main_sub_stb_sn_and_main_name){
-                return new Promise((resolve, reject)=>{
-                    db.query('update g_schedule set update_time = ? where main_name = ?',[time, main_sub_stb_sn_and_main_name[2]], (err, stb)=> {
-                        // console.log(stb);
-                        if(err) {
-                            console.log(err);
-                            result = {
-                                "stb_sn": stb_sn,
-                                "result": "fail",
-                                "value": [{}]
-                            }
-                            reject(result)
-                        }
-                        let main_sub_stb_sn = [main_sub_stb_sn_and_main_name[0], main_sub_stb_sn_and_main_name[1]];
-                        resolve(main_sub_stb_sn);
-                    })
-                })
-            }
-
-            function main_update_time_query(main_sub_stb_sn){
-                return new Promise((resolve, reject)=>{
-                    db.query('update g_main set update_time = ? where stb_sn = ? or stb_sn = ?',[time, ...main_sub_stb_sn], (err, stb)=> {
-                        // console.log(stb);
-                        if(err) {
-                            console.log(err);
-                            result = {
-                                "stb_sn": stb_sn,
-                                "result": "fail",
-                                "value": [{}]
-                            }
-                            reject(result)
-                        }
-                        resolve(main_sub_stb_sn);
-                    })
-                })
-            } 
-
-            stb_query()
-            .then((main_sub_stb_sn)=> {
-                return main_get_name_query(main_sub_stb_sn);
-            })
-            .then((main_sub_stb_sn_and_main_name)=> {
-                return schedule_update_time_query(main_sub_stb_sn_and_main_name);
+            schedule_update_time_query()
+            .then(()=> {
+                return stb_query();
             })
             .then((main_sub_stb_sn)=> {
                 return main_update_time_query(main_sub_stb_sn);
@@ -660,7 +640,7 @@ module.exports = {
     async schedule_home(json){
         try {
             let stb_sn = json.stb_sn;
-            let home_name = json.name
+            let name = json.name
             let time = moment().format('YYYY-MM-DD HH:mm:ss');
 
             let result = {};
@@ -698,7 +678,7 @@ module.exports = {
                             console.log(err);
                             result = {
                                 "stb_sn": stb_sn,
-                                "name": home_name,
+                                "name": name,
                                 "result": "fail",
                                 "value": [{
                                     
@@ -745,7 +725,7 @@ module.exports = {
                         } else {
                             result = {
                                 "stb_sn": stb_sn,
-                                "name": home_name,
+                                "name": name,
                                 "result": "fail",
                                 "value": [{
                                     
@@ -765,7 +745,7 @@ module.exports = {
                             console.log(err);
                             result = {
                                 "stb_sn": stb_sn,
-                                "name": home_name,
+                                "name": name,
                                 "result": "fail",
                                 "value": [{
                                     
@@ -810,7 +790,7 @@ module.exports = {
                         } else {
                             result = {
                                 "stb_sn": stb_sn,
-                                "name": home_name,
+                                "name": name,
                                 "result": "fail",
                                 "value": [{
                                     
@@ -830,13 +810,13 @@ module.exports = {
         //         db.query('select g_home.stb_sn, g_home.name, g_home.update_time, g_patient.id as patient_id, g_patient.name as patient_name, '+
         //         'g_patient.gender as patient_gender, g_patient.age as patient_age, g_patient.dob as patient_dob, g_patient.surgicalsite as patient_surgicalsite, '+
         //         'g_patient.surgicalname as patient_surgicalname from g_home inner join g_patient on g_home.stb_sn = g_patient.g_main_home_stb_sn '+
-        //         'where g_home.stb_sn = ? or g_home.stb_sn = ? and g_home.name = ?', [...main_sub_stb_sn, home_name], (err, stb)=> {
+        //         'where g_home.stb_sn = ? or g_home.stb_sn = ? and g_home.name = ?', [...main_sub_stb_sn, name], (err, stb)=> {
         //             console.log(stb);
         //             if(err) {
         //                 console.log(err);
         //                 result = {
         //                     "stb_sn": stb_sn,
-        //                     "name": home_name,
+        //                     "name": name,
         //                     "result": "fail",
         //                     "value": [{
                                 
@@ -878,7 +858,7 @@ module.exports = {
         //             } else {
         //                 result = {
         //                     "stb_sn": stb_sn,
-        //                     "name": home_name,
+        //                     "name": name,
         //                     "result": "fail",
         //                     "value": [{
                                 
@@ -896,14 +876,14 @@ module.exports = {
                     db.query('select g_home.stb_sn, g_home.name, g_home.update_time, g_surgery.name as surgery_name,g_surgery.uid as surgery_uid, '+
                     'g_patient.uid as patient_id, g_patient.name as patient_name, g_patient.gender as patient_gender, g_patient.age as patient_age, '+
                     'g_patient.dob as patient_dob, g_patient.surgicalsite as patient_surgicalsite from g_home inner join g_surgery '+
-                    'on g_home.stb_sn = g_surgery.g_main_home_stb_sn inner join g_patient on g_surgery.uid = g_patient.g_surgery_uid '+
-                    'where g_home.stb_sn = ? or g_home.stb_sn = ? and g_home.name = ?', [...main_sub_stb_sn, home_name], (err, stb)=> {
+                    'on g_home.uid = g_surgery.g_main_home_uid inner join g_patient on g_surgery.uid = g_patient.g_surgery_uid '+
+                    'where g_home.name = ? and g_home.stb_sn = ? or g_home.stb_sn = ?', [name, ...main_sub_stb_sn], (err, stb)=> {
                         // console.log(stb);
                         if(err) {
                             console.log(err);
                             result = {
                                 "stb_sn": stb_sn,
-                                "name": home_name,
+                                "name": name,
                                 "result": "fail",
                                 "value": [{
                                     
@@ -942,7 +922,7 @@ module.exports = {
                         } else {
                             result = {
                                 "stb_sn": stb_sn,
-                                "name": home_name,
+                                "name": name,
                                 "result": "fail",
                                 "value": [{
                                     
@@ -959,7 +939,7 @@ module.exports = {
             function staff_query(surgery_patient){
                 return new Promise((reslove, reject)=>{
                     db.query('select g_staff.uid as id, g_staff.name as name, g_staff.position as position  from g_home '+
-                    'inner join g_surgery on g_home.stb_sn = g_surgery.g_main_home_stb_sn inner join g_staff on '+
+                    'inner join g_surgery on g_home.uid = g_surgery.g_main_home_uid inner join g_staff on '+
                     'g_staff.g_surgery_uid = g_surgery.uid where g_staff.g_surgery_uid = ?', 
                     surgery_patient.surgery_order, (err, stb)=> {
                         // console.log(stb);
@@ -967,7 +947,7 @@ module.exports = {
                             console.log(err);
                             result = {
                                 "stb_sn": stb_sn,
-                                "name": home_name,
+                                "name": name,
                                 "result": "fail",
                                 "value": [{
                                     
@@ -981,7 +961,7 @@ module.exports = {
                         } else {
                             result = {
                                 "stb_sn": stb_sn,
-                                "name": home_name,
+                                "name": name,
                                 "result": "fail",
                                 "value": [{
                                     
@@ -1004,7 +984,7 @@ module.exports = {
                             console.log(err);
                             result = {
                                 "stb_sn": stb_sn,
-                                "name": home_name,
+                                "name": name,
                                 "result": "fail",
                                 "value": [{
                                     
@@ -1028,7 +1008,7 @@ module.exports = {
                         } else {
                             result = {
                                 "stb_sn": stb_sn,
-                                "name": home_name,
+                                "name": name,
                                 "result": "fail",
                                 "value": [{
                                     
@@ -1048,7 +1028,7 @@ module.exports = {
                             console.log(err);
                             result = {
                                 "stb_sn": stb_sn,
-                                "name": home_name,
+                                "name": name,
                                 "result": "fail",
                                 "value": [{
                                     
@@ -1071,7 +1051,7 @@ module.exports = {
                         } else {
                             result = {
                                 "stb_sn": stb_sn,
-                                "name": home_name,
+                                "name": name,
                                 "result": "fail",
                                 "value": [{
                                     
@@ -1083,27 +1063,27 @@ module.exports = {
                 })
             }
 
-            function home_get_name_query(main_sub_stb_sn){
-                return new Promise((resolve, reject)=>{
-                    db.query('select * from g_home where stb_sn = ? or stb_sn = ?', main_sub_stb_sn, (err, stb)=> {
-                        // console.log(stb);
-                        if(err) {
-                            console.log(err);
-                            result = {
-                                "stb_sn": stb_sn,
-                                "result": "fail",
-                                "value": [{}]
-                            }
-                            reject(result)
-                        }
-                        resolve([...main_sub_stb_sn, stb[0].name]);
-                    })
-                })
-            }
+            // function home_get_name_query(main_sub_stb_sn){
+            //     return new Promise((resolve, reject)=>{
+            //         db.query('select * from g_home where stb_sn = ? or stb_sn = ?', main_sub_stb_sn, (err, stb)=> {
+            //             // console.log(stb);
+            //             if(err) {
+            //                 console.log(err);
+            //                 result = {
+            //                     "stb_sn": stb_sn,
+            //                     "result": "fail",
+            //                     "value": [{}]
+            //                 }
+            //                 reject(result)
+            //             }
+            //             resolve([...main_sub_stb_sn, stb[0].name]);
+            //         })
+            //     })
+            // }
             
-            function schedule_update_time_query(main_sub_stb_sn_and_main_name){
+            function schedule_update_time_query(){
                 return new Promise((resolve, reject)=>{
-                    db.query('update g_schedule set update_time = ? where home_name = ?',[time, main_sub_stb_sn_and_main_name[2]], (err, stb)=> {
+                    db.query('update g_schedule set update_time = ? where home_name = ?',[time, name], (err, stb)=> {
                         // console.log(stb);
                         if(err) {
                             console.log(err);
@@ -1114,8 +1094,7 @@ module.exports = {
                             }
                             reject(result)
                         }
-                        let main_sub_stb_sn = [main_sub_stb_sn_and_main_name[0], main_sub_stb_sn_and_main_name[1]];
-                        resolve(main_sub_stb_sn);
+                        resolve();
                     })
                 })
             }
@@ -1138,12 +1117,16 @@ module.exports = {
                 })
             }
 
-            stb_query()
+            schedule_update_time_query()
+            .then(()=> {
+                return stb_query()
+            })
+            
+            // .then((main_sub_stb_sn)=> {
+            //     return home_get_name_query(main_sub_stb_sn)
+            // })
+        
             .then((main_sub_stb_sn)=> {
-                return home_get_name_query(main_sub_stb_sn)
-            }).then((main_sub_stb_sn_and_main_name)=> {
-                return schedule_update_time_query(main_sub_stb_sn_and_main_name)
-            }).then((main_sub_stb_sn)=> {
                 return home_update_time_query(main_sub_stb_sn)
             }).then((main_sub_stb_sn)=> {
                 return layout_used_query(main_sub_stb_sn)
@@ -1295,6 +1278,7 @@ module.exports = {
     async schedule_checklist(json){
         try {
             let stb_sn = json.stb_sn;
+            let name = json.name;
             let time = moment().format('YYYY-MM-DD HH:mm:ss');
             let result = {};
 
@@ -1326,7 +1310,7 @@ module.exports = {
                     db.query('select g_checklist.stb_sn, g_checklist.name as checklist_name, g_checklist.uid as checklist_uid, '+
                     'g_checklist.update_time as checklist_update_time, g_checklist_list.name as list_name, g_checklist_list.update_time as list_update_time, '+
                     'g_checklist_list.value as list_value, g_checklist_list.uid as list_uid from g_checklist inner join g_checklist_list '+
-                    'on g_checklist.stb_sn = g_checklist_list.checklist_stb_sn where g_checklist.stb_sn = ? or g_checklist.stb_sn = ?', main_sub_stb_sn, (err, stb)=> {
+                    'on g_checklist.uid = g_checklist_list.checklist_uid where g_checklist.name = ? and g_checklist.stb_sn = ? or g_checklist.stb_sn = ?', [name, ...main_sub_stb_sn], (err, stb)=> {
                         // console.log(stb);
                         if(err) console.log(err);
                         if(stb.length != 0){
@@ -1456,6 +1440,7 @@ module.exports = {
     async schedule_media(json){
         try {
             let stb_sn = json.stb_sn;
+            let name = json.name;
             let time = moment().format('YYYY-MM-DD HH:mm:ss');
             let result = {};
 
@@ -1486,7 +1471,7 @@ module.exports = {
                 return new Promise((resolve, reject)=>{
                     db.query('select g_media.stb_sn, g_media.name as media_name, g_media.update_time as media_update_time, g_media_list.name as list_name, '+
                     'g_media_list.update_time as list_update_time, g_media_list.uid as list_uid from g_media inner join g_media_list '+
-                    'on g_media.stb_sn = g_media_list.g_media_stb_sn where g_media.stb_sn = ? or g_media.stb_sn = ?', main_sub_stb_sn, (err, stb)=> {
+                    'on g_media.uid = g_media_list.g_media_uid where g_media.name = ? and  g_media.stb_sn = ? or g_media.stb_sn = ?', [name, ...main_sub_stb_sn], (err, stb)=> {
                         // console.log(stb);
                         if(err) console.log(err);
                         if(stb.length != 0){

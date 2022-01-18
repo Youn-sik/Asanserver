@@ -22,16 +22,6 @@ function setup_database() {
 	read db_password
 	mysql -u$db_user -p${db_password} << MYSQL
 USE $db_name;
-TRUNCATE $db_table_g_checklist;
-TRUNCATE $db_table_g_checklist_list;
-TRUNCATE $db_table_g_home;
-TRUNCATE $db_table_g_home_list;
-TRUNCATE $db_table_g_instrument;
-TRUNCATE $db_table_g_surgery;
-TRUNCATE $db_table_g_patient;
-TRUNCATE $db_table_g_staff;
-TRUNCATE $db_table_g_process;
-TRUNCATE $db_table_g_process_list;
 MYSQL
 }
 
@@ -84,51 +74,55 @@ function import_data() {
                 g_process_list__g_process_uid=$(echo $line | cut -f 37 -d ',')
 
 		if [ -n "$g_checklist__name" ] && [ -n "$g_checklist__update_time" ] && [ -n "$g_checklist__stb_sn" ]; then
-			#echo ""
-			#echo "${g_checklist__name}/${g_checklist__update_time}/${g_checklist__stb_sn}"
-			echo "INSERT INTO $db_table_g_checklist VALUES (DEFAULT, '$g_checklist__name', '$g_checklist__update_time', '$g_checklist__stb_sn');"
+			echo "select * from g_checklist where stb_sn='$g_checklist__stb_sn'; select * from g_schedule where stb_sn='$g_checklist__stb_sn';" | mysql -uasan -pmaster123 asancloud | sed 1d | while read col
+			do
+				echo "$col"
+				#checklist_name=$(echo "$col" | cut -f 9 -d '	')
+				#echo "$checklist_name"
+			done
+			#echo "INSERT INTO $db_table_g_checklist VALUES (DEFAULT, '$g_checklist__name', '$g_checklist__update_time', '$g_checklist__stb_sn');"
 			#echo "UPDATE g_schedule SET checklist_name = $g_checklist__name where  "
 		fi
 
-	        if [ -n "$g_checklist_list__name" ] && [ -n "$g_checklist_list__update_time" ] && [ -n "$g_checklist_list__checklist_uid" ] && [ -n "$g_checklist_list__value" ]; then
+	        #if [ -n "$g_checklist_list__name" ] && [ -n "$g_checklist_list__update_time" ] && [ -n "$g_checklist_list__checklist_uid" ] && [ -n "$g_checklist_list__value" ]; then
 			#echo ""
 			#echo "${g_checklist_list__name}/${g_checklist_list__update_time}/${g_checklist_list__checklist_stb_sn}/${g_checklist_list__value}"
-			echo "INSERT INTO $db_table_g_checklist_list VALUES (DEFAULT, '$g_checklist_list__name', '$g_checklist_list__update_time', '$g_checklist_list__checklist_uid', '$g_checklist_list__value');"
-		fi
+		#	echo "INSERT INTO $db_table_g_checklist_list VALUES (DEFAULT, '$g_checklist_list__name', '$g_checklist_list__update_time', '$g_checklist_list__checklist_uid', '$g_checklist_list__value');"
+		#fi
 
-		if [ -n "$g_home__name" ] && [ -n "$g_home__update_time" ] && [ -n "$g_home__stb_sn" ]; then
-			echo "INSERT INTO $db_table_g_home VALUES (DEFAULT, '$g_home__name', '$g_home__update_time', '$g_home__stb_sn');"
-		fi
+		#if [ -n "$g_home__name" ] && [ -n "$g_home__update_time" ] && [ -n "$g_home__stb_sn" ]; then
+		#	echo "INSERT INTO $db_table_g_home VALUES (DEFAULT, '$g_home__name', '$g_home__update_time', '$g_home__stb_sn');"
+		#fi
 
-		if [ -n "$g_home_list__name" ] && [ -n "$g_home_list__update_time" ] && [ -n "$g_home_list__g_home_uid" ]; then
-			echo "INSERT INTO $db_table_g_home_list VALUES (DEFAULT, '$g_home_list__name', '$g_home_list__update_time', '$g_home_list__g_home_uid');"
-		fi
+		#if [ -n "$g_home_list__name" ] && [ -n "$g_home_list__update_time" ] && [ -n "$g_home_list__g_home_uid" ]; then
+		#	echo "INSERT INTO $db_table_g_home_list VALUES (DEFAULT, '$g_home_list__name', '$g_home_list__update_time', '$g_home_list__g_home_uid');"
+		#fi
 
-		if [ -n "$g_instrument__thumbnail" ] && [ -n "$g_instrument__name" ] && [ -n "$g_instrument__contents" ]; then
-			echo "INSERT INTO $db_table_g_instrument VALUES (DEFAULT, '$g_instrument__thumbnail', '$g_instrument__name', '$g_instrument__contents');"
-                fi
+		#if [ -n "$g_instrument__thumbnail" ] && [ -n "$g_instrument__name" ] && [ -n "$g_instrument__contents" ]; then
+		#	echo "INSERT INTO $db_table_g_instrument VALUES (DEFAULT, '$g_instrument__thumbnail', '$g_instrument__name', '$g_instrument__contents');"
+                #fi
 
-                if [ -n "$g_surgery__name" ] && [ -n "$g_surgery__update_time" ] && [ -n "$g_surgery__g_main_home_uid" ]; then
-			echo "INSERT INTO $db_table_g_surgery VALUES (DEFAULT, '$g_surgery__name', '$g_surgery__update_time', '$g_surgery__g_main_home_uid');"
-                fi
+                #if [ -n "$g_surgery__name" ] && [ -n "$g_surgery__update_time" ] && [ -n "$g_surgery__g_main_home_uid" ]; then
+		#	echo "INSERT INTO $db_table_g_surgery VALUES (DEFAULT, '$g_surgery__name', '$g_surgery__update_time', '$g_surgery__g_main_home_uid');"
+                #fi
 
-                if [ -n "$g_patient__name" ] && [ -n "$g_patient__gender" ] && [ -n "$g_patient__age" ] && [ -n "$g_patient__dob" ] && [ -n "$g_patient__surgicalsite" ] && [ -n "$g_patient__surgicalname" ]  && [ -n "$g_patient__g_surgery_uid" ]; then
-			echo "INSERT INTO $db_table_g_patient VALUES (DEFAULT, '$g_patient__name', '$g_patient__gender', '$g_patient__age', '$g_patient__dob', '$g_patient__surgicalsite', '$g_patient__g_surgery_uid', '$g_patient__surgicalname');"
-                fi
+                #if [ -n "$g_patient__name" ] && [ -n "$g_patient__gender" ] && [ -n "$g_patient__age" ] && [ -n "$g_patient__dob" ] && [ -n "$g_patient__surgicalsite" ] && [ -n "$g_patient__surgicalname" ]  && [ -n "$g_patient__g_surgery_uid" ]; then
+		#	echo "INSERT INTO $db_table_g_patient VALUES (DEFAULT, '$g_patient__name', '$g_patient__gender', '$g_patient__age', '$g_patient__dob', '$g_patient__surgicalsite', '$g_patient__g_surgery_uid', '$g_patient__surgicalname');"
+                #fi
 
-                if [ -n "$g_staff__name" ] && [ -n "$g_staff__position" ] && [ -n "$g_staff__g_surery_uid" ]; then
-			echo "INSERT INTO $db_table_g_staff VALUES(DEFAULT, '$g_staff__name', '$g_staff__position', '$g_staff__g_surery_uid') ;"
-                fi
+                #if [ -n "$g_staff__name" ] && [ -n "$g_staff__position" ] && [ -n "$g_staff__g_surery_uid" ]; then
+		#	echo "INSERT INTO $db_table_g_staff VALUES(DEFAULT, '$g_staff__name', '$g_staff__position', '$g_staff__g_surery_uid') ;"
+                #fi
 
-		if [ -n "$g_process__g_surgery_uid" ] && [ -n "$g_process__name" ]; then
-			echo "INSERT INTO $db_table_g_process VALUES (DEFAULT, '$g_process__g_surgery_uid', '$g_process__name');"
-                fi
+		#if [ -n "$g_process__g_surgery_uid" ] && [ -n "$g_process__name" ]; then
+		#	echo "INSERT INTO $db_table_g_process VALUES (DEFAULT, '$g_process__g_surgery_uid', '$g_process__name');"
+                #fi
 
-                if [ -n "$g_process_list__value" ] && [ -n "$g_process_list__g_process_uid" ]; then
-			echo "INSERT INTO $db_table_g_process_list VALUES (DEFAULT, '$g_process_list__value', '$g_process_list__g_process_uid');"
-                fi
+                #if [ -n "$g_process_list__value" ] && [ -n "$g_process_list__g_process_uid" ]; then
+		#	echo "INSERT INTO $db_table_g_process_list VALUES (DEFAULT, '$g_process_list__value', '$g_process_list__g_process_uid');"
+                #fi
 
-	done | mysql -u$db_user -p${db_password} $db_name
+	done 
 }
 
 #################
