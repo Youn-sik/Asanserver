@@ -93,9 +93,9 @@ client.on('connect', () => {
     //     if(err) console.log(err);
     // }
 
-    // client.publish('/schedule/main/KSQ19880201', JSON.stringify({"stb_sn": "KSQ19880201", "name": "second main"}), {qos: 0, retain: false}), (err)=> {
-    //     if(err) console.log(err);
-    // }
+    client.publish('/schedule/main/KSQ19880201', JSON.stringify({"stb_sn": "KSQ19880201", "name": "second main"}), {qos: 0, retain: false}), (err)=> {
+        if(err) console.log(err);
+    }
 
     // client.publish('/schedule/face/KSQ19880205', JSON.stringify({"stb_sn": "KSQ19880205"}), {qos: 0, retain: false}), (err)=> {
     //     if(err) console.log(err);

@@ -89,17 +89,18 @@ function Schedule(){
                     }
 
                     setExt(response.data.ext);
+                    let ext = response.data.ext;
 
                     setFILEInfo({
                         file_name: response.data.fileName,
                         file_path: response.data.filePath
                     });
 
-                    if(Ext == '.mp3'){
+                    if(ext == '.mp3'){
                         alert("음원 파일이 서버에 저장 완료 되었습니다.")
                         setThumbnail(mp3_icon);
                         setLoading(false);
-                    } else if(Ext == '.mp4'){
+                    } else if(ext == '.mp4'){
                         alert("동영상이 서버에 저장 완료 되었습니다. 썸네일 생성을 시작합니다.")
 
                         axios.post(backend_url+'/meditation/thumbnail', variable)
