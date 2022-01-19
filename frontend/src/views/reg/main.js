@@ -7,11 +7,13 @@ import {UploadOutlined} from '@ant-design/icons';
 import StbList from '../List/StbList/StbList';
 import server_json from '../../server.json'
 import "antd/dist/antd.min.css";
+import mp3_icon from '../../mp3_icon.png';
 
 const backend_url = server_json.base_url;
 const { Title } = Typography;
 
 function Schedule(){
+    const [Ext, setExt] = useState("");
     const [Thumbnail, setThumbnail] = useState("");
     const [ButtonDisplay, setButtonDisplay] = useState(false);
     const [Loading, setLoading] = useState(false);
@@ -80,33 +82,42 @@ function Schedule(){
         axios.post(backend_url+"/meditation/upload", formData, {config})
             .then((response) => {
                 if(response.data.success){
-                    // console.log(response.data) 
+                    console.log(response.data) 
                     let variable = {
                         filePath: response.data.filePath,
                         fileName: response.data.fileName
                     }
+
+                    setExt(response.data.ext);
 
                     setFILEInfo({
                         file_name: response.data.fileName,
                         file_path: response.data.filePath
                     });
 
-                    alert("서버에 저장이 완료 되었습니다. 썸네일 생성을 시작합니다.")
+                    if(Ext == '.mp3'){
+                        alert("음원 파일이 서버에 저장 완료 되었습니다.")
+                        setThumbnail(mp3_icon);
+                        setLoading(false);
+                    } else if(Ext == '.mp4'){
+                        alert("동영상이 서버에 저장 완료 되었습니다. 썸네일 생성을 시작합니다.")
 
-                    axios.post(backend_url+'/meditation/thumbnail', variable)
-                        .then(response => {
-                            if (response.data.success) {
-                                // console.log(response.data); 
-                                setThumbnail(response.data.thumbsFilePath)
-                            } else {
-                                alert('썸네일 저장에 실패하였습니다.');
-                                alert("확장자가 .mp4 파일인지 확인해 주세요.")
-                            }
-                            setLoading(false);
-                        });
-
+                        axios.post(backend_url+'/meditation/thumbnail', variable)
+                            .then(response => {
+                                if (response.data.success) {
+                                    // console.log(response.data); 
+                                    setThumbnail(response.data.thumbsFilePath)
+                                } else {
+                                    alert('썸네일 저장에 실패하였습니다.');
+                                    alert("확장자가 .mp4 파일인지 확인해 주세요.")
+                                }
+                                setLoading(false);
+                            });
+                    } else {
+                        alert("파일은 .mp3 또는 .mp4 확장자만 가능합니다.")
+                    }                    
                 } else {
-                    alert("동영상 저장에 실패하였습니다.");
+                    alert("파일 저장에 실패하였습니다.");
                 }
             })
     }
@@ -138,16 +149,22 @@ function Schedule(){
                                 justifyContent:'center'}} {...getRootProps()}>
                                     <input {...getInputProps()} />
                                     <UploadOutlined />
-                                    <div>동영상을 업로드해주세요</div>
+                                    <div>동영상 또는 음원 파일을 업로드해주세요</div>
                                 </div>
                             )}
                         </Dropzone>
                     </div><br/>
                         {Thumbnail && 
-                            <div style = {{width:'300px'}}>
-                                <div>
-                                    <img src= {`${backend_url}${Thumbnail}`} alt= "thumbnail" />
-                                </div>
+                            <div style = {{textAlign:'center', width:'300px'}}>
+                                {Ext == '.mp3' ? 
+                                    <div>
+                                        <img src= {`${Thumbnail}`} alt= "thumbnail" />
+                                    </div>
+                                :
+                                    <div>
+                                        <img src= {`${backend_url}${Thumbnail}`} alt= "thumbnail" />
+                                    </div>
+                                }
                                 <div>파일명: {FILEInfo.file_name}</div>
                             </div>
                         }

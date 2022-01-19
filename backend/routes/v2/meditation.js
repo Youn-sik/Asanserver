@@ -162,9 +162,9 @@ router.post('/upload', async(req, res)=> {
                 cb(null, `${time.replace(" ", "_")}_${file.originalname}`)
             },
             fileFilter: (req, file, cb) => {
-                const ext = path.extname(file.originalname)
-                if (ext !== '.mp4') {
-                    return cb(res.status(400).end('only jpg, png, mp4 is allowed'), false);
+                const ext = path.extname(file.originalname);
+                if (ext !== '.mp4' || ext !== '.mp3') {
+                    return cb(res.status(400).end('only mp3, mp4 is allowed'), false);
                 }
                 cb(null, true);
                 // console.log("video uploaded")
@@ -174,10 +174,13 @@ router.post('/upload', async(req, res)=> {
         var upload = multer({ storage: storage }).single("file")
 
         upload(req, res, err => {
+            // console.log(res.req.file);
+            let file_ext = path.extname(res.req.file.filename);
+
             if (err) {
                 return res.json({ success: false, err })
             }
-            return res.json({ success: true, filePath: res.req.file.path, fileName: res.req.file.filename })
+            return res.json({ success: true, filePath: res.req.file.path, fileName: res.req.file.filename, ext:file_ext  })
         })
 
     } catch(err){
@@ -336,14 +339,27 @@ router.post('/distribution', async(req, res)=> {
             return new Promise((resolve, reject)=>{
                 let values = [];
                 for(let i=0; i<uid.length; i++){
-                    db.query('select g_main.stb_sn, g_main.name, g_main.update_time, g_main_list.file_url from g_main_list inner join g_main '+
-                    'on g_main.uid = g_main_list.g_main_uid where g_main_list.uid = ?', uid[i], (err, main_list)=> {
+                    db.query('select g_main.stb_sn, g_main.name, g_main.update_time, g_main_list.file_url, g_main_list.file_ext from g_main_list '+
+                    'inner join g_main on g_main.uid = g_main_list.g_main_uid where g_main_list.uid = ?', uid[i], (err, main_list)=> {
                         if(err) console.log(err);
                         // console.log(main_list);
                         if(main_list.length != 0){
-                            let obj = {
-                                "type": "video",
-                                "file_url": main_list[0].file_url
+                            let obj = {};
+                            if(main_list[0].file_ext == '.mp3'){
+                                obj = {
+                                    "type": "music",
+                                    "file_url": main_list[0].file_url
+                                }
+                            } else if (main_list[0].file_ext == '.mp4'){
+                                obj = {
+                                    "type": "video",
+                                    "file_url": main_list[0].file_url
+                                }
+                            } else {
+                                obj = {
+                                    "type": main_list[0].file_ext,
+                                    "file_url": main_list[0].file_url
+                                }
                             }
                             values.push(obj);
                         } else {

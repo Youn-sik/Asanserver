@@ -82,6 +82,9 @@ function Dash(){
                 <StbList setSTBInfo={setSTBInfo} setButtonDisplay={setButtonDisplay} setMAINInfo={setMAINInfo} setCheckedItems={setCheckedItems} />
                 <MainList stb_sn={STBInfo.main_stb_sn} setMAINInfo={setMAINInfo} setButtonDisplay={setButtonDisplay} checkedItems={checkedItems} setCheckedItems={setCheckedItems} /><br/>
                 <div display={{width: "400px", justifyContent:'space-between'}} >
+                    <Link to="/schedule_upload">
+                        <Button>스케줄 지정</Button>
+                    </Link>
                     <Link to="/main">
                         <Button>대기 화면 등록</Button>
                     </Link>
