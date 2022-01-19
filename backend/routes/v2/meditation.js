@@ -112,8 +112,8 @@ router.post('/', async(req, res) =>{ //명상 영상 등록
         //g_main_order 부분 명상 등록 할 때 세탑 지정
         function meditation_reg(g_main_order){
             return new Promise((resolve, reject)=>{
-                db.query('insert into g_main_list values (name, update_time, start, end, g_main_uid, user, file_path, file_name, file_ext, file_url) '+
-                'values (?,?,?,?,?,?,?,?,?,?)',
+                db.query("insert into g_main_list (name, update_time, start, end, g_main_uid, user, file_path, file_name, file_ext, file_url) "+
+                "values (?,?,?,?,?,?,?,?,?,?)",
                 [name, update_time, start, end, g_main_order, user, file_path, file_name, file_ext, file_url], (err,main_list)=> {
                     if(err) {
                         console.log(err);
@@ -259,7 +259,7 @@ router.post('/distribution', async(req, res)=> {
             })
         }
 
-        function main_get_name_query(main_sub_stb_sn){
+        function main_get_uid_query(main_sub_stb_sn){
             return new Promise((resolve, reject)=>{
                 db.query('select * from g_main where stb_sn = ? or stb_sn = ?', main_sub_stb_sn, (err, stb)=> {
                     // console.log(stb);
@@ -272,14 +272,14 @@ router.post('/distribution', async(req, res)=> {
                         }
                         reject(result)
                     }
-                    resolve([...main_sub_stb_sn, stb[0].name]);
+                    resolve([...main_sub_stb_sn, stb[0].uid]);
                 })
             })
         }
 
-        function schedule_update_time_query(main_sub_stb_sn_and_main_name){
+        function schedule_update_time_query(main_sub_stb_sn_and_main_uid){
             return new Promise((resolve, reject)=>{
-                db.query('update g_schedule set update_time = ? where main_name = ?',[time, main_sub_stb_sn_and_main_name[2]], (err, stb)=> {
+                db.query('update g_schedule set update_time = ? where main_uid = ?',[time, main_sub_stb_sn_and_main_uid[2]], (err, stb)=> {
                     // console.log(stb);
                     if(err) {
                         console.log(err);
@@ -290,7 +290,7 @@ router.post('/distribution', async(req, res)=> {
                         }
                         reject(result)
                     }
-                    let main_sub_stb_sn = [main_sub_stb_sn_and_main_name[0], main_sub_stb_sn_and_main_name[1]];
+                    let main_sub_stb_sn = [main_sub_stb_sn_and_main_uid[0], main_sub_stb_sn_and_main_uid[1]];
                     resolve(main_sub_stb_sn);
                 })
             })
@@ -373,10 +373,10 @@ router.post('/distribution', async(req, res)=> {
 
         stb_query()
         .then((main_sub_stb_sn)=> {
-            return main_get_name_query(main_sub_stb_sn);
+            return main_get_uid_query(main_sub_stb_sn);
         })
-        .then((main_sub_stb_sn_and_main_name)=> {
-            return schedule_update_time_query(main_sub_stb_sn_and_main_name);
+        .then((main_sub_stb_sn_and_main_uid)=> {
+            return schedule_update_time_query(main_sub_stb_sn_and_main_uid);
         })
         .then((main_sub_stb_sn)=> {
             return distribution_update_time_query(main_sub_stb_sn);

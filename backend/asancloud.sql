@@ -65,7 +65,7 @@ CREATE TABLE `g_checklist` (
 
 LOCK TABLES `g_checklist` WRITE;
 /*!40000 ALTER TABLE `g_checklist` DISABLE KEYS */;
-INSERT INTO `g_checklist` VALUES (1,'체크리스트','2022-01-12 16:26:00','KSQ19880205'),(2,'체크리스트','2022-01-18 17:40:10','KSQ19880201');
+INSERT INTO `g_checklist` VALUES (1,'체크리스트','2022-01-19 09:15:56','KSQ19880205'),(2,'체크리스트','2022-01-18 19:29:09','KSQ19880201');
 /*!40000 ALTER TABLE `g_checklist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -143,7 +143,7 @@ CREATE TABLE `g_distribution` (
 
 LOCK TABLES `g_distribution` WRITE;
 /*!40000 ALTER TABLE `g_distribution` DISABLE KEYS */;
-INSERT INTO `g_distribution` VALUES (1,'KSQ19880205','first distribution','2022-01-18 17:38:14'),(2,'KSQ19880201','second distribution','2022-01-18 17:40:10'),(3,'KSQ19880207','third distribution','2020-11-08 10:10:10');
+INSERT INTO `g_distribution` VALUES (1,'KSQ19880205','first distribution','2022-01-19 10:01:28'),(2,'KSQ19880201','second distribution','2022-01-19 10:01:23'),(3,'KSQ19880207','third distribution','2020-11-08 10:10:10');
 /*!40000 ALTER TABLE `g_distribution` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,7 +169,7 @@ CREATE TABLE `g_home` (
 
 LOCK TABLES `g_home` WRITE;
 /*!40000 ALTER TABLE `g_home` DISABLE KEYS */;
-INSERT INTO `g_home` VALUES (1,'폐 수술 메인 화면','2022-01-12 16:26:00','KSQ19880205'),(2,'어깨 팔 수술 메인 화면','2022-01-12 09:24:00','KSQ19880205'),(3,'간암 수술 메인 화면','2022-01-12 02:22:00','KSQ19880205'),(4,'난소암 수술 메인 화면','2022-01-11 19:20:00','KSQ19880205'),(5,'심장 수술 메인 화면','2022-01-18 17:40:10','KSQ19880201'),(6,'다리 수술 메인 화면','2022-01-18 17:40:10','KSQ19880201'),(7,'림프종 수술 메인 화면','2022-01-18 17:40:10','KSQ19880201'),(8,'신장암 수술 메인 화면','2022-01-18 17:40:10','KSQ19880201');
+INSERT INTO `g_home` VALUES (1,'폐 수술 메인 화면','2022-01-19 09:30:45','KSQ19880205'),(2,'어깨 팔 수술 메인 화면','2022-01-19 09:30:45','KSQ19880205'),(3,'간암 수술 메인 화면','2022-01-19 09:30:45','KSQ19880205'),(4,'난소암 수술 메인 화면','2022-01-19 09:30:45','KSQ19880205'),(5,'심장 수술 메인 화면','2022-01-18 17:47:50','KSQ19880201'),(6,'다리 수술 메인 화면','2022-01-18 17:47:50','KSQ19880201'),(7,'림프종 수술 메인 화면','2022-01-18 17:47:50','KSQ19880201'),(8,'신장암 수술 메인 화면','2022-01-18 17:47:50','KSQ19880201');
 /*!40000 ALTER TABLE `g_home` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -333,7 +333,7 @@ CREATE TABLE `g_main` (
 
 LOCK TABLES `g_main` WRITE;
 /*!40000 ALTER TABLE `g_main` DISABLE KEYS */;
-INSERT INTO `g_main` VALUES (1,'first main','2022-01-18 17:03:02','KSQ19880205'),(2,'second main','2022-01-18 17:40:10','KSQ19880201'),(3,'third main','2022-01-10 15:34:55','test');
+INSERT INTO `g_main` VALUES (1,'first main','2022-01-19 10:01:28','KSQ19880205'),(2,'second main','2022-01-19 10:01:23','KSQ19880201'),(3,'third main','2022-01-10 15:34:55','F20020Y0057');
 /*!40000 ALTER TABLE `g_main` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -358,7 +358,7 @@ CREATE TABLE `g_main_list` (
   `file_url` varchar(200) NOT NULL,
   PRIMARY KEY (`uid`),
   KEY `sch_mai` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -367,7 +367,7 @@ CREATE TABLE `g_main_list` (
 
 LOCK TABLES `g_main_list` WRITE;
 /*!40000 ALTER TABLE `g_main_list` DISABLE KEYS */;
-INSERT INTO `g_main_list` VALUES (37,'토끼 영상','2022-01-10 15:32:40','08:00','10:00',1,'admin','/home/asan/asan/backend/uploads/contents/meditation/2022-01-10_15:32:31_movie.mp4','2022-01-10_15:32:31_movie.mp4','.mp4','http://172.16.41.233:3000/uploads/contents/meditation/2022-01-10_15:32:31_movie.mp4'),(38,'토끼 영상','2022-01-10 15:32:57','08:00','10:00',1,'admin','/home/asan/asan/backend/uploads/contents/meditation/2022-01-10_15:32:51_movie.mp4','2022-01-10_15:32:51_movie.mp4','.mp4','http://172.16.41.233:3000/uploads/contents/meditation/2022-01-10_15:32:51_movie.mp4'),(39,'토끼 영상','2022-01-10 15:33:16','08:00','10:00',2,'admin','/home/asan/asan/backend/uploads/contents/meditation/2022-01-10_15:33:05_movie.mp4','2022-01-10_15:33:05_movie.mp4','.mp4','http://172.16.41.233:3000/uploads/contents/meditation/2022-01-10_15:33:05_movie.mp4'),(40,'토끼 영상','2022-01-10 15:33:31','08:00','10:00',2,'admin','/home/asan/asan/backend/uploads/contents/meditation/2022-01-10_15:33:23_movie.mp4','2022-01-10_15:33:23_movie.mp4','.mp4','http://172.16.41.233:3000/uploads/contents/meditation/2022-01-10_15:33:23_movie.mp4'),(46,'토끼 영상','2022-01-18 10:18:02','08:00','10:00',2,'admin','/home/asan/asan/backend/uploads/contents/meditation/2022-01-18_10:17:47_movie.mp4','2022-01-18_10:17:47_movie.mp4','.mp4','http://172.16.41.233:3000/uploads/contents/meditation/2022-01-18_10:17:47_movie.mp4');
+INSERT INTO `g_main_list` VALUES (1,'토끼 영상','2022-01-19 10:00:40','08:00','10:00',1,'admin','/home/asan/asan/backend/uploads/contents/meditation/2022-01-19_10:00:35_movie.mp4','2022-01-19_10:00:35_movie.mp4','.mp4','http://172.16.41.233:3000/uploads/contents/meditation/2022-01-19_10:00:35_movie.mp4'),(2,'토끼 영상','2022-01-19 10:00:56','08:00','10:00',2,'admin','/home/asan/asan/backend/uploads/contents/meditation/2022-01-19_10:00:50_movie.mp4','2022-01-19_10:00:50_movie.mp4','.mp4','http://172.16.41.233:3000/uploads/contents/meditation/2022-01-19_10:00:50_movie.mp4'),(3,'토끼 영상','2022-01-19 10:01:16','08:00','10:00',1,'admin','/home/asan/asan/backend/uploads/contents/meditation/2022-01-19_10:01:09_movie.mp4','2022-01-19_10:01:09_movie.mp4','.mp4','http://172.16.41.233:3000/uploads/contents/meditation/2022-01-19_10:01:09_movie.mp4');
 /*!40000 ALTER TABLE `g_main_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -547,11 +547,11 @@ CREATE TABLE `g_schedule` (
   `update_time` datetime DEFAULT NULL,
   `start` varchar(30) NOT NULL,
   `end` varchar(30) NOT NULL,
-  `main_name` varchar(60) DEFAULT NULL,
-  `home_name` varchar(60) DEFAULT NULL,
-  `checklist_name` varchar(60) DEFAULT NULL,
-  `layout_name` varchar(60) DEFAULT NULL,
-  `media_name` varchar(60) DEFAULT NULL,
+  `main_uid` int(11) NOT NULL,
+  `home_uid` int(11) NOT NULL,
+  `checklist_uid` int(11) NOT NULL,
+  `layout_uid` int(11) NOT NULL,
+  `media_uid` int(11) NOT NULL,
   PRIMARY KEY (`uid`),
   KEY `dis_sch` (`stb_sn`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
@@ -563,7 +563,7 @@ CREATE TABLE `g_schedule` (
 
 LOCK TABLES `g_schedule` WRITE;
 /*!40000 ALTER TABLE `g_schedule` DISABLE KEYS */;
-INSERT INTO `g_schedule` VALUES (1,'KSQ19880205','first schedule','2022-01-18 17:40:10','00:00','10:00','first main','폐 수술 메인 화면','체크리스트','first layout','first media'),(2,'KSQ19880205','second schedule','2022-01-18 17:40:10','10:00','12:00','first main','어깨 팔 수술 메인 화면','체크리스트','first layout','first media'),(3,'KSQ19880201','first schedule','2022-01-18 17:40:10','00:00','10:00','second main','심장 수술 메인 화면','체크리스트','second layout','second media'),(4,'KSQ19880201','second schedule','2022-01-18 17:40:10','10:00','12:00','second main','다리 수술 메인 화면','체크리스트','second layout','second media'),(5,'KSQ19880205','third schedule','2022-01-18 17:40:10','12:00','14:00','first main','간암 수술 메인 화면','체크리스트','first layout','first media'),(6,'KSQ19880205','4th schedule','2022-01-18 17:40:10','14:00','23:59','first main','난소암 수술 메인 화면','체크리스트','first layout','first media'),(7,'KSQ19880201','third schedule','2022-01-18 17:40:10','12:00','14:00','second main','림프종 수술 메인 화면','체크리스트','second layout','second media'),(8,'KSQ19880201','4th schedule','2022-01-18 17:40:10','14:00','23:59','second main','신장암 수술 메인 화면','체크리스트','second layout','second media');
+INSERT INTO `g_schedule` VALUES (1,'KSQ19880205','first schedule','2022-01-19 10:01:28','00:00','10:00',1,1,1,1,1),(2,'KSQ19880205','second schedule','2022-01-19 10:01:28','10:00','12:00',1,2,1,1,1),(3,'KSQ19880201','first schedule','2022-01-19 10:01:23','00:00','10:00',2,5,2,2,2),(4,'KSQ19880201','second schedule','2022-01-19 10:01:23','10:00','12:00',2,6,2,2,2),(5,'KSQ19880205','third schedule','2022-01-19 10:01:28','12:00','14:00',1,3,1,1,1),(6,'KSQ19880205','4th schedule','2022-01-19 10:01:28','14:00','23:59',1,4,1,1,1),(7,'KSQ19880201','third schedule','2022-01-19 10:01:23','12:00','14:00',2,7,2,2,2),(8,'KSQ19880201','4th schedule','2022-01-19 10:01:23','14:00','23:59',2,8,2,2,2);
 /*!40000 ALTER TABLE `g_schedule` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -616,7 +616,7 @@ CREATE TABLE `g_stb` (
 
 LOCK TABLES `g_stb` WRITE;
 /*!40000 ALTER TABLE `g_stb` DISABLE KEYS */;
-INSERT INTO `g_stb` VALUES (1,'KSQ19880205','KSQ19880204','2022-01-18 16:57:16','N'),(2,'KSQ19880201','KSQ19880202','2022-01-18 17:31:51','Y'),(3,'test','test','2021-01-03 18:18:18','Y');
+INSERT INTO `g_stb` VALUES (1,'KSQ19880205','KSQ19880204','2022-01-19 09:13:09','N'),(2,'KSQ19880201','KSQ19880202','2022-01-19 03:56:29','N'),(3,'F20020Y0057','test','2022-01-19 09:31:40','Y');
 /*!40000 ALTER TABLE `g_stb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -685,4 +685,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-18  8:40:22
+-- Dump completed on 2022-01-19  1:04:28

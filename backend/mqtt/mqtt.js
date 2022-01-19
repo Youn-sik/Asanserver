@@ -101,7 +101,7 @@ client.on('connect', () => {
     //     if(err) console.log(err);
     // }
 
-    // client.publish('/schedule/home/KSQ19880201', JSON.stringify({"stb_sn": "KSQ19880201", "name": "심장 수술 메인 화면"}), {qos: 0, retain: false}), (err)=> {
+    // client.publish('/schedule/home/KSQ19880205', JSON.stringify({"stb_sn": "KSQ19880205", "name": "난소암 수술 메인 화면"}), {qos: 0, retain: false}), (err)=> {
     //     if(err) console.log(err);
     // }
 
@@ -129,9 +129,9 @@ client.on('connect', () => {
     //     if(err) console.log(err);
     // }
 
-    // client.publish('/schedule/media/KSQ19880205', JSON.stringify({"stb_sn": "KSQ19880205", "name": "first media"}), {qos: 0, retain: false}), (err)=> {
-    //     if(err) console.log(err);
-    // }
+    client.publish('/schedule/media/KSQ19880205', JSON.stringify({"stb_sn": "KSQ19880205", "name": "first media"}), {qos: 0, retain: false}), (err)=> {
+        if(err) console.log(err);
+    }
 
 })
 

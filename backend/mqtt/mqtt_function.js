@@ -289,12 +289,12 @@ module.exports = {
 
             function distribution_schedule_query(main_sub_stb_sn){
                 return new Promise((resolve, reject)=>{
-                    db.query('select g_distribution.stb_sn as distribution_stb_sn, g_distribution.update_time as distribution_update_time , g_distribution.name as distribution_name,' + 
-                    'g_schedule.name as schedule_name, g_schedule.update_time as schedule_update_time, g_schedule.uid as schedule_uid, g_schedule.start as schedule_start,' + 
-                    ' g_schedule.start as schedule_start, g_schedule.end as schedule_end, g_schedule.main_name as schedule_main, g_schedule.end as schedule_end,' + 
-                    ' g_schedule.main_name as schedule_main, g_schedule.home_name as schedule_home, g_schedule.checklist_name as schedule_checklist, g_schedule.layout_name as schedule_layout,' +
-                    ' g_schedule.media_name as schedule_media  from g_distribution inner join g_schedule on g_distribution.stb_sn = g_schedule.stb_sn where g_distribution.stb_sn = ? or g_distribution.stb_sn = ?',
-                    main_sub_stb_sn, (err, stb)=> {
+                    db.query('select g_distribution.stb_sn as distribution_stb_sn, g_distribution.update_time as distribution_update_time, g_distribution.name as distribution_name, '+
+                    'g_schedule.name as schedule_name, g_schedule.update_time as schedule_update_time, g_schedule.uid as schedule_uid, g_schedule.start as schedule_start, g_schedule.end as schedule_end, '+
+                    'g_main.name as schedule_main, g_home.name as schedule_home, g_checklist.name as schedule_checklist, g_layout.name as schedule_layout, g_media.name as schedule_media '+
+                    'from g_schedule inner join g_distribution on g_distribution.stb_sn = g_schedule.stb_sn inner join g_home on g_schedule.home_uid = g_home.uid '+
+                    'inner join g_main on g_schedule.main_uid = g_main.uid inner join g_checklist on g_schedule.checklist_uid = g_checklist.uid inner join g_layout on g_schedule.layout_uid = g_layout.uid '+
+                    'inner join g_media on g_schedule.media_uid = g_media.uid where g_distribution.stb_sn = ? or g_distribution.stb_sn = ?', main_sub_stb_sn, (err,stb)=> {
                         // console.log(stb);
                         if(err) console.log(err);
                         if(stb.length != 0){
@@ -323,6 +323,7 @@ module.exports = {
                                 "scheduler" : scheduler
                             }
                         }
+                        // console.log(scheduler)
                         resolve();
                         } else {
                             result = {
@@ -336,6 +337,7 @@ module.exports = {
                         }
                     })
                 });
+                // });
             }
 
             function distribution_update_time_query(main_sub_stb_sn){
@@ -448,10 +450,10 @@ module.exports = {
             //         })
             //     })
             // }
-            
+
             function schedule_update_time_query(){
                 return new Promise((resolve, reject)=>{
-                    db.query('update g_schedule set update_time = ? where main_name = ?',[time, name], (err, stb)=> {
+                    db.query('update g_schedule A inner join g_main B on A.main_uid = B.uid set A.update_time = ?',time, (err, stb)=> {
                         // console.log(stb);
                         if(err) {
                             console.log(err);
@@ -1083,7 +1085,7 @@ module.exports = {
             
             function schedule_update_time_query(){
                 return new Promise((resolve, reject)=>{
-                    db.query('update g_schedule set update_time = ? where home_name = ?',[time, name], (err, stb)=> {
+                    db.query('update g_schedule A inner join g_home B on A.home_uid = B.uid set A.update_time = ?',time, (err, stb)=> {
                         // console.log(stb);
                         if(err) {
                             console.log(err);
@@ -1377,7 +1379,7 @@ module.exports = {
             
             function schedule_update_time_query(main_sub_stb_sn_and_main_name){
                 return new Promise((resolve, reject)=>{
-                    db.query('update g_schedule set update_time = ? where checklist_name = ?',[time, main_sub_stb_sn_and_main_name[2]], (err, stb)=> {
+                    db.query('update g_schedule A inner join g_checklist B on A.checklist_uid = B.uid set A.update_time = ?',time, (err, stb)=> {
                         // console.log(stb);
                         if(err) {
                             console.log(err);
