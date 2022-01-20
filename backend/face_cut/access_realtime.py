@@ -141,9 +141,10 @@ def on_message(client, userdata, msg):
                 with open(file_path+file_name, 'wb') as f:
                     f.write(imgdata)
 
-                upload_url = "http://" + server_ip + ":3000" + "/uploads/accesss/temp/" + time.strftime('%Y%m%d', time.localtime(time.time())) + "/" + access_json['stb_sn'] + "/" + file_name
-
+               
                 if(name == 'unknown'):
+                    upload_url = "http://" + server_ip + ":3000" + "/uploads/accesss/temp/" + time.strftime('%Y%m%d', time.localtime(time.time())) + "/" + access_json['stb_sn'] + "/" + file_name
+                    
                     insert_data = {
                         "avatar_file" : 'avatar_file',
                         # "avatar_file_checksum" : "element.avatar_file_checksum",
@@ -165,6 +166,12 @@ def on_message(client, userdata, msg):
                         "position" : ''
                     }
                 else:
+                    profile = user_collection.find({"name":name})
+                    for info in profile:
+                        print(info)
+                    # print(list(profile))
+                    # upload_url = profile.['avatar_file_url']
+
                     insert_data = {
                         "avatar_file" : 'avatar_file',
                         # "avatar_file_checksum" : "element.avatar_file_checksum",
@@ -273,7 +280,7 @@ def on_message(client, userdata, msg):
         print("/user/add/")
         user_json = json.loads(msg.payload)
         user_json['groups_obids'][0] = ObjectId(user_json['groups_obids'][0])
-        file_path = '/var/www/backend/image/'
+        file_path = '/var/www/backend/image/' #/home/asan/asan/backend/uploads/image/
         file_name = 'temp_'+user_json['id']+".jpg"
         imgdata = base64.b64decode(user_json['avatar_file'])
 
