@@ -166,11 +166,21 @@ def on_message(client, userdata, msg):
                         "position" : ''
                     }
                 else:
-                    profile = user_collection.find({"name":name})
-                    for info in profile:
-                        print(info)
-                    # print(list(profile))
-                    # upload_url = profile.['avatar_file_url']
+                    #user_collection.update 부분 까지는 사람 당 최초 한 번만 하면 되긴 함
+                    profile = ''
+                    profile_url = ''
+                    profile_tmp = user_collection.find({"name":name})
+
+                    for info in profile_tmp:
+                        profile = info['avatar_file_url']
+                        profile_url = (info['avatar_file_url'])[26:]
+                    
+                    profile = "http://" + server_ip + ":3000/uploads/" + profile_url
+                    # print(profile)
+
+                    user_collection.update_many({"name":name}, {"$set": {"avatar_file_url": profile}})
+
+                    upload_url = profile
 
                     insert_data = {
                         "avatar_file" : 'avatar_file',
