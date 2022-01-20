@@ -178,8 +178,6 @@ def on_message(client, userdata, msg):
                     profile = "http://" + server_ip + ":3000/uploads/" + profile_url
                     # print(profile)
 
-                    user_collection.update_many({"name":name}, {"$set": {"avatar_file_url": profile}})
-
                     upload_url = profile
 
                     insert_data = {
