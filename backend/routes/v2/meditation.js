@@ -5,6 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const multer = require('multer');
 const ffmpeg = require('fluent-ffmpeg');
+const exec = require("child_process").exec;
 const site_info_json = fs.readFileSync(path.join(__dirname, "../../cloud44.json"));
 const site = JSON.parse(site_info_json);
 const client = require('../../mqtt/mqtt_load');
@@ -145,6 +146,66 @@ router.post('/', async(req, res) =>{ //명상 영상 등록
         .catch((reject)=> {
             console.log(reject);
         })  
+    } catch(err){
+        res.status(400).send({err:"잘못된 형식 입니다."})
+    }
+})
+
+//스케줄 엑셀 파일 파싱
+router.post('/excelScheduleSave', async(req, res)=> {
+    try{        
+        let storage = multer.diskStorage({
+            destination: (req, file, cb) => {
+                cb(null, site.base_server_document+"/upload/csv/")
+            },
+            filename: (req, file, cb) => {
+                cb(null, `${file.originalname}`)
+            }
+        })
+
+        let upload = multer({ 
+            storage: storage,
+            fileFilter: (req, file, cb) => {
+                const ext = path.extname(file.originalname);
+                if (ext !== '.xlsx') {
+                    // return cb(res.status(400).end('only xlsx file is allowed'), false);
+                    res.json({result: false})
+                    cb(null, false)
+                    return;
+                }
+                cb(null, true);
+            }
+        }).single("file");
+
+        upload(req, res, err => {
+            // console.log(res.req.file);
+            if (err) {
+                return res.json({ result: false, err })
+            }
+            return res.json({ result: true, filePath: res.req.file.path, fileName: res.req.file.filename })
+        })
+
+    } catch(err){
+        res.status(400).send({err:"잘못된 형식 입니다."})
+    }
+})
+
+//스케줄 배포
+router.post('/excelScheduleDistribution', async(req, res)=> {
+    try{        
+        exec("cd ~/asan/backend; ls -al;", (err, stdout, stderr)=> {
+            if(err) {
+                console.log(`error: ${err.message}`);
+                return ;
+            }
+            if(stderr) {
+                console.log(`stderr: ${stderr}`);
+                return;
+            }
+            console.log(`stdout: ${stdout}`);
+            res.json({result: "반환"});
+        })
+
     } catch(err){
         res.status(400).send({err:"잘못된 형식 입니다."})
     }

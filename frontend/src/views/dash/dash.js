@@ -58,11 +58,11 @@ function Dash(){
     }
     
 
-    function checkDataValueDistribution(){
+    async function checkDataValueDistribution(){
         console.log("=====");
         console.log(STBInfo);
         console.log(MAINInfo);
-        distribution();
+        await distribution();
         console.log("=====");
     }
 

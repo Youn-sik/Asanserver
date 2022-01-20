@@ -493,7 +493,7 @@ module.exports = {
                     db.query('select g_main.stb_sn, g_main.name, g_main.update_time, g_main_list.file_url, g_main_list.file_ext from g_main_list inner join g_main '+
                     'on g_main.uid = g_main_list.g_main_uid where g_main.name = ? and g_main.stb_sn = ? or g_main.stb_sn = ?', [name, ...main_sub_stb_sn], (err, main)=> {
                         if(err) console.log(err);
-                        console.log(main);
+                        // console.log(main);
                         if(main.length != 0){
                             let main_list = [];
                             for(let i=0; i<main.length; i++){

@@ -60,12 +60,12 @@ function Schedule(){
         }
     }
 
-    function checkDataValue(){
+    async function checkDataValue(){
         console.log("=====");
         console.log(state);
         console.log(STBInfo);
         console.log(FILEInfo);
-        meditation_reg();
+        await meditation_reg();
         console.log("=====");
     }
 
