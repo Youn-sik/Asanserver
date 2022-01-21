@@ -1,5 +1,6 @@
 #!/bin/bash
 
+flag=0
 file="schedule.csv"
 file_name="schedule.csv"
 file_path="/home/asan/asan/backend/upload/csv/"
@@ -15,12 +16,11 @@ db_table_g_staff="g_staff"
 db_table_g_process="g_process"
 db_table_g_process_list="g_process_list"
 db_user="asan"
+db_password="master123"
 	
 function setup_database() {
 	echo "setting database..."
-	echo -n "enter mysql password: "
-	read db_password
-	mysql -u$db_user -p${db_password} << MYSQL
+	mysql -u$db_user -p$db_password << MYSQL
 USE $db_name;
 TRUNCATE $db_table_g_checklist;
 TRUNCATE $db_table_g_checklist_list;
@@ -128,7 +128,13 @@ function import_data() {
 			echo "INSERT INTO $db_table_g_process_list VALUES (DEFAULT, '$g_process_list__value', '$g_process_list__g_process_uid');"
                 fi
 
-	done | mysql -u$db_user -p${db_password} $db_name
+	done | mysql -u$db_user -p$db_password $db_name && flag=1
+
+	if [ $flag -eq 1 ] ; then
+	       	echo "Success Script"	
+	else 
+		echo "Fail Script"
+	fi
 }
 
 #################

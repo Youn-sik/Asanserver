@@ -6,6 +6,7 @@ const path = require('path');
 const multer = require('multer');
 const ffmpeg = require('fluent-ffmpeg');
 const exec = require("child_process").exec;
+const xlsx = require("node-xlsx")
 const site_info_json = fs.readFileSync(path.join(__dirname, "../../cloud44.json"));
 const site = JSON.parse(site_info_json);
 const client = require('../../mqtt/mqtt_load');
@@ -182,7 +183,32 @@ router.post('/excelScheduleSave', async(req, res)=> {
             if (err) {
                 return res.json({ result: false, err })
             }
-            return res.json({ result: true, filePath: res.req.file.path, fileName: res.req.file.filename })
+
+            //xlsxto csv logic
+            let xlsxObj = xlsx.parse(res.req.file.path);
+            let xlsxRows = [];
+            let writeStr = "";
+
+            for(let i=0; i<xlsxObj.length; i++) {
+                let xlsxSheet = xlsxObj[i];
+                for(let j=0; j<xlsxSheet['data'].length; j++) {
+                    // console.log(xlsxSheet['data'][j]);
+                    xlsxRows.push(xlsxSheet['data'][j]);
+                }
+            }
+
+            for(let i=0; i<xlsxRows.length; i++) {
+                writeStr += xlsxRows[i].join(",") + "\n";
+            }
+
+            fs.writeFile(res.req.file.destination + "schedule.csv", writeStr, (err)=> {
+                if(err) {
+                    console.log(err)
+                    return res.json({result: "error"});
+                } else {
+                    return res.json({ result: true, filePath: res.req.file.path, fileName: res.req.file.filename });
+                }
+            })
         })
 
     } catch(err){
@@ -192,18 +218,29 @@ router.post('/excelScheduleSave', async(req, res)=> {
 
 //스케줄 배포
 router.post('/excelScheduleDistribution', async(req, res)=> {
-    try{        
-        exec("cd ~/asan/backend; ls -al;", (err, stdout, stderr)=> {
+    try{
+        exec("cd ~/asan/backend; bash ExcelImportToMysql_schedule_rewrite.sh;", (err, stdout, stderr)=> {
             if(err) {
                 console.log(`error: ${err.message}`);
                 return ;
             }
             if(stderr) {
-                console.log(`stderr: ${stderr}`);
-                return;
+                // console.log(`stderr:`);
+                // console.log(stderr)
             }
-            console.log(`stdout: ${stdout}`);
-            res.json({result: "반환"});
+            // console.log(stdout)
+            let Out = stdout.split('\n');
+            let filterdOut = Out.filter((element)=> element !== '');
+            console.log(filterdOut);
+            filterdOut.forEach(element => {
+                if(element == "Success Script") {
+                    res.json({result: true});
+                    return ;
+                } else if(element == "Fail Script") {
+                    res.json({result: false})
+                    return ;
+                }
+            })
         })
 
     } catch(err){

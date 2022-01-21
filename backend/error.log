@@ -1,0 +1,1093 @@
++ flag=0
++ file=schedule.csv
++ file_name=schedule.csv
++ file_path=/home/asan/asan/backend/upload/csv/
++ db_name=asancloud
++ db_table_g_checklist=g_checklist
++ db_table_g_checklist_list=g_checklist_list
++ db_table_g_home=g_home
++ db_table_g_home_list=g_home_list
++ db_table_g_instrument=g_instrument
++ db_table_g_surgery=g_surgery
++ db_table_g_patient=g_patient
++ db_table_g_staff=g_staff
++ db_table_g_process=g_process
++ db_table_g_process_list=g_process_list
++ db_user=asan
++ db_password=master123
++ setup_database
++ echo 'setting database...'
++ mysql -uasan -pmaster123
+mysql: [Warning] Using a password on the command line interface can be insecure.
++ import_data
++ echo 'import into table...'
++ mysql -uasan -pmaster123 asancloud
++ read line
++ sed 1,3d
++ cat /home/asan/asan/backend/upload/csv/schedule.csv
+mysql: [Warning] Using a password on the command line interface can be insecure.
+++ cut -f 1 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_checklist__name=체크리스트
+++ cut -f 3 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_checklist__update_time='2022/01/12 00:00:00'
+++ cut -f 4 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_checklist__stb_sn=KSQ19880205
+++ cut -f 5 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_checklist_list__name='집도과 '
+++ cut -f 6 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_checklist_list__update_time='2022/01/12 00:00:00'
+++ cut -f 7 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_checklist_list__checklist_uid=1
+++ cut -f 8 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_checklist_list__value='타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 되십니까?'
+++ cut -f 9 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_home__name='폐 수술 메인 화면'
+++ cut -f 11 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_home__update_time='2022/01/12 00:00:00'
+++ cut -f 12 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_home__stb_sn=KSQ19880205
+++ cut -f 13 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_home_list__name='폐 수술'
+++ cut -f 14 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_home_list__update_time='2022/01/12 00:00:00'
+++ cut -f 15 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_home_list__g_home_uid=1
+++ cut -f 16 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_instrument__thumbnail=url
+++ cut -f 17 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_instrument__name='Conference Call'
+++ cut -f 18 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_instrument__contents=content
+++ cut -f 19 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_surgery__name='lung surgery'
+++ cut -f 21 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_surgery__update_time='2022/01/12 00:00:00'
+++ cut -f 22 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_surgery__g_main_home_uid=1
+++ cut -f 23 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_patient__name=아무개
+++ cut -f 24 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_patient__gender=남성
+++ cut -f 25 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_patient__age=20
+++ cut -f 26 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_patient__dob=2002-01-01
+++ cut -f 27 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_patient__surgicalsite=폐
+++ cut -f 28 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_patient__surgicalname='lung surgery'
+++ cut -f 29 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_patient__g_surgery_uid=1
+++ cut -f 30 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_staff__name=김개단
+++ cut -f 31 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_staff__position=operator
+++ cut -f 32 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_staff__g_surery_uid=1
+++ cut -f 33 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_process__name='lung surgery process'
+++ cut -f 35 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_process__g_surgery_uid=1
+++ cut -f 36 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_process_list__value='T/O brfore ANES'
+++ cut -f 37 -d ,
+++ echo 체크리스트,1,2022/01/12 00:00:00,KSQ19880205,집도과 ,2022/01/12 00:00:00,1,타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 '되십니까?,폐' 수술 메인 화면,1,2022/01/12 00:00:00,KSQ19880205,폐 수술,2022/01/12 00:00:00,1,url,Conference Call,content,lung surgery,1,2022/01/12 00:00:00,1,아무개,남성,20,2002-01-01,폐,lung surgery,1,김개단,operator,1,lung surgery process,1,1,T/O brfore ANES,1
++ g_process_list__g_process_uid=1
++ '[' -n 체크리스트 ']'
++ '[' -n '2022/01/12 00:00:00' ']'
++ '[' -n KSQ19880205 ']'
++ echo 'INSERT INTO g_checklist VALUES (DEFAULT, '\''체크리스트'\'', '\''2022/01/12 00:00:00'\'', '\''KSQ19880205'\'');'
++ '[' -n '집도과 ' ']'
++ '[' -n '2022/01/12 00:00:00' ']'
++ '[' -n 1 ']'
++ '[' -n '타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 되십니까?' ']'
++ echo 'INSERT INTO g_checklist_list VALUES (DEFAULT, '\''집도과 '\'', '\''2022/01/12 00:00:00'\'', '\''1'\'', '\''타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 되십니까?'\'');'
++ '[' -n '폐 수술 메인 화면' ']'
++ '[' -n '2022/01/12 00:00:00' ']'
++ '[' -n KSQ19880205 ']'
++ echo 'INSERT INTO g_home VALUES (DEFAULT, '\''폐 수술 메인 화면'\'', '\''2022/01/12 00:00:00'\'', '\''KSQ19880205'\'');'
++ '[' -n '폐 수술' ']'
++ '[' -n '2022/01/12 00:00:00' ']'
++ '[' -n 1 ']'
++ echo 'INSERT INTO g_home_list VALUES (DEFAULT, '\''폐 수술'\'', '\''2022/01/12 00:00:00'\'', '\''1'\'');'
++ '[' -n url ']'
++ '[' -n 'Conference Call' ']'
++ '[' -n content ']'
++ echo 'INSERT INTO g_instrument VALUES (DEFAULT, '\''url'\'', '\''Conference Call'\'', '\''content'\'');'
++ '[' -n 'lung surgery' ']'
++ '[' -n '2022/01/12 00:00:00' ']'
++ '[' -n 1 ']'
++ echo 'INSERT INTO g_surgery VALUES (DEFAULT, '\''lung surgery'\'', '\''2022/01/12 00:00:00'\'', '\''1'\'');'
++ '[' -n 아무개 ']'
++ '[' -n 남성 ']'
++ '[' -n 20 ']'
++ '[' -n 2002-01-01 ']'
++ '[' -n 폐 ']'
++ '[' -n 'lung surgery' ']'
++ '[' -n 1 ']'
++ echo 'INSERT INTO g_patient VALUES (DEFAULT, '\''아무개'\'', '\''남성'\'', '\''20'\'', '\''2002-01-01'\'', '\''폐'\'', '\''1'\'', '\''lung surgery'\'');'
++ '[' -n 김개단 ']'
++ '[' -n operator ']'
++ '[' -n 1 ']'
++ echo 'INSERT INTO g_staff VALUES(DEFAULT, '\''김개단'\'', '\''operator'\'', '\''1'\'') ;'
++ '[' -n 1 ']'
++ '[' -n 'lung surgery process' ']'
++ echo 'INSERT INTO g_process VALUES (DEFAULT, '\''1'\'', '\''lung surgery process'\'');'
++ '[' -n 'T/O brfore ANES' ']'
++ '[' -n 1 ']'
++ echo 'INSERT INTO g_process_list VALUES (DEFAULT, '\''T/O brfore ANES'\'', '\''1'\'');'
++ read line
+++ cut -f 1 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_checklist__name=체크리스트
+++ cut -f 3 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_checklist__update_time='2022/01/12 00:00:00'
+++ cut -f 4 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_checklist__stb_sn=KSQ19880201
+++ cut -f 5 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_checklist_list__name='환자 '
+++ cut -f 6 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_checklist_list__update_time='2022/01/12 00:00:00'
+++ cut -f 7 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_checklist_list__checklist_uid=1
+++ cut -f 8 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_checklist_list__value='000 0000000입니다'
+++ cut -f 9 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_home__name='어깨 팔 수술 메인 화면'
+++ cut -f 11 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_home__update_time='2022/01/12 00:00:00'
+++ cut -f 12 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_home__stb_sn=KSQ19880205
+++ cut -f 13 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_home_list__name='어깨 팔 수술'
+++ cut -f 14 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_home_list__update_time='2022/01/12 00:00:00'
+++ cut -f 15 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_home_list__g_home_uid=2
+++ cut -f 16 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_instrument__thumbnail=url
+++ cut -f 17 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_instrument__name=CT
+++ cut -f 18 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_instrument__contents=content
+++ cut -f 19 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_surgery__name='shoulder arm surgery'
+++ cut -f 21 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_surgery__update_time='2022/01/12 00:00:00'
+++ cut -f 22 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_surgery__g_main_home_uid=2
+++ cut -f 23 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_patient__name=김돌복
+++ cut -f 24 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_patient__gender=남성
+++ cut -f 25 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_patient__age=18
+++ cut -f 26 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_patient__dob=2004-01-01
+++ cut -f 27 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_patient__surgicalsite='어깨 팔'
+++ cut -f 28 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_patient__surgicalname='shoulder arm surgery'
+++ cut -f 29 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_patient__g_surgery_uid=2
+++ cut -f 30 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_staff__name=김용손
+++ cut -f 31 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_staff__position='surgical assistant'
+++ cut -f 32 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_staff__g_surery_uid=1
+++ cut -f 33 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_process__name='shoulder arm surgery process'
+++ cut -f 35 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_process__g_surgery_uid=2
+++ cut -f 36 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_process_list__value=Anesthesia
+++ cut -f 37 -d ,
+++ echo 체크리스트,2,2022/01/12 00:00:00,KSQ19880201,환자 ,2022/01/12 00:00:00,1,000 0000000입니다,어깨 팔 수술 메인 화면,2,2022/01/12 00:00:00,KSQ19880205,어깨 팔 수술,2022/01/12 00:00:00,2,url,CT,content,shoulder arm surgery,2,2022/01/12 00:00:00,2,김돌복,남성,18,2004-01-01,어깨 팔,shoulder arm surgery,2,김용손,surgical assistant,1,shoulder arm surgery process,2,2,Anesthesia,1
++ g_process_list__g_process_uid=1
++ '[' -n 체크리스트 ']'
++ '[' -n '2022/01/12 00:00:00' ']'
++ '[' -n KSQ19880201 ']'
++ echo 'INSERT INTO g_checklist VALUES (DEFAULT, '\''체크리스트'\'', '\''2022/01/12 00:00:00'\'', '\''KSQ19880201'\'');'
++ '[' -n '환자 ' ']'
++ '[' -n '2022/01/12 00:00:00' ']'
++ '[' -n 1 ']'
++ '[' -n '000 0000000입니다' ']'
++ echo 'INSERT INTO g_checklist_list VALUES (DEFAULT, '\''환자 '\'', '\''2022/01/12 00:00:00'\'', '\''1'\'', '\''000 0000000입니다'\'');'
++ '[' -n '어깨 팔 수술 메인 화면' ']'
++ '[' -n '2022/01/12 00:00:00' ']'
++ '[' -n KSQ19880205 ']'
++ echo 'INSERT INTO g_home VALUES (DEFAULT, '\''어깨 팔 수술 메인 화면'\'', '\''2022/01/12 00:00:00'\'', '\''KSQ19880205'\'');'
++ '[' -n '어깨 팔 수술' ']'
++ '[' -n '2022/01/12 00:00:00' ']'
++ '[' -n 2 ']'
++ echo 'INSERT INTO g_home_list VALUES (DEFAULT, '\''어깨 팔 수술'\'', '\''2022/01/12 00:00:00'\'', '\''2'\'');'
++ '[' -n url ']'
++ '[' -n CT ']'
++ '[' -n content ']'
++ echo 'INSERT INTO g_instrument VALUES (DEFAULT, '\''url'\'', '\''CT'\'', '\''content'\'');'
++ '[' -n 'shoulder arm surgery' ']'
++ '[' -n '2022/01/12 00:00:00' ']'
++ '[' -n 2 ']'
++ echo 'INSERT INTO g_surgery VALUES (DEFAULT, '\''shoulder arm surgery'\'', '\''2022/01/12 00:00:00'\'', '\''2'\'');'
++ '[' -n 김돌복 ']'
++ '[' -n 남성 ']'
++ '[' -n 18 ']'
++ '[' -n 2004-01-01 ']'
++ '[' -n '어깨 팔' ']'
++ '[' -n 'shoulder arm surgery' ']'
++ '[' -n 2 ']'
++ echo 'INSERT INTO g_patient VALUES (DEFAULT, '\''김돌복'\'', '\''남성'\'', '\''18'\'', '\''2004-01-01'\'', '\''어깨 팔'\'', '\''2'\'', '\''shoulder arm surgery'\'');'
++ '[' -n 김용손 ']'
++ '[' -n 'surgical assistant' ']'
++ '[' -n 1 ']'
++ echo 'INSERT INTO g_staff VALUES(DEFAULT, '\''김용손'\'', '\''surgical assistant'\'', '\''1'\'') ;'
++ '[' -n 2 ']'
++ '[' -n 'shoulder arm surgery process' ']'
++ echo 'INSERT INTO g_process VALUES (DEFAULT, '\''2'\'', '\''shoulder arm surgery process'\'');'
++ '[' -n Anesthesia ']'
++ '[' -n 1 ']'
++ echo 'INSERT INTO g_process_list VALUES (DEFAULT, '\''Anesthesia'\'', '\''1'\'');'
++ read line
+++ cut -f 1 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_checklist__name=
+++ cut -f 3 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_checklist__update_time='2022/01/12 00:00:00'
+++ cut -f 4 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_checklist__stb_sn=
+++ cut -f 5 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_checklist_list__name='집도과 '
+++ cut -f 6 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_checklist_list__update_time='2022/01/12 00:00:00'
+++ cut -f 7 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_checklist_list__checklist_uid=1
+++ cut -f 8 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_checklist_list__value='네. 무슨 수술하러 오셨나요?'
+++ cut -f 9 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_home__name='간암 수술 메인 화면'
+++ cut -f 11 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_home__update_time='2022/01/12 00:00:00'
+++ cut -f 12 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_home__stb_sn=KSQ19880205
+++ cut -f 13 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_home_list__name='간암 수술'
+++ cut -f 14 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_home_list__update_time='2022/01/12 00:00:00'
+++ cut -f 15 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_home_list__g_home_uid=3
+++ cut -f 16 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_instrument__thumbnail=url
+++ cut -f 17 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_instrument__name=Microscope
+++ cut -f 18 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_instrument__contents=content
+++ cut -f 19 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_surgery__name='liver cancer surgery'
+++ cut -f 21 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_surgery__update_time='2022/01/12 00:00:00'
+++ cut -f 22 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_surgery__g_main_home_uid=3
+++ cut -f 23 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_patient__name=김아린
+++ cut -f 24 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_patient__gender=여성
+++ cut -f 25 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_patient__age=69
+++ cut -f 26 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_patient__dob=1954-01-01
+++ cut -f 27 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_patient__surgicalsite=간
+++ cut -f 28 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_patient__surgicalname='liver cancer surgery'
+++ cut -f 29 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_patient__g_surgery_uid=3
+++ cut -f 30 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_staff__name=김순양
+++ cut -f 31 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_staff__position='scrub nurse'
+++ cut -f 32 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_staff__g_surery_uid=1
+++ cut -f 33 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_process__name='liver cancer surgery process'
+++ cut -f 35 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_process__g_surgery_uid=3
+++ cut -f 36 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_process_list__value='T/O before IND'
+++ cut -f 37 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,네. 무슨 수술하러 '오셨나요?,간암' 수술 메인 화면,3,2022/01/12 00:00:00,KSQ19880205,간암 수술,2022/01/12 00:00:00,3,url,Microscope,content,liver cancer surgery,3,2022/01/12 00:00:00,3,김아린,여성,69,1954-01-01,간,liver cancer surgery,3,김순양,scrub nurse,1,liver cancer surgery process,3,3,T/O before IND,1
++ g_process_list__g_process_uid=1
++ '[' -n '' ']'
++ '[' -n '집도과 ' ']'
++ '[' -n '2022/01/12 00:00:00' ']'
++ '[' -n 1 ']'
++ '[' -n '네. 무슨 수술하러 오셨나요?' ']'
++ echo 'INSERT INTO g_checklist_list VALUES (DEFAULT, '\''집도과 '\'', '\''2022/01/12 00:00:00'\'', '\''1'\'', '\''네. 무슨 수술하러 오셨나요?'\'');'
++ '[' -n '간암 수술 메인 화면' ']'
++ '[' -n '2022/01/12 00:00:00' ']'
++ '[' -n KSQ19880205 ']'
++ echo 'INSERT INTO g_home VALUES (DEFAULT, '\''간암 수술 메인 화면'\'', '\''2022/01/12 00:00:00'\'', '\''KSQ19880205'\'');'
++ '[' -n '간암 수술' ']'
++ '[' -n '2022/01/12 00:00:00' ']'
++ '[' -n 3 ']'
++ echo 'INSERT INTO g_home_list VALUES (DEFAULT, '\''간암 수술'\'', '\''2022/01/12 00:00:00'\'', '\''3'\'');'
++ '[' -n url ']'
++ '[' -n Microscope ']'
++ '[' -n content ']'
++ echo 'INSERT INTO g_instrument VALUES (DEFAULT, '\''url'\'', '\''Microscope'\'', '\''content'\'');'
++ '[' -n 'liver cancer surgery' ']'
++ '[' -n '2022/01/12 00:00:00' ']'
++ '[' -n 3 ']'
++ echo 'INSERT INTO g_surgery VALUES (DEFAULT, '\''liver cancer surgery'\'', '\''2022/01/12 00:00:00'\'', '\''3'\'');'
++ '[' -n 김아린 ']'
++ '[' -n 여성 ']'
++ '[' -n 69 ']'
++ '[' -n 1954-01-01 ']'
++ '[' -n 간 ']'
++ '[' -n 'liver cancer surgery' ']'
++ '[' -n 3 ']'
++ echo 'INSERT INTO g_patient VALUES (DEFAULT, '\''김아린'\'', '\''여성'\'', '\''69'\'', '\''1954-01-01'\'', '\''간'\'', '\''3'\'', '\''liver cancer surgery'\'');'
++ '[' -n 김순양 ']'
++ '[' -n 'scrub nurse' ']'
++ '[' -n 1 ']'
++ echo 'INSERT INTO g_staff VALUES(DEFAULT, '\''김순양'\'', '\''scrub nurse'\'', '\''1'\'') ;'
++ '[' -n 3 ']'
++ '[' -n 'liver cancer surgery process' ']'
++ echo 'INSERT INTO g_process VALUES (DEFAULT, '\''3'\'', '\''liver cancer surgery process'\'');'
++ '[' -n 'T/O before IND' ']'
++ '[' -n 1 ']'
++ echo 'INSERT INTO g_process_list VALUES (DEFAULT, '\''T/O before IND'\'', '\''1'\'');'
++ read line
+++ cut -f 1 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_checklist__name=
+++ cut -f 3 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_checklist__update_time='2022/01/12 00:00:00'
+++ cut -f 4 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_checklist__stb_sn=
+++ cut -f 5 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_checklist_list__name='환자 '
+++ cut -f 6 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_checklist_list__update_time='2022/01/12 00:00:00'
+++ cut -f 7 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_checklist_list__checklist_uid=1
+++ cut -f 8 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_checklist_list__value='000 수술입니다'
+++ cut -f 9 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_home__name='난소암 수술 메인 화면'
+++ cut -f 11 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_home__update_time='2022/01/12 00:00:00'
+++ cut -f 12 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_home__stb_sn=KSQ19880205
+++ cut -f 13 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_home_list__name='난소암 수술'
+++ cut -f 14 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_home_list__update_time='2022/01/12 00:00:00'
+++ cut -f 15 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_home_list__g_home_uid=4
+++ cut -f 16 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_instrument__thumbnail=url
+++ cut -f 17 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_instrument__name=Endoscope
+++ cut -f 18 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_instrument__contents=content
+++ cut -f 19 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_surgery__name='ovarian cancer surgery'
+++ cut -f 21 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_surgery__update_time='2022/01/12 00:00:00'
+++ cut -f 22 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_surgery__g_main_home_uid=4
+++ cut -f 23 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_patient__name=최지연
+++ cut -f 24 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_patient__gender=여성
+++ cut -f 25 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_patient__age=70
+++ cut -f 26 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_patient__dob=1953-01-01
+++ cut -f 27 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_patient__surgicalsite=난소
+++ cut -f 28 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_patient__surgicalname='ovarian cancer surgery'
+++ cut -f 29 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_patient__g_surgery_uid=4
+++ cut -f 30 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_staff__name=김용식
+++ cut -f 31 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_staff__position='circulating nurse'
+++ cut -f 32 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_staff__g_surery_uid=1
+++ cut -f 33 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_process__name='ovarian cancer surgery process'
+++ cut -f 35 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_process__g_surgery_uid=4
+++ cut -f 36 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_process_list__value=Incision
+++ cut -f 37 -d ,
+++ echo ,,2022/01/12 00:00:00,,환자 ,2022/01/12 00:00:00,1,000 수술입니다,난소암 수술 메인 화면,4,2022/01/12 00:00:00,KSQ19880205,난소암 수술,2022/01/12 00:00:00,4,url,Endoscope,content,ovarian cancer surgery,4,2022/01/12 00:00:00,4,최지연,여성,70,1953-01-01,난소,ovarian cancer surgery,4,김용식,circulating nurse,1,ovarian cancer surgery process,4,4,Incision,1
++ g_process_list__g_process_uid=1
++ '[' -n '' ']'
++ '[' -n '환자 ' ']'
++ '[' -n '2022/01/12 00:00:00' ']'
++ '[' -n 1 ']'
++ '[' -n '000 수술입니다' ']'
++ echo 'INSERT INTO g_checklist_list VALUES (DEFAULT, '\''환자 '\'', '\''2022/01/12 00:00:00'\'', '\''1'\'', '\''000 수술입니다'\'');'
++ '[' -n '난소암 수술 메인 화면' ']'
++ '[' -n '2022/01/12 00:00:00' ']'
++ '[' -n KSQ19880205 ']'
++ echo 'INSERT INTO g_home VALUES (DEFAULT, '\''난소암 수술 메인 화면'\'', '\''2022/01/12 00:00:00'\'', '\''KSQ19880205'\'');'
++ '[' -n '난소암 수술' ']'
++ '[' -n '2022/01/12 00:00:00' ']'
++ '[' -n 4 ']'
++ echo 'INSERT INTO g_home_list VALUES (DEFAULT, '\''난소암 수술'\'', '\''2022/01/12 00:00:00'\'', '\''4'\'');'
++ '[' -n url ']'
++ '[' -n Endoscope ']'
++ '[' -n content ']'
++ echo 'INSERT INTO g_instrument VALUES (DEFAULT, '\''url'\'', '\''Endoscope'\'', '\''content'\'');'
++ '[' -n 'ovarian cancer surgery' ']'
++ '[' -n '2022/01/12 00:00:00' ']'
++ '[' -n 4 ']'
++ echo 'INSERT INTO g_surgery VALUES (DEFAULT, '\''ovarian cancer surgery'\'', '\''2022/01/12 00:00:00'\'', '\''4'\'');'
++ '[' -n 최지연 ']'
++ '[' -n 여성 ']'
++ '[' -n 70 ']'
++ '[' -n 1953-01-01 ']'
++ '[' -n 난소 ']'
++ '[' -n 'ovarian cancer surgery' ']'
++ '[' -n 4 ']'
++ echo 'INSERT INTO g_patient VALUES (DEFAULT, '\''최지연'\'', '\''여성'\'', '\''70'\'', '\''1953-01-01'\'', '\''난소'\'', '\''4'\'', '\''ovarian cancer surgery'\'');'
++ '[' -n 김용식 ']'
++ '[' -n 'circulating nurse' ']'
++ '[' -n 1 ']'
++ echo 'INSERT INTO g_staff VALUES(DEFAULT, '\''김용식'\'', '\''circulating nurse'\'', '\''1'\'') ;'
++ '[' -n 4 ']'
++ '[' -n 'ovarian cancer surgery process' ']'
++ echo 'INSERT INTO g_process VALUES (DEFAULT, '\''4'\'', '\''ovarian cancer surgery process'\'');'
++ '[' -n Incision ']'
++ '[' -n 1 ']'
++ echo 'INSERT INTO g_process_list VALUES (DEFAULT, '\''Incision'\'', '\''1'\'');'
++ read line
+++ cut -f 1 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_checklist__name=
+++ cut -f 3 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_checklist__update_time='2022/01/12 00:00:00'
+++ cut -f 4 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_checklist__stb_sn=
+++ cut -f 5 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_checklist_list__name='집도과 '
+++ cut -f 6 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_checklist_list__update_time='2022/01/12 00:00:00'
+++ cut -f 7 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_checklist_list__checklist_uid=1
+++ cut -f 8 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_checklist_list__value='등록번호 000 000 님. 000쪽 000수술 입니다.'
+++ cut -f 9 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_home__name='"심장 수술 메인 화면'
+++ cut -f 11 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_home__update_time=
+++ cut -f 12 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_home__stb_sn=
+++ cut -f 13 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_home_list__name=
+++ cut -f 14 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_home_list__update_time=
+++ cut -f 15 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_home_list__g_home_uid=
+++ cut -f 16 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_instrument__thumbnail=
+++ cut -f 17 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_instrument__name=
+++ cut -f 18 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_instrument__contents=
+++ cut -f 19 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_surgery__name=
+++ cut -f 21 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_surgery__update_time=
+++ cut -f 22 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_surgery__g_main_home_uid=
+++ cut -f 23 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_patient__name=
+++ cut -f 24 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_patient__gender=
+++ cut -f 25 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_patient__age=
+++ cut -f 26 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_patient__dob=
+++ cut -f 27 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_patient__surgicalsite=
+++ cut -f 28 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_patient__surgicalname=
+++ cut -f 29 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_patient__g_surgery_uid=
+++ cut -f 30 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_staff__name=
+++ cut -f 31 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_staff__position=
+++ cut -f 32 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_staff__g_surery_uid=
+++ cut -f 33 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_process__name=
+++ cut -f 35 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_process__g_surgery_uid=
+++ cut -f 36 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_process_list__value=
+++ cut -f 37 -d ,
+++ echo ,,2022/01/12 00:00:00,,집도과 ,2022/01/12 00:00:00,1,등록번호 000 000 님. 000쪽 000수술 '입니다.,"심장' 수술 메인 화면
++ g_process_list__g_process_uid=
++ '[' -n '' ']'
++ '[' -n '집도과 ' ']'
++ '[' -n '2022/01/12 00:00:00' ']'
++ '[' -n 1 ']'
++ '[' -n '등록번호 000 000 님. 000쪽 000수술 입니다.' ']'
++ echo 'INSERT INTO g_checklist_list VALUES (DEFAULT, '\''집도과 '\'', '\''2022/01/12 00:00:00'\'', '\''1'\'', '\''등록번호 000 000 님. 000쪽 000수술 입니다.'\'');'
++ '[' -n '"심장 수술 메인 화면' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ read line
+++ cut -f 1 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_checklist__name='"'
+++ cut -f 3 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_checklist__update_time='2022/01/12 00:00:00'
+++ cut -f 4 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_checklist__stb_sn=KSQ19880201
+++ cut -f 5 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_checklist_list__name='심장 수술'
+++ cut -f 6 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_checklist_list__update_time='2022/01/12 00:00:00'
+++ cut -f 7 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_checklist_list__checklist_uid=5
+++ cut -f 8 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_checklist_list__value=url
+++ cut -f 9 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_home__name=PET_CT
+++ cut -f 11 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_home__update_time='heart surgery'
+++ cut -f 12 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_home__stb_sn=5
+++ cut -f 13 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_home_list__name='2022/01/12 00:00:00'
+++ cut -f 14 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_home_list__update_time=5
+++ cut -f 15 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_home_list__g_home_uid=김웅식
+++ cut -f 16 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_instrument__thumbnail=여성
+++ cut -f 17 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_instrument__name=23
+++ cut -f 18 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_instrument__contents=1999-03-12
+++ cut -f 19 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_surgery__name=심장
+++ cut -f 21 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_surgery__update_time=5
+++ cut -f 22 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_surgery__g_main_home_uid=김달
+++ cut -f 23 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_patient__name=anesthesiologist
+++ cut -f 24 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_patient__gender=1
+++ cut -f 25 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_patient__age='heart surgery process'
+++ cut -f 26 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_patient__dob=5
+++ cut -f 27 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_patient__surgicalsite=5
+++ cut -f 28 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_patient__surgicalname=Surgery
+++ cut -f 29 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_patient__g_surgery_uid=1
+++ cut -f 30 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_staff__name=
+++ cut -f 31 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_staff__position=
+++ cut -f 32 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_staff__g_surery_uid=
+++ cut -f 33 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_process__name=
+++ cut -f 35 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_process__g_surgery_uid=
+++ cut -f 36 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_process_list__value=
+++ cut -f 37 -d ,
+++ echo '",5,2022/01/12' 00:00:00,KSQ19880201,심장 수술,2022/01/12 00:00:00,5,url,PET_CT,content,heart surgery,5,2022/01/12 00:00:00,5,김웅식,여성,23,1999-03-12,심장,heart surgery,5,김달,anesthesiologist,1,heart surgery process,5,5,Surgery,1
++ g_process_list__g_process_uid=
++ '[' -n '"' ']'
++ '[' -n '2022/01/12 00:00:00' ']'
++ '[' -n KSQ19880201 ']'
++ echo 'INSERT INTO g_checklist VALUES (DEFAULT, '\''"'\'', '\''2022/01/12 00:00:00'\'', '\''KSQ19880201'\'');'
++ '[' -n '심장 수술' ']'
++ '[' -n '2022/01/12 00:00:00' ']'
++ '[' -n 5 ']'
++ '[' -n url ']'
++ echo 'INSERT INTO g_checklist_list VALUES (DEFAULT, '\''심장 수술'\'', '\''2022/01/12 00:00:00'\'', '\''5'\'', '\''url'\'');'
++ '[' -n PET_CT ']'
++ '[' -n 'heart surgery' ']'
++ '[' -n 5 ']'
++ echo 'INSERT INTO g_home VALUES (DEFAULT, '\''PET_CT'\'', '\''heart surgery'\'', '\''5'\'');'
++ '[' -n '2022/01/12 00:00:00' ']'
++ '[' -n 5 ']'
++ '[' -n 김웅식 ']'
++ echo 'INSERT INTO g_home_list VALUES (DEFAULT, '\''2022/01/12 00:00:00'\'', '\''5'\'', '\''김웅식'\'');'
++ '[' -n 여성 ']'
++ '[' -n 23 ']'
++ '[' -n 1999-03-12 ']'
++ echo 'INSERT INTO g_instrument VALUES (DEFAULT, '\''여성'\'', '\''23'\'', '\''1999-03-12'\'');'
++ '[' -n 심장 ']'
++ '[' -n 5 ']'
++ '[' -n 김달 ']'
++ echo 'INSERT INTO g_surgery VALUES (DEFAULT, '\''심장'\'', '\''5'\'', '\''김달'\'');'
++ '[' -n anesthesiologist ']'
++ '[' -n 1 ']'
++ '[' -n 'heart surgery process' ']'
++ '[' -n 5 ']'
++ '[' -n 5 ']'
++ '[' -n Surgery ']'
++ '[' -n 1 ']'
++ echo 'INSERT INTO g_patient VALUES (DEFAULT, '\''anesthesiologist'\'', '\''1'\'', '\''heart surgery process'\'', '\''5'\'', '\''5'\'', '\''1'\'', '\''Surgery'\'');'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ '[' -n '' ']'
++ read line
+++ cut -f 1 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_checklist__name=
+++ cut -f 3 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_checklist__update_time='2022/01/12 00:00:00'
+++ cut -f 4 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_checklist__stb_sn=
+++ cut -f 5 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_checklist_list__name='마취과 의사'
+++ cut -f 6 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_checklist_list__update_time='2022/01/12 00:00:00'
+++ cut -f 7 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_checklist_list__checklist_uid=1
+++ cut -f 8 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_checklist_list__value='네. 맞습니다.'
+++ cut -f 9 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_home__name='다리 수술 메인 화면'
+++ cut -f 11 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_home__update_time='2022/01/12 00:00:00'
+++ cut -f 12 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_home__stb_sn=KSQ19880201
+++ cut -f 13 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_home_list__name='다리 수술'
+++ cut -f 14 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_home_list__update_time='2022/01/12 00:00:00'
+++ cut -f 15 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_home_list__g_home_uid=6
+++ cut -f 16 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_instrument__thumbnail=url
+++ cut -f 17 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_instrument__name=MRI
+++ cut -f 18 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_instrument__contents=content
+++ cut -f 19 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_surgery__name='leg surgery'
+++ cut -f 21 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_surgery__update_time='2022/01/12 00:00:00'
+++ cut -f 22 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_surgery__g_main_home_uid=6
+++ cut -f 23 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_patient__name=최무식
+++ cut -f 24 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_patient__gender=남성
+++ cut -f 25 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_patient__age=20
+++ cut -f 26 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_patient__dob=2002-01-01
+++ cut -f 27 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_patient__surgicalsite=다리
+++ cut -f 28 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_patient__surgicalname='leg surgery'
+++ cut -f 29 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_patient__g_surgery_uid=6
+++ cut -f 30 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_staff__name=최민준
+++ cut -f 31 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_staff__position=operator
+++ cut -f 32 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_staff__g_surery_uid=2
+++ cut -f 33 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_process__name='leg surgery process'
+++ cut -f 35 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_process__g_surgery_uid=6
+++ cut -f 36 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_process_list__value=Suture
+++ cut -f 37 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취과 의사,2022/01/12 00:00:00,1,네. 맞습니다.,다리 수술 메인 화면,6,2022/01/12 00:00:00,KSQ19880201,다리 수술,2022/01/12 00:00:00,6,url,MRI,content,leg surgery,6,2022/01/12 00:00:00,6,최무식,남성,20,2002-01-01,다리,leg surgery,6,최민준,operator,2,leg surgery process,6,6,Suture,1
++ g_process_list__g_process_uid=1
++ '[' -n '' ']'
++ '[' -n '마취과 의사' ']'
++ '[' -n '2022/01/12 00:00:00' ']'
++ '[' -n 1 ']'
++ '[' -n '네. 맞습니다.' ']'
++ echo 'INSERT INTO g_checklist_list VALUES (DEFAULT, '\''마취과 의사'\'', '\''2022/01/12 00:00:00'\'', '\''1'\'', '\''네. 맞습니다.'\'');'
++ '[' -n '다리 수술 메인 화면' ']'
++ '[' -n '2022/01/12 00:00:00' ']'
++ '[' -n KSQ19880201 ']'
++ echo 'INSERT INTO g_home VALUES (DEFAULT, '\''다리 수술 메인 화면'\'', '\''2022/01/12 00:00:00'\'', '\''KSQ19880201'\'');'
++ '[' -n '다리 수술' ']'
++ '[' -n '2022/01/12 00:00:00' ']'
++ '[' -n 6 ']'
++ echo 'INSERT INTO g_home_list VALUES (DEFAULT, '\''다리 수술'\'', '\''2022/01/12 00:00:00'\'', '\''6'\'');'
++ '[' -n url ']'
++ '[' -n MRI ']'
++ '[' -n content ']'
++ echo 'INSERT INTO g_instrument VALUES (DEFAULT, '\''url'\'', '\''MRI'\'', '\''content'\'');'
++ '[' -n 'leg surgery' ']'
++ '[' -n '2022/01/12 00:00:00' ']'
++ '[' -n 6 ']'
++ echo 'INSERT INTO g_surgery VALUES (DEFAULT, '\''leg surgery'\'', '\''2022/01/12 00:00:00'\'', '\''6'\'');'
++ '[' -n 최무식 ']'
++ '[' -n 남성 ']'
++ '[' -n 20 ']'
++ '[' -n 2002-01-01 ']'
++ '[' -n 다리 ']'
++ '[' -n 'leg surgery' ']'
++ '[' -n 6 ']'
++ echo 'INSERT INTO g_patient VALUES (DEFAULT, '\''최무식'\'', '\''남성'\'', '\''20'\'', '\''2002-01-01'\'', '\''다리'\'', '\''6'\'', '\''leg surgery'\'');'
++ '[' -n 최민준 ']'
++ '[' -n operator ']'
++ '[' -n 2 ']'
++ echo 'INSERT INTO g_staff VALUES(DEFAULT, '\''최민준'\'', '\''operator'\'', '\''2'\'') ;'
++ '[' -n 6 ']'
++ '[' -n 'leg surgery process' ']'
++ echo 'INSERT INTO g_process VALUES (DEFAULT, '\''6'\'', '\''leg surgery process'\'');'
++ '[' -n Suture ']'
++ '[' -n 1 ']'
++ echo 'INSERT INTO g_process_list VALUES (DEFAULT, '\''Suture'\'', '\''1'\'');'
++ read line
+++ cut -f 1 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_checklist__name=
+++ cut -f 3 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_checklist__update_time='2022/01/12 00:00:00'
+++ cut -f 4 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_checklist__stb_sn=
+++ cut -f 5 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_checklist_list__name='마취회복 간호사'
+++ cut -f 6 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_checklist_list__update_time='2022/01/12 00:00:00'
+++ cut -f 7 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_checklist_list__checklist_uid=1
+++ cut -f 8 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_checklist_list__value='네. 맞습니다.'
+++ cut -f 9 -d ,
+ERROR 1292 (22007) at line 42: Incorrect datetime value: 'heart surgery' for column 'update_time' at row 1
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_home__name='림프종 수술 메인 화면'
+++ cut -f 11 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_home__update_time='2022/01/12 00:00:00'
+++ cut -f 12 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_home__stb_sn=KSQ19880201
+++ cut -f 13 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_home_list__name='림프종 수술'
+++ cut -f 14 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_home_list__update_time='2022/01/12 00:00:00'
+++ cut -f 15 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_home_list__g_home_uid=7
+++ cut -f 16 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_instrument__thumbnail=url
+++ cut -f 17 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_instrument__name=Laparoscope
+++ cut -f 18 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_instrument__contents=content
+++ cut -f 19 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_surgery__name='lymphoma surgery'
+++ cut -f 21 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_surgery__update_time='2022/01/12 00:00:00'
+++ cut -f 22 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_surgery__g_main_home_uid=7
+++ cut -f 23 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_patient__name=한소정
+++ cut -f 24 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_patient__gender=여성
+++ cut -f 25 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_patient__age=68
+++ cut -f 26 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_patient__dob=1955-01-01
+++ cut -f 27 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_patient__surgicalsite=목
+++ cut -f 28 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_patient__surgicalname='lymphoma surgery'
+++ cut -f 29 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_patient__g_surgery_uid=7
+++ cut -f 30 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_staff__name=최서준
+++ cut -f 31 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_staff__position='surgical assistant'
+++ cut -f 32 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_staff__g_surery_uid=2
+++ cut -f 33 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_process__name='lymphoma surgery process'
+++ cut -f 35 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_process__g_surgery_uid=7
+++ cut -f 36 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_process_list__value='Wake up ANES'
+++ cut -f 37 -d ,
+++ echo ,,2022/01/12 00:00:00,,마취회복 간호사,2022/01/12 00:00:00,1,네. 맞습니다.,림프종 수술 메인 화면,7,2022/01/12 00:00:00,KSQ19880201,림프종 수술,2022/01/12 00:00:00,7,url,Laparoscope,content,lymphoma surgery,7,2022/01/12 00:00:00,7,한소정,여성,68,1955-01-01,목,lymphoma surgery,7,최서준,surgical assistant,2,lymphoma surgery process,7,7,Wake up ANES,1
++ g_process_list__g_process_uid=1
++ '[' -n '' ']'
++ '[' -n '마취회복 간호사' ']'
++ '[' -n '2022/01/12 00:00:00' ']'
++ '[' -n 1 ']'
++ '[' -n '네. 맞습니다.' ']'
++ echo 'INSERT INTO g_checklist_list VALUES (DEFAULT, '\''마취회복 간호사'\'', '\''2022/01/12 00:00:00'\'', '\''1'\'', '\''네. 맞습니다.'\'');'
++ '[' 0 -eq 1 ']'
++ echo 'Fail Script'

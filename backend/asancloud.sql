@@ -65,7 +65,7 @@ CREATE TABLE `g_checklist` (
 
 LOCK TABLES `g_checklist` WRITE;
 /*!40000 ALTER TABLE `g_checklist` DISABLE KEYS */;
-INSERT INTO `g_checklist` VALUES (1,'체크리스트','2022-01-19 09:15:56','KSQ19880205'),(2,'체크리스트','2022-01-18 19:29:09','KSQ19880201');
+INSERT INTO `g_checklist` VALUES (1,'체크리스트','2022-01-19 09:15:56','KSQ19880205'),(2,'체크리스트','2022-01-21 15:18:07','KSQ19880201');
 /*!40000 ALTER TABLE `g_checklist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -143,7 +143,7 @@ CREATE TABLE `g_distribution` (
 
 LOCK TABLES `g_distribution` WRITE;
 /*!40000 ALTER TABLE `g_distribution` DISABLE KEYS */;
-INSERT INTO `g_distribution` VALUES (1,'KSQ19880205','first distribution','2022-01-19 10:01:28'),(2,'KSQ19880201','second distribution','2022-01-19 10:01:23'),(3,'KSQ19880207','third distribution','2020-11-08 10:10:10');
+INSERT INTO `g_distribution` VALUES (1,'KSQ19880205','first distribution','2022-01-19 10:01:28'),(2,'KSQ19880201','second distribution','2022-01-21 15:18:07'),(3,'KSQ19880207','third distribution','2020-11-08 10:10:10');
 /*!40000 ALTER TABLE `g_distribution` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,7 +169,7 @@ CREATE TABLE `g_home` (
 
 LOCK TABLES `g_home` WRITE;
 /*!40000 ALTER TABLE `g_home` DISABLE KEYS */;
-INSERT INTO `g_home` VALUES (1,'폐 수술 메인 화면','2022-01-19 09:30:45','KSQ19880205'),(2,'어깨 팔 수술 메인 화면','2022-01-19 09:30:45','KSQ19880205'),(3,'간암 수술 메인 화면','2022-01-19 09:30:45','KSQ19880205'),(4,'난소암 수술 메인 화면','2022-01-19 09:30:45','KSQ19880205'),(5,'심장 수술 메인 화면','2022-01-18 17:47:50','KSQ19880201'),(6,'다리 수술 메인 화면','2022-01-18 17:47:50','KSQ19880201'),(7,'림프종 수술 메인 화면','2022-01-18 17:47:50','KSQ19880201'),(8,'신장암 수술 메인 화면','2022-01-18 17:47:50','KSQ19880201');
+INSERT INTO `g_home` VALUES (1,'폐 수술 메인 화면','2022-01-19 09:30:45','KSQ19880205'),(2,'어깨 팔 수술 메인 화면','2022-01-19 09:30:45','KSQ19880205'),(3,'간암 수술 메인 화면','2022-01-19 09:30:45','KSQ19880205'),(4,'난소암 수술 메인 화면','2022-01-19 09:30:45','KSQ19880205'),(5,'심장 수술 메인 화면','2022-01-21 15:18:07','KSQ19880201'),(6,'다리 수술 메인 화면','2022-01-21 15:18:07','KSQ19880201'),(7,'림프종 수술 메인 화면','2022-01-21 15:18:07','KSQ19880201'),(8,'신장암 수술 메인 화면','2022-01-21 15:18:07','KSQ19880201');
 /*!40000 ALTER TABLE `g_home` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -333,7 +333,7 @@ CREATE TABLE `g_main` (
 
 LOCK TABLES `g_main` WRITE;
 /*!40000 ALTER TABLE `g_main` DISABLE KEYS */;
-INSERT INTO `g_main` VALUES (1,'first main','2022-01-19 10:01:28','KSQ19880205'),(2,'second main','2022-01-19 10:01:23','KSQ19880201'),(3,'third main','2022-01-10 15:34:55','F20020Y0057');
+INSERT INTO `g_main` VALUES (1,'first main','2022-01-19 10:01:28','KSQ19880205'),(2,'second main','2022-01-21 15:18:07','KSQ19880201'),(3,'third main','2022-01-10 15:34:55','F20020Y0057');
 /*!40000 ALTER TABLE `g_main` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -563,7 +563,7 @@ CREATE TABLE `g_schedule` (
 
 LOCK TABLES `g_schedule` WRITE;
 /*!40000 ALTER TABLE `g_schedule` DISABLE KEYS */;
-INSERT INTO `g_schedule` VALUES (1,'KSQ19880205','first schedule','2022-01-19 10:01:28','00:00','10:00',1,1,1,1,1),(2,'KSQ19880205','second schedule','2022-01-19 10:01:28','10:00','12:00',1,2,1,1,1),(3,'KSQ19880201','first schedule','2022-01-19 10:01:23','00:00','10:00',2,5,2,2,2),(4,'KSQ19880201','second schedule','2022-01-19 10:01:23','10:00','12:00',2,6,2,2,2),(5,'KSQ19880205','third schedule','2022-01-19 10:01:28','12:00','14:00',1,3,1,1,1),(6,'KSQ19880205','4th schedule','2022-01-19 10:01:28','14:00','23:59',1,4,1,1,1),(7,'KSQ19880201','third schedule','2022-01-19 10:01:23','12:00','14:00',2,7,2,2,2),(8,'KSQ19880201','4th schedule','2022-01-19 10:01:23','14:00','23:59',2,8,2,2,2);
+INSERT INTO `g_schedule` VALUES (1,'KSQ19880205','first schedule','2022-01-21 15:18:07','00:00','10:00',1,1,1,1,1),(2,'KSQ19880205','second schedule','2022-01-21 15:18:07','12:00','14:00',1,2,1,1,1),(3,'KSQ19880201','first schedule','2022-01-21 15:18:07','00:00','10:00',2,5,2,2,2),(4,'KSQ19880201','second schedule','2022-01-21 15:18:07','12:00','14:00',2,6,2,2,2),(5,'KSQ19880205','third schedule','2022-01-21 15:18:07','14:00','16:00',1,3,1,1,1),(6,'KSQ19880205','4th schedule','2022-01-21 15:18:07','16:00','23:59',1,4,1,1,1),(7,'KSQ19880201','third schedule','2022-01-21 15:18:07','14:00','16:00',2,7,2,2,2),(8,'KSQ19880201','4th schedule','2022-01-21 15:18:07','16:00','23:59',2,8,2,2,2);
 /*!40000 ALTER TABLE `g_schedule` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -616,7 +616,7 @@ CREATE TABLE `g_stb` (
 
 LOCK TABLES `g_stb` WRITE;
 /*!40000 ALTER TABLE `g_stb` DISABLE KEYS */;
-INSERT INTO `g_stb` VALUES (1,'KSQ19880205','KSQ19880204','2022-01-19 09:13:09','N'),(2,'KSQ19880201','KSQ19880202','2022-01-19 03:56:29','N'),(3,'F20020Y0057','test','2022-01-19 09:31:40','Y');
+INSERT INTO `g_stb` VALUES (1,'KSQ19880205','KSQ19880204','2022-01-19 09:13:09','N'),(2,'KSQ19880201','KSQ19880202','2022-01-21 15:18:01','Y'),(3,'F20020Y0057','test','2022-01-19 09:31:40','Y');
 /*!40000 ALTER TABLE `g_stb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -685,4 +685,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-19  1:04:28
+-- Dump completed on 2022-01-21 15:19:25
