@@ -1,3 +1,14 @@
+아산병원 프로토콜 페이지:
+https://docs.google.com/spreadsheets/d/1UoxlJhh1A3gFut9GuWnsMZo846vwG0vw6e-HDzwdcGs/edit#gid=1607234020
+
+아산병원 설치 문서 작성 필요.
+
+
+
+
+
+
+
 이 문서는 asancloud 에 사용되는 MYSQL table 에 대한 설명으로, 데이터 excel 을 작성 할 때의 도움이 되는 것을 목적으로 한다.
 
 테이블 목록:
