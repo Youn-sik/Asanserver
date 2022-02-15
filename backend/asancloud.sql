@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.36, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.37, for Linux (x86_64)
 --
 -- Host: localhost    Database: asancloud
 -- ------------------------------------------------------
--- Server version	5.7.36-0ubuntu0.18.04.1
+-- Server version	5.7.37-0ubuntu0.18.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -65,7 +65,7 @@ CREATE TABLE `g_checklist` (
 
 LOCK TABLES `g_checklist` WRITE;
 /*!40000 ALTER TABLE `g_checklist` DISABLE KEYS */;
-INSERT INTO `g_checklist` VALUES (1,'체크리스트','2022-01-19 09:15:56','KSQ19880205'),(2,'체크리스트','2022-01-21 15:18:07','KSQ19880201');
+INSERT INTO `g_checklist` VALUES (1,'체크리스트','2022-02-10 13:46:21','KSQ19880205'),(2,'체크리스트','2022-02-15 11:54:41','KSQ19880201');
 /*!40000 ALTER TABLE `g_checklist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -93,7 +93,7 @@ CREATE TABLE `g_checklist_list` (
 
 LOCK TABLES `g_checklist_list` WRITE;
 /*!40000 ALTER TABLE `g_checklist_list` DISABLE KEYS */;
-INSERT INTO `g_checklist_list` VALUES (1,'집도과 ','2021-01-10 09:00:00',1,'타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 되십니까?'),(2,'환자 ','2021-01-10 11:00:00',1,'000 0000000입니다'),(3,'집도과 ','2021-01-10 14:00:00',1,'네. 무슨 수술하러 오셨나요?'),(4,'환자 ','2021-01-10 16:00:00',1,'000 수술입니다'),(5,'집도과 ','2021-01-11 09:00:00',1,'등록번호 000 000 님. 000쪽 000수술 입니다.'),(6,'마취과 의사','2021-01-11 11:00:00',1,'네. 맞습니다.'),(7,'마취회복 간호사','2021-01-11 09:00:00',1,'네. 맞습니다.'),(8,'순회 간호사','2021-01-11 11:00:00',1,'네. 맞습니다.'),(9,'마취과 의사','2021-01-11 14:00:00',1,'마취 시작합니다.'),(10,'집도과 ','2021-01-11 16:00:00',2,'타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 되십니까?'),(11,'환자 ','2021-01-12 09:00:00',2,'000 0000000입니다'),(12,'집도과 ','2021-01-12 11:00:00',2,'네. 무슨 수술하러 오셨나요?'),(13,'환자 ','2021-01-12 14:00:00',2,'000 수술입니다'),(14,'집도과 ','2021-01-12 16:00:00',2,'등록번호 000 000 님. 000쪽 000수술 입니다.'),(15,'마취과 의사','2021-01-13 09:00:00',2,'네. 맞습니다.'),(16,'마취회복 간호사','2021-01-10 09:00:00',2,'네. 맞습니다.'),(17,'순회 간호사','2021-01-10 11:00:00',2,'네. 맞습니다.'),(18,'마취과 의사','2021-01-10 14:00:00',2,'마취 시작합니다.');
+INSERT INTO `g_checklist_list` VALUES (1,'집도과 ','2022-01-12 12:00:00',1,'타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 되십니까?'),(2,'환자 ','2022-01-12 12:00:00',1,'000 0000000입니다'),(3,'집도과 ','2022-01-12 12:00:00',1,'네. 무슨 수술하러 오셨나요?'),(4,'환자 ','2022-01-12 12:00:00',1,'000 수술입니다'),(5,'집도과 ','2022-01-12 12:00:00',1,'등록번호 000 000 님. 000쪽 000수술 입니다.'),(6,'마취과 의사','2022-01-12 12:00:00',1,'네. 맞습니다.'),(7,'마취회복 간호사','2022-01-12 12:00:00',1,'네. 맞습니다.'),(8,'순회 간호사','2022-01-12 12:00:00',1,'네. 맞습니다.'),(9,'마취과 의사','2022-01-12 12:00:00',1,'마취 시작합니다.'),(10,'집도과 ','2022-01-12 12:00:00',2,'타임아웃 하겠습니다. 환자분 성함과 주민번호 앞자리가 어떻게 되십니까?'),(11,'환자 ','2022-01-12 12:00:00',2,'000 0000000입니다'),(12,'집도과 ','2022-01-12 12:00:00',2,'네. 무슨 수술하러 오셨나요?'),(13,'환자 ','2022-01-12 12:00:00',2,'000 수술입니다'),(14,'집도과 ','2022-01-12 12:00:00',2,'등록번호 000 000 님. 000쪽 000수술 입니다.'),(15,'마취과 의사','2022-01-12 12:00:00',2,'네. 맞습니다.'),(16,'마취회복 간호사','2022-01-12 12:00:00',2,'네. 맞습니다.'),(17,'순회 간호사','2022-01-12 12:00:00',2,'네. 맞습니다.'),(18,'마취과 의사','2022-01-12 12:00:00',2,'마취 시작합니다.');
 /*!40000 ALTER TABLE `g_checklist_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -143,7 +143,7 @@ CREATE TABLE `g_distribution` (
 
 LOCK TABLES `g_distribution` WRITE;
 /*!40000 ALTER TABLE `g_distribution` DISABLE KEYS */;
-INSERT INTO `g_distribution` VALUES (1,'KSQ19880205','first distribution','2022-01-19 10:01:28'),(2,'KSQ19880201','second distribution','2022-01-21 15:18:07'),(3,'KSQ19880207','third distribution','2020-11-08 10:10:10');
+INSERT INTO `g_distribution` VALUES (1,'KSQ19880205','first distribution','2022-02-11 03:01:55'),(2,'KSQ19880201','second distribution','2022-02-15 11:54:41'),(3,'KSQ19880207','third distribution','2020-11-08 10:10:10');
 /*!40000 ALTER TABLE `g_distribution` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -160,7 +160,7 @@ CREATE TABLE `g_home` (
   `update_time` datetime DEFAULT NULL,
   `stb_sn` varchar(30) NOT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -169,7 +169,7 @@ CREATE TABLE `g_home` (
 
 LOCK TABLES `g_home` WRITE;
 /*!40000 ALTER TABLE `g_home` DISABLE KEYS */;
-INSERT INTO `g_home` VALUES (1,'폐 수술 메인 화면','2022-01-19 09:30:45','KSQ19880205'),(2,'어깨 팔 수술 메인 화면','2022-01-19 09:30:45','KSQ19880205'),(3,'간암 수술 메인 화면','2022-01-19 09:30:45','KSQ19880205'),(4,'난소암 수술 메인 화면','2022-01-19 09:30:45','KSQ19880205'),(5,'심장 수술 메인 화면','2022-01-21 15:18:07','KSQ19880201'),(6,'다리 수술 메인 화면','2022-01-21 15:18:07','KSQ19880201'),(7,'림프종 수술 메인 화면','2022-01-21 15:18:07','KSQ19880201'),(8,'신장암 수술 메인 화면','2022-01-21 15:18:07','KSQ19880201');
+INSERT INTO `g_home` VALUES (1,'Arthroscopic bankart repair and remplissage1','2022-02-10 13:46:21','KSQ19880205'),(2,'Arthroscopic superior capsular reconstruction shoulder left1','2022-02-10 13:46:21','KSQ19880205'),(3,'A/S RCR Rt.','2022-02-10 13:46:21','KSQ19880205'),(4,'Arthroscopic bankart repair and remplissage2','2022-02-10 13:46:21','KSQ19880205'),(5,'Arthroscopic superior capsular reconstruction shoulder left2','2022-02-10 13:46:21','KSQ19880205'),(6,'Arthroscopic bankart repair and remplissage1','2022-02-15 11:54:41','KSQ19880201'),(7,'Arthroscopic superior capsular reconstruction shoulder left1','2022-02-15 11:54:41','KSQ19880201'),(8,'A/S RCR Rt.','2022-02-15 11:54:41','KSQ19880201'),(9,'Arthroscopic bankart repair and remplissage2','2022-02-15 11:54:41','KSQ19880201'),(10,'Arthroscopic superior capsular reconstruction shoulder left2','2022-02-15 11:54:41','KSQ19880201');
 /*!40000 ALTER TABLE `g_home` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -187,7 +187,7 @@ CREATE TABLE `g_home_list` (
   `g_home_uid` int(11) NOT NULL,
   PRIMARY KEY (`uid`),
   KEY `sch_hom` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -196,7 +196,7 @@ CREATE TABLE `g_home_list` (
 
 LOCK TABLES `g_home_list` WRITE;
 /*!40000 ALTER TABLE `g_home_list` DISABLE KEYS */;
-INSERT INTO `g_home_list` VALUES (1,'폐 수술','2022-01-12 16:26:00',1),(2,'어깨 팔 수술','2022-01-12 09:24:00',2),(3,'간암 수술','2022-01-12 02:22:00',3),(4,'난소암 수술','2022-01-11 19:20:00',4),(5,'심장 수술','2022-01-11 12:18:00',5),(6,'다리 수술','2022-01-11 05:16:00',6),(7,'림프종 수술','2022-01-10 22:14:00',7),(8,'신장암 수술','2022-01-10 15:12:00',8);
+INSERT INTO `g_home_list` VALUES (1,'Arthroscopic bankart repair and remplissage','2022-01-12 12:00:00',1),(2,'Arthroscopic superior capsular reconstruction shoulder left','2022-01-12 12:00:00',2),(3,'A/S RCR Rt.','2022-01-12 12:00:00',3),(4,'Arthroscopic bankart repair and remplissage','2022-01-12 12:00:00',4),(5,'Arthroscopic superior capsular reconstruction shoulder left','2022-01-12 12:00:00',5),(6,'Arthroscopic bankart repair and remplissage','2022-01-12 12:00:00',6),(7,'Arthroscopic superior capsular reconstruction shoulder left','2022-01-12 12:00:00',7),(8,'A/S RCR Rt.','2022-01-12 12:00:00',8),(9,'Arthroscopic bankart repair and remplissage','2022-01-12 12:00:00',9),(10,'Arthroscopic superior capsular reconstruction shoulder left','2022-01-12 12:00:00',10);
 /*!40000 ALTER TABLE `g_home_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -243,7 +243,7 @@ CREATE TABLE `g_layout` (
   `imageurl` varchar(100) NOT NULL,
   `info` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -333,7 +333,7 @@ CREATE TABLE `g_main` (
 
 LOCK TABLES `g_main` WRITE;
 /*!40000 ALTER TABLE `g_main` DISABLE KEYS */;
-INSERT INTO `g_main` VALUES (1,'first main','2022-01-19 10:01:28','KSQ19880205'),(2,'second main','2022-01-21 15:18:07','KSQ19880201'),(3,'third main','2022-01-10 15:34:55','F20020Y0057');
+INSERT INTO `g_main` VALUES (1,'first main','2022-02-10 13:46:21','KSQ19880205'),(2,'second main','2022-02-15 11:54:41','KSQ19880201'),(3,'third main','2022-01-10 15:34:55','F20020Y0057');
 /*!40000 ALTER TABLE `g_main` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -358,7 +358,7 @@ CREATE TABLE `g_main_list` (
   `file_url` varchar(200) NOT NULL,
   PRIMARY KEY (`uid`),
   KEY `sch_mai` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -367,7 +367,7 @@ CREATE TABLE `g_main_list` (
 
 LOCK TABLES `g_main_list` WRITE;
 /*!40000 ALTER TABLE `g_main_list` DISABLE KEYS */;
-INSERT INTO `g_main_list` VALUES (1,'토끼 영상','2022-01-19 10:00:40','08:00','10:00',1,'admin','/home/asan/asan/backend/uploads/contents/meditation/2022-01-19_10:00:35_movie.mp4','2022-01-19_10:00:35_movie.mp4','.mp4','http://172.16.41.233:3000/uploads/contents/meditation/2022-01-19_10:00:35_movie.mp4'),(2,'토끼 영상','2022-01-19 10:00:56','08:00','10:00',2,'admin','/home/asan/asan/backend/uploads/contents/meditation/2022-01-19_10:00:50_movie.mp4','2022-01-19_10:00:50_movie.mp4','.mp4','http://172.16.41.233:3000/uploads/contents/meditation/2022-01-19_10:00:50_movie.mp4'),(3,'토끼 영상','2022-01-19 10:01:16','08:00','10:00',1,'admin','/home/asan/asan/backend/uploads/contents/meditation/2022-01-19_10:01:09_movie.mp4','2022-01-19_10:01:09_movie.mp4','.mp4','http://172.16.41.233:3000/uploads/contents/meditation/2022-01-19_10:01:09_movie.mp4');
+INSERT INTO `g_main_list` VALUES (1,'토끼 영상','2022-01-19 10:00:40','08:00','10:00',1,'admin','/home/asan/asan/backend/uploads/contents/meditation/2022-01-19_10:00:35_movie.mp4','2022-01-19_10:00:35_movie.mp4','.mp4','http://172.16.41.233:3000/uploads/contents/meditation/2022-01-19_10:00:35_movie.mp4'),(2,'토끼 영상','2022-01-19 10:00:56','08:00','10:00',2,'admin','/home/asan/asan/backend/uploads/contents/meditation/2022-01-19_10:00:50_movie.mp4','2022-01-19_10:00:50_movie.mp4','.mp4','http://172.16.41.233:3000/uploads/contents/meditation/2022-01-19_10:00:50_movie.mp4'),(3,'토끼 영상','2022-01-19 10:01:16','08:00','10:00',1,'admin','/home/asan/asan/backend/uploads/contents/meditation/2022-01-19_10:01:09_movie.mp4','2022-01-19_10:01:09_movie.mp4','.mp4','http://172.16.41.233:3000/uploads/contents/meditation/2022-01-19_10:01:09_movie.mp4'),(4,'피아노 협주곡','2022-01-24 10:00:50','08:00','10:00',2,'admin','/home/asan/asan/backend/uploads/contents/meditation/2022-01-24_10:00:39_Piano-Concerto-no.-21-in-C-major-K.-467-II.-Andante.mp3','2022-01-24_10:00:39_Piano-Concerto-no.-21-in-C-major-K.-467-II.-Andante.mp3','.mp3','http://172.16.41.233:3000/uploads/contents/meditation/2022-01-24_10:00:39_Piano-Concerto-no.-21-in-C-major-K.-467-II.-Andante.mp3');
 /*!40000 ALTER TABLE `g_main_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -470,7 +470,7 @@ CREATE TABLE `g_patient` (
   `g_surgery_uid` int(11) DEFAULT NULL,
   `surgicalname` varchar(60) DEFAULT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -479,7 +479,7 @@ CREATE TABLE `g_patient` (
 
 LOCK TABLES `g_patient` WRITE;
 /*!40000 ALTER TABLE `g_patient` DISABLE KEYS */;
-INSERT INTO `g_patient` VALUES (1,'아무개','남성',20,'2002-01-01','폐',1,'lung surgery'),(2,'김돌복','남성',18,'2004-01-01','어깨 팔',2,'shoulder arm surgery'),(3,'김아린','여성',69,'1954-01-01','간',3,'liver cancer surgery'),(4,'최지연','여성',70,'1953-01-01','난소',4,'ovarian cancer surgery'),(5,'김웅식','여성',23,'1999-03-12','심장',5,'heart surgery'),(6,'최무식','남성',20,'2002-01-01','다리',6,'leg surgery'),(7,'한소정','여성',68,'1955-01-01','목',7,'lymphoma surgery'),(8,'상신범','남성',67,'1956-01-01','신장',8,'kidney cancer surgery');
+INSERT INTO `g_patient` VALUES (1,'이재운','남성',25,'35284','어깨 팔',1,'Arthroscopic bankart repair and remplissage'),(2,'방시욱','남성',24,'35674','어깨 팔',2,'Arthroscopic superior capsular reconstruction shoulder left'),(3,'김애린','여성',69,'19725','어깨 팔',3,'A/S RCR Rt.'),(4,'김대평','남성',39,'30783','어깨 팔',4,'Arthroscopic bankart repair and remplissage'),(5,'노지애','여성',70,'26822','어깨 팔',5,'Arthroscopic superior capsular reconstruction shoulder left'),(6,'이재운','남성',25,'35284','어깨 팔',6,'Arthroscopic bankart repair and remplissage'),(7,'방시욱','남성',24,'35674','어깨 팔',7,'Arthroscopic superior capsular reconstruction shoulder left'),(8,'김애린','여성',69,'19725','어깨 팔',8,'A/S RCR Rt.'),(9,'김대평','남성',39,'30783','어깨 팔',9,'Arthroscopic bankart repair and remplissage'),(10,'노지애','여성',70,'26822','어깨 팔',10,'Arthroscopic superior capsular reconstruction shoulder left');
 /*!40000 ALTER TABLE `g_patient` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -495,7 +495,7 @@ CREATE TABLE `g_process` (
   `g_surgery_uid` int(11) DEFAULT NULL,
   `name` varchar(90) DEFAULT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -504,7 +504,7 @@ CREATE TABLE `g_process` (
 
 LOCK TABLES `g_process` WRITE;
 /*!40000 ALTER TABLE `g_process` DISABLE KEYS */;
-INSERT INTO `g_process` VALUES (1,1,'lung surgery process'),(2,2,'shoulder arm surgery process'),(3,3,'liver cancer surgery process'),(4,4,'ovarian cancer surgery process'),(5,5,'heart surgery process'),(6,6,'leg surgery process'),(7,7,'lymphoma surgery process'),(8,8,'kidney cancer surgery process');
+INSERT INTO `g_process` VALUES (1,1,'shoulder arm surgery process'),(2,2,'shoulder arm surgery process'),(3,3,'shoulder arm surgery process'),(4,4,'shoulder arm surgery process'),(5,5,'shoulder arm surgery process'),(6,6,'shoulder arm surgery process'),(7,7,'shoulder arm surgery process'),(8,8,'shoulder arm surgery process'),(9,9,'shoulder arm surgery process'),(10,10,'shoulder arm surgery process');
 /*!40000 ALTER TABLE `g_process` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -520,7 +520,7 @@ CREATE TABLE `g_process_list` (
   `value` varchar(100) NOT NULL,
   `g_process_uid` int(11) DEFAULT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -529,7 +529,7 @@ CREATE TABLE `g_process_list` (
 
 LOCK TABLES `g_process_list` WRITE;
 /*!40000 ALTER TABLE `g_process_list` DISABLE KEYS */;
-INSERT INTO `g_process_list` VALUES (1,'T/O brfore ANES',1),(2,'Anesthesia',1),(3,'T/O before IND',1),(4,'Incision',1),(5,'Surgery',1),(6,'Suture',1),(7,'Wake up ANES',1),(8,'End of sergery',1),(9,'T/O brfore ANES',2),(10,'Anesthesia',2),(11,'T/O before IND',2),(12,'Incision',2),(13,'Surgery',2),(14,'Suture',2),(15,'Wake up ANES',2),(16,'End of sergery',2),(17,'T/O brfore ANES',3),(18,'Anesthesia',3),(19,'T/O before IND',3),(20,'Incision',3),(21,'Surgery',3),(22,'Suture',3),(23,'Wake up ANES',3),(24,'End of sergery',3),(25,'T/O brfore ANES',4),(26,'Anesthesia',4),(27,'T/O before IND',4),(28,'Incision',4),(29,'Surgery',4),(30,'Suture',4),(31,'Wake up ANES',4),(32,'End of sergery',4),(33,'T/O brfore ANES',5),(34,'Anesthesia',5),(35,'T/O before IND',5),(36,'Incision',5),(37,'Surgery',5),(38,'Suture',5),(39,'Wake up ANES',5),(40,'End of sergery',5),(41,'T/O brfore ANES',6),(42,'Anesthesia',6),(43,'T/O before IND',6),(44,'Incision',6),(45,'Surgery',6),(46,'Suture',6),(47,'Wake up ANES',6),(48,'End of sergery',6),(49,'T/O brfore ANES',7),(50,'Anesthesia',7),(51,'T/O before IND',7),(52,'Incision',7),(53,'Surgery',7),(54,'Suture',7),(55,'Wake up ANES',7),(56,'End of sergery',7),(57,'T/O brfore ANES',8),(58,'Anesthesia',8),(59,'T/O before IND',8),(60,'Incision',8),(61,'Surgery',8),(62,'Suture',8),(63,'Wake up ANES',8),(64,'End of sergery',8);
+INSERT INTO `g_process_list` VALUES (1,'T/O brfore ANES',1),(2,'Anesthesia',1),(3,'T/O before IND',1),(4,'Incision',1),(5,'Surgery',1),(6,'Suture',1),(7,'Wake up ANES',1),(8,'End of sergery',1),(9,'T/O brfore ANES',2),(10,'Anesthesia',2),(11,'T/O before IND',2),(12,'Incision',2),(13,'Surgery',2),(14,'Suture',2),(15,'Wake up ANES',2),(16,'End of sergery',2),(17,'T/O brfore ANES',3),(18,'Anesthesia',3),(19,'T/O before IND',3),(20,'Incision',3),(21,'Surgery',3),(22,'Suture',3),(23,'Wake up ANES',3),(24,'End of sergery',3),(25,'T/O brfore ANES',4),(26,'Anesthesia',4),(27,'T/O before IND',4),(28,'Incision',4),(29,'Surgery',4),(30,'Suture',4),(31,'Wake up ANES',4),(32,'End of sergery',4),(33,'T/O brfore ANES',5),(34,'Anesthesia',5),(35,'T/O before IND',5),(36,'Incision',5),(37,'Surgery',5),(38,'Suture',5),(39,'Wake up ANES',5),(40,'End of sergery',5),(41,'T/O brfore ANES',6),(42,'Anesthesia',6),(43,'T/O before IND',6),(44,'Incision',6),(45,'Surgery',6),(46,'Suture',6),(47,'Wake up ANES',6),(48,'End of sergery',6),(49,'T/O brfore ANES',7),(50,'Anesthesia',7),(51,'T/O before IND',7),(52,'Incision',7),(53,'Surgery',7),(54,'Suture',7),(55,'Wake up ANES',7),(56,'End of sergery',7),(57,'T/O brfore ANES',8),(58,'Anesthesia',8),(59,'T/O before IND',8),(60,'Incision',8),(61,'Surgery',8),(62,'Suture',8),(63,'Wake up ANES',8),(64,'End of sergery',8),(65,'T/O brfore ANES',9),(66,'Anesthesia',9),(67,'T/O before IND',9),(68,'Incision',9),(69,'Surgery',9),(70,'Suture',9),(71,'Wake up ANES',9),(72,'End of sergery',9),(73,'T/O brfore ANES',10),(74,'Anesthesia',10),(75,'T/O before IND',10),(76,'Incision',10),(77,'Surgery',10),(78,'Suture',10),(79,'Wake up ANES',10),(80,'End of sergery',10);
 /*!40000 ALTER TABLE `g_process_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -554,7 +554,7 @@ CREATE TABLE `g_schedule` (
   `media_uid` int(11) NOT NULL,
   PRIMARY KEY (`uid`),
   KEY `dis_sch` (`stb_sn`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -563,7 +563,7 @@ CREATE TABLE `g_schedule` (
 
 LOCK TABLES `g_schedule` WRITE;
 /*!40000 ALTER TABLE `g_schedule` DISABLE KEYS */;
-INSERT INTO `g_schedule` VALUES (1,'KSQ19880205','first schedule','2022-01-21 15:18:07','00:00','10:00',1,1,1,1,1),(2,'KSQ19880205','second schedule','2022-01-21 15:18:07','12:00','14:00',1,2,1,1,1),(3,'KSQ19880201','first schedule','2022-01-21 15:18:07','00:00','10:00',2,5,2,2,2),(4,'KSQ19880201','second schedule','2022-01-21 15:18:07','12:00','14:00',2,6,2,2,2),(5,'KSQ19880205','third schedule','2022-01-21 15:18:07','14:00','16:00',1,3,1,1,1),(6,'KSQ19880205','4th schedule','2022-01-21 15:18:07','16:00','23:59',1,4,1,1,1),(7,'KSQ19880201','third schedule','2022-01-21 15:18:07','14:00','16:00',2,7,2,2,2),(8,'KSQ19880201','4th schedule','2022-01-21 15:18:07','16:00','23:59',2,8,2,2,2);
+INSERT INTO `g_schedule` VALUES (1,'KSQ19880205','first schedule','2022-02-15 11:54:41','08:00','10:00',1,1,1,1,1),(2,'KSQ19880205','second schedule','2022-02-15 11:54:41','10:00','12:00',1,2,1,1,1),(3,'KSQ19880201','first schedule','2022-02-15 11:54:41','08:00','10:00',2,6,2,2,2),(4,'KSQ19880201','second schedule','2022-02-15 11:54:41','10:00','12:00',2,7,2,2,2),(5,'KSQ19880205','third schedule','2022-02-15 11:54:41','12:00','14:00',1,3,1,1,1),(6,'KSQ19880205','4th schedule','2022-02-15 11:54:41','14:00','16:00',1,4,1,1,1),(7,'KSQ19880201','third schedule','2022-02-15 11:54:41','12:00','14:00',2,8,2,2,2),(8,'KSQ19880201','4th schedule','2022-02-15 11:54:41','14:00','16:00',2,9,2,2,2),(9,'KSQ19880205','5th schedule','2022-02-15 11:54:41','16:00','18:00',1,5,1,1,1),(10,'KSQ19880201','5th schedule','2022-02-15 11:54:41','16:00','18:00',2,10,2,2,2);
 /*!40000 ALTER TABLE `g_schedule` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -580,7 +580,7 @@ CREATE TABLE `g_staff` (
   `position` varchar(30) NOT NULL,
   `g_surgery_uid` int(11) DEFAULT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -589,7 +589,7 @@ CREATE TABLE `g_staff` (
 
 LOCK TABLES `g_staff` WRITE;
 /*!40000 ALTER TABLE `g_staff` DISABLE KEYS */;
-INSERT INTO `g_staff` VALUES (1,'김개단','operator',1),(2,'김용손','surgical assistant',1),(3,'김순양','scrub nurse',1),(4,'김용식','circulating nurse',1),(5,'김달','anesthesiologist',1),(6,'최민준','operator',2),(7,'최서준','surgical assistant',2),(8,'최예준','scrub nurse',2),(9,'최도윤','circulating nurse',2),(10,'최시우','anesthesiologist',2),(11,'조주원','operator',3),(12,'조하준','surgical assistant',3),(13,'조지호','scrub nurse',3),(14,'조지후','circulating nurse',3),(15,'조준서','anesthesiologist',3),(16,'안현우','operator',4),(17,'안도현','surgical assistant',4),(18,'안지훈','scrub nurse',4),(19,'안건우','circulating nurse',4),(20,'안우진','anesthesiologist',4),(21,'한가이','operator',5),(22,'한나린','surgical assistant',5),(23,'한다슬','scrub nurse',5),(24,'한라나','circulating nurse',5),(25,'한마후','anesthesiologist',5),(26,'임가인','operator',6),(27,'임나샘','surgical assistant',6),(28,'임다온','scrub nurse',6),(29,'임라윤','circulating nurse',6),(30,'임민슬','anesthesiologist',6),(31,'박다히','operator',7),(32,'박민하','surgical assistant',7),(33,'박민예','scrub nurse',7),(34,'박루리','circulating nurse',7),(35,'이규아','anesthesiologist',7),(36,'이규하','operator',8),(37,'이그리','surgical assistant',8),(38,'이늘봄','scrub nurse',8),(39,'이드리','circulating nurse',8),(40,'이다흰','anesthesiologist',8);
+INSERT INTO `g_staff` VALUES (1,'김석웅','Operator',1),(2,'강찬','Assistant 1',1),(3,'김용균','Assistant 2',1),(4,'김영범','Assistant 3',1),(5,'백주홍','Anesthetist',1),(6,'유태영','Scrub nurse',1),(7,'이성혁','Circulating nurse',1),(8,'김인석','Recovery room nurse',1),(9,'전정문','Operator',2),(10,'김탄형','Assistant 1',2),(11,'박지만','Assistant 2',2),(12,'김석잔','Assistant 3',2),(13,'김낙준','Anesthetist',2),(14,'정홍석','Scrub nurse',2),(15,'민융기','Circulating nurse',2),(16,'우지화','Recovery room nurse',2),(17,'이혜라','Operator',3),(18,'방민안','Assistant 1',3),(19,'김아령','Assistant 2',3),(20,'박소전','Assistant 3',3),(21,'박세준','Anesthetist',3),(22,'박형석','Scrub nurse',3),(23,'이승율','Circulating nurse',3),(24,'최우석','Recovery room nurse',3),(25,'안연선','Operator',4),(26,'임시환','Assistant 1',4),(27,'안보형','Assistant 2',4),(28,'이민홍','Assistant 3',4),(29,'김슬인','Anesthetist',4),(30,'감혜진','Scrub nurse',4),(31,'김세현','Circulating nurse',4),(32,'김희섭','Recovery room nurse',4),(33,'강의검','Operator',5),(34,'정학늬','Assistant 1',5),(35,'강혜안','Assistant 2',5),(36,'신가빈','Assistant 3',5),(37,'이아정','Anesthetist',5),(38,'최효전','Scrub nurse',5),(39,'이혜열','Circulating nurse',5),(40,'조화원','Recovery room nurse',5),(41,'김석웅','Operator',6),(42,'강찬','Assistant 1',6),(43,'김용균','Assistant 2',6),(44,'김영범','Assistant 3',6),(45,'백주홍','Anesthetist',6),(46,'유태영','Scrub nurse',6),(47,'이성혁','Circulating nurse',6),(48,'김인석','Recovery room nurse',6),(49,'전정문','Operator',7),(50,'김탄형','Assistant 1',7),(51,'박지만','Assistant 2',7),(52,'김석잔','Assistant 3',7),(53,'김낙준','Anesthetist',7),(54,'정홍석','Scrub nurse',7),(55,'민융기','Circulating nurse',7),(56,'우지화','Recovery room nurse',7),(57,'이혜라','Operator',8),(58,'방민안','Assistant 1',8),(59,'김아령','Assistant 2',8),(60,'박소전','Assistant 3',8),(61,'박세준','Anesthetist',8),(62,'박형석','Scrub nurse',8),(63,'이승율','Circulating nurse',8),(64,'최우석','Recovery room nurse',8),(65,'안연선','Operator',9),(66,'임시환','Assistant 1',9),(67,'안보형','Assistant 2',9),(68,'이민홍','Assistant 3',9),(69,'김슬인','Anesthetist',9),(70,'감혜진','Scrub nurse',9),(71,'김세현','Circulating nurse',9),(72,'김희섭','Recovery room nurse',9),(73,'강의검','Operator',10),(74,'정학늬','Assistant 1',10),(75,'강혜안','Assistant 2',10),(76,'신가빈','Assistant 3',10),(77,'이아정','Anesthetist',10),(78,'최효전','Scrub nurse',10),(79,'이혜열','Circulating nurse',10),(80,'조화원','Recovery room nurse',10);
 /*!40000 ALTER TABLE `g_staff` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -616,7 +616,7 @@ CREATE TABLE `g_stb` (
 
 LOCK TABLES `g_stb` WRITE;
 /*!40000 ALTER TABLE `g_stb` DISABLE KEYS */;
-INSERT INTO `g_stb` VALUES (1,'KSQ19880205','KSQ19880204','2022-01-19 09:13:09','N'),(2,'KSQ19880201','KSQ19880202','2022-01-21 15:18:01','Y'),(3,'F20020Y0057','test','2022-01-19 09:31:40','Y');
+INSERT INTO `g_stb` VALUES (1,'KSQ19880205','KSQ19880204','2022-02-14 08:52:23','N'),(2,'KSQ19880201','KSQ19880202','2022-02-15 10:19:14','N'),(3,'F20020Y0057','test','2022-01-27 17:43:40','N');
 /*!40000 ALTER TABLE `g_stb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -633,7 +633,7 @@ CREATE TABLE `g_surgery` (
   `update_time` datetime DEFAULT NULL,
   `g_main_home_uid` int(11) NOT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -642,7 +642,7 @@ CREATE TABLE `g_surgery` (
 
 LOCK TABLES `g_surgery` WRITE;
 /*!40000 ALTER TABLE `g_surgery` DISABLE KEYS */;
-INSERT INTO `g_surgery` VALUES (1,'lung surgery','2022-01-12 16:26:00',1),(2,'shoulder arm surgery','2022-01-12 09:24:00',2),(3,'liver cancer surgery','2022-01-12 02:22:00',3),(4,'ovarian cancer surgery','2022-01-11 19:20:00',4),(5,'heart surgery','2022-01-11 12:18:00',5),(6,'leg surgery','2022-01-11 05:16:00',6),(7,'lymphoma surgery','2022-01-10 22:14:00',7),(8,'kidney cancer surgery','2022-01-10 15:12:00',8);
+INSERT INTO `g_surgery` VALUES (1,'Arthroscopic bankart repair and remplissage','2022-01-12 12:00:00',1),(2,'Arthroscopic superior capsular reconstruction shoulder left','2022-01-12 12:00:00',2),(3,'A/S RCR Rt.','2022-01-12 12:00:00',3),(4,'Arthroscopic bankart repair and remplissage','2022-01-12 12:00:00',4),(5,'Arthroscopic superior capsular reconstruction shoulder left','2022-01-12 12:00:00',5),(6,'Arthroscopic bankart repair and remplissage','2022-01-12 12:00:00',6),(7,'Arthroscopic superior capsular reconstruction shoulder left','2022-01-12 12:00:00',7),(8,'A/S RCR Rt.','2022-01-12 12:00:00',8),(9,'Arthroscopic bankart repair and remplissage','2022-01-12 12:00:00',9),(10,'Arthroscopic superior capsular reconstruction shoulder left','2022-01-12 12:00:00',10);
 /*!40000 ALTER TABLE `g_surgery` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -685,4 +685,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-21 15:19:25
+-- Dump completed on 2022-02-15 13:09:29

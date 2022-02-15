@@ -89,19 +89,19 @@ client.on('connect', () => {
     //     if(err) console.log(err);
     // })
 
-    // client.publish('/schedule/total/KSQ19880205', JSON.stringify({"stb_sn": "KSQ19880205"}), {qos: 0, retain: false}), (err)=> {
-    //     if(err) console.log(err);
-    // }
-
-    client.publish('/schedule/main/KSQ19880201', JSON.stringify({"stb_sn": "KSQ19880201", "name": "second main"}), {qos: 0, retain: false}), (err)=> {
+    client.publish('/schedule/total/KSQ19880202', JSON.stringify({"stb_sn": "KSQ19880202"}), {qos: 0, retain: false}), (err)=> {
         if(err) console.log(err);
     }
+
+    // client.publish('/schedule/main/KSQ19880201', JSON.stringify({"stb_sn": "KSQ19880201", "name": "second main"}), {qos: 0, retain: false}), (err)=> {
+    //     if(err) console.log(err);
+    // }
 
     // client.publish('/schedule/face/KSQ19880205', JSON.stringify({"stb_sn": "KSQ19880205"}), {qos: 0, retain: false}), (err)=> {
     //     if(err) console.log(err);
     // }
 
-    // client.publish('/schedule/home/KSQ19880205', JSON.stringify({"stb_sn": "KSQ19880205", "name": "난소암 수술 메인 화면"}), {qos: 0, retain: false}), (err)=> {
+    // client.publish('/schedule/home/KSQ19880202', JSON.stringify({"stb_sn": "KSQ19880202", "name": "Arthroscopic bankart repair and remplissage2"}), {qos: 0, retain: false}), (err)=> {
     //     if(err) console.log(err);
     // }
 
@@ -129,9 +129,9 @@ client.on('connect', () => {
     //     if(err) console.log(err);
     // }
 
-    client.publish('/schedule/media/KSQ19880205', JSON.stringify({"stb_sn": "KSQ19880205", "name": "first media"}), {qos: 0, retain: false}), (err)=> {
-        if(err) console.log(err);
-    }
+    // client.publish('/schedule/media/KSQ19880205', JSON.stringify({"stb_sn": "KSQ19880205", "name": "first media"}), {qos: 0, retain: false}), (err)=> {
+    //     if(err) console.log(err);
+    // }
 
 })
 
