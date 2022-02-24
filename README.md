@@ -4,10 +4,67 @@ https://docs.google.com/spreadsheets/d/1UoxlJhh1A3gFut9GuWnsMZo846vwG0vw6e-HDzwd
 아산병원 Microsoft Teams 페이지:
 https://teams.microsoft.com/_#/conversations/%ED%86%B5%ED%95%A9%EC%8A%A4%ED%81%AC%EB%A6%B0%20%EB%8D%B0%EB%AA%A8%EA%B0%9C%EB%B0%9C?threadId=19:f084cd46643c4f898570e89d9bfd75c8@thread.tacv2&ctx=channel&rootfolder=%252Fsites%252FKOOLSIGN%252FShared%2520Documents%252F%25ED%2586%25B5%25ED%2595%25A9%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%2520%25EB%258D%25B0%25EB%25AA%25A8%25EA%25B0%259C%25EB%25B0%259C
 
-아산병원 설치 문서 작성 필요.
+
+Asancloud 서버 설치
+
+TMS 서버 설치 문서 진행(.insightface 도 추가)
+	-얼굴 인식 유의 사항: 
+		-얼굴인식 데이터 : TMS 등록 후 MongoExport를 통해서 진행(users, groups)
+		-등록 된 사람일 시 서버에 등록 된 사진을 단말에게 전송 함 : /home/kool/asan/backend/uploads/image/ 에 사진 넣기 (TMS 의 /var/www/backend/image/의 사진들을)
 
 
+cd ~/asan
+npm install 
 
+cd ~/asan/frontend
+npm install
+
+cd ~/asan/backend
+npm install
+
+ip 설정파일 변경
+/backend/db.js
+/backend/cloud44.json
+/backend/face-cut/cloud40.json
+/frontend/src/server.json
+
+서버 기타 수정
+/backend/face-cut/access_realtime.py
+- with open 부분 계정 명 변경하기(L.42,45)
+- "/var/www" 부분 있으면 모두 /home/kool/asan... 으로 변경하기
+
+mkdir /home/kool/asan/backend/uploads
+chmod 777 /home/kool/asan/backend/uploads
+mkdir /home/kool/asan/backend/image
+pinky 서버에서 /backend/image 하위의 얼굴 사진 불러오기(위의 디렉터리로)
+
+pm2 start 및 startup 파일 목록
+access_realtime
+index
+matt
+
+mysql 설치
+sudo apt update
+sudo apt install mysql-server
+
+sudo mysql
+
+SET PASSWORD FOR 'root'@'localhost' = PASSWORD('master');
+FLUSH PRIVILEGES;
+
+CREATE DATABASE asancloud;
+CREATE USER 'asan'@'localhost' IDENTIFIED BY 'master123';
+GRANT ALL ON asancloud.* TO 'asan'@'localhost';
+FLUSH PRIVILEGES;
+
+sudo apt-get install nginx
+후 nginx 설정:
+https://codechacha.com/ko/deploy-react-with-nginx/
+
+sudo systemctl enable emqx
+sudo systemctl enable nginx
+sudo systemctl enable mysql
+sudo systemctl enable mongod
 
 
 
