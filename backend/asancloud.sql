@@ -65,7 +65,7 @@ CREATE TABLE `g_checklist` (
 
 LOCK TABLES `g_checklist` WRITE;
 /*!40000 ALTER TABLE `g_checklist` DISABLE KEYS */;
-INSERT INTO `g_checklist` VALUES (1,'체크리스트','2022-02-10 13:46:21','KSQ19880205'),(2,'체크리스트','2022-03-02 11:14:56','KSQ19880201');
+INSERT INTO `g_checklist` VALUES (1,'체크리스트','2022-02-10 13:46:21','KSQ19880205'),(2,'체크리스트','2022-03-02 14:13:14','KSQ19880201');
 /*!40000 ALTER TABLE `g_checklist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -143,7 +143,7 @@ CREATE TABLE `g_distribution` (
 
 LOCK TABLES `g_distribution` WRITE;
 /*!40000 ALTER TABLE `g_distribution` DISABLE KEYS */;
-INSERT INTO `g_distribution` VALUES (1,'KSQ19880205','first distribution','2022-02-11 03:01:55'),(2,'KSQ19880201','second distribution','2022-03-02 11:14:55'),(3,'KSQ19880207','third distribution','2020-11-08 10:10:10');
+INSERT INTO `g_distribution` VALUES (1,'KSQ19880205','first distribution','2022-02-11 03:01:55'),(2,'KSQ19880201','second distribution','2022-03-02 14:13:14'),(3,'KSQ19880207','third distribution','2020-11-08 10:10:10');
 /*!40000 ALTER TABLE `g_distribution` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,7 +169,7 @@ CREATE TABLE `g_home` (
 
 LOCK TABLES `g_home` WRITE;
 /*!40000 ALTER TABLE `g_home` DISABLE KEYS */;
-INSERT INTO `g_home` VALUES (1,'Arthroscopic bankart repair and remplissage1','2022-02-10 13:46:21','KSQ19880205'),(2,'Arthroscopic superior capsular reconstruction shoulder left1','2022-02-10 13:46:21','KSQ19880205'),(3,'A/S RCR Rt.','2022-02-10 13:46:21','KSQ19880205'),(4,'Arthroscopic bankart repair and remplissage2','2022-02-10 13:46:21','KSQ19880205'),(5,'Arthroscopic superior capsular reconstruction shoulder left2','2022-02-10 13:46:21','KSQ19880205'),(6,'Arthroscopic bankart repair and remplissage1','2022-03-02 11:14:56','KSQ19880201'),(7,'Arthroscopic superior capsular reconstruction shoulder left1','2022-03-02 11:14:56','KSQ19880201'),(8,'A/S RCR Rt.','2022-03-02 11:14:56','KSQ19880201'),(9,'Arthroscopic bankart repair and remplissage2','2022-03-02 11:14:56','KSQ19880201'),(10,'Arthroscopic superior capsular reconstruction shoulder left2','2022-03-02 11:14:56','KSQ19880201');
+INSERT INTO `g_home` VALUES (1,'Arthroscopic bankart repair and remplissage1','2022-02-10 13:46:21','KSQ19880205'),(2,'Arthroscopic superior capsular reconstruction shoulder left1','2022-02-10 13:46:21','KSQ19880205'),(3,'A/S RCR Rt.','2022-02-10 13:46:21','KSQ19880205'),(4,'Arthroscopic bankart repair and remplissage2','2022-02-10 13:46:21','KSQ19880205'),(5,'Arthroscopic superior capsular reconstruction shoulder left2','2022-02-10 13:46:21','KSQ19880205'),(6,'Arthroscopic bankart repair and remplissage1','2022-03-02 14:13:14','KSQ19880201'),(7,'Arthroscopic superior capsular reconstruction shoulder left1','2022-03-02 14:13:14','KSQ19880201'),(8,'A/S RCR Rt.','2022-03-02 14:13:14','KSQ19880201'),(9,'Arthroscopic bankart repair and remplissage2','2022-03-02 14:13:14','KSQ19880201'),(10,'Arthroscopic superior capsular reconstruction shoulder left2','2022-03-02 14:13:14','KSQ19880201');
 /*!40000 ALTER TABLE `g_home` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -333,7 +333,7 @@ CREATE TABLE `g_main` (
 
 LOCK TABLES `g_main` WRITE;
 /*!40000 ALTER TABLE `g_main` DISABLE KEYS */;
-INSERT INTO `g_main` VALUES (1,'first main','2022-02-10 13:46:21','KSQ19880205'),(2,'second main','2022-03-02 11:14:56','KSQ19880201'),(3,'third main','2022-01-10 15:34:55','F20020Y0057');
+INSERT INTO `g_main` VALUES (1,'first main','2022-02-10 13:46:21','KSQ19880205'),(2,'second main','2022-03-02 14:13:14','KSQ19880201'),(3,'third main','2022-01-10 15:34:55','F20020Y0057');
 /*!40000 ALTER TABLE `g_main` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -479,7 +479,7 @@ CREATE TABLE `g_patient` (
 
 LOCK TABLES `g_patient` WRITE;
 /*!40000 ALTER TABLE `g_patient` DISABLE KEYS */;
-INSERT INTO `g_patient` VALUES (1,'이재운','남성',25,'35284','어깨 팔',1,'Arthroscopic bankart repair and remplissage'),(2,'방시욱','남성',24,'35674','어깨 팔',2,'Arthroscopic superior capsular reconstruction shoulder left'),(3,'김애린','여성',69,'19725','어깨 팔',3,'A/S RCR Rt.'),(4,'김대평','남성',39,'30783','어깨 팔',4,'Arthroscopic bankart repair and remplissage'),(5,'노지애','여성',70,'26822','어깨 팔',5,'Arthroscopic superior capsular reconstruction shoulder left'),(6,'이재운','남성',25,'35284','어깨 팔',6,'Arthroscopic bankart repair and remplissage'),(7,'방시욱','남성',24,'35674','어깨 팔',7,'Arthroscopic superior capsular reconstruction shoulder left'),(8,'김애린','여성',69,'19725','어깨 팔',8,'A/S RCR Rt.'),(9,'김대평','남성',39,'30783','어깨 팔',9,'Arthroscopic bankart repair and remplissage'),(10,'노지애','여성',70,'26822','어깨 팔',10,'Arthroscopic superior capsular reconstruction shoulder left');
+INSERT INTO `g_patient` VALUES (1,'이재운','남성',25,'1996-08-07','어깨 팔',1,'Arthroscopic bankart repair and remplissage'),(2,'방시욱','남성',24,'1997-09-01','어깨 팔',2,'Arthroscopic superior capsular reconstruction shoulder left'),(3,'김애린','여성',69,'1954-01-01','어깨 팔',3,'A/S RCR Rt.'),(4,'김대평','남성',39,'1984-04-11','어깨 팔',4,'Arthroscopic bankart repair and remplissage'),(5,'노지애','여성',70,'1973-06-07','어깨 팔',5,'Arthroscopic superior capsular reconstruction shoulder left'),(6,'이재운','남성',25,'1996-08-07','어깨 팔',6,'Arthroscopic bankart repair and remplissage'),(7,'방시욱','남성',24,'1997-09-01','어깨 팔',7,'Arthroscopic superior capsular reconstruction shoulder left'),(8,'김애린','여성',69,'1954-01-01','어깨 팔',8,'A/S RCR Rt.'),(9,'김대평','남성',39,'1984-04-11','어깨 팔',9,'Arthroscopic bankart repair and remplissage'),(10,'노지애','여성',70,'1973-06-07','어깨 팔',10,'Arthroscopic superior capsular reconstruction shoulder left');
 /*!40000 ALTER TABLE `g_patient` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -563,7 +563,7 @@ CREATE TABLE `g_schedule` (
 
 LOCK TABLES `g_schedule` WRITE;
 /*!40000 ALTER TABLE `g_schedule` DISABLE KEYS */;
-INSERT INTO `g_schedule` VALUES (1,'KSQ19880205','first schedule','2022-03-02 11:14:56','08:00','10:00',1,1,1,1,1),(2,'KSQ19880205','second schedule','2022-03-02 11:14:56','10:00','12:00',1,2,1,1,1),(3,'KSQ19880201','first schedule','2022-03-02 11:14:56','08:00','10:00',2,6,2,2,2),(4,'KSQ19880201','second schedule','2022-03-02 11:14:56','10:00','12:00',2,7,2,2,2),(5,'KSQ19880205','third schedule','2022-03-02 11:14:56','12:00','14:00',1,3,1,1,1),(6,'KSQ19880205','4th schedule','2022-03-02 11:14:56','14:00','16:00',1,4,1,1,1),(7,'KSQ19880201','third schedule','2022-03-02 11:14:56','12:00','14:00',2,8,2,2,2),(8,'KSQ19880201','4th schedule','2022-03-02 11:14:56','14:00','16:00',2,9,2,2,2),(9,'KSQ19880205','5th schedule','2022-03-02 11:14:56','16:00','18:00',1,5,1,1,1),(10,'KSQ19880201','5th schedule','2022-03-02 11:14:56','16:00','18:00',2,10,2,2,2);
+INSERT INTO `g_schedule` VALUES (1,'KSQ19880205','first schedule','2022-03-02 14:13:14','08:00','10:00',1,1,1,1,1),(2,'KSQ19880205','second schedule','2022-03-02 14:13:14','10:00','12:00',1,2,1,1,1),(3,'KSQ19880201','first schedule','2022-03-02 14:13:14','08:00','10:00',2,6,2,2,2),(4,'KSQ19880201','second schedule','2022-03-02 14:13:14','10:00','12:00',2,7,2,2,2),(5,'KSQ19880205','third schedule','2022-03-02 14:13:14','12:00','14:00',1,3,1,1,1),(6,'KSQ19880205','4th schedule','2022-03-02 14:13:14','14:00','16:00',1,4,1,1,1),(7,'KSQ19880201','third schedule','2022-03-02 14:13:14','12:00','14:00',2,8,2,2,2),(8,'KSQ19880201','4th schedule','2022-03-02 14:13:14','14:00','16:00',2,9,2,2,2),(9,'KSQ19880205','5th schedule','2022-03-02 14:13:14','16:00','18:00',1,5,1,1,1),(10,'KSQ19880201','5th schedule','2022-03-02 14:13:14','16:00','18:00',2,10,2,2,2);
 /*!40000 ALTER TABLE `g_schedule` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -616,7 +616,7 @@ CREATE TABLE `g_stb` (
 
 LOCK TABLES `g_stb` WRITE;
 /*!40000 ALTER TABLE `g_stb` DISABLE KEYS */;
-INSERT INTO `g_stb` VALUES (1,'KSQ19880205','KSQ19880204','2022-02-14 08:52:23','N'),(2,'KSQ19880201','KSQ19880202','2022-03-02 10:34:14','N'),(3,'F20020Y0057','test','2022-01-27 17:43:40','N');
+INSERT INTO `g_stb` VALUES (1,'KSQ19880205','KSQ19880204','2022-02-14 08:52:23','N'),(2,'KSQ19880201','KSQ19880202','2022-03-02 13:44:24','N'),(3,'F20020Y0057','test','2022-01-27 17:43:40','N');
 /*!40000 ALTER TABLE `g_stb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -685,4 +685,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-02  2:18:52
+-- Dump completed on 2022-03-02  5:17:15
