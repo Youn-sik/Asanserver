@@ -65,7 +65,7 @@ CREATE TABLE `g_checklist` (
 
 LOCK TABLES `g_checklist` WRITE;
 /*!40000 ALTER TABLE `g_checklist` DISABLE KEYS */;
-INSERT INTO `g_checklist` VALUES (1,'체크리스트','2022-02-10 13:46:21','KSQ19880205'),(2,'체크리스트','2022-02-15 11:54:41','KSQ19880201');
+INSERT INTO `g_checklist` VALUES (1,'체크리스트','2022-02-10 13:46:21','KSQ19880205'),(2,'체크리스트','2022-03-02 11:14:56','KSQ19880201');
 /*!40000 ALTER TABLE `g_checklist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -143,7 +143,7 @@ CREATE TABLE `g_distribution` (
 
 LOCK TABLES `g_distribution` WRITE;
 /*!40000 ALTER TABLE `g_distribution` DISABLE KEYS */;
-INSERT INTO `g_distribution` VALUES (1,'KSQ19880205','first distribution','2022-02-11 03:01:55'),(2,'KSQ19880201','second distribution','2022-02-15 11:54:41'),(3,'KSQ19880207','third distribution','2020-11-08 10:10:10');
+INSERT INTO `g_distribution` VALUES (1,'KSQ19880205','first distribution','2022-02-11 03:01:55'),(2,'KSQ19880201','second distribution','2022-03-02 11:14:55'),(3,'KSQ19880207','third distribution','2020-11-08 10:10:10');
 /*!40000 ALTER TABLE `g_distribution` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,7 +169,7 @@ CREATE TABLE `g_home` (
 
 LOCK TABLES `g_home` WRITE;
 /*!40000 ALTER TABLE `g_home` DISABLE KEYS */;
-INSERT INTO `g_home` VALUES (1,'Arthroscopic bankart repair and remplissage1','2022-02-10 13:46:21','KSQ19880205'),(2,'Arthroscopic superior capsular reconstruction shoulder left1','2022-02-10 13:46:21','KSQ19880205'),(3,'A/S RCR Rt.','2022-02-10 13:46:21','KSQ19880205'),(4,'Arthroscopic bankart repair and remplissage2','2022-02-10 13:46:21','KSQ19880205'),(5,'Arthroscopic superior capsular reconstruction shoulder left2','2022-02-10 13:46:21','KSQ19880205'),(6,'Arthroscopic bankart repair and remplissage1','2022-02-15 11:54:41','KSQ19880201'),(7,'Arthroscopic superior capsular reconstruction shoulder left1','2022-02-15 11:54:41','KSQ19880201'),(8,'A/S RCR Rt.','2022-02-15 11:54:41','KSQ19880201'),(9,'Arthroscopic bankart repair and remplissage2','2022-02-15 11:54:41','KSQ19880201'),(10,'Arthroscopic superior capsular reconstruction shoulder left2','2022-02-15 11:54:41','KSQ19880201');
+INSERT INTO `g_home` VALUES (1,'Arthroscopic bankart repair and remplissage1','2022-02-10 13:46:21','KSQ19880205'),(2,'Arthroscopic superior capsular reconstruction shoulder left1','2022-02-10 13:46:21','KSQ19880205'),(3,'A/S RCR Rt.','2022-02-10 13:46:21','KSQ19880205'),(4,'Arthroscopic bankart repair and remplissage2','2022-02-10 13:46:21','KSQ19880205'),(5,'Arthroscopic superior capsular reconstruction shoulder left2','2022-02-10 13:46:21','KSQ19880205'),(6,'Arthroscopic bankart repair and remplissage1','2022-03-02 11:14:56','KSQ19880201'),(7,'Arthroscopic superior capsular reconstruction shoulder left1','2022-03-02 11:14:56','KSQ19880201'),(8,'A/S RCR Rt.','2022-03-02 11:14:56','KSQ19880201'),(9,'Arthroscopic bankart repair and remplissage2','2022-03-02 11:14:56','KSQ19880201'),(10,'Arthroscopic superior capsular reconstruction shoulder left2','2022-03-02 11:14:56','KSQ19880201');
 /*!40000 ALTER TABLE `g_home` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -333,7 +333,7 @@ CREATE TABLE `g_main` (
 
 LOCK TABLES `g_main` WRITE;
 /*!40000 ALTER TABLE `g_main` DISABLE KEYS */;
-INSERT INTO `g_main` VALUES (1,'first main','2022-02-10 13:46:21','KSQ19880205'),(2,'second main','2022-02-15 11:54:41','KSQ19880201'),(3,'third main','2022-01-10 15:34:55','F20020Y0057');
+INSERT INTO `g_main` VALUES (1,'first main','2022-02-10 13:46:21','KSQ19880205'),(2,'second main','2022-03-02 11:14:56','KSQ19880201'),(3,'third main','2022-01-10 15:34:55','F20020Y0057');
 /*!40000 ALTER TABLE `g_main` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -529,7 +529,7 @@ CREATE TABLE `g_process_list` (
 
 LOCK TABLES `g_process_list` WRITE;
 /*!40000 ALTER TABLE `g_process_list` DISABLE KEYS */;
-INSERT INTO `g_process_list` VALUES (1,'T/O brfore ANES',1),(2,'Anesthesia',1),(3,'T/O before IND',1),(4,'Incision',1),(5,'Surgery',1),(6,'Suture',1),(7,'Wake up ANES',1),(8,'End of sergery',1),(9,'T/O brfore ANES',2),(10,'Anesthesia',2),(11,'T/O before IND',2),(12,'Incision',2),(13,'Surgery',2),(14,'Suture',2),(15,'Wake up ANES',2),(16,'End of sergery',2),(17,'T/O brfore ANES',3),(18,'Anesthesia',3),(19,'T/O before IND',3),(20,'Incision',3),(21,'Surgery',3),(22,'Suture',3),(23,'Wake up ANES',3),(24,'End of sergery',3),(25,'T/O brfore ANES',4),(26,'Anesthesia',4),(27,'T/O before IND',4),(28,'Incision',4),(29,'Surgery',4),(30,'Suture',4),(31,'Wake up ANES',4),(32,'End of sergery',4),(33,'T/O brfore ANES',5),(34,'Anesthesia',5),(35,'T/O before IND',5),(36,'Incision',5),(37,'Surgery',5),(38,'Suture',5),(39,'Wake up ANES',5),(40,'End of sergery',5),(41,'T/O brfore ANES',6),(42,'Anesthesia',6),(43,'T/O before IND',6),(44,'Incision',6),(45,'Surgery',6),(46,'Suture',6),(47,'Wake up ANES',6),(48,'End of sergery',6),(49,'T/O brfore ANES',7),(50,'Anesthesia',7),(51,'T/O before IND',7),(52,'Incision',7),(53,'Surgery',7),(54,'Suture',7),(55,'Wake up ANES',7),(56,'End of sergery',7),(57,'T/O brfore ANES',8),(58,'Anesthesia',8),(59,'T/O before IND',8),(60,'Incision',8),(61,'Surgery',8),(62,'Suture',8),(63,'Wake up ANES',8),(64,'End of sergery',8),(65,'T/O brfore ANES',9),(66,'Anesthesia',9),(67,'T/O before IND',9),(68,'Incision',9),(69,'Surgery',9),(70,'Suture',9),(71,'Wake up ANES',9),(72,'End of sergery',9),(73,'T/O brfore ANES',10),(74,'Anesthesia',10),(75,'T/O before IND',10),(76,'Incision',10),(77,'Surgery',10),(78,'Suture',10),(79,'Wake up ANES',10),(80,'End of sergery',10);
+INSERT INTO `g_process_list` VALUES (1,'T/O brfore ANES',1),(2,'Anesthesia',1),(3,'T/O before IND',1),(4,'Incision',1),(5,'Surgery',1),(6,'Suture',1),(7,'Wake up ANES',1),(8,'End of surgery',1),(9,'T/O brfore ANES',2),(10,'Anesthesia',2),(11,'T/O before IND',2),(12,'Incision',2),(13,'Surgery',2),(14,'Suture',2),(15,'Wake up ANES',2),(16,'End of surgery',2),(17,'T/O brfore ANES',3),(18,'Anesthesia',3),(19,'T/O before IND',3),(20,'Incision',3),(21,'Surgery',3),(22,'Suture',3),(23,'Wake up ANES',3),(24,'End of surgery',3),(25,'T/O brfore ANES',4),(26,'Anesthesia',4),(27,'T/O before IND',4),(28,'Incision',4),(29,'Surgery',4),(30,'Suture',4),(31,'Wake up ANES',4),(32,'End of surgery',4),(33,'T/O brfore ANES',5),(34,'Anesthesia',5),(35,'T/O before IND',5),(36,'Incision',5),(37,'Surgery',5),(38,'Suture',5),(39,'Wake up ANES',5),(40,'End of surgery',5),(41,'T/O brfore ANES',6),(42,'Anesthesia',6),(43,'T/O before IND',6),(44,'Incision',6),(45,'Surgery',6),(46,'Suture',6),(47,'Wake up ANES',6),(48,'End of surgery',6),(49,'T/O brfore ANES',7),(50,'Anesthesia',7),(51,'T/O before IND',7),(52,'Incision',7),(53,'Surgery',7),(54,'Suture',7),(55,'Wake up ANES',7),(56,'End of surgery',7),(57,'T/O brfore ANES',8),(58,'Anesthesia',8),(59,'T/O before IND',8),(60,'Incision',8),(61,'Surgery',8),(62,'Suture',8),(63,'Wake up ANES',8),(64,'End of surgery',8),(65,'T/O brfore ANES',9),(66,'Anesthesia',9),(67,'T/O before IND',9),(68,'Incision',9),(69,'Surgery',9),(70,'Suture',9),(71,'Wake up ANES',9),(72,'End of surgery',9),(73,'T/O brfore ANES',10),(74,'Anesthesia',10),(75,'T/O before IND',10),(76,'Incision',10),(77,'Surgery',10),(78,'Suture',10),(79,'Wake up ANES',10),(80,'End of surgery',10);
 /*!40000 ALTER TABLE `g_process_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -563,7 +563,7 @@ CREATE TABLE `g_schedule` (
 
 LOCK TABLES `g_schedule` WRITE;
 /*!40000 ALTER TABLE `g_schedule` DISABLE KEYS */;
-INSERT INTO `g_schedule` VALUES (1,'KSQ19880205','first schedule','2022-02-15 11:54:41','08:00','10:00',1,1,1,1,1),(2,'KSQ19880205','second schedule','2022-02-15 11:54:41','10:00','12:00',1,2,1,1,1),(3,'KSQ19880201','first schedule','2022-02-15 11:54:41','08:00','10:00',2,6,2,2,2),(4,'KSQ19880201','second schedule','2022-02-15 11:54:41','10:00','12:00',2,7,2,2,2),(5,'KSQ19880205','third schedule','2022-02-15 11:54:41','12:00','14:00',1,3,1,1,1),(6,'KSQ19880205','4th schedule','2022-02-15 11:54:41','14:00','16:00',1,4,1,1,1),(7,'KSQ19880201','third schedule','2022-02-15 11:54:41','12:00','14:00',2,8,2,2,2),(8,'KSQ19880201','4th schedule','2022-02-15 11:54:41','14:00','16:00',2,9,2,2,2),(9,'KSQ19880205','5th schedule','2022-02-15 11:54:41','16:00','18:00',1,5,1,1,1),(10,'KSQ19880201','5th schedule','2022-02-15 11:54:41','16:00','18:00',2,10,2,2,2);
+INSERT INTO `g_schedule` VALUES (1,'KSQ19880205','first schedule','2022-03-02 11:14:56','08:00','10:00',1,1,1,1,1),(2,'KSQ19880205','second schedule','2022-03-02 11:14:56','10:00','12:00',1,2,1,1,1),(3,'KSQ19880201','first schedule','2022-03-02 11:14:56','08:00','10:00',2,6,2,2,2),(4,'KSQ19880201','second schedule','2022-03-02 11:14:56','10:00','12:00',2,7,2,2,2),(5,'KSQ19880205','third schedule','2022-03-02 11:14:56','12:00','14:00',1,3,1,1,1),(6,'KSQ19880205','4th schedule','2022-03-02 11:14:56','14:00','16:00',1,4,1,1,1),(7,'KSQ19880201','third schedule','2022-03-02 11:14:56','12:00','14:00',2,8,2,2,2),(8,'KSQ19880201','4th schedule','2022-03-02 11:14:56','14:00','16:00',2,9,2,2,2),(9,'KSQ19880205','5th schedule','2022-03-02 11:14:56','16:00','18:00',1,5,1,1,1),(10,'KSQ19880201','5th schedule','2022-03-02 11:14:56','16:00','18:00',2,10,2,2,2);
 /*!40000 ALTER TABLE `g_schedule` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -616,7 +616,7 @@ CREATE TABLE `g_stb` (
 
 LOCK TABLES `g_stb` WRITE;
 /*!40000 ALTER TABLE `g_stb` DISABLE KEYS */;
-INSERT INTO `g_stb` VALUES (1,'KSQ19880205','KSQ19880204','2022-02-14 08:52:23','N'),(2,'KSQ19880201','KSQ19880202','2022-02-15 10:19:14','N'),(3,'F20020Y0057','test','2022-01-27 17:43:40','N');
+INSERT INTO `g_stb` VALUES (1,'KSQ19880205','KSQ19880204','2022-02-14 08:52:23','N'),(2,'KSQ19880201','KSQ19880202','2022-03-02 10:34:14','N'),(3,'F20020Y0057','test','2022-01-27 17:43:40','N');
 /*!40000 ALTER TABLE `g_stb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -685,4 +685,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-02-15 13:09:29
+-- Dump completed on 2022-03-02  2:18:52

@@ -39,10 +39,10 @@ random.shuffle(users)
 original_emb = None
 original_emb_label = None
 
-with open('/home/asan/asan/backend/face_cut/cloud40.json') as json_file:
+with open('/home/kool/asan/backend/face_cut/cloud40.json') as json_file:
     json_data = json.load(json_file)
 
-with open('/home/asan/asan/backend/face_cut/cloud40.json') as json_file:
+with open('/home/kool/asan/backend/face_cut/cloud40.json') as json_file:
     visitor_data = json.load(json_file)
 
 def on_connect(client, userdata, flags, rc):
@@ -288,7 +288,7 @@ def on_message(client, userdata, msg):
         print("/user/add/")
         user_json = json.loads(msg.payload)
         user_json['groups_obids'][0] = ObjectId(user_json['groups_obids'][0])
-        file_path = '/var/www/backend/image/' #/home/asan/asan/backend/uploads/image/
+        file_path = '/home/kool/asan/backend/image/' #/home/asan/asan/backend/uploads/image/
         file_name = 'temp_'+user_json['id']+".jpg"
         imgdata = base64.b64decode(user_json['avatar_file'])
 
@@ -334,7 +334,7 @@ def on_message(client, userdata, msg):
         print("/stranger/add/")
         user_json = json.loads(msg.payload)
         url_split = user_json['avatar_file_url'].split(":3000")
-        file_path = "/var/www/backend"+url_split[1]
+        file_path = "/home/kool/asan/backend"+url_split[1]
 
         detect_result = detect_face(file_path)
 
@@ -347,7 +347,7 @@ def on_message(client, userdata, msg):
             user_objectid = str(user_json['_id'])
 
             file_name = user_objectid+"profile.jpg"
-            _file_path = "/var/www/backend/image/"
+            _file_path = "/home/kool/asan/backend/image/"
 
             shutil.copyfile(file_path,_file_path+file_name)
 
@@ -370,7 +370,7 @@ def on_message(client, userdata, msg):
         print("/user/edit/")
         user_json = json.loads(msg.payload)
         user_json['groups_obids'][0] = ObjectId(user_json['clicked_groups'][0])
-        file_path = '/var/www/backend/image/'
+        file_path = '/home/kool/asan/backend/image/'
         file_name = user_json['id']+"profile_updated_temp.jpg"
         user_objectid = ObjectId(user_json['_id'])
         del user_json['_id']
@@ -389,7 +389,7 @@ def on_message(client, userdata, msg):
                 client.publish('/user/edit/result/'+user_json['id'], json.dumps({"result":False}), 1)
             else :
                 updated_file_name = file_path+file_name.split('_temp')[0]+".jpg"
-                os.remove("/var/www/backend"+user_json['avatar_file_url'].split(":3000")[1])
+                os.remove("/home/kool/asan/backend"+user_json['avatar_file_url'].split(":3000")[1])
                 os.rename(file_path+file_name , updated_file_name)
 
                 avatar_file_url = "http://" + server_ip + ":3000/image/" + file_name.split('_temp')[0]+".jpg"
@@ -540,7 +540,7 @@ def blend_transparent(face_t_img, overlay_t_img):
     # And finally just add them together, and rescale it back to an 8bit integer image
     return np.uint8(cv2.addWeighted(face_part, 255.0, overlay_part, 255.0, 0.0))
 
-with open("/var/www/backend/face_cut/mask_retinaface.csv") as csv_file:
+with open("/home/kool/asan/backend/face_cut/mask_retinaface.csv") as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=",")
     src_pts = []
     for i, row in enumerate(csv_reader):
@@ -551,7 +551,7 @@ with open("/var/www/backend/face_cut/mask_retinaface.csv") as csv_file:
             continue
 src_pts = np.array(src_pts, dtype="float32")
 
-mask_img = cv2.imread("/var/www/backend/face_cut/mask.png", -1)
+mask_img = cv2.imread("/home/kool/asan/backend/face_cut/mask.png", -1)
 
 det_model = insightface.model_zoo.get_model('retinaface_r50_v1')
 # det_model = FaceAnalysis(name=['retinaface_r50_v1'])
