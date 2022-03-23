@@ -70,6 +70,7 @@ function Schedule(){
     }
 
     function onDrop(files){
+        console.log(files);
         setLoading(true);
         let formData = new FormData();
         const config = {
@@ -77,9 +78,7 @@ function Schedule(){
         }
         formData.append("file", files[0]);
 
-        // console.log(files);
-
-        axios.post(backend_url+"/meditation/upload", formData, {config})
+        axios.post(backend_url+"/meditation/upload", formData, config)
             .then((response) => {
                 if(response.data.success){
                     console.log(response.data) 
@@ -118,6 +117,7 @@ function Schedule(){
                         alert("파일은 .mp3 또는 .mp4 확장자만 가능합니다.")
                     }                    
                 } else {
+                    console.log(response.data.err)
                     alert("파일 저장에 실패하였습니다.");
                 }
             })

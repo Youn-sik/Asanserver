@@ -20,6 +20,11 @@ with open 부분 계정 명 변경하기(L.42,45)
 "/var/www" 부분 있으면 모두 /home/kool/asan... 으로 변경하기
 mkdir /home/kool/asan/backend/uploads chmod 777 /home/kool/asan/backend/uploads mkdir /home/kool/asan/backend/image pinky 서버에서 /backend/image 하위의 얼굴 사진 불러오기(위의 디렉터리로)
 
+mkdir /home/kool/asan/backend/uploads/
+mkdir /home/kool/asan/backend/uploads/contents/
+mkdir /home/kool/asan/backend/uploads/contents/meditation/
+chmod 777 -R /home/kool/asan/backend/uploads/
+
 pm2 start 및 startup 파일 목록 access_realtime index matt
 
 mysql 설치 sudo apt update sudo apt install mysql-server

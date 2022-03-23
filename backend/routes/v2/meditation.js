@@ -263,22 +263,24 @@ router.post('/upload', async(req, res)=> {
                 const ext = path.extname(file.originalname);
                 if (ext !== '.mp4' || ext !== '.mp3') {
                     return cb(res.status(400).end('only mp3, mp4 is allowed'), false);
+                    reject()
                 }
                 cb(null, true);
                 // console.log("video uploaded")
             }
         })
 
-        var upload = multer({ storage: storage }).single("file")
-
-        upload(req, res, err => {
-            // console.log(res.req.file);
-            let file_ext = path.extname(res.req.file.filename);
-
+        var upload = multer({ storage: storage }).single("file");
+        upload(req, res, (err) => {
             if (err) {
+                console.log(err);
                 return res.json({ success: false, err })
             }
+
+            console.log(res.req.file);
+            let file_ext = path.extname(res.req.file.filename);
             return res.json({ success: true, filePath: res.req.file.path, fileName: res.req.file.filename, ext:file_ext  })
+
         })
 
     } catch(err){
